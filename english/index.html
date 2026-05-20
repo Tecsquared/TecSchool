@@ -98,6 +98,12 @@
     color: var(--tec-ink);
     letter-spacing: -0.01em;
   }
+  /* Hide brand-text on narrow phones — the English header has more pills crammed in
+     than the Thai/Chinese pages (TH/EN toggle + hamburger), so 'TEC' gets squeezed.
+     Robot logo is recognizable on its own. */
+  @media (max-width: 640px) {
+    .site-header .brand-text { display: none; }
+  }
   .site-header .spacer { flex: 1; }
   .site-header .lang-pills { display: inline-flex; gap: 5px; margin-right: 6px; }
   .site-header .lang-switch {
