@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -1953,7 +1953,7 @@
   .center { text-align: center; }
 </style>
 </head>
-<body>
+<body class="lang-th">
 
 <img class="paint-bg" src="../splatter-yellow.png" alt="" aria-hidden="true" />
 
@@ -1973,7 +1973,7 @@
       <a class="lang-switch zh" href="/chinese" aria-label="Chinese courses (coming soon)">Chinese</a>
     </nav>
     <span class="spacer"></span>
-    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="Switch this page to Thai" aria-pressed="false" data-en-label="TH" data-th-label="EN">TH</a>
+    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="Switch this page to English" aria-pressed="true" data-en-label="TH" data-th-label="EN">EN</a>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7"  x2="20" y2="7"/><line x1="4" y1="13" x2="20" y2="13"/><line x1="4" y1="19" x2="20" y2="19"/></svg>
     </button>
@@ -2562,6 +2562,10 @@
       apply(!document.body.classList.contains('lang-th'));
       document.dispatchEvent(new CustomEvent('lang-changed', { detail: { lang: document.body.classList.contains('lang-th') ? 'th' : 'en' } }));
     });
+
+    // Sync UI to the initial body state. If page loads with body.lang-th
+    // (Thai as default), run the data-th swap so [data-th] labels switch too.
+    apply(document.body.classList.contains('lang-th'));
   })();
 
   // ===== Hero typing-morph banner (arrival ceremony) =====
