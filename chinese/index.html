@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinese for kids — TEC · 即将推出</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="preconnect" href="https://use.typekit.net">
+<link rel="preconnect" href="https://p.typekit.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/agc2tne.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tec-blue:   #1DB2FF;
+    --tec-yellow: #FED501;
+    --tec-pink:   #FF208D;
+    --tec-ink:    #1A1A1A;
+    --tec-cream:  #FCFBF6;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: var(--tec-pink);
+    color: var(--tec-cream);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    line-height: 1.5;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255, 32, 141, 0.92);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .site-header .row {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
+  .logo { width: 44px; height: auto; }
+  .brand-text {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 22px; color: var(--tec-cream);
+    letter-spacing: -0.01em;
+  }
+  .lang-pills { display: inline-flex; gap: 5px; }
+  .lang-switch {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700; font-size: 12px;
+    padding: 5px 11px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+    transition: opacity 150ms ease, transform 150ms ease;
+  }
+  .lang-switch.th { background: var(--tec-blue);   color: #fff; }
+  .lang-switch.en { background: var(--tec-yellow); color: var(--tec-ink); }
+  .lang-switch.zh { background: var(--tec-pink);   color: #fff; }
+  .lang-switch:not(.active) { opacity: 0.75; }
+  .lang-switch:not(.active):hover { opacity: 1; }
+  .lang-switch.active {
+    opacity: 1; transform: scale(1.06);
+    box-shadow: 0 0 0 2.5px rgba(255,255,255,0.95);
+  }
+
+  main {
+    flex: 1;
+    padding: clamp(56px, 12vw, 140px) clamp(20px, 5vw, 40px);
+    max-width: 760px; width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  h1 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 8vw, 72px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    color: var(--tec-cream);
+  }
+  .zh-subtitle {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 4.4vw, 38px);
+    color: var(--tec-yellow);
+    margin: 0 0 26px;
+    line-height: 1.15;
+  }
+  .soon {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 2.4vw, 24px);
+    color: var(--tec-cream);
+    opacity: 0.9;
+    margin: 0 0 30px;
+  }
+  .blurb {
+    font-size: 16px; line-height: 1.65;
+    max-width: 540px; margin: 0 auto 36px;
+    color: var(--tec-cream); opacity: 0.95;
+  }
+  .actions {
+    display: flex; flex-direction: column; gap: 12px;
+    max-width: 360px; margin: 0 auto;
+  }
+  @media (min-width: 600px) {
+    .actions { flex-direction: row; max-width: none; justify-content: center; }
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    transition: transform 150ms ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary   { background: var(--tec-yellow); color: var(--tec-ink); }
+  .btn.secondary { background: rgba(255,255,255,0.15); color: var(--tec-cream); border: 2px solid rgba(255,255,255,0.55); }
+
+  .footer-line {
+    text-align: center; padding: 22px;
+    font-family: 'Roboto', sans-serif; font-size: 13px;
+    color: rgba(252,251,246,0.75);
+  }
+  .footer-line a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="row">
+    <a href="/" class="logo-link" aria-label="TEC home">
+      <img class="logo" src="/tec-robot-logo.png" alt="">
+      <span class="brand-text">TEC</span>
+    </a>
+    <nav class="lang-pills" aria-label="Languages we teach at TEC">
+      <a class="lang-switch th" href="/thai">Thai</a>
+      <a class="lang-switch en" href="/english">English</a>
+      <a class="lang-switch zh active" href="/chinese" aria-current="page">Chinese</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Chinese for kids</h1>
+  <p class="zh-subtitle">中文课程 · ภาษาจีนสำหรับเด็ก</p>
+  <p class="soon">Coming soon · 即将推出</p>
+  <p class="blurb">A Mandarin programme for young Trat learners — coming alongside our English school. Same TEC pedagogy: real reading, real speaking, and a clear pathway from first words to confident communication.</p>
+  <div class="actions">
+    <a class="btn primary" href="/english">See our English school →</a>
+    <a class="btn secondary" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">Chat with us on LINE</a>
+  </div>
+</main>
+
+<p class="footer-line">
+  © TEC — Trat English Community · LINE: <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">TEC14</a>
+</p>
+
+</body>
+</html>

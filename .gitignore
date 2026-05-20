@@ -1,0 +1,49 @@
+# ===== TecSchool deploy hygiene =====
+# Only the live site ships. Everything below is workspace clutter, source
+# files, raw photos, planning docs — kept locally but never committed.
+
+# -- Heavy raw assets (>1GB total) --
+Class Photos 23 24/
+Tec LOGO ICon pack/
+Course Images v2/
+Damien Profile.png
+assets/Testimonals new/
+Bg splatter.png
+Blue splatter landing Page Thai.png
+English Landing Page yellow spallter'.png
+Home Page mock up.png
+I love English.jpg
+New Logo TEC.png
+Pink Splatter Chinese Home page.png
+Stop Repeating. Start Communicating..mp4
+TN for hero video.jpg
+Trusted in Trat.png
+Untitled.png
+Web Site hero v2.jpeg
+founder Mas.png
+colour scheme.png
+# NOTE: V2 Paint splatters Home page.png is intentionally NOT ignored — the home page uses it as the background.
+
+# -- Internal working folders --
+_work/
+mockups/
+TemplateDocs/
+
+# -- Planning docs (kept locally for context, never deployed) --
+HANDOVER.md
+THAI-INTEGRATION-HANDOVER.md
+THAI-TRANSLATION.md
+index-v1-old.html
+
+# -- Editor / Claude / OS --
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# -- Build & deps (if added later) --
+node_modules/
+dist/
+.vercel/

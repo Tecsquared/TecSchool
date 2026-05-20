@@ -1,0 +1,3074 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>English at TEC — Trat Language School</title>
+<meta name="description" content="Raise a confident speaker, not a parrot. The 12-year English pathway at TEC, Trat's boutique language school." />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="preconnect" href="https://use.typekit.net">
+<link rel="preconnect" href="https://p.typekit.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/agc2tne.css">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Thai:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tec-blue:    #1DB2FF;
+    --tec-yellow:  #FED501;
+    --tec-pink:    #FF208D;
+    --tec-grey:    #9C9C9C;
+    --tec-bg:      #F4F2EC;
+    --tec-pill-bg: #ECEAE3;
+    --tec-ink:     #1A1A1A;
+    --tec-ink-soft:#2B2B2B;
+    --wf-fill:     #EFEDE6;     /* wireframe placeholder fill */
+    --wf-border:   #C9C5BA;     /* wireframe placeholder border */
+    --wf-label:    #6B6B6B;     /* wireframe placeholder label colour */
+    --shadow-neu:
+       4px  4px 10px 0 rgba(255, 255, 255, 0.85),
+      -4px -4px 10px 0 rgba(120, 110,  90, 0.28),
+      inset -4px -4px  8px 0 rgba(255, 255, 255, 0.30),
+      inset  4px  4px  8px 0 rgba(0, 0, 0, 0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--tec-bg);
+    color: var(--tec-ink);
+    font-family: 'Roboto', system-ui, -apple-system, Segoe UI, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+  }
+  body { overflow-x: hidden; padding-bottom: 90px; /* space for sticky bar on mobile */ }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+  /* Smooth in-page scroll with offset for the sticky header */
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  img { max-width: 100%; display: block; }
+  a   { color: inherit; text-decoration: none; }
+
+  /* ---------- Paint splatter background (inherits from home) ---------- */
+  .paint-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    transform: scale(1.24);   /* push clusters further into the corners */
+    transform-origin: center;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 0.4;        /* faded: lots of content on this page; keep splatter gentle */
+  }
+
+  /* All real content sits above the paint */
+  header, main, footer, .sticky-cta { position: relative; z-index: 1; }
+
+  /* ===== Header ===== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    background: rgba(244, 242, 236, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 20;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .site-header .row {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .site-header .logo-link { display: inline-flex; align-items: center; gap: 8px; }
+  .site-header .logo { width: 44px; height: auto; }
+  .site-header .brand-text {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--tec-ink);
+    letter-spacing: -0.01em;
+  }
+  .site-header .spacer { flex: 1; }
+  .site-header .lang-pills { display: inline-flex; gap: 5px; margin-right: 6px; }
+  .site-header .lang-switch {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 150ms ease, transform 150ms ease;
+    color: var(--tec-ink);
+    background: var(--tec-pill-bg);
+  }
+  .site-header .lang-switch.th { background: var(--tec-blue);   color: #fff; }
+  .site-header .lang-switch.en { background: var(--tec-yellow); color: var(--tec-ink); }
+  .site-header .lang-switch.zh { background: var(--tec-pink);   color: #fff; }
+  .site-header .lang-switch:not(.active) { opacity: 0.75; }
+  .site-header .lang-switch:not(.active):hover { opacity: 1; }
+  .site-header .lang-switch.active {
+    opacity: 1; transform: scale(1.06);
+    box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.95);
+  }
+  .site-header .menu-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .site-header .menu-btn svg { width: 22px; height: 22px; }
+
+  /* ===== Slide-in menu drawer ===== */
+  .menu-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(20,18,12,0.45);
+    z-index: 998;
+    opacity: 0; pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+  .menu-backdrop.open { opacity: 1; pointer-events: auto; }
+  .menu-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(82vw, 340px);
+    background: var(--tec-bg);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 280ms cubic-bezier(.2,.7,.3,1);
+    box-shadow: -8px 0 20px rgba(0,0,0,0.12);
+    display: flex; flex-direction: column;
+    padding: 22px 22px 28px;
+  }
+  .menu-drawer.open { transform: translateX(0); }
+  .menu-close {
+    align-self: flex-end;
+    appearance: none; border: none; background: none;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-size: 22px; font-weight: 700;
+    cursor: pointer; padding: 6px 10px;
+    color: var(--tec-ink);
+  }
+  .menu-nav { margin-top: 14px; }
+  .menu-nav a {
+    display: block;
+    padding: 14px 4px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 20px;
+    color: var(--tec-ink);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    text-decoration: none;
+  }
+  .menu-nav a:hover, .menu-nav a:focus-visible { color: var(--tec-pink); outline: none; }
+  .menu-nav .line { color: #06C755; }
+  .menu-footer {
+    margin-top: auto; padding-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px; color: var(--tec-ink-soft);
+  }
+  .menu-footer .lang-on { color: var(--tec-ink); font-weight: 700; }
+
+  /* ===== Section base ===== */
+  section.sec {
+    padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 40px);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  section.sec.full { max-width: none; padding-left: 0; padding-right: 0; }
+  section.sec.full > .inner { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+  .section-marker, .draft-banner { display: none !important; }
+  .section-marker {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--wf-label);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--tec-ink);
+    letter-spacing: -0.005em;
+    margin-bottom: clamp(20px, 2.6vw, 32px);
+  }
+  .th {
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-weight: 600;
+  }
+  .section-title .th { display: block; font-size: 0.72em; opacity: 0.9; margin-top: 8px; font-weight: 700; }
+
+  /* ===== Pill-driven language swap =====
+     Existing `<span class="th">` stacks INSIDE English elements stay visible
+     regardless of pill state — they're already paired. The pill only swaps
+     siblings tagged .lang-en / .lang-th and short labels tagged [data-th]. */
+  .lang-th-block { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; }
+  body:not(.lang-th) .lang-th-block { display: none !important; }
+  body.lang-th        .lang-en-block { display: none !important; }
+  body.lang-th        .lang-th-block { display: revert; }
+
+  .lede { font-size: clamp(15px, 1.6vw, 18px); color: var(--tec-ink-soft); margin-top: 12px; }
+
+  /* Eyebrow strap for the PEAK — frames the 10-year-system reframe */
+  .peak-eyebrow {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3vw, 34px);
+    line-height: 1.15;
+    color: var(--tec-ink);
+    margin-bottom: 12px;
+  }
+  /* One line on desktop */
+  @media (min-width: 768px) {
+    .peak-eyebrow { white-space: nowrap; font-size: clamp(22px, 2.7vw, 32px); }
+  }
+
+  /* ===== Wireframe placeholder boxes ===== */
+  .wf-image, .wf-video {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: var(--wf-fill);
+    border: 2px dashed var(--wf-border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wf-label);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    padding: 16px;
+    line-height: 1.3;
+    position: relative;
+  }
+  .wf-image::before, .wf-video::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201,197,186,0.4);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+  .wf-image.portrait, .wf-video.portrait { aspect-ratio: 3/4; }
+  .wf-image.square,   .wf-video.square   { aspect-ratio: 1/1; }
+  .wf-image.video    { aspect-ratio: 9/16; max-width: 320px; margin: 0 auto; }
+
+  .wf-note {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    color: var(--wf-label);
+    margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ===== Hero (P2) — POLISHED ===== */
+  .hero {
+    text-align: center;
+    padding: clamp(40px, 7vw, 80px) clamp(20px, 5vw, 40px) clamp(20px, 3.5vw, 44px);
+  }
+  /* Typing morph banner — the arrival ceremony, shared across all 3 language pages */
+  .hero .morph-banner {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.8vw, 36px);
+    line-height: 1.2;
+    /* English theme = yellow; thin dark stroke keeps it legible on cream */
+    color: var(--tec-yellow);
+    -webkit-text-stroke: 1px var(--tec-ink);
+    paint-order: stroke fill;
+    letter-spacing: -0.005em;
+    min-height: 1.3em;
+    margin-bottom: clamp(16px, 2.4vw, 28px);
+  }
+  .hero .morph-banner .type {
+    display: inline;
+  }
+  .hero .morph-banner .caret {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    margin-left: 2px;
+    background: var(--tec-ink);
+    -webkit-text-stroke: 0;
+    vertical-align: -0.12em;
+    animation: caretBlink 900ms steps(1) infinite;
+  }
+  @keyframes caretBlink { 50% { opacity: 0; } }
+
+  /* Speech-bubble video frame — echoes the robot logo's bubbles; tail points at the headline */
+  .hero .vignette {
+    position: relative;
+    margin: 16px auto 52px;          /* +bottom gap so the tail doesn't crowd the headline */
+    max-width: 630px;                /* ~7% narrower — lets the headline lead */
+    background: #FCFBF6;
+    border: 3px solid var(--tec-ink);
+    border-radius: 28px;
+    padding: clamp(12px, 2.2vw, 18px);
+    box-shadow: 6px 8px 0 rgba(0,0,0,0.10);
+  }
+  /* Soft rounded tail — a rotated, rounded square tucked behind the bubble.
+     Not a triangle: the protruding corner is rounded, the outline continues. */
+  .hero .vignette::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    width: 34px;
+    height: 34px;
+    background: #FCFBF6;
+    border-right: 3px solid var(--tec-ink);
+    border-bottom: 3px solid var(--tec-ink);
+    border-radius: 0 0 11px 0;          /* the soft, rounded tip */
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -1;                         /* tucks behind the bubble's paper fill */
+    pointer-events: none;
+  }
+  .hero .vignette .vignette-frame {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid var(--tec-yellow);
+  }
+  /* Yellow "TEC" with an ink outline so it stays legible on the paper background */
+  .tecmark {
+    color: var(--tec-yellow);
+    -webkit-text-stroke: 1.6px var(--tec-ink);
+    paint-order: stroke fill;
+  }
+  .hero .vignette .vignette-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #000;
+  }
+  .hero .vignette .play-fab {
+    position: absolute;
+    right: 14%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 110px;
+    height: 110px;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--tec-yellow);
+    box-shadow: var(--shadow-neu);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: transform 140ms ease;
+  }
+  .hero .vignette .play-fab:hover { transform: translateY(-50%) scale(1.06); }
+  .hero .vignette .play-fab::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 34px solid var(--tec-ink);
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    margin-left: 8px;
+  }
+  @media (max-width: 520px) {
+    .hero .vignette .play-fab { width: 78px; height: 78px; right: 10%; }
+    .hero .vignette .play-fab::after {
+      border-left: 24px solid var(--tec-ink);
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+  }
+  .hero .vignette.is-playing .play-fab { display: none; }
+  /* New hero title — sits beneath the video, the emotional centre */
+  .hero .hero-title {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5.6vw, 60px);
+    line-height: 1.08;
+    color: var(--tec-ink);
+    letter-spacing: -0.018em;
+    max-width: 1040px;
+    margin: 44px auto 0;
+    text-wrap: balance;
+  }
+  .hero .hero-title .th {
+    display: block;
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-size: 0.42em;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-top: 22px;
+    letter-spacing: 0;
+  }
+  .hero .hero-sub {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.6vw, 28px);
+    color: var(--tec-ink-soft);
+    line-height: 1.25;
+    max-width: 680px;
+    margin: 28px auto 0;
+    letter-spacing: -0.005em;
+  }
+  .hero .hero-cta {
+    display: inline-block;
+    margin: 36px auto 0;
+    padding: 18px 32px;
+    background: var(--tec-yellow);
+    color: var(--tec-ink);
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(17px, 2vw, 20px);
+    border-radius: 18px;
+    text-decoration: none;
+    border: 2.5px solid var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .hero .hero-cta:hover, .hero .hero-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    outline: none;
+  }
+
+  /* ===== Stat setup line (above the 90%) + inline mid-page CTAs ===== */
+  .stat-setup {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: clamp(17px, 2.1vw, 22px);
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto clamp(20px, 2.6vw, 32px);
+    color: var(--tec-ink);
+    line-height: 1.45;
+  }
+  .stat-setup strong { color: var(--tec-ink); font-weight: 700; }
+  .inline-cta {
+    display: block;
+    width: max-content;
+    margin: clamp(28px, 4vw, 48px) auto 0;
+    padding: 14px 28px;
+    background: var(--tec-yellow);
+    color: var(--tec-ink);
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(15px, 1.7vw, 17px);
+    border-radius: 14px;
+    text-decoration: none;
+    border: 2.5px solid var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .inline-cta:hover, .inline-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    outline: none;
+  }
+
+  /* ===== Founders (P3) — wireframe ===== */
+  .founders {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) { .founders { grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); } }
+  .founder-card {
+    background: rgba(255,255,255,0.55);
+    border-radius: 22px;
+    padding: clamp(28px, 3.4vw, 40px);
+    box-shadow: var(--shadow-neu);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .founder-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.10); }
+  .founder-card .avatar {
+    width: clamp(168px, 18vw, 200px); height: clamp(168px, 18vw, 200px);
+    margin-bottom: 22px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--tec-ink);
+  }
+  .founder-card .avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .founder-card h3 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.2vw, 30px);
+    color: var(--tec-ink);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .founder-card .role {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tec-ink-soft);
+    margin-bottom: 20px;
+  }
+  .founder-card blockquote {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15.5px;
+    color: var(--tec-ink-soft);
+    line-height: 1.6;
+    border-left: 3px solid var(--tec-yellow);
+    padding-left: 14px;
+    font-style: italic;
+    margin: 0;
+  }
+  .founder-card .bio-full { display: none; }
+  .founder-card.expanded .bio-short { display: none; }
+  .founder-card.expanded .bio-full { display: block; }
+  .founder-card .read-more {
+    appearance: none; border: none; background: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--tec-pink);
+    cursor: pointer;
+    padding: 10px 0 0;
+    letter-spacing: 0.04em;
+  }
+  .founder-card .read-more::after { content: ' →'; display: inline-block; transition: transform 200ms ease; }
+  .founder-card.expanded .read-more::after { content: ' ↑'; }
+  .founder-card .lang-pair { margin-top: 10px; opacity: 0.7; font-size: 13px; }
+
+  .architect-note {
+    margin-top: 32px;
+    padding: 20px;
+    border: 1.5px solid var(--wf-border);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.4);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  @media (min-width: 768px) { .architect-note { grid-template-columns: 1fr 1fr 2fr; } }
+  .architect-note p { font-family: 'Nunito Sans', sans-serif; font-weight: 500; font-size: 15.5px; line-height: 1.5; color: var(--tec-ink-soft); }
+
+  /* ===== How TEC Works — 7-tile grid ===== */
+  .tile-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+  @media (min-width: 600px) { .tile-grid { grid-template-columns: 1fr 1fr; } }
+  .tile {
+    background: rgba(255,255,255,0.55);
+    border-radius: 14px;
+    padding: clamp(20px, 2.6vw, 28px);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: var(--shadow-neu);
+  }
+  .tile .icon {
+    flex: none;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--tec-yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--tec-ink);
+  }
+  .tile .tile-icon {
+    flex: none;
+    width: 96px; height: 96px;
+    border-radius: 16px;
+    object-fit: contain;
+    mix-blend-mode: multiply;   /* melts the near-white icon bg into the tile */
+  }
+  .tile h4 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--tec-ink);
+    margin-bottom: 4px;
+  }
+  .tile p { font-size: 13.5px; color: var(--tec-ink-soft); line-height: 1.4; }
+
+  /* ===== 90% / 50% stats ===== */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+  @media (min-width: 600px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+  .stat-box {
+    background: var(--tec-yellow);
+    border-radius: 22px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 6px 8px 0 rgba(0,0,0,0.10);
+    border: 1.5px solid rgba(0,0,0,0.06);
+  }
+  .stat-box .num {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(72px, 11vw, 120px);
+    line-height: 0.85;
+    color: var(--tec-ink);
+    letter-spacing: -0.02em;
+  }
+  .stat-box .desc {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--tec-ink);
+    margin-top: 16px;
+    line-height: 1.4;
+  }
+  .stat-box.solo {
+    margin: 28px 0 0;
+    padding: clamp(48px, 9vw, 104px) clamp(24px, 6vw, 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .stat-box.solo .num  { font-size: clamp(140px, 30vw, 360px); line-height: 1; margin-top: 6px; }
+  .stat-box.solo .stat-eyebrow {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: clamp(12px, 1.3vw, 14px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tec-ink);
+    opacity: 0.7;
+  }
+  .stat-box.solo .desc {
+    max-width: 720px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.6vw, 28px);
+    line-height: 1.35;
+    color: var(--tec-ink);
+    margin-top: 32px;
+  }
+  .stat-box.solo .stat-reason {
+    max-width: 620px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(15px, 1.7vw, 17px);
+    line-height: 1.5;
+    color: var(--tec-ink);
+    opacity: 0.75;
+    margin-top: 18px;
+  }
+  .stats-caption {
+    text-align: center;
+    margin-top: 24px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(22px, 3.6vw, 40px);
+    color: var(--tec-ink-soft);
+  }
+
+  /* ===== Journey slider — POLISHED (THE PEAK) ===== */
+  .journey {
+    background: linear-gradient(180deg, rgba(29,178,255,0.06) 0%, rgba(254,213,1,0.05) 50%, rgba(255,32,141,0.05) 100%);
+    border-radius: 28px;
+    padding: clamp(28px, 5vw, 48px);
+    margin-top: 28px;
+    position: relative;
+  }
+  .journey-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .journey .stage-counter {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--tec-ink-soft);
+    background: rgba(255,255,255,0.7);
+    padding: 6px 14px;
+    border-radius: 14px;
+  }
+  .journey .progress {
+    margin-top: 18px;
+    width: 100%;
+    height: 8px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .journey .progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--stage-color, var(--tec-yellow));
+    transition: width 400ms cubic-bezier(.2,.8,.3,1), background 400ms ease;
+    border-radius: 4px;
+  }
+  .journey .stage-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .journey .stage-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .journey .stage-tag-rowlabel {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tec-ink);
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(0,0,0,0.14);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .journey .stage-tag {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.04);
+    color: var(--tec-ink-soft);
+    cursor: pointer;
+    transition: background 200ms;
+  }
+  .journey .stage-tag.active { background: var(--stage-color, var(--tec-yellow)); color: var(--tec-ink); }
+
+  .stage-card {
+    margin-top: 28px;
+    background: rgba(255,255,255,0.78);
+    border-radius: 22px;
+    padding: 24px;
+    border: 2px solid var(--stage-color, var(--tec-yellow));
+    transition: border-color 400ms ease;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .stage-header { display: block; }
+  .stage-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  @media (min-width: 768px) { .stage-body { grid-template-columns: 1.2fr 1fr; align-items: start; } }
+  .stage-name {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--tec-ink);
+    line-height: 1.05;
+  }
+  .stage-age {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tec-ink-soft);
+    margin-top: 4px;
+  }
+  .stage-cambridge-badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: var(--stage-color, var(--tec-yellow));
+    color: var(--tec-ink);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .stage-photo {
+    background: var(--wf-fill);
+    border: 2px dashed var(--wf-border);
+    border-radius: 14px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wf-label);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    overflow: hidden;
+  }
+  .stage-photo.has-photo {
+    border: 2.5px solid var(--tec-ink);
+    background: none;
+    padding: 0;
+  }
+  .stage-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .stage-meta { display: flex; flex-direction: column; gap: 14px; }
+  .stage-audio-btn {
+    appearance: none; border: none; cursor: pointer;
+    background: var(--tec-yellow);
+    color: var(--tec-ink);
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow-neu);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+  }
+  .stage-audio-btn::after {
+    content: '→';
+    font-weight: 700;
+  }
+  .stage-portfolio-thumb {
+    background: rgba(255,255,255,0.55);
+    border: 1.5px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: var(--tec-ink-soft);
+    line-height: 1.55;
+    position: relative;
+  }
+  .stage-portfolio-thumb strong {
+    font-family: "chaloops", system-ui, sans-serif;
+    color: var(--tec-ink);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .stage-portfolio-thumb::after {
+    content: '';
+    position: absolute;
+    width: 9px; height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, var(--stage-color, var(--tec-yellow)) 55%, transparent 78%);
+    box-shadow: 0 0 8px 2px var(--stage-color, var(--tec-yellow));
+    pointer-events: none;
+    animation: portfolio-orbit 11s linear infinite, sparkle-twinkle 2.4s ease-in-out infinite;
+  }
+  @keyframes portfolio-orbit {
+    0%   { top: 0;    left: 0;    }
+    25%  { top: 0;    left: 100%; }
+    50%  { top: 100%; left: 100%; }
+    75%  { top: 100%; left: 0;    }
+    100% { top: 0;    left: 0;    }
+  }
+  @keyframes sparkle-twinkle {
+    0%, 100% { transform: scale(1);   opacity: 0.9; }
+    50%      { transform: scale(1.6); opacity: 0.4; }
+  }
+
+  .stage-nav {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stage-nav button {
+    appearance: none; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.85);
+    color: var(--tec-ink);
+    padding: 14px 20px;
+    border-radius: 14px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow-neu);
+    min-width: 110px;
+    transition: transform 150ms;
+  }
+  .stage-nav button:active { transform: scale(0.98); }
+  .stage-nav button:disabled { opacity: 0.35; cursor: not-allowed; }
+  .stage-nav .stage-jump-hint {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    color: var(--wf-label);
+    flex: 1;
+    text-align: center;
+  }
+
+  /* ===== 10-year pathway system ===== */
+  .pathway { margin-top: 32px; display: flex; flex-direction: column; gap: 40px; }
+  .pillar-group { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 860px) {
+    .pillar-group { grid-template-columns: 248px 1fr; gap: 32px; align-items: start; }
+  }
+  .pillar-label {
+    border: 3px solid var(--tec-ink);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 5px 6px 0 rgba(0,0,0,0.10);
+  }
+  @media (min-width: 860px) { .pillar-label { position: sticky; top: 84px; } }
+  .pillar-label h3 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 26px);
+    color: var(--tec-ink);
+    line-height: 1.1;
+  }
+  .pillar-label .ages {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 6px;
+    color: var(--tec-ink);
+    opacity: 0.65;
+  }
+  .pillar-label.play  { background: #E3FCEF; }
+  .pillar-label.read  { background: #E6F0FF; }
+  .pillar-label.build { background: #FFECE8; }
+  .pillar-courses { display: flex; flex-direction: column; gap: 14px; }
+  .course-item {
+    background: rgba(255,255,255,0.55);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow-neu);
+  }
+  .course-item h4 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--tec-ink);
+  }
+  .course-item h4 .age {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    opacity: 0.55;
+    margin-left: 8px;
+  }
+  .course-item p {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tec-ink-soft);
+  }
+
+  /* ===== Visible Learning portfolio reveal ===== */
+  .portfolio-reveal { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+  @media (min-width: 768px) {
+    .portfolio-reveal { grid-template-columns: 1fr 1fr; gap: 36px; }
+    /* Alternate sides with P7 below: text left, graphic right on desktop */
+    .portfolio-text    { order: 1; }
+    .portfolio-graphic { order: 2; }
+  }
+  .portfolio-graphic-title {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.1;
+    color: var(--tec-ink);
+    text-align: center;
+    margin: 0 0 14px;
+  }
+  .portfolio-screenshot {
+    aspect-ratio: 4/5;
+    border: 3px solid var(--tec-yellow);
+    border-radius: 16px;
+    background: var(--wf-fill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wf-label);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    padding: 20px;
+  }
+  .portfolio-screenshot.has-image { padding: 0; background: none; overflow: hidden; }
+  .portfolio-screenshot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portfolio-caption {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--tec-ink);
+  }
+  .portfolio-caption .body {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15.5px;
+    color: var(--tec-ink-soft);
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+  .portfolio-bullets {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--tec-ink);
+  }
+  .portfolio-bullets li {
+    padding: 4px 0 4px 26px;
+    position: relative;
+  }
+  .portfolio-bullets li::before {
+    content: '✓';
+    position: absolute; left: 4px; top: 4px;
+    color: var(--tec-pink);
+    font-weight: 700;
+  }
+  .portfolio-close {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--tec-ink-soft);
+    margin-top: 16px;
+  }
+  .portfolio-caption .small {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--tec-ink-soft);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* ===== Price comparison ===== */
+  .price-cols { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
+  @media (min-width: 768px) { .price-cols { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  .price-col { padding: 24px; border-radius: 18px; }
+  .price-col.cheap   { background: rgba(150,150,150,0.10); color: var(--tec-ink-soft); border: 1px dashed var(--wf-border); }
+  .price-col.tec     { background: rgba(254,213,1,0.18); border: 2px solid var(--tec-yellow); }
+  .price-col h4 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .price-col ul { list-style: none; }
+  .price-col li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .price-col li:last-child { border-bottom: none; }
+  .price-col li::before {
+    content: '— ';
+    color: var(--wf-label);
+  }
+  .price-col.tec li::before { content: '✓ '; color: var(--tec-pink); font-weight: 700; }
+
+  .price-punchline {
+    margin-top: 32px;
+    text-align: center;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.6vw, 30px);
+    color: var(--tec-ink);
+    line-height: 1.2;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== Cheap vs Value before/after slider ===== */
+  .ba-slider {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    margin: 30px auto 0;
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 3px solid var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    user-select: none;
+    touch-action: pan-y;
+    cursor: ew-resize;
+  }
+  .ba-slider img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    pointer-events: none;
+  }
+  .ba-slider .ba-before {
+    clip-path: inset(0 calc(100% - var(--ba-pos, 50%)) 0 0);
+  }
+  .ba-label {
+    position: absolute; top: 12px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 13px;
+    padding: 5px 12px; border-radius: 999px;
+    pointer-events: none; z-index: 3;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+    transition: opacity 0.12s linear;
+  }
+  .ba-label.cheap { left: 12px; background: #5b5b5b; color: #fff; }
+  .ba-label.tec   { right: 12px; background: var(--tec-yellow); color: var(--tec-ink); }
+  .ba-handle {
+    position: absolute; top: 0; bottom: 0;
+    left: var(--ba-pos, 50%);
+    width: 44px; transform: translateX(-50%);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 4; cursor: ew-resize; touch-action: none;
+  }
+  .ba-handle::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 3px; transform: translateX(-50%);
+    background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.25);
+  }
+  .ba-grip {
+    position: relative; z-index: 1;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #fff; color: var(--tec-ink);
+    border: 3px solid var(--tec-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; letter-spacing: -1px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+  .ba-handle:focus-visible { outline: none; }
+  .ba-handle:focus-visible .ba-grip { outline: 3px solid var(--tec-yellow); outline-offset: 2px; }
+  .ba-hint {
+    text-align: center; margin-top: 12px;
+    font-family: 'Roboto', sans-serif; font-size: 13px;
+    font-style: italic; color: var(--tec-ink-soft);
+  }
+  .ba-compare { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 28px; }
+  @media (min-width: 768px) {
+    .ba-compare { grid-template-columns: minmax(0, 430px) 1fr; gap: 44px; align-items: center; }
+    .ba-compare .ba-slider { margin: 0; }
+  }
+  .ba-text { display: grid; }
+  .ba-text-layer {
+    grid-area: 1 / 1;
+    transition: opacity 0.12s linear, transform 0.12s linear;
+    will-change: opacity, transform;
+  }
+
+  .testimonial-quote-card {
+    margin-top: 36px;
+    padding: 24px;
+    background: var(--tec-blue);
+    color: #fff;
+    border-radius: 18px;
+    position: relative;
+  }
+  .testimonial-quote-card .name-badge {
+    display: inline-block;
+    background: var(--tec-pink);
+    color: #fff;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+  }
+  .testimonial-quote-card blockquote {
+    background: #fff;
+    color: var(--tec-ink);
+    padding: 16px 20px;
+    border-radius: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .testimonial-quote-card blockquote + blockquote { margin-top: 10px; }
+  .highlight {
+    background: linear-gradient(transparent 60%, var(--tec-yellow) 60%);
+    padding: 0 2px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ===== Building tour ===== */
+  .tour-gallery {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (min-width: 768px) { .tour-gallery { grid-template-columns: repeat(3, 1fr); } }
+  .tour-photo {
+    aspect-ratio: 1/1;
+    background: var(--wf-fill);
+    border: 2px dashed var(--wf-border);
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: var(--wf-label);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px;
+    text-align: center;
+  }
+  .tour-photo.has-image {
+    border: 2.5px solid var(--tec-ink);
+    background: none;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .tour-photo.has-image img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .tour-photo.has-image figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 22px 12px 11px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff; text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  }
+  .tour-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    color: var(--tec-pink);
+    border-bottom: 2px solid var(--tec-yellow);
+  }
+
+  /* ===== Video testimonials — arched cards (parked-ideas Idea 3) ===== */
+  .video-wall { margin-top: 44px; }
+  .video-wall h3 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: clamp(20px, 2.4vw, 26px);
+    color: var(--tec-ink); text-align: center; margin-bottom: 4px;
+  }
+  .video-wall .vw-sub {
+    text-align: center; font-family: 'Roboto', sans-serif;
+    font-size: 14px; color: var(--tec-ink-soft); margin-bottom: 26px;
+  }
+  .video-row {
+    display: grid; grid-template-columns: 1fr; gap: 22px;
+    max-width: 760px; margin: 0 auto;
+  }
+  @media (min-width: 680px) { .video-row { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  .video-arch {
+    appearance: none; border: none; cursor: pointer;
+    background: var(--vw-tint, #A8E6A1);
+    border-radius: 130px 130px 20px 20px;
+    padding: 20px 14px 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    box-shadow: var(--shadow-neu);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+  .video-arch:hover, .video-arch:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+  }
+  .video-arch:focus-visible { outline: 3px solid var(--tec-ink); outline-offset: 3px; }
+  .vw-poster {
+    position: relative; width: 100%; aspect-ratio: 3/4;
+    border-radius: 110px 110px 14px 14px;
+    overflow: hidden; background: rgba(255,255,255,0.55);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .vw-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vw-ph {
+    font-family: 'Nunito Sans', sans-serif; font-size: 12px;
+    font-weight: 600; color: var(--tec-ink-soft); text-align: center; padding: 10px;
+  }
+  .vw-play {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--tec-yellow); color: var(--tec-ink);
+    border: 3px solid var(--tec-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; padding-left: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .video-arch .vw-name {
+    font-family: "chaloops", system-ui, sans-serif; font-weight: 700;
+    font-size: 16px; color: var(--tec-ink);
+  }
+  .video-arch .vw-desc {
+    font-family: 'Roboto', sans-serif; font-size: 12.5px;
+    color: var(--tec-ink-soft); text-align: center; line-height: 1.4;
+  }
+  .video-modal {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(20,18,12,0.82);
+    display: none; align-items: center; justify-content: center; padding: 24px;
+  }
+  .video-modal.open { display: flex; }
+  .video-modal-inner { position: relative; width: 100%; max-width: 720px; }
+  .map-modal-inner   { position: relative; width: 100%; max-width: 880px; aspect-ratio: 4/3; }
+  .map-modal-inner iframe { width: 100%; height: 100%; border: 0; border-radius: 14px; display: block; background: #000; }
+  .video-modal video {
+    width: 100%; max-height: 80vh; border-radius: 14px;
+    display: block; background: #000;
+  }
+  .video-modal-close {
+    position: absolute; top: -16px; right: -16px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--tec-yellow); color: var(--tec-ink);
+    border: 3px solid var(--tec-ink); cursor: pointer;
+    font-size: 18px; font-weight: 700; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  /* ===== Folder testimonials (parked-ideas Idea 2) ===== */
+  /* Extra top room so the fanned-open cards clear the section above */
+  section.sec[data-marker="P9"] { padding-top: clamp(180px, 22vw, 260px); }
+  .folder-section { text-align: center; }
+  .heart-pulse {
+    display: inline-block;
+    transition: transform 200ms ease;
+  }
+  .folder-section h2:hover .heart-pulse,
+  .folder-section h2:focus-visible .heart-pulse { transform: scale(1.2); }
+  .folder-stage {
+    margin: 36px auto 0;
+    max-width: 520px;
+    height: 320px;
+    position: relative;
+    perspective: 1200px;
+    cursor: pointer;
+  }
+  .folder {
+    position: absolute;
+    inset: 0;
+    transition: transform 600ms cubic-bezier(.2,.8,.3,1);
+  }
+  /* Front pocket of the folder — cards tuck behind/into it when closed */
+  .folder-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 82%;
+    height: 56%;
+    background: #BFBCB1;
+    border-radius: 16px 16px 22px 22px;
+    box-shadow: 4px 10px 18px rgba(0,0,0,0.16), inset 0 -6px 0 rgba(0,0,0,0.07);
+    z-index: 1;
+  }
+  /* Soft pocket lip so the top edge reads as an opening, not a flat block */
+  .folder-body::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 6%;
+    right: 6%;
+    height: 20px;
+    background: #CBC8BD;
+    border-radius: 50% / 100% 100% 0 0;
+  }
+  /* Smiley face on the folder — gives it the playful TEC mascot personality */
+  .folder-face {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .folder-face .eyes { display: flex; gap: 42px; }
+  .folder-face .eye {
+    width: 15px;
+    height: 18px;
+    background: #3A382F;
+    border-radius: 50%;
+    animation: folderBlink 5s infinite;
+  }
+  @keyframes folderBlink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    96%           { transform: scaleY(0.1); }
+  }
+  .folder-face .mouth {
+    width: 52px;
+    height: 26px;
+    border: 4px solid #3A382F;
+    border-top: 0;
+    border-radius: 0 0 60px 60px;
+  }
+  .folder-face .cheek {
+    position: absolute;
+    top: 46%;
+    width: 18px;
+    height: 12px;
+    background: rgba(255, 32, 141, 0.45);
+    border-radius: 50%;
+    filter: blur(1px);
+  }
+  .folder-face .cheek.l { left: 14%; }
+  .folder-face .cheek.r { right: 14%; }
+  .folder-card {
+    position: absolute;
+    width: 48%;
+    aspect-ratio: 3/4;
+    left: 26%;
+    bottom: 24%;
+    background: var(--tec-blue);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    transform-origin: bottom center;
+    transition: transform 700ms cubic-bezier(.2,.7,.3,1.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.3;
+  }
+  .folder-card:nth-child(1) { background: var(--tec-blue); }
+  .folder-card:nth-child(2) { background: var(--tec-yellow); color: var(--tec-ink); }
+  .folder-card:nth-child(3) { background: var(--tec-pink); }
+  .folder-card.has-video { padding: 0; overflow: hidden; }
+  .folder-card.has-video img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .folder-card .fc-name {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    z-index: 2; padding: 26px 8px 8px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 15px; color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,0.62), transparent);
+  }
+  .folder-card .fc-play {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); z-index: 3;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--tec-yellow); color: var(--tec-ink);
+    border: 3px solid var(--tec-ink); cursor: pointer;
+    font-size: 18px; padding-left: 3px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    transition: transform 150ms ease;
+  }
+  .folder-card .fc-play:hover, .folder-card .fc-play:focus-visible {
+    transform: translate(-50%, -50%) scale(1.1); outline: none;
+  }
+  .folder-card { transition: transform 700ms cubic-bezier(.2,.7,.3,1.1); }
+  /* Closed state — 3 card tops poke up above the pocket as a centred fanned tab row. */
+  .folder-stage:not(.open) .folder-card:nth-child(1) { transform: translate(-32%, 7%) scale(0.5) rotate(-4deg); }
+  .folder-stage:not(.open) .folder-card:nth-child(2) { transform: translate(0%, 3%)   scale(0.5) rotate(0deg);  }
+  .folder-stage:not(.open) .folder-card:nth-child(3) { transform: translate(32%, 7%)  scale(0.5) rotate(4deg);  }
+  /* Open state — 3 cards fan out. Mobile: tight, all stay on-screen at 375px */
+  .folder-stage.open .folder-card:nth-child(1) { transform: translate(-66%, -30%) rotate(-12deg); }
+  .folder-stage.open .folder-card:nth-child(2) { transform: translate(0%, -46%)   rotate(0deg);   }
+  .folder-stage.open .folder-card:nth-child(3) { transform: translate(66%, -30%)  rotate(12deg);  }
+  @media (min-width: 600px) {
+    .folder-card { width: 56%; left: 22%; }
+    .folder-stage.open .folder-card:nth-child(1) { transform: translate(-72%, -40%) rotate(-11deg); }
+    .folder-stage.open .folder-card:nth-child(2) { transform: translate(0%, -58%)   rotate(0deg);   }
+    .folder-stage.open .folder-card:nth-child(3) { transform: translate(72%, -40%)  rotate(11deg);  }
+  }
+  .folder-cta {
+    margin-top: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--wf-label);
+  }
+  .folder-cta .key {
+    background: rgba(0,0,0,0.06);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    margin: 0 4px;
+  }
+
+  /* ===== FAQ accordion ===== */
+  .faq { margin-top: 28px; max-width: 920px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .faq-q {
+    appearance: none;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 18px 12px;
+    cursor: pointer;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--tec-ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 22px;
+    color: var(--tec-pink);
+    transition: transform 200ms;
+    flex: none;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+    font-size: 14.5px;
+    color: var(--tec-ink-soft);
+    line-height: 1.55;
+  }
+  .faq-a > div { padding: 0 12px 18px; }
+  .faq-item.open .faq-a { max-height: 480px; }
+
+  /* ===== CTA section ===== */
+  .cta-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  @media (min-width: 768px) { .cta-grid { grid-template-columns: 1fr 1fr; } }
+  .cta-card {
+    background: rgba(255,255,255,0.7);
+    border-radius: 18px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow-neu);
+  }
+  .cta-card .icon-circle {
+    width: 56px; height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--tec-ink);
+  }
+  .cta-card h4 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: var(--tec-ink);
+  }
+  .cta-card p { font-size: 13.5px; color: var(--tec-ink-soft); margin-bottom: 16px; }
+  .cta-card { display: flex; flex-direction: column; }
+  .cta-card p { flex: 1; }
+  .cta-card .cta-btn {
+    appearance: none; border: none; cursor: pointer;
+    display: block; width: 100%;
+    padding: 12px 22px;
+    border-radius: 14px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    background: transparent;
+    text-align: center;
+    text-decoration: none;
+  }
+  .cta-card.line .icon-circle    { background: #06C755; color: #fff; }
+  .cta-card.callback .icon-circle{ background: var(--tec-blue); color: #fff; }
+  .cta-card.book .icon-circle    { background: var(--tec-yellow); }
+  .cta-card.book .cta-btn        { background: var(--tec-yellow); }
+
+  /* Closing slogan under the callback form */
+  .closing-slogan {
+    text-align: center;
+    margin: 56px auto 0;
+    max-width: 820px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 4vw, 40px);
+    line-height: 1.2;
+    color: var(--tec-ink);
+  }
+  /* Reusable TEC-letters-in-brand-colours treatment */
+  .tec-rainbow { white-space: nowrap; }
+  .tec-rainbow .t { color: var(--tec-blue); }
+  .tec-rainbow .e {
+    color: var(--tec-yellow);
+    -webkit-text-stroke: 1.2px var(--tec-ink);
+    paint-order: stroke fill;
+  }
+  .tec-rainbow .c { color: var(--tec-pink); }
+  /* In the closing slogan the E gets a slightly bolder stroke */
+  .closing-slogan .tec-rainbow .e { -webkit-text-stroke: 1.4px var(--tec-ink); }
+
+  .community-note {
+    text-align: center;
+    margin-top: 32px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--tec-ink);
+  }
+  .community-note .th { display: block; font-size: 0.85em; opacity: 0.9; margin-top: 4px; font-weight: 700; }
+
+  /* ===== Sticky bottom bar (mobile) ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 30;
+    background: rgba(244, 242, 236, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 10px 12px env(safe-area-inset-bottom, 10px);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  @media (min-width: 768px) { .sticky-cta { display: none; } }
+  .sticky-cta .line-btn,
+  .sticky-cta .callback-btn,
+  .sticky-cta .book-btn {
+    appearance: none; border: none; cursor: pointer;
+    padding: 12px;
+    border-radius: 14px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    color: var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .sticky-cta .line-btn { background: #06C755; color: #fff; width: 48px; height: 48px; flex: none; font-size: 18px; }
+  .sticky-cta .callback-btn { flex: 1; background: rgba(255,255,255,0.85); font-size: 13px; }
+  .sticky-cta .book-btn { flex: 1.4; background: var(--tec-yellow); font-size: 14px; }
+
+  /* ===== Form ===== */
+  .form-block {
+    max-width: 480px;
+    margin: 36px auto 0;
+    background: rgba(255,255,255,0.7);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: var(--shadow-neu);
+  }
+  .form-block label {
+    display: block;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--tec-ink);
+    margin-bottom: 6px;
+  }
+  .form-block input[type=text], .form-block input[type=tel] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid var(--wf-border);
+    background: rgba(255,255,255,0.85);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .form-block input[type=text]:focus, .form-block input[type=tel]:focus { outline: 2px solid var(--tec-yellow); outline-offset: 1px; }
+  .form-block .checkbox-row {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px;
+    color: var(--tec-ink-soft);
+    margin-bottom: 18px;
+  }
+  .form-block .checkbox-row input { margin-top: 4px; }
+  .form-block .submit {
+    width: 100%;
+    appearance: none; border: none; cursor: pointer;
+    padding: 14px;
+    border-radius: 14px;
+    background: var(--tec-yellow);
+    color: var(--tec-ink);
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    box-shadow: var(--shadow-neu);
+  }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    background: rgba(0,0,0,0.055);
+    margin-top: 72px;
+    padding: clamp(56px, 7vw, 80px) clamp(20px, 5vw, 32px) clamp(40px, 5vw, 56px);
+    border-top: 4px solid var(--tec-yellow);
+    position: relative;
+  }
+  .site-footer::before {
+    /* Soft yellow glow band right under the top accent — gives a "framed end" feel */
+    content: '';
+    position: absolute;
+    top: 4px; left: 0; right: 0;
+    height: 22px;
+    background: linear-gradient(to bottom, rgba(254,213,1,0.18), transparent);
+    pointer-events: none;
+  }
+  .site-footer .row {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  @media (min-width: 768px) { .site-footer .row { grid-template-columns: 1.6fr 1fr; } }
+  .site-footer h5 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--tec-ink);
+  }
+  .site-footer ul { list-style: none; padding: 0; margin: 0; }
+  .site-footer li { padding: 4px 0; font-size: 14px; color: var(--tec-ink-soft); }
+  .site-footer a:hover { color: var(--tec-pink); }
+  .footer-logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .footer-logo-row img { width: 72px; height: auto; }
+  .footer-logo-row h5 { margin-bottom: 0; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.2; }
+  .footer-tagline { font-size: 14px; color: var(--tec-ink-soft); margin-bottom: 18px; max-width: 340px; }
+  .footer-contact-list { font-family: 'Roboto', sans-serif; }
+  .footer-contact-list li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 5px 0; font-size: 14px; color: var(--tec-ink);
+  }
+  .footer-contact-list li svg { width: 16px; height: 16px; flex: none; opacity: 0.65; }
+  .footer-contact-list a { color: var(--tec-ink); text-decoration: none; font-weight: 600; }
+  .footer-contact-list a:hover { color: var(--tec-pink); }
+  .footer-mini-cta {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 20px;
+    background: var(--tec-yellow);
+    color: var(--tec-ink);
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 14px;
+    border: 2px solid var(--tec-ink);
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: var(--shadow-neu);
+    transition: transform 160ms ease;
+  }
+  .footer-mini-cta:hover { transform: translateY(-2px); color: var(--tec-ink); }
+  .footer-cta-sub {
+    margin-top: 6px;
+    font-family: 'Caveat', 'Roboto', cursive;
+    font-size: 16px;
+    color: var(--tec-ink-soft);
+    font-style: italic;
+  }
+  .footer-social-row {
+    display: flex; align-items: center; gap: 14px; margin-top: 24px; flex-wrap: wrap;
+  }
+  .footer-social-label {
+    font-family: 'Caveat', 'Nunito Sans', cursive;
+    font-weight: 700; font-size: 18px;
+    color: var(--tec-ink);
+    position: relative;
+  }
+  .footer-social-label::after {
+    content: '';
+    display: block;
+    height: 3px; width: 70%;
+    margin-top: -2px;
+    background: var(--tec-pink);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+  .footer-social {
+    display: flex; gap: 12px;
+  }
+  .footer-social a {
+    display: inline-flex; width: 38px; height: 38px;
+    border-radius: 50%; background: rgba(255,255,255,0.7);
+    align-items: center; justify-content: center;
+    color: var(--tec-ink); border: 1.5px solid rgba(0,0,0,0.08);
+    transition: transform 160ms ease, border-color 160ms ease;
+  }
+  .footer-social a:hover { transform: translateY(-2px); border-color: var(--tec-pink); color: var(--tec-pink); }
+  .footer-social svg { width: 18px; height: 18px; }
+  .site-footer .langs-line {
+    margin-top: 28px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--wf-label);
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  /* Info card — Languages we teach + OPEC registration, side by side */
+  .footer-info-card {
+    max-width: 1180px;
+    margin: 32px auto 0;
+    padding: 14px 22px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    color: var(--tec-ink-soft);
+  }
+  @media (min-width: 768px) { .footer-info-card { grid-template-columns: 1.4fr 1fr; align-items: center; } }
+  .footer-info-card .info-item { display: flex; align-items: center; gap: 12px; }
+  .footer-info-card .info-item svg { width: 22px; height: 22px; flex: none; opacity: 0.55; }
+  .footer-info-card a { color: inherit; text-decoration: underline; text-decoration-color: rgba(0,0,0,0.2); text-underline-offset: 2px; }
+  .footer-info-card a:hover { color: var(--tec-pink); text-decoration-color: currentColor; }
+
+  /* Bottom row — © + inline legal links */
+  .footer-bottom {
+    max-width: 1180px;
+    margin: 20px auto 0;
+    padding: 18px 0 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex; flex-wrap: wrap; gap: 12px 28px;
+    align-items: center; justify-content: space-between;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    color: var(--tec-ink-soft);
+  }
+  .footer-bottom .legal-inline { display: flex; gap: 18px; }
+  .footer-bottom .legal-inline a { color: inherit; }
+  .footer-bottom .legal-inline a:hover { color: var(--tec-pink); }
+
+  /* Pages column — spaced rows with chevron + dashed dividers (matches Damien's mockup) */
+  .footer-pages .pages-head {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid var(--tec-yellow);
+    margin-bottom: 6px;
+  }
+  .footer-pages .pages-head svg { width: 22px; height: 22px; color: var(--tec-yellow); }
+  .footer-pages .pages-head h5 { margin: 0; }
+  .footer-pages ul { margin-top: 4px; }
+  .footer-pages li {
+    padding: 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.18);
+  }
+  .footer-pages li:last-child { border-bottom: none; }
+  .footer-pages li a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 4px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--tec-ink);
+    transition: color 160ms ease, transform 160ms ease;
+  }
+  .footer-pages li a::after {
+    content: '›';
+    color: var(--tec-pink);
+    font-family: 'chaloops', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 160ms ease;
+  }
+  .footer-pages li a:hover { color: var(--tec-pink); }
+  .footer-pages li a:hover::after { transform: translateX(3px); }
+
+  /* Per-language brand colours (yellow gets a dark stroke to stay legible on cream) */
+  .lang-th { color: var(--tec-blue);   font-weight: 700; }
+  .lang-zh { color: var(--tec-pink);   font-weight: 700; }
+  .lang-en {
+    color: var(--tec-yellow);
+    font-weight: 700;
+    -webkit-text-stroke: 1.5px var(--tec-ink);
+    paint-order: stroke fill;
+  }
+
+  /* ===== Section divider — curved organic shape (a-la Novakid) ===== */
+  .divider {
+    width: 100%;
+    height: 36px;
+    margin: -1px 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .divider svg { width: 100%; height: 100%; display: block; }
+
+  /* ===== Draft banner (so Damien knows which sections are wireframe vs polished) ===== */
+  .draft-banner {
+    text-align: center;
+    background: rgba(255, 32, 141, 0.06);
+    border-bottom: 1px solid rgba(255, 32, 141, 0.15);
+    padding: 8px 12px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    color: var(--tec-ink-soft);
+    z-index: 25;
+    position: relative;
+  }
+  .draft-banner strong { color: var(--tec-pink); }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  /* ===== Helpers ===== */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .center { text-align: center; }
+</style>
+</head>
+<body>
+
+<img class="paint-bg" src="../splatter-yellow.png" alt="" aria-hidden="true" />
+
+<div class="draft-banner">
+  <strong>Draft wireframe</strong> · Hero & journey slider polished. Other sections structural placeholders. Section labels visible at top of each block.
+</div>
+
+<header class="site-header">
+  <div class="row">
+    <a href="../" class="logo-link" aria-label="TEC home">
+      <img class="logo" src="../tec-robot-logo.png" alt="" />
+      <span class="brand-text">TEC</span>
+    </a>
+    <nav class="lang-pills" aria-label="Languages we teach at TEC">
+      <a class="lang-switch th" href="/thai" aria-label="Thai courses (coming soon)">Thai</a>
+      <a class="lang-switch en active" href="/english" aria-current="page">English</a>
+      <a class="lang-switch zh" href="/chinese" aria-label="Chinese courses (coming soon)">Chinese</a>
+    </nav>
+    <span class="spacer"></span>
+    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="Switch this page to Thai" aria-pressed="false" data-en-label="TH" data-th-label="EN">TH</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7"  x2="20" y2="7"/><line x1="4" y1="13" x2="20" y2="13"/><line x1="4" y1="19" x2="20" y2="19"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<aside class="menu-drawer" id="menu-drawer" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
+  <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
+  <nav class="menu-nav">
+    <a href="#about"        data-en="About"        data-th="เกี่ยวกับเรา">About</a>
+    <a href="#courses"      data-en="Courses"      data-th="คอร์สเรียน">Courses</a>
+    <a href="#testimonials" data-en="Testimonials" data-th="เสียงจากผู้ปกครอง">Testimonials</a>
+    <a href="#contact"      data-en="Contact"      data-th="ติดต่อเรา">Contact</a>
+    <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" class="line">LINE: TEC14</a>
+  </nav>
+  <div class="menu-footer">
+    <span data-en="Language:" data-th="ภาษา:">Language:</span> <span class="lang-on">EN</span> · <a href="#" style="color:var(--tec-ink-soft)">TH</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ============ P2: Hero (POLISHED) — language morph + parrot vignette ============ -->
+  <section class="sec hero" data-marker="P2">
+    <div class="section-marker">P2 · Hero · Polished</div>
+    <div class="morph-banner" id="morph-banner" aria-label="Study English at TEC">
+      <span class="type" id="morph-type"></span><span class="caret" aria-hidden="true"></span>
+    </div>
+
+    <figure class="vignette" id="parrot-vignette">
+      <div class="vignette-frame">
+        <video class="vignette-video" playsinline preload="none"
+               poster="../assets/video/parrot-poster.jpg"
+               aria-label="TEC: raise a confident speaker, not a parrot — why memorised answers fail, and what TEC does instead">
+          <source src="../assets/video/parrot.mp4" type="video/mp4">
+          Your browser can't play this video.
+          <a href="../assets/video/parrot.mp4">Watch the clip</a>.
+        </video>
+        <button class="play-fab" type="button" aria-label="Play video"></button>
+      </div>
+    </figure>
+
+    <h1 class="hero-title">
+      At <span class="tecmark">TEC</span> we teach the language.<br>The test takes care of itself.
+      <span class="th">ที่ <span class="tecmark">TEC</span> เราสอนภาษา ส่วนการสอบ — เราจัดการให้</span>
+    </h1>
+    <p class="hero-sub lang-en-block">Play. Read. Lead. Build a future at <span class="tecmark">TEC</span>.</p>
+    <p class="hero-sub lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tecmark">TEC</span>.</p>
+    <a class="hero-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+  </section>
+
+  <!-- ============ P3: Founders (wireframe) ============ -->
+  <section class="sec" data-marker="P3" id="about">
+    <div class="section-marker">P3 · Founders · Wireframe</div>
+    <h2 class="section-title">
+      <span class="lang-en-block">Meet the people behind <span class="tecmark">TEC</span></span>
+      <span class="lang-th-block">มารู้จักคนเบื้องหลัง <span class="tecmark">TEC</span></span>
+    </h2>
+
+    <div class="founders" style="margin-top:32px">
+      <article class="founder-card" data-order="1-mas">
+        <div class="avatar"><img src="../assets/founders/suthamas.jpg" alt="Suthamas Chaisiri — TEC co-founder and Director, born in Trat" width="168" height="168" loading="lazy" decoding="async"></div>
+        <h3 data-en="Suthamas Chaisiri" data-th="สุธามาส ไชยศิริ">Suthamas Chaisiri</h3>
+        <div class="role" data-en="Owner & Director · Born in Trat" data-th="เจ้าของและผู้อำนวยการ · ชาวตราดโดยกำเนิด">Owner & Director · Born in Trat</div>
+        <blockquote class="bio-short lang-en-block">
+          "Born in Trat. I built TEC to give the children of Trat the strong English foundation I didn't have growing up."
+        </blockquote>
+        <blockquote class="bio-full lang-en-block">
+          "I was born in Trat, and English was once one of my biggest fears. The courses I tried before university did not work for me. That experience made me want to give the children of Trat the strong English foundation I did not have growing up. After studying in New Zealand and Australia, where I completed a Master of International Business, I returned home and became an English teacher. Damien and I spent two years planning TEC before we opened in 2014. TEC is my biggest project in life."
+        </blockquote>
+        <button class="read-more lang-en-block" type="button" aria-expanded="false">Read more</button>
+        <blockquote class="bio-th lang-th-block">
+          "มาสเป็นคนตราดค่ะ สมัยก่อนภาษาอังกฤษเป็นสิ่งที่มาสกลัวที่สุดเลย คอร์สที่เคยลองเรียนก่อนเข้ามหาวิทยาลัยไม่ได้ผลเลยสักที่ ประสบการณ์นั้นทำให้มาสอยากมอบพื้นฐานภาษาอังกฤษที่แข็งแรงให้กับเด็ก ๆ ตราด แบบที่มาสไม่เคยมีตอนเด็ก หลังจากไปเรียนต่อที่นิวซีแลนด์และออสเตรเลีย จบปริญญาโทด้านธุรกิจระหว่างประเทศ (Master of International Business) ก็กลับบ้านมาเป็นครู มาสกับเดเมียนใช้เวลาวางแผน TEC สองปีเต็ม เปิดโรงเรียนในปี 2014 — TEC เป็นงานที่ใหญ่ที่สุดในชีวิตของมาสเลยค่ะ"
+        </blockquote>
+      </article>
+
+      <article class="founder-card" data-order="2-damien">
+        <div class="avatar"><img src="../assets/founders/damien.jpg" alt="Damien Herlihy — TEC co-founder and Director of Studies" width="200" height="200" loading="lazy" decoding="async"></div>
+        <h3 data-en="Damien Herlihy" data-th="เดเมียน เฮอร์ลิฮี">Damien Herlihy</h3>
+        <div class="role" data-en="Owner & Director of Studies · 25+ years" data-th="เจ้าของและผู้อำนวยการฝ่ายวิชาการ · ออกแบบหลักสูตร · ประสบการณ์กว่า 25 ปี">Owner & Director of Studies · 25+ years</div>
+        <blockquote class="bio-short lang-en-block">
+          "Award-winning English teacher, syllabus designer, and learning-science nerd. I designed the TEC Method and have spent 25+ years in English language education refining it."
+        </blockquote>
+        <blockquote class="bio-full lang-en-block">
+          "I have spent more than 25 years in English language education as an award-winning teacher, IELTS examiner, Director of Studies, and teacher trainer. I hold a Master's degree in Teaching English as a Second Language and have also worked with Pavilion ELT. I am especially interested in how language teaching connects with the science of how we learn. That thinking shaped the TEC Method, the syllabus I designed and continue to refine every year. TEC is my life's work."
+        </blockquote>
+        <button class="read-more lang-en-block" type="button" aria-expanded="false">Read more</button>
+        <blockquote class="bio-th lang-th-block">
+          "ผมเป็นครูสอนภาษาอังกฤษที่ได้รับรางวัล Action Research Award มีประสบการณ์ในวงการมากว่าสองทศวรรษ — ทั้งในฐานะครู ผู้ตรวจข้อสอบ IELTS และผู้อำนวยการฝ่ายวิชาการ จบปริญญาโทด้านการสอนภาษาอังกฤษเป็นภาษาที่สอง (Masters in Teaching English as a Second Language) เคยร่วมงานกับ Pavilion ELT สำนักพิมพ์ชั้นนำของอังกฤษ ผมเป็นคนออกแบบหลักสูตรของเราเอง — TEC Method — และปรับปรุงทุกปีครับ นี่คืองานในชีวิตของผมเลยครับ"
+        </blockquote>
+      </article>
+    </div>
+
+  </section>
+
+  <!-- ============ How TEC Works — 7-tile grid (wireframe) ============ -->
+  <section class="sec" data-marker="P3.5">
+    <div class="section-marker">How TEC Works · Wireframe</div>
+    <h2 class="section-title">How TEC works <span class="th">วิธีที่เราสอน</span></h2>
+    <p class="lede" data-en="Seven things that make TEC different from a tutor — scan in 30 seconds." data-th="หกสิ่งที่ทำให้ TEC ต่างจากติวเตอร์ — สแกนใน 30 วินาที">Seven things that make TEC different from a tutor — scan in 30 seconds.</p>
+
+    <div class="tile-grid">
+      <div class="tile"><img class="tile-icon" src="../assets/icons/reading.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Phonics-first foundation" data-th="ปูพื้นฐานด้วยโฟนิกส์">Phonics-first foundation</h4><p data-en="From Young Learner up, real reading. This makes your child EP-ready." data-th="ตั้งแต่ Young Learner ขึ้นไป อ่านได้จริง พร้อมเข้า EP">From Young Learner up, real reading. This makes your child EP-ready.</p></div></div>
+      <div class="tile"><img class="tile-icon" src="../assets/icons/speaking.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Speaking from day one" data-th="พูดได้ตั้งแต่วันแรก">Speaking from day one</h4><p data-en="Children speak English in every lesson, not just hear it." data-th="ทุกคาบ เด็กได้พูดจริง ไม่ใช่นั่งฟังเฉย ๆ — ความมั่นใจสร้างตั้งแต่วันแรก">Children speak English in every lesson, not just hear it.</p></div></div>
+      <div class="tile"><img class="tile-icon" src="../assets/icons/thumbs-up.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Cambridge YLE pathway" data-th="เส้นทาง Cambridge YLE">Cambridge YLE pathway</h4><p data-en="Internationally benchmarked: Starters → Movers → Flyers." data-th="มาตรฐานสากล วัดผลได้จริง: Starters → Movers → Flyers">Internationally benchmarked: Starters → Movers → Flyers.</p></div></div>
+      <div class="tile"><img class="tile-icon" src="../assets/icons/checklist.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Visible Learning" data-th="Visible Learning">Visible Learning</h4><p data-en="Every parent sees a per-child portfolio: phonics, scores, comments." data-th="ผู้ปกครองทุกคนเห็นพอร์ตของลูก: โฟนิกส์ คะแนน คอมเมนต์">Every parent sees a per-child portfolio: phonics, scores, comments.</p></div></div>
+      <div class="tile"><img class="tile-icon" src="../assets/icons/teaching.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Trained foreign teachers" data-th="ครูต่างชาติฝึกมาแล้ว">Trained foreign teachers</h4><p data-en="Selected and trained in-house by Damien personally." data-th="เดเมียนคัดและฝึกครูเองทุกคน ก่อนเข้าห้องเรียนของลูก">Selected and trained in-house by Damien personally.</p></div></div>
+      <div class="tile"><img class="tile-icon" src="../assets/icons/streamed.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Small streamed classes" data-th="คลาสเล็ก จัดตามระดับ">Small streamed classes</h4><p data-en="Children placed at the right level. Never mixed-ability rooms." data-th="เด็กแต่ละคนเรียนตรงระดับของตัวเอง ไม่จับคละห้อง — เพื่อให้พัฒนาได้เต็มที่">Children placed at the right level. Never mixed-ability rooms.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============ P4: 90% — single stat square (POLISHED) ============ -->
+  <section class="sec" data-marker="P4">
+    <div class="section-marker">P4 · 90% · Amplifier (opening peak)</div>
+    <div class="stat-box solo">
+      <div class="stat-eyebrow" data-en="Proven results" data-th="ผลลัพธ์ที่พิสูจน์ได้">Proven results</div>
+      <div class="num">90%</div>
+      <div class="desc" data-en="of TEC kids get into EP — without doing the dedicated test-prep courses the competition sells." data-th="ของเด็ก TEC สอบเข้า EP ได้ — โดยไม่ต้องลงคอร์สติวสอบเฉพาะแบบที่อื่นเขาขาย">of TEC kids get into EP — without doing the dedicated test-prep courses the competition sells.</div>
+      <div class="stat-reason" data-en="Because we build real language ability first, not exam tricks." data-th="เพราะเราสร้างความสามารถทางภาษาจริงก่อน ไม่ใช่เทคนิคทำข้อสอบ">Because we build real language ability first, not exam tricks.</div>
+    </div>
+    <p class="stats-caption">EP-ready — and able to actually speak the language.<br><span style="opacity:.7">พร้อมเข้า EP — และพูดภาษาอังกฤษได้จริง</span></p>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+  </section>
+
+  <!-- ============ P5: Journey slider (POLISHED — THE PEAK) ============ -->
+  <section class="sec full" data-marker="P5" id="courses">
+    <div class="inner">
+      <div class="section-marker">P5 · Journey slider · ★ PEAK · Polished</div>
+      <p class="peak-eyebrow lang-en-block"><span class="highlight">A 10-year system</span> — not ad-hoc tutoring. A whole mapped pathway.</p>
+      <p class="peak-eyebrow lang-th-block"><span class="highlight">ระบบ 10 ปี</span> — ไม่ใช่ติวเตอร์รับจ้าง แต่เป็นเส้นทางที่วางแผนไว้ทั้งสาย</p>
+      <p class="lede lang-en-block">We've got you! From your child's first steps in English to an IELTS-ready teenage speaker. Tap through every stage. Every step planned, tracked, and visible. This could be your child.</p>
+      <p class="lede lang-th-block">วางใจเราได้เลยค่ะ! ตั้งแต่ก้าวแรกของลูกในภาษาอังกฤษ จนถึงวัยรุ่นที่พร้อมสอบ IELTS แตะดูทุกระดับ ทุกก้าววางแผนไว้ ติดตามได้ มองเห็นได้ชัด — ลูกของคุณก็เป็นแบบนี้ได้นะคะ</p>
+
+      <div class="journey" id="journey">
+        <div class="journey-header">
+          <div>
+            <div class="stage-counter" id="stage-counter"><span id="stage-num">1</span> of <span id="stage-total">13</span></div>
+          </div>
+          <div style="font-family:'Nunito Sans',sans-serif;font-size:13px;color:var(--tec-ink-soft)">
+            <span class="lang-en-block">Sample student: <strong>"AI"</strong> · anonymised</span>
+            <span class="lang-th-block">ตัวอย่างนักเรียน: <strong>"AI"</strong> · ไม่ระบุชื่อจริง</span>
+          </div>
+        </div>
+        <div class="progress"><div class="progress-fill" id="journey-progress"></div></div>
+        <div class="stage-tags" id="stage-tags"></div>
+
+        <article class="stage-card" id="stage-card">
+          <div class="stage-header">
+            <h3 class="stage-name" id="stage-name">Teeny TEC</h3>
+            <div class="stage-age" id="stage-age">Age 2–3</div>
+            <div class="stage-cambridge-badge" id="stage-cambridge" style="display:none">Cambridge milestone</div>
+          </div>
+          <div class="stage-body">
+            <div class="stage-photo" id="stage-photo">[Real classroom photo from this age group]</div>
+            <div class="stage-meta">
+              <div class="stage-portfolio-thumb" id="stage-portfolio">
+                <strong>What your child does at this stage</strong>
+                Teeny TEC is your child's first happy start in English — songs, routines, and play that build confidence fast.
+              </div>
+              <button class="stage-audio-btn" id="stage-audio">Find out more</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="stage-nav">
+          <button id="stage-prev" disabled data-en="← Prev" data-th="← ก่อนหน้า">← Prev</button>
+          <div class="stage-jump-hint" data-en="Tap a stage tag above to jump" data-th="แตะแท็บระดับด้านบนเพื่อข้ามไปเลย">Tap a stage tag above to jump</div>
+          <button id="stage-next" data-en="Next →" data-th="ถัดไป →">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P6: Visible Learning portfolio (wireframe) ============ -->
+  <section class="sec" data-marker="P6">
+    <div class="section-marker">P6 · Visible Learning portfolio reveal</div>
+    <div class="portfolio-reveal" style="margin-top:8px">
+      <div class="portfolio-graphic">
+        <h3 class="portfolio-graphic-title" data-en="What you'll see as a TEC parent" data-th="ผู้ปกครอง TEC จะได้เห็นอะไรบ้าง">What you'll see as a TEC parent</h3>
+        <div class="portfolio-screenshot has-image"><img src="../assets/visible-learning-report.jpg?v=1" alt="A TEC parent holding an iPad showing a child's weekly Visible Learning report card" loading="lazy"></div>
+      </div>
+      <div class="portfolio-text">
+        <p class="portfolio-caption lang-en-block">Every TEC parent sees this. Every week.<span class="body">Your child's Visible Learning report tracks progress against the Cambridge Young Learners testing system — updated weekly, across the whole course.</span></p>
+        <p class="portfolio-caption lang-th-block">ผู้ปกครอง TEC ทุกคนเห็นแบบนี้ ทุกสัปดาห์<span class="body">รายงาน Visible Learning ของลูกติดตามพัฒนาการเทียบกับระบบสอบ Cambridge Young Learners — อัปเดตทุกสัปดาห์ ตลอดทั้งคอร์ส</span></p>
+        <ul class="portfolio-bullets lang-en-block">
+          <li>Weekly skill scores — speaking, listening, reading &amp; writing, spelling</li>
+          <li>Bilingual teacher comments (Thai &amp; English)</li>
+          <li>Phonics tracked step by step</li>
+          <li>Your own private link from week one</li>
+        </ul>
+        <ul class="portfolio-bullets lang-th-block">
+          <li>คะแนนทักษะรายสัปดาห์ — พูด ฟัง อ่าน-เขียน สะกดคำ</li>
+          <li>คอมเมนต์ครู 2 ภาษา (ไทย-อังกฤษ)</li>
+          <li>ติดตามโฟนิกส์ทีละขั้น</li>
+          <li>ลิงก์ส่วนตัวของคุณตั้งแต่สัปดาห์แรก</li>
+        </ul>
+        <p class="portfolio-close lang-en-block">And when they're ready, you're invited in person to their Visible Learning graduation.</p>
+        <p class="portfolio-close lang-th-block">และเมื่อลูกพร้อม คุณจะได้รับเชิญมาร่วมพิธีจบการศึกษา Visible Learning ของลูกด้วยตัวเอง</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P7: Price comparison + Pipo+Papaeng quote (wireframe) ============ -->
+  <section class="sec" data-marker="P7">
+    <div class="section-marker">P7 · Cheap vs Value · Interactive slider</div>
+    <h2 class="section-title">Choose value over cheap. <span class="th">เลือกคุณค่ามากกว่าราคาถูก</span></h2>
+    <p class="lede" data-en="Same child. Two very different years of English. Drag the slider and see it." data-th="เด็กคนเดียวกัน แต่ปีของภาษาอังกฤษต่างกันลิบลับ ลากสไลด์ดูได้เลย">Same child. Two very different years of English. Drag the slider and see it.</p>
+
+    <div class="ba-compare">
+      <div class="ba-stage">
+        <div class="ba-slider" id="ba-slider" style="--ba-pos:50%">
+          <img class="ba-after" src="../assets/value-school.jpg?v=2" alt="A bright, warm TEC classroom — confident, happy students with real books" loading="lazy">
+          <img class="ba-before" src="../assets/cheap-school.jpg?v=1" alt="A dull, joyless cheap tutoring room — bored students with photocopied worksheets" loading="lazy">
+          <span class="ba-label cheap" data-en="The cheap tutor" data-th="ติวเตอร์ราคาถูก">The cheap tutor</span>
+          <span class="ba-label tec">TEC</span>
+          <div class="ba-handle" id="ba-handle" role="slider" tabindex="0" aria-label="Drag to compare a cheap tutor with TEC" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="ba-grip" aria-hidden="true">‹›</span>
+          </div>
+        </div>
+        <p class="ba-hint" data-en="Drag ← → to compare" data-th="ลาก ← → เพื่อเปรียบเทียบ">Drag ← → to compare</p>
+      </div>
+      <div class="ba-text">
+        <div class="price-col cheap ba-text-layer" id="ba-text-cheap">
+          <h4 data-en="The cheap monthly tutor" data-th="ติวเตอร์ราคาถูกรายเดือน">The cheap monthly tutor</h4>
+          <ul class="lang-en-block">
+            <li>Large classes</li>
+            <li>No tracking</li>
+            <li>Generic lessons</li>
+            <li>Worksheets</li>
+            <li>No follow-up</li>
+            <li>Pay monthly (easy to drop)</li>
+          </ul>
+          <ul class="lang-th-block">
+            <li>คลาสใหญ่</li>
+            <li>ไม่ติดตามผล</li>
+            <li>บทเรียนทั่วไป</li>
+            <li>ใบงานแจก</li>
+            <li>ไม่มีการติดตามผล</li>
+            <li>จ่ายรายเดือน (ขาดความต่อเนื่อง)</li>
+          </ul>
+        </div>
+        <div class="price-col tec ba-text-layer" id="ba-text-tec">
+          <h4>TEC</h4>
+          <ul class="lang-en-block">
+            <li>Small streamed classes</li>
+            <li>Visible Learning portfolio</li>
+            <li>One-to-one feedback</li>
+            <li>Real activities (graded readers, storytelling, speaking, writing)</li>
+            <li>Cambridge YLE pathway</li>
+            <li>Whole-course commitment (forces consistency)</li>
+          </ul>
+          <ul class="lang-th-block">
+            <li>คลาสเล็ก จัดตามระดับ</li>
+            <li>พอร์ต Visible Learning</li>
+            <li>ฟีดแบ็กตัวต่อตัว</li>
+            <li>กิจกรรมจริง (graded readers, เล่าเรื่อง, พูด, เขียน)</li>
+            <li>เส้นทาง Cambridge YLE</li>
+            <li>เรียนทั้งคอร์ส (บังคับให้สม่ำเสมอ)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="price-punchline lang-en-block">"You might decide to pay 50 baht a week less on your child's education because you think it's similar.<br>It isn't."</p>
+    <p class="price-punchline lang-th-block">"บางคนอาจจะคิดว่ายอมจ่ายน้อยลงอาทิตย์ละ 50 บาท เพราะมองว่าก็คล้าย ๆ กัน<br>— มันไม่ใช่เลยค่ะ"</p>
+  </section>
+
+  <!-- ============ P8: Virtual building tour (wireframe) ============ -->
+  <section class="sec" data-marker="P8" id="school">
+    <div class="section-marker">P8 · Building tour · Photo gallery</div>
+    <h2 class="section-title" data-en="A school built for how children learn." data-th="โรงเรียนที่สร้างขึ้นตามวิธีที่เด็กเรียนรู้จริง">A school built for how children learn.</h2>
+    <p class="lede" data-en="When TEC was built, Damien worked alongside the architect on every decision — so the classrooms are shaped around how children actually learn, not whatever space happened to be free. Nothing here is accidental." data-th="ตอน TEC ถูกสร้างขึ้น เดเมียนทำงานร่วมกับสถาปนิกในทุกการตัดสินใจ — ห้องเรียนจึงออกแบบตามวิธีที่เด็กเรียนรู้จริง ไม่ใช่แค่ใช้พื้นที่ว่างที่เหลืออยู่ ที่นี่ไม่มีอะไรบังเอิญค่ะ">When TEC was built, Damien worked alongside the architect on every decision — so the classrooms are shaped around how children actually learn, not whatever space happened to be free. Nothing here is accidental.</p>
+
+    <div class="tour-gallery">
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/01-building-design.jpg?v=1" alt="The TEC identity — colourful letters made by a child's hands" loading="lazy">
+        <figcaption data-en="Designed with intent" data-th="ออกแบบอย่างตั้งใจทุกตารางเมตร">Designed with intent</figcaption>
+      </figure>
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/02-entrance.jpg?v=1" alt="A child writing during a phonics lesson at TEC" loading="lazy">
+        <figcaption data-en="Phonics children can use" data-th="โฟนิกส์ที่ลูกใช้ได้จริง">Phonics children can use</figcaption>
+      </figure>
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/03-reading-corner.jpg?v=1" alt="A child choosing a book in the TEC reading corner" loading="lazy">
+        <figcaption data-en="Real reading, not memorising" data-th="อ่านได้จริง ไม่ใช่ท่องจำ">Real reading, not memorising</figcaption>
+      </figure>
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/04-classroom-1.jpg?v=1" alt="Children learning hands-on in a TEC classroom" loading="lazy">
+        <figcaption data-en="Hands-on learning" data-th="เรียนแบบลงมือทำ">Hands-on learning</figcaption>
+      </figure>
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/05-garden.jpg?v=1" alt="A small group of TEC children outside in the garden" loading="lazy">
+        <figcaption data-en="Small-group support" data-th="ดูแลแบบกลุ่มเล็ก">Small-group support</figcaption>
+      </figure>
+      <figure class="tour-photo has-image">
+        <img src="../assets/facilities/06-classroom-2.jpg?v=1" alt="TEC students speaking and engaged in class" loading="lazy">
+        <figcaption data-en="Confident speaking" data-th="พูดอย่างมั่นใจ">Confident speaking</figcaption>
+      </figure>
+    </div>
+    <a class="tour-link map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" data-en="Visit us in person · Get directions →" data-th="มาเยี่ยมเราที่โรงเรียน · ดูเส้นทาง →">Visit us in person · Get directions →</a>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+  </section>
+
+  <!-- ============ P9: Inline testimonials with FOLDER pattern (parked-ideas Idea 2) ============ -->
+  <section class="sec" data-marker="P9" id="testimonials">
+    <div class="section-marker">P9 · Inline testimonials · Folder pattern (parked-ideas Idea 2) · Wireframe-interactive</div>
+    <div class="folder-section">
+      <h2 class="section-title" tabindex="0">
+        Wall of love <span class="heart-pulse" aria-hidden="true">💖</span><br>
+        <span style="font-size:0.55em;font-weight:600;display:block;margin-top:8px;color:var(--tec-ink-soft)" data-en="From TEC parents" data-th="จากผู้ปกครอง TEC">From TEC parents</span>
+      </h2>
+
+      <div class="folder-stage" id="folder" tabindex="0" role="button" aria-pressed="false" aria-label="Open folder to reveal testimonials">
+        <div class="folder">
+          <div class="folder-card has-video">
+            <img src="../assets/video/klua-card.jpg?v=4" alt="Klua, a TEC student" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/klua.mp4" aria-label="Play Klua's testimonial video">▶</button>
+            <span class="fc-name" data-en="Klua" data-th="เกลือ">Klua</span>
+          </div>
+          <div class="folder-card has-video">
+            <img src="../assets/video/neptune-card.jpg?v=1" alt="Neptune, a TEC student" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/neptune.mp4" aria-label="Play Neptune's testimonial video">▶</button>
+            <span class="fc-name" data-en="Neptune" data-th="เนปจูน">Neptune</span>
+          </div>
+          <div class="folder-card has-video">
+            <img src="../assets/video/seua-card.jpg?v=3" alt="Seua, a TEC student" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/seua.mp4" aria-label="Play Seua's testimonial video">▶</button>
+            <span class="fc-name" data-en="Seua" data-th="เสือ">Seua</span>
+          </div>
+          <div class="folder-body"></div>
+          <div class="folder-face" aria-hidden="true">
+            <div class="cheek l"></div>
+            <div class="cheek r"></div>
+            <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+            <div class="mouth"></div>
+          </div>
+        </div>
+      </div>
+      <p class="folder-cta lang-en-block">Tap the folder to fan out the testimonials · or press <span class="key">Enter</span></p>
+      <p class="folder-cta lang-th-block">แตะที่แฟ้มเพื่อกางคำรีวิว · หรือกด <span class="key">Enter</span></p>
+
+
+      <p style="margin-top:36px;font-family:'chaloops';font-weight:700;font-size:22px;color:var(--tec-ink)">
+        ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค<br>
+        <span style="font-size:0.7em;color:var(--tec-ink-soft);font-weight:600">Join the Community Today</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="video-modal" id="video-modal" aria-hidden="true">
+    <div class="video-modal-inner">
+      <button class="video-modal-close" id="video-modal-close" aria-label="Close video">✕</button>
+      <video controls playsinline preload="none"></video>
+    </div>
+  </div>
+
+  <div class="video-modal" id="map-modal" aria-hidden="true">
+    <div class="map-modal-inner">
+      <button class="video-modal-close" id="map-modal-close" aria-label="Close map">✕</button>
+      <iframe title="TEC location on Google Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- ============ FAQ accordion (wireframe) ============ -->
+  <section class="sec" data-marker="FAQ">
+    <div class="section-marker">FAQ</div>
+    <h2 class="section-title center">Quiet questions, answered. <span class="th">คำถามที่อยากถามแต่ไม่กล้าถาม</span></h2>
+
+    <div class="faq" id="faq">
+      <div class="faq-item">
+        <button class="faq-q" data-en="Will this help with my child's school exams?" data-th="จะช่วยกับการสอบที่โรงเรียนของลูกไหม?">Will this help with my child's school exams?</button>
+        <div class="faq-a"><div data-en="Yes. Understanding beats drill. Cambridge-aligned syllabus translates directly to school English performance." data-th="ช่วยแน่นอนค่ะ การเข้าใจจริงดีกว่าการติว หลักสูตรของเราอิงตาม Cambridge ส่งผลตรงกับผลการเรียนวิชาภาษาอังกฤษที่โรงเรียนค่ะ">Yes. Understanding beats drill. Cambridge-aligned syllabus translates directly to school English performance.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-en="Are the teachers native speakers?" data-th="ครูเป็นเจ้าของภาษาไหม?">Are the teachers native speakers?</button>
+        <div class="faq-a"><div data-en="Qualified and trained beats accent. Our teachers go through a 3-step hiring + in-house training process before they teach a single class." data-th="ครูที่มีคุณวุฒิและผ่านการฝึก สำคัญกว่าสำเนียง ครูของเราต้องผ่านกระบวนการคัดเลือก 3 ขั้นตอน บวกการฝึกในโรงเรียนของเราเอง ก่อนจะได้สอนแม้แต่คลาสเดียว">Qualified and trained beats accent. Our teachers go through a 3-step hiring + in-house training process before they teach a single class.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-en="My child is shy / behind / scared of English. Will it work?" data-th="ลูกของฉันขี้อาย / ตามไม่ทัน / กลัวภาษาอังกฤษ จะเรียนได้ไหม?">My child is shy / behind / scared of English. Will it work?</button>
+        <div class="faq-a"><div data-en="That's exactly who we work best with. The free placement interview finds the right level — no shame, no labels." data-th="นั่นแหละค่ะเด็กกลุ่มที่เราถนัดที่สุด การสัมภาษณ์วัดระดับฟรีจะช่วยหาคลาสที่เหมาะกับลูก — ไม่มีการตัดสิน ไม่มีการตีตรา">That's exactly who we work best with. The free placement interview finds the right level — no shame, no labels.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-en="Is there a free trial?" data-th="มีคลาสทดลองเรียนฟรีไหม?">Is there a free trial?</button>
+        <div class="faq-a"><div data-en="We start with a free placement interview where a senior teacher honestly assesses your child and proposes a real plan. Not a sample lesson designed to hook your child." data-th="เราเริ่มด้วยการสัมภาษณ์วัดระดับฟรี ครูอาวุโสจะประเมินลูกของคุณอย่างตรงไปตรงมาและเสนอแผนการเรียนจริง — ไม่ใช่คลาสตัวอย่างที่ออกแบบมาเพื่อดึงดูดให้เด็กติดใจ">We start with a free placement interview where a senior teacher honestly assesses your child and proposes a real plan. Not a sample lesson designed to hook your child.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-en="It looks expensive — what do I get for the money?" data-th="ดูแพงนะ — จ่ายแล้วได้อะไรบ้าง?">It looks expensive — what do I get for the money?</button>
+        <div class="faq-a"><div data-en="Pay for the whole course (forces consistency); a mapped 10-year journey; small streamed classes; Visible Learning portfolio; Cambridge YLE pathway; in-house trained teachers. Pricing discussed at placement interview." data-th="เข้าใจค่ะที่ดูแพง — แต่ดูว่าได้อะไรบ้างก่อนนะคะ: จ่ายทั้งคอร์ส (บังคับให้สม่ำเสมอ); เส้นทาง 10 ปีที่วางแผนไว้ทั้งสาย; คลาสเล็กจัดตามระดับ; พอร์ต Visible Learning; เส้นทาง Cambridge YLE; ครูที่ฝึกในโรงเรียนของเราเอง ค่าเรียนคุยกันในวันสัมภาษณ์วัดระดับค่ะ">Pay for the whole course (forces consistency); a mapped 10-year journey; small streamed classes; Visible Learning portfolio; Cambridge YLE pathway; in-house trained teachers. Pricing discussed at placement interview.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-en="Where is TEC and what are the class times?" data-th="TEC อยู่ที่ไหน และเรียนเวลาไหนบ้าง?">Where is TEC and what are the class times?</button>
+        <div class="faq-a"><div>
+          <div class="lang-en-block">949/11 หมู่12 ถนน เนินตาแมว, วังกระแจะ, Mueang Trat District, Trat 23000, Thailand</div>
+          <div class="lang-th-block">949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด จังหวัดตราด 23000</div>
+          <div style="margin-top:6px"><a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" style="color:var(--tec-pink);font-weight:700" data-en="Open in Google Maps →" data-th="เปิดใน Google Maps →">Open in Google Maps →</a></div>
+          <div style="margin-top:14px" class="lang-en-block"><strong style="color:var(--tec-ink)">When we're open:</strong> Fridays 1–8pm · Saturdays &amp; Sundays 8am–6pm. <span style="opacity:.7">(Closed Monday to Thursday.)</span></div>
+          <div style="margin-top:14px" class="lang-th-block"><strong style="color:var(--tec-ink)">เวลาเปิดทำการ:</strong> ศุกร์ 13.00–20.00 น. · เสาร์และอาทิตย์ 08.00–18.00 น. <span style="opacity:.7">(ปิดวันจันทร์ถึงพฤหัสบดี)</span></div>
+        </div></div>
+      </div>
+    </div>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+  </section>
+
+  <!-- ============ P10: CTA section (wireframe) ============ -->
+  <section class="sec" data-marker="P10" id="contact">
+    <div class="section-marker">P10 · CTA section · ★ END · Wireframe</div>
+    <h2 class="section-title center">Take the next step. <span class="th">ก้าวต่อไป</span></h2>
+
+    <div class="cta-grid">
+      <div class="cta-card line">
+        <div class="icon-circle">L</div>
+        <h4 data-en="Ask us anything on LINE" data-th="ถามเราได้ทุกอย่างทาง LINE">Ask us anything on LINE</h4>
+        <p class="lang-en-block">Send us a message — schedules, fees, your child's level, anything you'd like to ask before booking. We're usually back within a few hours. Handle: <strong>TEC14</strong>.</p>
+        <p class="lang-th-block">ทักเราเข้ามาได้เลย — ตารางเรียน ค่าเรียน ระดับของลูก หรืออะไรก็ตามที่อยากถามก่อนตัดสินใจ เรามักตอบกลับภายในไม่กี่ชั่วโมง LINE ID: <strong>TEC14</strong></p>
+        <a class="cta-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" data-en="Open LINE" data-th="เปิด LINE">Open LINE</a>
+      </div>
+      <div class="cta-card callback">
+        <div class="icon-circle">📞</div>
+        <h4 data-en="Get a callback" data-th="ให้เราโทรกลับ">Get a callback</h4>
+        <p data-en="Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที กับครูอาวุโสของเรา ไม่มีข้อผูกมัด">Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher.</p>
+        <button class="cta-btn" id="open-callback" data-en="Request a callback" data-th="ขอให้โทรกลับ">Request a callback</button>
+      </div>
+    </div>
+
+    <p class="community-note">
+      Join the Community Today
+      <span class="th">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค</span>
+    </p>
+  </section>
+
+  <!-- ============ P11: Get a call back form (wireframe) ============ -->
+  <section class="sec" data-marker="P11" id="callback-section">
+    <div class="section-marker">P11 · Callback form</div>
+    <h2 class="section-title center">Let's set up your free placement interview. <span class="th">นัดสัมภาษณ์วัดระดับฟรี</span></h2>
+    <p class="lede center" style="text-align:center;max-width:560px;margin-left:auto;margin-right:auto" data-en="Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที กับครูอาวุโส — ไม่มีข้อผูกมัด">Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation.</p>
+
+    <form class="form-block" onsubmit="event.preventDefault(); alert(document.body.classList.contains('lang-th') ? 'ขอบคุณค่ะ เราจะติดต่อกลับเร็ว ๆ นี้เพื่อนัดสัมภาษณ์วัดระดับนะคะ' : 'Thanks. We\'ll be in touch soon to set up your placement interview.')">
+      <label for="cb-name" class="lang-en-block">Name <span style="opacity:.6">/ ชื่อ</span></label>
+      <label for="cb-name" class="lang-th-block">ชื่อ <span style="opacity:.6">/ Name</span></label>
+      <input type="text" id="cb-name" autocomplete="name" required />
+
+      <label for="cb-contact" class="lang-en-block">LINE handle or phone <span style="opacity:.6">/ LINE หรือเบอร์โทร</span></label>
+      <label for="cb-contact" class="lang-th-block">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
+      <input type="tel" id="cb-contact" autocomplete="tel" required />
+
+      <label class="checkbox-row">
+        <input type="checkbox" required />
+        <span class="lang-en-block">I agree to be contacted by TEC. (You can unsubscribe anytime.) <em style="display:block;opacity:.7;margin-top:2px">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</em></span>
+        <span class="lang-th-block">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
+      </label>
+
+      <button type="submit" class="submit" data-en="Send" data-th="ส่ง">Send</button>
+    </form>
+
+    <p class="closing-slogan lang-en-block">Play. Read. Lead. Build a Future at <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
+    <p class="closing-slogan lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
+  </section>
+
+</main>
+
+<!-- ============ Sticky bottom CTA bar (mobile only) ============ -->
+<div class="sticky-cta" aria-label="Quick contact">
+  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE">L</a>
+  <a class="callback-btn" href="#callback-section" data-en="Get a callback" data-th="ให้เราโทรกลับ">Get a callback</a>
+</div>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="row">
+    <div>
+      <div class="footer-logo-row">
+        <img src="../tec-robot-logo.png" alt="TEC — I love languages mascot" />
+        <h5 class="lang-en-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — <span class="lang-th">Thai</span> <span class="lang-en">English</span> <span class="lang-zh">Chinese</span> School</h5>
+        <h5 class="lang-th-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษา<span class="lang-th">ไทย</span>-<span class="lang-en">อังกฤษ</span>-<span class="lang-zh">จีน</span></h5>
+      </div>
+      <p class="footer-tagline" data-en="Helping Trat learn languages since 2014." data-th="สอนภาษาให้คนตราดมาตั้งแต่ปี 2014">Helping Trat learn languages since 2014.</p>
+      <ul class="footer-contact-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg>
+          <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">LINE: TEC14</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.24 1.02l-2.2 2.19z"/></svg>
+          <a href="tel:+66990195890" data-en="+66 99 019 5890" data-th="099 019 5890">+66 99 019 5890</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:tratenglish@gmail.com">tratenglish@gmail.com</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          <a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener">949/11 หมู่12 เนินตาแมว, Trat</a>
+        </li>
+      </ul>
+      <a class="footer-mini-cta" href="#callback-section" data-en="Book a placement interview →" data-th="นัดสัมภาษณ์วัดระดับ →">Book a placement interview →</a>
+      <p class="footer-cta-sub" data-en="Find the right class for your child." data-th="หาคลาสที่เหมาะกับลูกของคุณ">Find the right class for your child.</p>
+      <div class="footer-social-row">
+        <span class="footer-social-label" data-en="Follow us" data-th="ติดตามเรา">Follow us</span>
+        <div class="footer-social">
+        <a href="https://www.facebook.com/tectratenglish/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@tratenglishcommunity" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@tratenglish" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-pages">
+      <div class="pages-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M3 5a2 2 0 0 1 2-2h6v18H5a2 2 0 0 1-2-2V5z"/>
+          <path d="M21 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2V5z"/>
+        </svg>
+        <h5 data-en="Pages" data-th="หน้าเว็บ">Pages</h5>
+      </div>
+      <ul>
+        <li><a href="#about"        data-en="About"        data-th="เกี่ยวกับเรา">About</a></li>
+        <li><a href="#courses"      data-en="Courses"      data-th="คอร์สเรียน">Courses</a></li>
+        <li><a href="#school"       data-en="The school"   data-th="โรงเรียนของเรา">The school</a></li>
+        <li><a href="#testimonials" data-en="Testimonials" data-th="เสียงจากผู้ปกครอง">Testimonials</a></li>
+        <li><a href="#contact"      data-en="Contact"      data-th="ติดต่อเรา">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-info-card">
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+      <p class="lang-en-block" style="margin:0">Languages we teach: <span class="lang-en">English</span> · <span class="lang-zh">Chinese</span> (coming soon) · <span class="lang-th">Thai for non-Thais</span> (coming soon)</p>
+      <p class="lang-th-block" style="margin:0">ภาษาที่เราสอน: <span class="lang-en">อังกฤษ</span> · <span class="lang-zh">จีน</span> (เร็ว ๆ นี้) · <span class="lang-th">ไทยสำหรับชาวต่างชาติ</span> (เร็ว ๆ นี้)</p>
+    </div>
+    <div class="info-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2M13 11h2M9 14h2M13 14h2M9 17h2M13 17h2"/></svg>
+      <p class="lang-en-block" style="margin:0">Registered with Thailand's <a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">Office of the Private Education Commission</a>.</p>
+      <p class="lang-th-block" style="margin:0">จดทะเบียนกับ<a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">สำนักงานคณะกรรมการส่งเสริมการศึกษาเอกชน</a>ของประเทศไทย</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="lang-en-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — Thai English Chinese School. All rights reserved.</span>
+    <span class="lang-th-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษาไทย-อังกฤษ-จีน สงวนลิขสิทธิ์</span>
+    <div class="legal-inline">
+      <a href="#" data-en="Privacy" data-th="ความเป็นส่วนตัว">Privacy</a>
+      <a href="#" data-en="Terms"   data-th="ข้อตกลงการใช้">Terms</a>
+      <a href="#">PDPA</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== Page-level TH/EN pill toggle =====
+  // Adds body.lang-th when on. Swaps:
+  //   - sibling pairs: .lang-en-block hides, .lang-th-block shows
+  //   - inline labels: any element with both data-en and data-th has its textContent swapped
+  // Existing <span class="th"> stacks (inside section titles, hero) stay visible always.
+  (function () {
+    const btn = document.getElementById('lang-toggle');
+    if (!btn) return;
+
+    const swapTargets = Array.from(document.querySelectorAll('[data-en][data-th]'));
+    // Seed data-en from current textContent if author only specified data-th
+    swapTargets.forEach(el => {
+      if (!el.getAttribute('data-en')) el.setAttribute('data-en', el.textContent);
+    });
+
+    function apply(thOn) {
+      document.body.classList.toggle('lang-th', thOn);
+      document.documentElement.setAttribute('lang', thOn ? 'th' : 'en');
+      btn.setAttribute('aria-pressed', thOn ? 'true' : 'false');
+      btn.textContent = thOn ? (btn.dataset.thLabel || 'EN') : (btn.dataset.enLabel || 'TH');
+      btn.setAttribute('aria-label', thOn ? 'Switch this page to English' : 'Switch this page to Thai');
+      swapTargets.forEach(el => {
+        const v = thOn ? el.getAttribute('data-th') : el.getAttribute('data-en');
+        if (v != null) el.textContent = v;
+      });
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      apply(!document.body.classList.contains('lang-th'));
+      document.dispatchEvent(new CustomEvent('lang-changed', { detail: { lang: document.body.classList.contains('lang-th') ? 'th' : 'en' } }));
+    });
+  })();
+
+  // ===== Hero typing-morph banner (arrival ceremony) =====
+  // Types the Thai phrase, holds, erases, retypes in English.
+  // This same component appears on the Thai and Chinese pages too (unifying element) —
+  // only THAI / TARGET strings change per page. See parked-ideas Idea 1, Option B.
+  (function () {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const banner = document.getElementById('morph-banner');
+    const out = document.getElementById('morph-type');
+    if (!banner || !out) return;
+
+    // English page strings. (Thai page → starts English, becomes Thai; Chinese page → Thai → Chinese.)
+    const THAI_STR = 'เรียนภาษาอังกฤษที่ TEC';
+    const ENG_STR  = 'Study English at TEC';
+
+    if (reduced) {
+      out.textContent = ENG_STR;
+      return;
+    }
+
+    const TYPE = 70;     // ms per character typed
+    const ERASE = 36;    // ms per character erased
+    const HOLD = 1500;   // how long each finished phrase stays before erasing
+    const PAUSE = 320;   // gap between erase and the next type
+
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const type = str => new Promise(res => {
+      let i = 0;
+      (function step() {
+        out.textContent = str.slice(0, i);
+        if (i++ <= str.length) setTimeout(step, TYPE);
+        else res();
+      })();
+    });
+    const erase = () => new Promise(res => {
+      let s = out.textContent;
+      (function step() {
+        s = s.slice(0, -1);
+        out.textContent = s;
+        if (s.length) setTimeout(step, ERASE);
+        else res();
+      })();
+    });
+
+    // Infinite loop, alternating between the two languages.
+    (async function loop() {
+      await wait(500);
+      while (true) {
+        await type(THAI_STR);
+        await wait(HOLD);
+        await erase();
+        await wait(PAUSE);
+        await type(ENG_STR);
+        await wait(HOLD);
+        await erase();
+        await wait(PAUSE);
+      }
+    })();
+  })();
+
+  // ===== Journey slider =====
+  (function () {
+    const stages = [
+      { name: 'Teeny TEC',     age: '3–4',   color: '#A8E6A1', tag: 'Play to Learn',     timeline: 'Bua would start here right away if she joined now.',
+        portfolio:    "Teeny TEC is your child's first happy start in English — songs, routines, and play that build confidence fast. We focus on attention, listening, and joining in, so English feels safe and familiar. It's the foundation that makes the next levels smooth, instead of starting again each term.",
+        portfolio_th: "Teeny TEC คือจุดเริ่มต้นแสนสนุกของลูกในภาษาอังกฤษ — เพลง กิจวัตร และการเล่นที่สร้างความมั่นใจได้เร็ว เราเน้นสมาธิ การฟัง และการมีส่วนร่วม ให้ภาษาอังกฤษรู้สึกปลอดภัยและคุ้นเคย เป็นรากฐานที่ทำให้ระดับต่อ ๆ ไปลื่นไหล ไม่ต้องเริ่มต้นใหม่ทุกเทอม" },
+      { name: 'Tiny TEC',      age: '4–5',   color: '#A8E6A1', tag: 'Play to Learn',     timeline: 'Bua would reach this stage in roughly 1 year.',
+        portfolio:    "Tiny TEC starts phonics the right way, using Jolly Phonics and hands-on learning that suits young children. Your child learns letter sounds, early writing habits, and the classroom routines that make progress possible. It's structured from the start — so you're not relying on random worksheets or a tutor's “next lesson idea”.",
+        portfolio_th: "Tiny TEC เริ่มสอนโฟนิกส์อย่างถูกวิธี ใช้ Jolly Phonics และกิจกรรมลงมือทำที่เหมาะกับเด็กเล็ก ลูกจะได้เรียนเสียงตัวอักษร ทักษะการเขียนเบื้องต้น และกิจวัตรในห้องเรียนที่ทำให้พัฒนาได้จริง มีโครงสร้างชัดเจนตั้งแต่ต้น — ไม่ต้องพึ่งใบงานแจกไปวัน ๆ หรือบทเรียนที่ติวเตอร์คิดไปทีละสัปดาห์" },
+      { name: 'Young Learner 1', age: '5–6', color: '#A8E6A1', tag: 'Play to Learn',     timeline: 'About 2 years from her first day.',
+        portfolio:    "Young Learner 1 strengthens phonics and begins real blending, so children start reading and speaking with more confidence. Lessons are playful, but the pathway is deliberate — skills repeat, deepen, and stick. Parents usually notice clearer pronunciation, stronger listening, and more willing speaking.",
+        portfolio_th: "Young Learner 1 ต่อยอดโฟนิกส์ให้แน่นขึ้น และเริ่มผสมคำจริงจัง เด็ก ๆ จะเริ่มอ่านและพูดได้อย่างมั่นใจมากขึ้น บทเรียนสนุก แต่เส้นทางวางไว้อย่างตั้งใจ — ทักษะวนซ้ำ ลึกขึ้น และฝังแน่น ผู้ปกครองมักจะสังเกตเห็นว่าออกเสียงชัดขึ้น ฟังเก่งขึ้น และกล้าพูดมากขึ้น" },
+      { name: 'Young Learner 2', age: '6–7', color: '#A8E6A1', tag: 'Play to Learn',     timeline: 'About 3 years in.',
+        portfolio:    "Young Learner 2 is where reading becomes more visible: children start reading short sentences and build accuracy step by step. We also begin early spelling skills (Phonics Spelling 1), so writing matches what they can read. This level is designed to prevent the common “they can say it, but can't read it” problem.",
+        portfolio_th: "Young Learner 2 คือจุดที่การอ่านเริ่มเห็นผลชัด: เด็ก ๆ เริ่มอ่านประโยคสั้น ๆ และสะสมความแม่นยำทีละขั้น เราเริ่มทักษะการสะกดเบื้องต้น (Phonics Spelling 1) ให้การเขียนตามทันสิ่งที่อ่านได้ ระดับนี้ออกแบบมาเพื่อแก้ปัญหายอดฮิตที่ว่า 'พูดได้ แต่อ่านไม่ออก'" },
+      { name: 'Starters Prep', age: '7–8',   color: '#9DD7FF', tag: 'Reader to Leader',  timeline: 'Heading toward the first Cambridge milestone.',
+        portfolio:    "Starters Prep bridges children into Cambridge-style learning without rushing or stress. We introduce tricky words and alternative spelling patterns in a way that actually makes sense to learners. It's the difference between “tutor test practice” and a real reading-and-writing base.",
+        portfolio_th: "Starters Prep พาลูก ๆ เข้าสู่การเรียนแนว Cambridge อย่างนุ่มนวล ไม่เร่ง ไม่กดดัน เราแนะนำคำยากและรูปแบบการสะกดทางเลือกในวิธีที่เด็กเข้าใจได้จริง นี่คือความต่างระหว่าง 'การติวสอบ' กับพื้นฐานการอ่านและเขียนของจริง" },
+      { name: 'Starters 1',    age: '8',     color: '#9DD7FF', tag: 'Reader to Leader',  timeline: '~5 years from start.',                             cambridge: 'Cambridge Starters',
+        portfolio:    "Starters 1 builds Cambridge YLE Starters readiness while keeping reading at the centre of progress. Full spelling begins here, supported by a clear system rather than memorisation. Your child learns to understand English, not just answer English.",
+        portfolio_th: "Starters 1 สร้างความพร้อมสำหรับ Cambridge YLE Starters โดยยังคงให้การอ่านเป็นหัวใจของพัฒนาการ การสะกดคำเต็มรูปเริ่มที่ระดับนี้ ใช้ระบบที่ชัดเจนแทนการท่องจำ ลูกจะได้เรียนรู้ที่จะ 'เข้าใจ' ภาษาอังกฤษ ไม่ใช่แค่ 'ตอบ' ภาษาอังกฤษ" },
+      { name: 'Starters 2',    age: '8–9',   color: '#9DD7FF', tag: 'Reader to Leader',  timeline: '~5 years in. Starters certification approaches.', cambridge: 'Cambridge Starters',
+        portfolio:    "Starters 2 turns skills into confidence: tricky words are mastered and students become truly exam-ready. Reading and writing get longer, clearer, and more independent. Parents see fewer “guess answers” and more real language use.",
+        portfolio_th: "Starters 2 เปลี่ยนทักษะให้กลายเป็นความมั่นใจ: เด็ก ๆ จัดการคำยากได้ และพร้อมสอบจริง การอ่านและเขียนยาวขึ้น ชัดเจนขึ้น และทำได้ด้วยตัวเองมากขึ้น ผู้ปกครองจะเห็นการ 'เดาคำตอบ' น้อยลง และเห็นการใช้ภาษาจริงมากขึ้น" },
+      { name: 'Movers 1',      age: '9',     color: '#9DD7FF', tag: 'Reader to Leader',  timeline: '~6 years in.',                                     cambridge: 'Cambridge Movers',
+        portfolio:    "Movers 1 moves students into Cambridge A1 level with stronger reading stamina and better sentence control. Students build a portfolio of work so progress is visible — not just “I think they improved.” It's a serious step up, but taught in a way kids can handle.",
+        portfolio_th: "Movers 1 ก้าวเข้าสู่ระดับ Cambridge A1 อ่านได้นานขึ้น คุมประโยคได้ดีขึ้น เด็ก ๆ สะสมผลงานเป็นพอร์ต ให้พัฒนาการเห็นได้ชัด — ไม่ใช่แค่ 'รู้สึกว่าเก่งขึ้น' เป็นก้าวกระโดดที่จริงจัง แต่สอนในวิธีที่เด็กรับได้สบาย" },
+      { name: 'Movers 2',      age: '9–10',  color: '#9DD7FF', tag: 'Reader to Leader',  timeline: '~7 years in.',                                     cambridge: 'Cambridge Movers',
+        portfolio:    "Movers 2 consolidates A1 skills so students can speak, read, and write with more independence. Writing becomes longer and more accurate, and students learn how to study — so they don't rely on the teacher every minute. This level is built for results that carry into school English.",
+        portfolio_th: "Movers 2 ต่อยอดทักษะ A1 ให้เด็ก ๆ พูด อ่าน และเขียนได้ด้วยตัวเองมากขึ้น การเขียนยาวขึ้นและแม่นยำขึ้น และเด็กเรียนรู้วิธีเรียนด้วยตัวเอง — ไม่ต้องพึ่งครูทุกนาที ระดับนี้ออกแบบมาให้ผลลัพธ์ส่งต่อไปยังภาษาอังกฤษที่โรงเรียนได้" },
+      { name: 'Flyers 1',      age: '10–11', color: '#FFD2A8', tag: 'Build Your Future', timeline: '~8 years in.',                                     cambridge: 'Cambridge Flyers',
+        portfolio:    "Flyers 1 develops Cambridge A2 skills through richer reading, stronger comprehension, and more academic language. We use CLIL-style activities so English connects to real ideas, not just textbook drills. Students start sounding like thinkers, not parrots.",
+        portfolio_th: "Flyers 1 พัฒนาทักษะระดับ Cambridge A2 ผ่านการอ่านที่มีเนื้อหามากขึ้น ความเข้าใจที่ลึกขึ้น และภาษาเชิงวิชาการ เราใช้กิจกรรมแนว CLIL ให้ภาษาอังกฤษเชื่อมโยงกับความคิดจริง ไม่ใช่แค่แบบฝึกหัดจากตำรา ผู้ปกครองจะได้ยินลูกเริ่มพูดอย่างมีความคิด ไม่ใช่แค่ท่องจำตามแบบนกแก้ว" },
+      { name: 'Flyers 2',      age: '11–12', color: '#FFD2A8', tag: 'Build Your Future', timeline: '~9 years in.',                                     cambridge: 'Cambridge Flyers',
+        portfolio:    "Flyers 2 makes students exam-ready while building the foundation for secondary English. They learn to handle longer texts, clearer writing, and more confident speaking under pressure. This is where the pathway pays off — years of steady skill-building become visible performance.",
+        portfolio_th: "Flyers 2 ทำให้เด็กพร้อมสอบ พร้อมวางรากฐานสำหรับภาษาอังกฤษระดับมัธยม เด็ก ๆ จะรับมือกับบทอ่านที่ยาวขึ้น เขียนได้ชัดขึ้น และพูดได้มั่นใจขึ้นภายใต้แรงกดดัน นี่คือจุดที่เส้นทางเห็นผลชัด — ปีแห่งการสร้างทักษะอย่างต่อเนื่อง กลายเป็นผลงานที่เห็นได้จริง" },
+      { name: 'SpeakWrite 1',  age: '12+',   color: '#FFD2A8', tag: 'Build Your Future', timeline: '~10 years in. Now a confident teen speaker.',
+        portfolio:    "SpeakWrite 1 shifts students from “English class English” to real communication — speaking clearly and writing for meaning. It uses task-based learning so students practise the kinds of language they actually need. Great for teens who want confidence, not just test scores.",
+        portfolio_th: "SpeakWrite 1 พาเด็กออกจาก 'ภาษาอังกฤษในห้องเรียน' สู่การสื่อสารจริง — พูดให้ชัด เขียนเพื่อสื่อความหมาย ใช้การเรียนแบบเน้นภาระงาน (task-based) ให้เด็กฝึกภาษาแบบที่ต้องใช้จริง เหมาะกับวัยรุ่นที่อยากได้ความมั่นใจ ไม่ใช่แค่คะแนนสอบ" },
+      { name: 'SpeakWrite 2',  age: '13+',   color: '#FFD2A8', tag: 'Build Your Future', timeline: 'Teen-to-young-adult bridge.',
+        portfolio:    "SpeakWrite 2 extends speaking and writing into longer, more organised, more mature English. Students learn to explain ideas, justify opinions, and produce work that looks like real secondary-level output. It's a bridge to B1-style demands and future academic success.",
+        portfolio_th: "SpeakWrite 2 ขยายการพูดและเขียนให้ยาวขึ้น มีโครงสร้างขึ้น และมีความเป็นผู้ใหญ่มากขึ้น เด็ก ๆ จะได้เรียนรู้ที่จะอธิบายความคิด ให้เหตุผลกับความเห็นของตัวเอง และสร้างผลงานที่ดูเป็นระดับมัธยมจริง ๆ เป็นสะพานสู่ความต้องการระดับ B1 และความสำเร็จทางวิชาการในอนาคต" },
+      { name: 'Reader',        band: 'Young Learner → Movers 1 · 30 min weekly', band_th: 'Young Learner → Movers 1 · 30 นาที/สัปดาห์', color: '#FFE9A3', tag: 'English Accelerator', noAudio: true, timeline: 'Runs alongside the main class.',
+        portfolio:    "A 30-minute weekly session focused on reading fluently with good pronunciation. It strengthens the word-recognition side of the Reading Rope (phonics, decoding, sight recognition) using phonics readers tied directly to your child's main class.",
+        portfolio_th: "คาบเรียนสัปดาห์ละ 30 นาที เน้นการอ่านให้ลื่นไหลพร้อมการออกเสียงที่ดี เสริมด้านการจดจำคำของ Reading Rope (โครงสร้างทักษะการอ่าน) ได้แก่ โฟนิกส์ การถอดรหัสคำ การจำคำที่เห็น โดยใช้หนังสือโฟนิกส์ที่เชื่อมโยงตรงกับคลาสหลักของลูก" },
+      { name: 'Reader Plus',   band: 'Movers → SpeakWrite · 30 min weekly',      band_th: 'Movers → SpeakWrite · 30 นาที/สัปดาห์',      color: '#FFE9A3', tag: 'English Accelerator', noAudio: true, timeline: 'Runs alongside the main course book.',
+        portfolio:    "A 30-minute session that combines phonics readers with extensive and graded readers, Quizlet decks, and speaking practice linked to the main course book. It develops the language-comprehension strands of the Reading Rope (vocabulary, background knowledge, language structures), so reading turns into thinking and speaking.",
+        portfolio_th: "คาบ 30 นาทีที่ผสมหนังสือโฟนิกส์เข้ากับ extensive readers และ graded readers การ์ด Quizlet และการฝึกพูดที่เชื่อมกับหนังสือเรียนหลัก พัฒนาด้านความเข้าใจภาษาของ Reading Rope (คำศัพท์ ความรู้พื้นฐาน โครงสร้างภาษา) ให้การอ่านกลายเป็นการคิดและการพูด" },
+      { name: 'Phonics Plus',  band: 'One-to-one · rebuilds the foundation',      band_th: 'ตัวต่อตัว · ปรับพื้นฐานใหม่',                color: '#FFE9A3', tag: 'English Accelerator', noAudio: true, timeline: 'Targeted fix, then back into the right level.',
+        portfolio:    "Targeted, one-to-one phonics support for students who need to rebuild the foundation that earlier schooling missed. We work directly on the word-recognition strands of the Reading Rope (phonological awareness, decoding, sight recognition), then reconnect the student back into the right TEC level.",
+        portfolio_th: "คอร์สโฟนิกส์แบบตัวต่อตัว สำหรับเด็กที่ต้องการปรับพื้นฐานใหม่ — ไม่มีอะไรน่าอาย เราทำงานตรงกับด้านการจดจำคำของ Reading Rope (การตระหนักรู้ด้านเสียง การถอดรหัสคำ การจำคำที่เห็น) แล้วต่อเด็กกลับเข้าระดับ TEC ที่เหมาะสม" },
+      { name: 'One-to-One',    band: 'Any age · private · 1–2 hours',             band_th: 'ทุกวัย · ส่วนตัว · 1–2 ชั่วโมง',              color: '#FFE9A3', tag: 'English Accelerator', noAudio: true, timeline: 'Fully personalised — catch-up, stretch, or a specific goal.',
+        portfolio:    "A 1-to-2-hour private lesson for any age, built around a specialised syllabus matched to your child — Phonics Plus, IELTS, Conversation, or any TEC course from Teeny through Advanced. Because it's fully personalised, it's the right option when a child needs catch-up, stretch, or a specific problem solved with a clear plan.",
+        portfolio_th: "คาบเรียนตัวต่อตัว 1–2 ชั่วโมง สำหรับทุกวัย ออกแบบหลักสูตรเฉพาะให้ตรงกับลูก — Phonics Plus, IELTS, Conversation หรือคอร์สใด ๆ ของ TEC ตั้งแต่ Teeny จนถึง Advanced เพราะเป็นแบบเฉพาะบุคคล จึงเหมาะที่สุดเมื่อเด็กต้องตามให้ทัน ต่อยอดให้ไกล หรือแก้ปัญหาเฉพาะจุดด้วยแผนที่ชัดเจน" }
+    ];
+
+    const tLang = () => document.body.classList.contains('lang-th') ? 'th' : 'en';
+    const I18N = {
+      en: { of: ' of ', addon: 'Add-on · ', findMore: 'Find out more', findMoreSoon: 'Course details & classroom videos — coming soon', whatYourChild: 'What your child does at this stage', agePrefix: 'Age ' },
+      th: { of: ' จาก ',  addon: 'คอร์สเสริม · ', findMore: 'ดูเพิ่มเติม', findMoreSoon: 'รายละเอียดคอร์สและคลิปห้องเรียน — เร็ว ๆ นี้',         whatYourChild: 'ลูกของคุณจะได้ทำอะไรในระดับนี้', agePrefix: 'อายุ ' }
+    };
+    const i18n = (k) => I18N[tLang()][k];
+
+    const counterBox = document.getElementById('stage-counter');
+    const isAccel = (st) => st.tag === 'English Accelerator';
+    const pathwayCount = stages.filter(st => !isAccel(st)).length;
+    const accelLetter = (i) => String.fromCharCode(97 + (i - pathwayCount)); // 0→a, 1→b…
+    const progress  = document.getElementById('journey-progress');
+    const tagsBox   = document.getElementById('stage-tags');
+    const card      = document.getElementById('stage-card');
+    const nameEl    = document.getElementById('stage-name');
+    const ageEl     = document.getElementById('stage-age');
+    const cambBadge = document.getElementById('stage-cambridge');
+    const photoEl   = document.getElementById('stage-photo');
+    const audioBtn  = document.getElementById('stage-audio');
+    const portfolioEl = document.getElementById('stage-portfolio');
+    const prevBtn   = document.getElementById('stage-prev');
+    const nextBtn   = document.getElementById('stage-next');
+    const journey   = document.getElementById('journey');
+
+    let idx = 0;
+    const tagEls = [];
+    // Bump PHOTO_V whenever level photos are re-exported (busts the browser image cache)
+    const PHOTO_V = 5;
+    // Stage name → level photo
+    const photos = {
+      'Teeny TEC': '01-teeny-tec', 'Tiny TEC': '02-tiny-tec',
+      'Young Learner 1': '03-young-learner-1', 'Young Learner 2': '04-young-learner-2',
+      'Starters Prep': '05-starters-prep', 'Starters 1': '06-starters-1',
+      'Starters 2': '07-starters-2', 'Movers 1': '08-movers-1',
+      'Movers 2': '09-movers-2', 'Flyers 1': '10-flyers-1', 'Flyers 2': '11-flyers-2',
+      'SpeakWrite 1': '12-speakwrite-1', 'SpeakWrite 2': '13-speakwrite-2',
+      'Reader': 'a-reader', 'Reader Plus': 'b-reader-plus',
+      'Phonics Plus': 'c-phonics-plus', 'One-to-One': 'd-one-to-one'
+    };
+
+    function render() {
+      const s = stages[idx];
+      const isTh = (tLang() === 'th');
+      if (isAccel(s)) {
+        counterBox.textContent = i18n('addon') + accelLetter(idx);
+        progress.style.width = '100%';
+      } else {
+        counterBox.textContent = (idx + 1) + i18n('of') + pathwayCount;
+        progress.style.width = ((idx + 1) / pathwayCount * 100) + '%';
+      }
+      journey.style.setProperty('--stage-color', s.color);
+
+      nameEl.textContent = s.name;
+      if (s.band) {
+        ageEl.textContent = (isTh && s.band_th) ? s.band_th : s.band;
+      } else {
+        ageEl.textContent = i18n('agePrefix') + s.age + ' · ' + s.tag;
+      }
+
+      if (s.cambridge) { cambBadge.textContent = s.cambridge; cambBadge.style.display = 'inline-block'; }
+      else             { cambBadge.style.display = 'none'; }
+
+      const pf = photos[s.name];
+      if (pf) {
+        photoEl.classList.add('has-photo');
+        photoEl.innerHTML = '<img src="../assets/level-photos/' + pf + '.jpg?v=' + PHOTO_V + '" alt="' + s.name + ' at TEC" loading="lazy">';
+      } else {
+        photoEl.classList.remove('has-photo');
+        photoEl.textContent = '[Real classroom photo: ' + s.name + ']';
+      }
+      audioBtn.textContent = i18n('findMore');
+      portfolioEl.classList.toggle('lang-th-block', isTh);
+      const pfText = (isTh && s.portfolio_th) ? s.portfolio_th : s.portfolio;
+      portfolioEl.innerHTML = '<strong>' + i18n('whatYourChild') + '</strong>' + pfText;
+
+      prevBtn.disabled = (idx === 0);
+      nextBtn.disabled = (idx === stages.length - 1);
+
+      // active tag
+      tagEls.forEach((el, i) => { if (el) el.classList.toggle('active', i === idx); });
+    }
+
+    // Build stage tag chips, grouped into one labelled row per pillar
+    const pillarOrder = [];
+    stages.forEach(s => { if (!pillarOrder.includes(s.tag)) pillarOrder.push(s.tag); });
+    pillarOrder.forEach(pillar => {
+      const row = document.createElement('div');
+      row.className = 'stage-tag-row';
+      const label = document.createElement('span');
+      label.className = 'stage-tag-rowlabel';
+      label.textContent = pillar;
+      const first = stages.find(s => s.tag === pillar);
+      if (first && first.color) label.style.background = first.color;
+      row.appendChild(label);
+      stages.forEach((s, i) => {
+        if (s.tag !== pillar) return;
+        const t = document.createElement('span');
+        t.className = 'stage-tag';
+        t.textContent = (isAccel(s) ? accelLetter(i) : (i + 1)) + '. ' + s.name;
+        t.addEventListener('click', () => { idx = i; render(); });
+        row.appendChild(t);
+        tagEls[i] = t;
+      });
+      tagsBox.appendChild(row);
+    });
+
+    prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+    nextBtn.addEventListener('click', () => { if (idx < stages.length - 1) { idx++; render(); } });
+
+    // Keyboard nav
+    journey.tabIndex = 0;
+    journey.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && idx > 0) { idx--; render(); }
+      if (e.key === 'ArrowRight' && idx < stages.length - 1) { idx++; render(); }
+    });
+
+    // "Find out more" — destination (course details + classroom videos) not built yet
+    audioBtn.addEventListener('click', () => {
+      audioBtn.textContent = i18n('findMoreSoon');
+      setTimeout(() => { audioBtn.textContent = i18n('findMore'); }, 1800);
+    });
+
+    // Re-render when the page-level TH/EN pill toggles
+    document.addEventListener('lang-changed', () => render());
+
+    render();
+  })();
+
+  // ===== Cheap vs Value before/after slider =====
+  (function () {
+    const slider = document.getElementById('ba-slider');
+    if (!slider) return;
+    const handle = document.getElementById('ba-handle');
+    const tCheap = document.getElementById('ba-text-cheap');
+    const tTec   = document.getElementById('ba-text-tec');
+    const lCheap = slider.querySelector('.ba-label.cheap');
+    const lTec   = slider.querySelector('.ba-label.tec');
+    const clamp = (n) => Math.max(0, Math.min(1, n));
+    let dragging = false;
+
+    function setPos(p) {
+      p = Math.max(0, Math.min(100, p));
+      slider.style.setProperty('--ba-pos', p + '%');
+      handle.setAttribute('aria-valuenow', Math.round(p));
+      // t = how "cheap" the image is (0 = full TEC, 1 = full cheap)
+      const t = p / 100;
+      if (tCheap && tTec) {
+        const cheap = clamp((t - 0.35) / 0.15); // TEC text below 35% cheap, cheap text by 50%
+        tCheap.style.opacity = cheap;
+        tTec.style.opacity   = 1 - cheap;
+        tCheap.style.transform = 'translateX(' + ((1 - cheap) * 22) + 'px)';
+        tTec.style.transform   = 'translateX(' + (-(1 - (1 - cheap)) * 22) + 'px)';
+      }
+      // Each label only while its side of the image is visible
+      if (lCheap) lCheap.style.opacity = clamp(t / 0.08);
+      if (lTec)   lTec.style.opacity   = clamp((1 - t) / 0.08);
+    }
+    function posFromEvent(e) {
+      const r = slider.getBoundingClientRect();
+      return ((e.clientX - r.left) / r.width) * 100;
+    }
+
+    slider.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      slider.setPointerCapture(e.pointerId);
+      setPos(posFromEvent(e));
+    });
+    slider.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      e.preventDefault();
+      setPos(posFromEvent(e));
+    });
+    const stop = () => { dragging = false; };
+    slider.addEventListener('pointerup', stop);
+    slider.addEventListener('pointercancel', stop);
+
+    handle.addEventListener('keydown', (e) => {
+      const cur = parseFloat(handle.getAttribute('aria-valuenow')) || 50;
+      if (e.key === 'ArrowLeft')  { setPos(cur - 4); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { setPos(cur + 4); e.preventDefault(); }
+      if (e.key === 'Home')       { setPos(0);   e.preventDefault(); }
+      if (e.key === 'End')        { setPos(100); e.preventDefault(); }
+    });
+
+    setPos(50); // initialise text layers to the resting position
+  })();
+
+  // ===== Video testimonial popup (parked-ideas Idea 3) =====
+  (function () {
+    const modal = document.getElementById('video-modal');
+    if (!modal) return;
+    const vid = modal.querySelector('video');
+    const closeBtn = document.getElementById('video-modal-close');
+    let lastFocus = null;
+
+    function openModal(src) {
+      if (!src) return;
+      vid.src = src;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lastFocus = document.activeElement;
+      closeBtn.focus();
+      vid.play().catch(() => {});
+    }
+    function closeModal() {
+      vid.pause();
+      vid.removeAttribute('src');
+      vid.load();
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('.fc-play').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // don't let the folder toggle open/closed
+        openModal(btn.getAttribute('data-video'));
+      });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+
+  // ===== Founder card "Read more" expanders =====
+  document.querySelectorAll('.founder-card .read-more').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.founder-card');
+      const expanded = card.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Show less' : 'Read more';
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  });
+
+  // ===== Map popup (Google Maps embed in a modal) =====
+  (function () {
+    const modal = document.getElementById('map-modal');
+    if (!modal) return;
+    const iframe = modal.querySelector('iframe');
+    const closeBtn = document.getElementById('map-modal-close');
+    const MAP_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.168119669686!2d102.51994817696965!3d12.236893488015042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31044156ebe5cbf9%3A0xecf301cd0f3013f7!2sTrat%20English%20Community%20(TEC)!5e0!3m2!1sen!2sau!4v1779234919380!5m2!1sen!2sau';
+    let lastFocus = null;
+
+    function openMapModal() {
+      iframe.src = MAP_EMBED;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lastFocus = document.activeElement;
+      closeBtn.focus();
+    }
+    function closeMapModal() {
+      iframe.removeAttribute('src');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.querySelectorAll('.map-popup-link').forEach((a) => {
+      a.addEventListener('click', (e) => { e.preventDefault(); openMapModal(); });
+    });
+    closeBtn.addEventListener('click', closeMapModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeMapModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeMapModal();
+    });
+  })();
+
+  // ===== Slide-in menu drawer =====
+  (function () {
+    const btn = document.getElementById('menu-btn');
+    const drawer = document.getElementById('menu-drawer');
+    const backdrop = document.getElementById('menu-backdrop');
+    const closeBtn = document.getElementById('menu-close');
+    if (!btn || !drawer) return;
+    let lastFocus = null;
+
+    function openMenu() {
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      lastFocus = document.activeElement;
+      setTimeout(() => closeBtn.focus(), 60);
+    }
+    function closeMenu() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    btn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) closeMenu();
+    });
+    // Close the drawer when an in-page anchor link is tapped (let the scroll happen)
+    drawer.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', () => closeMenu());
+    });
+  })();
+
+  // ===== Folder testimonials =====
+  (function () {
+    const folder = document.getElementById('folder');
+    if (!folder) return;
+    const toggle = () => {
+      folder.classList.toggle('open');
+      folder.setAttribute('aria-pressed', folder.classList.contains('open'));
+    };
+    folder.addEventListener('click', toggle);
+    folder.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+
+    // Auto-fan as the folder scrolls into view; fold back as it leaves.
+    // Hysteresis (open at >55% visible, close at <25%) prevents flicker.
+    // Respect reduced-motion: skip auto-toggle entirely.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.intersectionRatio > 0.55 && !folder.classList.contains('open')) {
+            folder.classList.add('open');
+            folder.setAttribute('aria-pressed', 'true');
+          } else if (e.intersectionRatio < 0.25 && folder.classList.contains('open')) {
+            folder.classList.remove('open');
+            folder.setAttribute('aria-pressed', 'false');
+          }
+        });
+      }, { threshold: [0, 0.25, 0.4, 0.55, 0.75] });
+      obs.observe(folder);
+    }
+  })();
+
+  // ===== FAQ accordion =====
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    q.addEventListener('click', () => item.classList.toggle('open'));
+  });
+
+  // ===== Open callback CTA → scroll to form =====
+  const openCb = document.getElementById('open-callback');
+  if (openCb) {
+    openCb.addEventListener('click', () => {
+      document.getElementById('callback-section').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => document.getElementById('cb-name').focus(), 600);
+    });
+  }
+</script>
+<script>
+  /* Hero parrot vignette — isolated so an error elsewhere can't disable it */
+  (function () {
+    var pv = document.getElementById('parrot-vignette');
+    if (!pv) return;
+    var vid   = pv.querySelector('.vignette-video');
+    var fab   = pv.querySelector('.play-fab');
+    var frame = pv.querySelector('.vignette-frame');
+    if (!vid || !fab) return;
+
+    function start() {
+      if (pv.classList.contains('is-playing')) return;
+      vid.setAttribute('controls', '');
+      pv.classList.add('is-playing');
+      var p = vid.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () { /* fall back to native controls */ });
+      }
+    }
+
+    fab.addEventListener('click', function (e) { e.stopPropagation(); start(); });
+    // Tapping anywhere on the poster also starts it — bigger, more reliable target
+    if (frame) frame.addEventListener('click', start);
+
+    vid.addEventListener('ended', function () {
+      pv.classList.remove('is-playing');   /* yellow button returns */
+      vid.removeAttribute('controls');
+      vid.load();                          /* restores the poster for replay */
+    });
+  })();
+</script>
+</body>
+</html>
