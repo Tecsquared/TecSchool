@@ -916,6 +916,7 @@
     font-size: 16px;
     box-shadow: var(--shadow-neu);
     min-width: 110px;
+    white-space: nowrap;     /* don't break 'ก่อนหน้า' across two lines */
     transition: transform 150ms;
   }
   .stage-nav button:active { transform: scale(0.98); }
@@ -926,6 +927,12 @@
     color: var(--wf-label);
     flex: 1;
     text-align: center;
+  }
+  /* Mobile: hint gets squeezed into vertical Thai characters between the two
+     buttons, which looks broken. The chips above are obviously tappable, so hide
+     the hint on phones. */
+  @media (max-width: 640px) {
+    .stage-nav .stage-jump-hint { display: none; }
   }
 
   /* ===== 10-year pathway system ===== */
@@ -2788,7 +2795,15 @@
         const t = document.createElement('span');
         t.className = 'stage-tag';
         t.textContent = (isAccel(s) ? accelLetter(i) : (i + 1)) + '. ' + s.name;
-        t.addEventListener('click', () => { idx = i; render(); });
+        t.addEventListener('click', () => {
+          idx = i;
+          render();
+          // On mobile the chip grid takes a lot of vertical space, so without scrolling
+          // the user can't see the stage card they just selected. Scroll it into view.
+          if (window.matchMedia('(max-width: 768px)').matches) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
         row.appendChild(t);
         tagEls[i] = t;
       });
