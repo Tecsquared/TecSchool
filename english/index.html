@@ -1743,6 +1743,48 @@
     font-size: 17px;
     box-shadow: var(--shadow-neu);
   }
+  .form-block .submit[aria-busy="true"] { opacity: .6; cursor: progress; }
+
+  /* Post-submit thank-you panel (replaces the form once a callback request is sent) */
+  .form-thanks {
+    max-width: 480px;
+    margin: 36px auto 0;
+    background: rgba(255,255,255,0.7);
+    border-radius: 22px;
+    padding: 34px 28px;
+    box-shadow: var(--shadow-neu);
+    text-align: center;
+  }
+  .form-thanks .thanks-title {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--tec-ink);
+    margin: 0 0 8px;
+  }
+  .form-thanks .thanks-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--tec-ink-soft);
+    margin: 0 auto 22px;
+    max-width: 340px;
+  }
+  .form-thanks .line-cta {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 14px;
+    background: #06C755;
+    color: #fff;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: var(--shadow-neu);
+    transition: filter 150ms ease, transform 150ms ease;
+  }
+  .form-thanks .line-cta:hover, .form-thanks .line-cta:focus-visible {
+    filter: brightness(1.07); transform: translateY(-1px);
+  }
 
   /* ===== Footer ===== */
   .site-footer {
@@ -2050,7 +2092,7 @@
     <div class="founders" style="margin-top:32px">
       <article class="founder-card" data-order="1-mas">
         <div class="avatar"><img src="../assets/founders/suthamas.jpg" alt="Suthamas Chaisiri — TEC co-founder and Director, born in Trat" width="168" height="168" loading="lazy" decoding="async"></div>
-        <h3 data-en="Suthamas Chaisiri" data-th="สุธามาส ไชยศิริ">Suthamas Chaisiri</h3>
+        <h3 data-en="Suthamas Chaisiri" data-th="สุฑามาศ ไชยศิริ">Suthamas Chaisiri</h3>
         <div class="role" data-en="Owner & Director · Born in Trat" data-th="เจ้าของและผู้อำนวยการ · ชาวตราดโดยกำเนิด">Owner & Director · Born in Trat</div>
         <blockquote class="bio-short lang-en-block">
           "Born in Trat. I built TEC to give the children of Trat the strong English foundation I didn't have growing up."
@@ -2424,23 +2466,72 @@
     <h2 class="section-title center">Let's set up your free placement interview. <span class="th">นัดสัมภาษณ์วัดระดับฟรี</span></h2>
     <p class="lede center" style="text-align:center;max-width:560px;margin-left:auto;margin-right:auto" data-en="Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที กับครูอาวุโส — ไม่มีข้อผูกมัด">Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation.</p>
 
-    <form class="form-block" onsubmit="event.preventDefault(); alert(document.body.classList.contains('lang-th') ? 'ขอบคุณค่ะ เราจะติดต่อกลับเร็ว ๆ นี้เพื่อนัดสัมภาษณ์วัดระดับนะคะ' : 'Thanks. We\'ll be in touch soon to set up your placement interview.')">
+    <form class="form-block" id="callback-form" action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New placement interview request — tecschool.org">
+      <input type="hidden" name="_cc" value="tratenglish@gmail.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
       <label for="cb-name" class="lang-en-block">Name <span style="opacity:.6">/ ชื่อ</span></label>
       <label for="cb-name" class="lang-th-block">ชื่อ <span style="opacity:.6">/ Name</span></label>
-      <input type="text" id="cb-name" autocomplete="name" required />
+      <input type="text" id="cb-name" name="Name" autocomplete="name" required />
 
       <label for="cb-contact" class="lang-en-block">LINE handle or phone <span style="opacity:.6">/ LINE หรือเบอร์โทร</span></label>
       <label for="cb-contact" class="lang-th-block">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
-      <input type="tel" id="cb-contact" autocomplete="tel" required />
+      <input type="tel" id="cb-contact" name="LINE or phone" autocomplete="tel" required />
 
       <label class="checkbox-row">
-        <input type="checkbox" required />
+        <input type="checkbox" name="Consent" value="Yes — agreed to be contacted" required />
         <span class="lang-en-block">I agree to be contacted by TEC. (You can unsubscribe anytime.) <em style="display:block;opacity:.7;margin-top:2px">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</em></span>
         <span class="lang-th-block">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
       </label>
 
       <button type="submit" class="submit" data-en="Send" data-th="ส่ง">Send</button>
     </form>
+
+    <div class="form-thanks" id="callback-thanks" hidden>
+      <p class="thanks-title lang-en-block">Thanks! 🎉</p>
+      <p class="thanks-title lang-th-block">ขอบคุณค่ะ 🎉</p>
+      <p class="thanks-sub lang-en-block">We've got your details — we'll call you back soon to set up your free placement interview.</p>
+      <p class="thanks-sub lang-th-block">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ</p>
+      <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">
+        <span class="lang-en-block">Prefer to chat now? Message us on LINE →</span>
+        <span class="lang-th-block">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE →</span>
+      </a>
+    </div>
+
+    <script>
+    (function () {
+      var form = document.getElementById('callback-form');
+      var thanks = document.getElementById('callback-thanks');
+      if (!form || !thanks) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('.submit');
+        btn.setAttribute('aria-busy', 'true');
+        btn.disabled = true;
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('status ' + res.status);
+          form.hidden = true;
+          thanks.hidden = false;
+          thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(function () {
+          btn.removeAttribute('aria-busy');
+          btn.disabled = false;
+          alert(document.body.classList.contains('lang-th')
+            ? 'ส่งไม่สำเร็จค่ะ ขออภัย — รบกวนทักเราทาง LINE (ID: TEC14) หรืออีเมล tratenglish@gmail.com'
+            : "Sorry — that didn't send. Please message us on LINE (ID: TEC14) or email tratenglish@gmail.com.");
+        });
+      });
+    })();
+    </script>
 
     <p class="closing-slogan lang-en-block">Play. Read. Lead. Build a Future at <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
     <p class="closing-slogan lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
