@@ -510,6 +510,9 @@
   .founder-card .bio-full { display: none; }
   .founder-card.expanded .bio-short { display: none; }
   .founder-card.expanded .bio-full { display: block; }
+  /* Thai bios collapse too — needs higher specificity than the
+     `body.lang-th .lang-th-block { display: revert }` language rule */
+  body.lang-th .founder-card:not(.expanded) .bio-full.lang-th-block { display: none; }
   .founder-card .read-more {
     appearance: none; border: none; background: none;
     font-family: 'Nunito Sans', sans-serif;
@@ -1900,10 +1903,14 @@
         <blockquote class="bio-full lang-en-block">
           "I was born in Trat, and English was once one of my biggest fears. The courses I tried before university did not work for me. That experience made me want to give the children of Trat the strong English foundation I did not have growing up. After studying in New Zealand and Australia, where I completed a Master of International Business, I returned home and became an English teacher. Damien and I spent two years planning TEC before we opened in 2014. TEC is my biggest project in life."
         </blockquote>
-        <button class="read-more lang-en-block" type="button" aria-expanded="false">Read more</button>
-        <blockquote class="bio-th lang-th-block">
+        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less">Read more</button>
+        <blockquote class="bio-short bio-th lang-th-block">
+          "มาสเป็นคนตราดค่ะ สมัยก่อนภาษาอังกฤษเป็นสิ่งที่มาสกลัวที่สุดเลย คอร์สที่เคยลองเรียนก่อนเข้ามหาวิทยาลัยไม่ได้ผลเลยสักที่ ประสบการณ์นั้นทำให้มาสอยากมอบพื้นฐานภาษาอังกฤษที่แข็งแรงให้กับเด็ก ๆ ตราด แบบที่มาสไม่เคยมีตอนเด็ก"
+        </blockquote>
+        <blockquote class="bio-full bio-th lang-th-block">
           "มาสเป็นคนตราดค่ะ สมัยก่อนภาษาอังกฤษเป็นสิ่งที่มาสกลัวที่สุดเลย คอร์สที่เคยลองเรียนก่อนเข้ามหาวิทยาลัยไม่ได้ผลเลยสักที่ ประสบการณ์นั้นทำให้มาสอยากมอบพื้นฐานภาษาอังกฤษที่แข็งแรงให้กับเด็ก ๆ ตราด แบบที่มาสไม่เคยมีตอนเด็ก หลังจากไปเรียนต่อที่นิวซีแลนด์และออสเตรเลีย จบปริญญาโทด้านธุรกิจระหว่างประเทศ (Master of International Business) ก็กลับบ้านมาเป็นครู มาสกับเดเมียนใช้เวลาวางแผน TEC สองปีเต็ม เปิดโรงเรียนในปี 2014 — TEC เป็นงานที่ใหญ่ที่สุดในชีวิตของมาสเลยค่ะ"
         </blockquote>
+        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ">อ่านเพิ่มเติม</button>
       </article>
 
       <article class="founder-card" data-order="2-damien">
@@ -1916,10 +1923,14 @@
         <blockquote class="bio-full lang-en-block">
           "I have spent more than 25 years in English language education as an award-winning teacher, IELTS examiner, Director of Studies, and teacher trainer. I hold a Master's degree in Teaching English as a Second Language and have also worked with Pavilion ELT. I am especially interested in how language teaching connects with the science of how we learn. That thinking shaped the TEC Method, the syllabus I designed and continue to refine every year. TEC is my life's work."
         </blockquote>
-        <button class="read-more lang-en-block" type="button" aria-expanded="false">Read more</button>
-        <blockquote class="bio-th lang-th-block">
+        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less">Read more</button>
+        <blockquote class="bio-short bio-th lang-th-block">
+          "ผมเป็นครูสอนภาษาอังกฤษที่ได้รับรางวัล Action Research Award มีประสบการณ์ในวงการมากว่าสองทศวรรษ — ทั้งในฐานะครู ผู้ตรวจข้อสอบ IELTS และผู้อำนวยการฝ่ายวิชาการ"
+        </blockquote>
+        <blockquote class="bio-full bio-th lang-th-block">
           "ผมเป็นครูสอนภาษาอังกฤษที่ได้รับรางวัล Action Research Award มีประสบการณ์ในวงการมากว่าสองทศวรรษ — ทั้งในฐานะครู ผู้ตรวจข้อสอบ IELTS และผู้อำนวยการฝ่ายวิชาการ จบปริญญาโทด้านการสอนภาษาอังกฤษเป็นภาษาที่สอง (Masters in Teaching English as a Second Language) เคยร่วมงานกับ Pavilion ELT สำนักพิมพ์ชั้นนำของอังกฤษ ผมเป็นคนออกแบบหลักสูตรของเราเอง — TEC Method — และปรับปรุงทุกปีครับ นี่คืองานในชีวิตของผมเลยครับ"
         </blockquote>
+        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ">อ่านเพิ่มเติม</button>
       </article>
     </div>
 
@@ -2416,9 +2427,9 @@
     <span class="lang-en-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — Thai English Chinese School. All rights reserved.</span>
     <span class="lang-th-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษาไทย-อังกฤษ-จีน สงวนลิขสิทธิ์</span>
     <div class="legal-inline">
-      <a href="#" data-en="Privacy" data-th="ความเป็นส่วนตัว">Privacy</a>
-      <a href="#" data-en="Terms"   data-th="ข้อตกลงการใช้">Terms</a>
-      <a href="#">PDPA</a>
+      <a href="/privacy/" data-en="Privacy" data-th="ความเป็นส่วนตัว">Privacy</a>
+      <a href="/privacy/#terms" data-en="Terms" data-th="ข้อตกลงการใช้">Terms</a>
+      <a href="/privacy/#pdpa">PDPA</a>
     </div>
   </div>
 </footer>
@@ -2613,6 +2624,23 @@
     const tagEls = [];
     // Bump PHOTO_V whenever level photos are re-exported (busts the browser image cache)
     const PHOTO_V = 5;
+    // Stage name → public Notion course page ("Link for Customers" column in
+    // the Products + Services database). Stages without a published link yet
+    // keep the "coming soon" button behaviour — fill the Notion column and
+    // add the link here when ready.
+    const courseLinks = {
+      'Teeny TEC':       'https://tratenglish.notion.site/Teeny-TEC-ae87555210a54f3396a11b56c768f6d0',
+      'Tiny TEC':        'https://tratenglish.notion.site/Tiny-TEC-fa708735254c48f5973fbea2d6df7f43',
+      'Young Learner 1': 'https://tratenglish.notion.site/Young-Learner-1-e5e3847cd4a24c0a9bceadba456cfac3',
+      'Young Learner 2': 'https://tratenglish.notion.site/Young-Learner-2-e52e5f951ece48799b74b783ad83fd3d',
+      'Starters 1':      'https://tratenglish.notion.site/Starters-1-e82cd67e86bf4c47b5b5cabfc193e3c1',
+      'Starters 2':      'https://tratenglish.notion.site/Starters-2-fa4691e8565c4748a6074968a27bc2b3',
+      'SpeakWrite 1':    'https://tratenglish.notion.site/Speak-Write-1-d75c18f525fc480c84bad760a34b1f05',
+      'SpeakWrite 2':    'https://tratenglish.notion.site/Speak-Write-2-b9199ef2d3bc48bbae5193e8b4dc921e',
+      'Reader':          'https://tratenglish.notion.site/Reader-efd2536c6cae44839b708cca10d3c219',
+      'Reader Plus':     'https://tratenglish.notion.site/Speaker-f21f096b71db4d4f8f1faad4e380b19a',
+      'One-to-One':      'https://tratenglish.notion.site/One-to-One-edd22022817245debbb19f2172e6edb1'
+    };
     // Stage name → level photo
     const photos = {
       'Teeny TEC': '01-teeny-tec', 'Tiny TEC': '02-tiny-tec',
@@ -2709,8 +2737,11 @@
       if (e.key === 'ArrowRight' && idx < stages.length - 1) { idx++; render(); }
     });
 
-    // "Find out more" — destination (course details + classroom videos) not built yet
+    // "Find out more" — opens the stage's public Notion course page.
+    // Stages without a published link yet show the "coming soon" note.
     audioBtn.addEventListener('click', () => {
+      const link = courseLinks[stages[idx].name];
+      if (link) { window.open(link, '_blank', 'noopener'); return; }
       audioBtn.textContent = i18n('findMoreSoon');
       setTimeout(() => { audioBtn.textContent = i18n('findMore'); }, 1800);
     });
@@ -2821,13 +2852,15 @@
     });
   })();
 
-  // ===== Founder card "Read more" expanders =====
+  // ===== Founder card "Read more" expanders (EN + TH buttons stay in sync) =====
   document.querySelectorAll('.founder-card .read-more').forEach((btn) => {
     btn.addEventListener('click', () => {
       const card = btn.closest('.founder-card');
       const expanded = card.classList.toggle('expanded');
-      btn.textContent = expanded ? 'Show less' : 'Read more';
-      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      card.querySelectorAll('.read-more').forEach((b) => {
+        b.textContent = expanded ? (b.dataset.less || 'Show less') : (b.dataset.more || 'Read more');
+        b.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
     });
   });
 
