@@ -3,8 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>English at TEC — Trat Language School</title>
-<meta name="description" content="Raise a confident speaker, not a parrot. The 12-year English pathway at TEC, Trat's boutique language school." />
+<title>English at TEC — โรงเรียนสอนภาษาอังกฤษสำหรับเด็ก จ.ตราด | Trat Language School</title>
+<meta name="description" content="โรงเรียนสอนภาษาอังกฤษสำหรับเด็กในตราด — เส้นทาง 10 ปี Cambridge YLE, Visible Learning, ครูที่คัดและฝึกเอง | Raise a confident speaker, not a parrot. The 10-year English pathway at TEC, Trat's boutique language school." />
+<link rel="canonical" href="https://tecschool.org/english/">
+<meta name="theme-color" content="#FED501">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TEC — Thai English Chinese School">
+<meta property="og:title" content="English at TEC — โรงเรียนสอนภาษาอังกฤษสำหรับเด็ก จ.ตราด">
+<meta property="og:description" content="90% ของเด็ก TEC สอบเข้า EP ได้ — โดยไม่ต้องลงคอร์สติวสอบเฉพาะแบบที่อื่นเขาขาย · Raise a confident speaker, not a parrot.">
+<meta property="og:url" content="https://tecschool.org/english/">
+<meta property="og:image" content="https://tecschool.org/assets/og-english.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="th_TH">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -156,12 +168,13 @@
     background: var(--tec-bg);
     z-index: 999;
     transform: translateX(100%);
-    transition: transform 280ms cubic-bezier(.2,.7,.3,1);
+    visibility: hidden;   /* keep off-screen links out of the tab order when closed */
+    transition: transform 280ms cubic-bezier(.2,.7,.3,1), visibility 0s linear 280ms;
     box-shadow: -8px 0 20px rgba(0,0,0,0.12);
     display: flex; flex-direction: column;
     padding: 22px 22px 28px;
   }
-  .menu-drawer.open { transform: translateX(0); }
+  .menu-drawer.open { transform: translateX(0); visibility: visible; transition-delay: 0s, 0s; }
   .menu-close {
     align-self: flex-end;
     appearance: none; border: none; background: none;
@@ -197,16 +210,6 @@
   }
   section.sec.full { max-width: none; padding-left: 0; padding-right: 0; }
   section.sec.full > .inner { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-
-  .section-marker, .draft-banner { display: none !important; }
-  .section-marker {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--wf-label);
-    margin-bottom: 6px;
-  }
 
   .section-title {
     font-family: "chaloops", system-ui, sans-serif;
@@ -246,46 +249,6 @@
   /* One line on desktop */
   @media (min-width: 768px) {
     .peak-eyebrow { white-space: nowrap; font-size: clamp(22px, 2.7vw, 32px); }
-  }
-
-  /* ===== Wireframe placeholder boxes ===== */
-  .wf-image, .wf-video {
-    width: 100%;
-    aspect-ratio: 16/10;
-    background: var(--wf-fill);
-    border: 2px dashed var(--wf-border);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--wf-label);
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-align: center;
-    padding: 16px;
-    line-height: 1.3;
-    position: relative;
-  }
-  .wf-image::before, .wf-video::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(201,197,186,0.4);
-    border-radius: 8px;
-    pointer-events: none;
-  }
-  .wf-image.portrait, .wf-video.portrait { aspect-ratio: 3/4; }
-  .wf-image.square,   .wf-video.square   { aspect-ratio: 1/1; }
-  .wf-image.video    { aspect-ratio: 9/16; max-width: 320px; margin: 0 auto; }
-
-  .wf-note {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 12px;
-    color: var(--wf-label);
-    margin-top: 8px;
-    text-align: center;
-    font-style: italic;
   }
 
   /* ===== Hero (P2) — POLISHED ===== */
@@ -559,23 +522,7 @@
   }
   .founder-card .read-more::after { content: ' →'; display: inline-block; transition: transform 200ms ease; }
   .founder-card.expanded .read-more::after { content: ' ↑'; }
-  .founder-card .lang-pair { margin-top: 10px; opacity: 0.7; font-size: 13px; }
-
-  .architect-note {
-    margin-top: 32px;
-    padding: 20px;
-    border: 1.5px solid var(--wf-border);
-    border-radius: 14px;
-    background: rgba(255,255,255,0.4);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    align-items: center;
-  }
-  @media (min-width: 768px) { .architect-note { grid-template-columns: 1fr 1fr 2fr; } }
-  .architect-note p { font-family: 'Nunito Sans', sans-serif; font-weight: 500; font-size: 15.5px; line-height: 1.5; color: var(--tec-ink-soft); }
-
-  /* ===== How TEC Works — 7-tile grid ===== */
+  /* ===== How TEC Works — 6-tile grid ===== */
   .tile-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
   @media (min-width: 600px) { .tile-grid { grid-template-columns: 1fr 1fr; } }
   .tile {
@@ -614,14 +561,7 @@
   }
   .tile p { font-size: 13.5px; color: var(--tec-ink-soft); line-height: 1.4; }
 
-  /* ===== 90% / 50% stats ===== */
-  .stats-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 28px;
-  }
-  @media (min-width: 600px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+  /* ===== 90% stat ===== */
   .stat-box {
     background: var(--tec-yellow);
     border-radius: 22px;
@@ -935,64 +875,6 @@
     .stage-nav .stage-jump-hint { display: none; }
   }
 
-  /* ===== 10-year pathway system ===== */
-  .pathway { margin-top: 32px; display: flex; flex-direction: column; gap: 40px; }
-  .pillar-group { display: grid; grid-template-columns: 1fr; gap: 18px; }
-  @media (min-width: 860px) {
-    .pillar-group { grid-template-columns: 248px 1fr; gap: 32px; align-items: start; }
-  }
-  .pillar-label {
-    border: 3px solid var(--tec-ink);
-    border-radius: 18px;
-    padding: 20px 22px;
-    box-shadow: 5px 6px 0 rgba(0,0,0,0.10);
-  }
-  @media (min-width: 860px) { .pillar-label { position: sticky; top: 84px; } }
-  .pillar-label h3 {
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: clamp(20px, 2.4vw, 26px);
-    color: var(--tec-ink);
-    line-height: 1.1;
-  }
-  .pillar-label .ages {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    margin-top: 6px;
-    color: var(--tec-ink);
-    opacity: 0.65;
-  }
-  .pillar-label.play  { background: #E3FCEF; }
-  .pillar-label.read  { background: #E6F0FF; }
-  .pillar-label.build { background: #FFECE8; }
-  .pillar-courses { display: flex; flex-direction: column; gap: 14px; }
-  .course-item {
-    background: rgba(255,255,255,0.55);
-    border-radius: 14px;
-    padding: 18px 20px;
-    box-shadow: var(--shadow-neu);
-  }
-  .course-item h4 {
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--tec-ink);
-  }
-  .course-item h4 .age {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    opacity: 0.55;
-    margin-left: 8px;
-  }
-  .course-item p {
-    margin-top: 6px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--tec-ink-soft);
-  }
-
   /* ===== Visible Learning portfolio reveal ===== */
   .portfolio-reveal { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
   @media (min-width: 768px) {
@@ -1078,8 +960,6 @@
   }
 
   /* ===== Price comparison ===== */
-  .price-cols { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
-  @media (min-width: 768px) { .price-cols { grid-template-columns: 1fr 1fr; gap: 28px; } }
   .price-col { padding: 24px; border-radius: 18px; }
   .price-col.cheap   { background: rgba(150,150,150,0.10); color: var(--tec-ink-soft); border: 1px dashed var(--wf-border); }
   .price-col.tec     { background: rgba(254,213,1,0.18); border: 2px solid var(--tec-yellow); }
@@ -1191,36 +1071,6 @@
     will-change: opacity, transform;
   }
 
-  .testimonial-quote-card {
-    margin-top: 36px;
-    padding: 24px;
-    background: var(--tec-blue);
-    color: #fff;
-    border-radius: 18px;
-    position: relative;
-  }
-  .testimonial-quote-card .name-badge {
-    display: inline-block;
-    background: var(--tec-pink);
-    color: #fff;
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 4px 12px;
-    border-radius: 14px;
-    margin-bottom: 14px;
-  }
-  .testimonial-quote-card blockquote {
-    background: #fff;
-    color: var(--tec-ink);
-    padding: 16px 20px;
-    border-radius: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14.5px;
-    line-height: 1.55;
-    font-style: italic;
-  }
-  .testimonial-quote-card blockquote + blockquote { margin-top: 10px; }
   .highlight {
     background: linear-gradient(transparent 60%, var(--tec-yellow) 60%);
     padding: 0 2px;
@@ -1280,64 +1130,7 @@
     border-bottom: 2px solid var(--tec-yellow);
   }
 
-  /* ===== Video testimonials — arched cards (parked-ideas Idea 3) ===== */
-  .video-wall { margin-top: 44px; }
-  .video-wall h3 {
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700; font-size: clamp(20px, 2.4vw, 26px);
-    color: var(--tec-ink); text-align: center; margin-bottom: 4px;
-  }
-  .video-wall .vw-sub {
-    text-align: center; font-family: 'Roboto', sans-serif;
-    font-size: 14px; color: var(--tec-ink-soft); margin-bottom: 26px;
-  }
-  .video-row {
-    display: grid; grid-template-columns: 1fr; gap: 22px;
-    max-width: 760px; margin: 0 auto;
-  }
-  @media (min-width: 680px) { .video-row { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
-  .video-arch {
-    appearance: none; border: none; cursor: pointer;
-    background: var(--vw-tint, #A8E6A1);
-    border-radius: 130px 130px 20px 20px;
-    padding: 20px 14px 18px;
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    box-shadow: var(--shadow-neu);
-    transition: transform 180ms ease, box-shadow 180ms ease;
-  }
-  .video-arch:hover, .video-arch:focus-visible {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
-  }
-  .video-arch:focus-visible { outline: 3px solid var(--tec-ink); outline-offset: 3px; }
-  .vw-poster {
-    position: relative; width: 100%; aspect-ratio: 3/4;
-    border-radius: 110px 110px 14px 14px;
-    overflow: hidden; background: rgba(255,255,255,0.55);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .vw-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .vw-ph {
-    font-family: 'Nunito Sans', sans-serif; font-size: 12px;
-    font-weight: 600; color: var(--tec-ink-soft); text-align: center; padding: 10px;
-  }
-  .vw-play {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 54px; height: 54px; border-radius: 50%;
-    background: var(--tec-yellow); color: var(--tec-ink);
-    border: 3px solid var(--tec-ink);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; padding-left: 3px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-  .video-arch .vw-name {
-    font-family: "chaloops", system-ui, sans-serif; font-weight: 700;
-    font-size: 16px; color: var(--tec-ink);
-  }
-  .video-arch .vw-desc {
-    font-family: 'Roboto', sans-serif; font-size: 12.5px;
-    color: var(--tec-ink-soft); text-align: center; line-height: 1.4;
-  }
+  /* ===== Video modal (testimonials + map popup) ===== */
   .video-modal {
     position: fixed; inset: 0; z-index: 1000;
     background: rgba(20,18,12,0.82);
@@ -1378,6 +1171,11 @@
     position: relative;
     perspective: 1200px;
     cursor: pointer;
+  }
+  /* Phones: the open fan reaches higher relative to the heading, so push the
+     stage down — otherwise the centre card covers the "From TEC parents" line */
+  @media (max-width: 600px) {
+    .folder-stage { margin-top: 100px; }
   }
   .folder {
     position: absolute;
@@ -1974,30 +1772,6 @@
     paint-order: stroke fill;
   }
 
-  /* ===== Section divider — curved organic shape (a-la Novakid) ===== */
-  .divider {
-    width: 100%;
-    height: 36px;
-    margin: -1px 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .divider svg { width: 100%; height: 100%; display: block; }
-
-  /* ===== Draft banner (so Damien knows which sections are wireframe vs polished) ===== */
-  .draft-banner {
-    text-align: center;
-    background: rgba(255, 32, 141, 0.06);
-    border-bottom: 1px solid rgba(255, 32, 141, 0.15);
-    padding: 8px 12px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 12px;
-    color: var(--tec-ink-soft);
-    z-index: 25;
-    position: relative;
-  }
-  .draft-banner strong { color: var(--tec-pink); }
-
   /* ===== Reduced motion ===== */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -2007,19 +1781,47 @@
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   .center { text-align: center; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LanguageSchool",
+  "name": "TEC — Thai English Chinese School (Trat English Community)",
+  "alternateName": "TEC ตราด",
+  "url": "https://tecschool.org/english/",
+  "logo": "https://tecschool.org/tec-robot-logo.png",
+  "image": "https://tecschool.org/assets/og-english.jpg",
+  "telephone": "+66990195890",
+  "email": "tratenglish@gmail.com",
+  "foundingDate": "2014",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ",
+    "addressLocality": "เมืองตราด",
+    "addressRegion": "ตราด",
+    "postalCode": "23000",
+    "addressCountry": "TH"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 12.2368935, "longitude": 102.5225231 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "13:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "08:00", "closes": "18:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/tectratenglish/",
+    "https://www.youtube.com/@tratenglishcommunity",
+    "https://www.tiktok.com/@tratenglish"
+  ]
+}
+</script>
 </head>
 <body class="lang-th">
 
-<img class="paint-bg" src="../splatter-yellow.png" alt="" aria-hidden="true" />
-
-<div class="draft-banner">
-  <strong>Draft wireframe</strong> · Hero & journey slider polished. Other sections structural placeholders. Section labels visible at top of each block.
-</div>
+<img class="paint-bg" src="../splatter-yellow.webp" alt="" aria-hidden="true" />
 
 <header class="site-header">
   <div class="row">
     <a href="../" class="logo-link" aria-label="TEC home">
-      <img class="logo" src="../tec-robot-logo.png" alt="" />
+      <img class="logo" src="../tec-robot-logo.png?v=2" alt="" />
       <span class="brand-text">TEC</span>
     </a>
     <nav class="lang-pills" aria-label="Languages we teach at TEC">
@@ -2046,7 +1848,7 @@
     <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" class="line">LINE: TEC14</a>
   </nav>
   <div class="menu-footer">
-    <span data-en="Language:" data-th="ภาษา:">Language:</span> <span class="lang-on">EN</span> · <a href="#" style="color:var(--tec-ink-soft)">TH</a>
+    <span data-en="Language:" data-th="ภาษา:">Language:</span> <span class="lang-on" id="menu-lang-on">ไทย</span> · <a href="#" id="menu-lang-alt" style="color:var(--tec-ink-soft)">EN</a>
   </div>
 </aside>
 
@@ -2054,7 +1856,6 @@
 
   <!-- ============ P2: Hero (POLISHED) — language morph + parrot vignette ============ -->
   <section class="sec hero" data-marker="P2">
-    <div class="section-marker">P2 · Hero · Polished</div>
     <div class="morph-banner" id="morph-banner" aria-label="Study English at TEC">
       <span class="type" id="morph-type"></span><span class="caret" aria-hidden="true"></span>
     </div>
@@ -2078,12 +1879,11 @@
     </h1>
     <p class="hero-sub lang-en-block">Play. Read. Lead. Build a future at <span class="tecmark">TEC</span>.</p>
     <p class="hero-sub lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tecmark">TEC</span>.</p>
-    <a class="hero-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+    <a class="hero-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P3: Founders (wireframe) ============ -->
   <section class="sec" data-marker="P3" id="about">
-    <div class="section-marker">P3 · Founders · Wireframe</div>
     <h2 class="section-title">
       <span class="lang-en-block">Meet the people behind <span class="tecmark">TEC</span></span>
       <span class="lang-th-block">มารู้จักคนเบื้องหลัง <span class="tecmark">TEC</span></span>
@@ -2127,9 +1927,8 @@
 
   <!-- ============ How TEC Works — 7-tile grid (wireframe) ============ -->
   <section class="sec" data-marker="P3.5">
-    <div class="section-marker">How TEC Works · Wireframe</div>
     <h2 class="section-title">How TEC works <span class="th">วิธีที่เราสอน</span></h2>
-    <p class="lede" data-en="Seven things that make TEC different from a tutor — scan in 30 seconds." data-th="หกสิ่งที่ทำให้ TEC ต่างจากติวเตอร์ — สแกนใน 30 วินาที">Seven things that make TEC different from a tutor — scan in 30 seconds.</p>
+    <p class="lede" data-en="Six things that make TEC different from a tutor — scan in 30 seconds." data-th="หกสิ่งที่ทำให้ TEC ต่างจากติวเตอร์ — สแกนใน 30 วินาที">Six things that make TEC different from a tutor — scan in 30 seconds.</p>
 
     <div class="tile-grid">
       <div class="tile"><img class="tile-icon" src="../assets/icons/reading.png" alt="" width="96" height="96" loading="lazy" decoding="async"><div><h4 data-en="Phonics-first foundation" data-th="ปูพื้นฐานด้วยโฟนิกส์">Phonics-first foundation</h4><p data-en="From Young Learner up, real reading. This makes your child EP-ready." data-th="ตั้งแต่ Young Learner ขึ้นไป อ่านได้จริง พร้อมเข้า EP">From Young Learner up, real reading. This makes your child EP-ready.</p></div></div>
@@ -2143,7 +1942,6 @@
 
   <!-- ============ P4: 90% — single stat square (POLISHED) ============ -->
   <section class="sec" data-marker="P4">
-    <div class="section-marker">P4 · 90% · Amplifier (opening peak)</div>
     <div class="stat-box solo">
       <div class="stat-eyebrow" data-en="Proven results" data-th="ผลลัพธ์ที่พิสูจน์ได้">Proven results</div>
       <div class="num">90%</div>
@@ -2151,13 +1949,12 @@
       <div class="stat-reason" data-en="Because we build real language ability first, not exam tricks." data-th="เพราะเราสร้างความสามารถทางภาษาจริงก่อน ไม่ใช่เทคนิคทำข้อสอบ">Because we build real language ability first, not exam tricks.</div>
     </div>
     <p class="stats-caption">EP-ready — and able to actually speak the language.<br><span style="opacity:.7">พร้อมเข้า EP — และพูดภาษาอังกฤษได้จริง</span></p>
-    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P5: Journey slider (POLISHED — THE PEAK) ============ -->
   <section class="sec full" data-marker="P5" id="courses">
     <div class="inner">
-      <div class="section-marker">P5 · Journey slider · ★ PEAK · Polished</div>
       <p class="peak-eyebrow lang-en-block"><span class="highlight">A 10-year system</span> — not ad-hoc tutoring. A whole mapped pathway.</p>
       <p class="peak-eyebrow lang-th-block"><span class="highlight">ระบบ 10 ปี</span> — ไม่ใช่ติวเตอร์รับจ้าง แต่เป็นเส้นทางที่วางแผนไว้ทั้งสาย</p>
       <p class="lede lang-en-block">We've got you! From your child's first steps in English to an IELTS-ready teenage speaker. Tap through every stage. Every step planned, tracked, and visible. This could be your child.</p>
@@ -2205,7 +2002,6 @@
 
   <!-- ============ P6: Visible Learning portfolio (wireframe) ============ -->
   <section class="sec" data-marker="P6">
-    <div class="section-marker">P6 · Visible Learning portfolio reveal</div>
     <div class="portfolio-reveal" style="margin-top:8px">
       <div class="portfolio-graphic">
         <h3 class="portfolio-graphic-title" data-en="What you'll see as a TEC parent" data-th="ผู้ปกครอง TEC จะได้เห็นอะไรบ้าง">What you'll see as a TEC parent</h3>
@@ -2234,7 +2030,6 @@
 
   <!-- ============ P7: Price comparison + Pipo+Papaeng quote (wireframe) ============ -->
   <section class="sec" data-marker="P7">
-    <div class="section-marker">P7 · Cheap vs Value · Interactive slider</div>
     <h2 class="section-title">Choose value over cheap. <span class="th">เลือกคุณค่ามากกว่าราคาถูก</span></h2>
     <p class="lede" data-en="Same child. Two very different years of English. Drag the slider and see it." data-th="เด็กคนเดียวกัน แต่ปีของภาษาอังกฤษต่างกันลิบลับ ลากสไลด์ดูได้เลย">Same child. Two very different years of English. Drag the slider and see it.</p>
 
@@ -2299,7 +2094,6 @@
 
   <!-- ============ P8: Virtual building tour (wireframe) ============ -->
   <section class="sec" data-marker="P8" id="school">
-    <div class="section-marker">P8 · Building tour · Photo gallery</div>
     <h2 class="section-title" data-en="A school built for how children learn." data-th="โรงเรียนที่สร้างขึ้นตามวิธีที่เด็กเรียนรู้จริง">A school built for how children learn.</h2>
     <p class="lede" data-en="When TEC was built, Damien worked alongside the architect on every decision — so the classrooms are shaped around how children actually learn, not whatever space happened to be free. Nothing here is accidental." data-th="ตอน TEC ถูกสร้างขึ้น เดเมียนทำงานร่วมกับสถาปนิกในทุกการตัดสินใจ — ห้องเรียนจึงออกแบบตามวิธีที่เด็กเรียนรู้จริง ไม่ใช่แค่ใช้พื้นที่ว่างที่เหลืออยู่ ที่นี่ไม่มีอะไรบังเอิญค่ะ">When TEC was built, Damien worked alongside the architect on every decision — so the classrooms are shaped around how children actually learn, not whatever space happened to be free. Nothing here is accidental.</p>
 
@@ -2329,13 +2123,12 @@
         <figcaption data-en="Confident speaking" data-th="พูดอย่างมั่นใจ">Confident speaking</figcaption>
       </figure>
     </div>
-    <a class="tour-link map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" data-en="Visit us in person · Get directions →" data-th="มาเยี่ยมเราที่โรงเรียน · ดูเส้นทาง →">Visit us in person · Get directions →</a>
-    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+    <a class="tour-link map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" data-en="Visit us in person · Get directions&nbsp;→" data-th="มาเยี่ยมเราที่โรงเรียน · ดูเส้นทาง&nbsp;→">Visit us in person · Get directions&nbsp;→</a>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P9: Inline testimonials with FOLDER pattern (parked-ideas Idea 2) ============ -->
   <section class="sec" data-marker="P9" id="testimonials">
-    <div class="section-marker">P9 · Inline testimonials · Folder pattern (parked-ideas Idea 2) · Wireframe-interactive</div>
     <div class="folder-section">
       <h2 class="section-title" tabindex="0">
         Wall of love <span class="heart-pulse" aria-hidden="true">💖</span><br>
@@ -2395,7 +2188,6 @@
 
   <!-- ============ FAQ accordion (wireframe) ============ -->
   <section class="sec" data-marker="FAQ">
-    <div class="section-marker">FAQ</div>
     <h2 class="section-title center">Quiet questions, answered. <span class="th">คำถามที่อยากถามแต่ไม่กล้าถาม</span></h2>
 
     <div class="faq" id="faq">
@@ -2424,23 +2216,22 @@
         <div class="faq-a"><div>
           <div class="lang-en-block">949/11 หมู่12 ถนน เนินตาแมว, วังกระแจะ, Mueang Trat District, Trat 23000, Thailand</div>
           <div class="lang-th-block">949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด จังหวัดตราด 23000</div>
-          <div style="margin-top:6px"><a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" style="color:var(--tec-pink);font-weight:700" data-en="Open in Google Maps →" data-th="เปิดใน Google Maps →">Open in Google Maps →</a></div>
+          <div style="margin-top:6px"><a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" style="color:var(--tec-pink);font-weight:700" data-en="Open in Google Maps&nbsp;→" data-th="เปิดใน Google Maps&nbsp;→">Open in Google Maps&nbsp;→</a></div>
           <div style="margin-top:14px" class="lang-en-block"><strong style="color:var(--tec-ink)">When we're open:</strong> Fridays 1–8pm · Saturdays &amp; Sundays 8am–6pm. <span style="opacity:.7">(Closed Monday to Thursday.)</span></div>
           <div style="margin-top:14px" class="lang-th-block"><strong style="color:var(--tec-ink)">เวลาเปิดทำการ:</strong> ศุกร์ 13.00–20.00 น. · เสาร์และอาทิตย์ 08.00–18.00 น. <span style="opacity:.7">(ปิดวันจันทร์ถึงพฤหัสบดี)</span></div>
         </div></div>
       </div>
     </div>
-    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview →" data-th="นัดสัมภาษณ์วัดระดับฟรี →">Book a free placement interview →</a>
+    <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P10: CTA section (wireframe) ============ -->
   <section class="sec" data-marker="P10" id="contact">
-    <div class="section-marker">P10 · CTA section · ★ END · Wireframe</div>
     <h2 class="section-title center">Take the next step. <span class="th">ก้าวต่อไป</span></h2>
 
     <div class="cta-grid">
       <div class="cta-card line">
-        <div class="icon-circle">L</div>
+        <div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" style="width:26px;height:26px"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></div>
         <h4 data-en="Ask us anything on LINE" data-th="ถามเราได้ทุกอย่างทาง LINE">Ask us anything on LINE</h4>
         <p class="lang-en-block">Send us a message — schedules, fees, your child's level, anything you'd like to ask before booking. We're usually back within a few hours. Handle: <strong>TEC14</strong>.</p>
         <p class="lang-th-block">ทักเราเข้ามาได้เลย — ตารางเรียน ค่าเรียน ระดับของลูก หรืออะไรก็ตามที่อยากถามก่อนตัดสินใจ เรามักตอบกลับภายในไม่กี่ชั่วโมง LINE ID: <strong>TEC14</strong></p>
@@ -2462,7 +2253,6 @@
 
   <!-- ============ P11: Get a call back form (wireframe) ============ -->
   <section class="sec" data-marker="P11" id="callback-section">
-    <div class="section-marker">P11 · Callback form</div>
     <h2 class="section-title center">Let's set up your free placement interview. <span class="th">นัดสัมภาษณ์วัดระดับฟรี</span></h2>
     <p class="lede center" style="text-align:center;max-width:560px;margin-left:auto;margin-right:auto" data-en="Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที กับครูอาวุโส — ไม่มีข้อผูกมัด">Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation.</p>
 
@@ -2496,8 +2286,8 @@
       <p class="thanks-sub lang-en-block">We've got your details — we'll call you back soon to set up your free placement interview.</p>
       <p class="thanks-sub lang-th-block">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ</p>
       <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">
-        <span class="lang-en-block">Prefer to chat now? Message us on LINE →</span>
-        <span class="lang-th-block">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE →</span>
+        <span class="lang-en-block">Prefer to chat now? Message us on LINE&nbsp;→</span>
+        <span class="lang-th-block">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</span>
       </a>
     </div>
 
@@ -2541,7 +2331,7 @@
 
 <!-- ============ Sticky bottom CTA bar (mobile only) ============ -->
 <div class="sticky-cta" aria-label="Quick contact">
-  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE">L</a>
+  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE"><svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></a>
   <a class="callback-btn" href="#callback-section" data-en="Get a callback" data-th="ให้เราโทรกลับ">Get a callback</a>
 </div>
 
@@ -2550,7 +2340,7 @@
   <div class="row">
     <div>
       <div class="footer-logo-row">
-        <img src="../tec-robot-logo.png" alt="TEC — I love languages mascot" />
+        <img src="../tec-robot-logo.png?v=2" alt="TEC — I love languages mascot" />
         <h5 class="lang-en-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — <span class="lang-th">Thai</span> <span class="lang-en">English</span> <span class="lang-zh">Chinese</span> School</h5>
         <h5 class="lang-th-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษา<span class="lang-th">ไทย</span>-<span class="lang-en">อังกฤษ</span>-<span class="lang-zh">จีน</span></h5>
       </div>
@@ -2573,7 +2363,7 @@
           <a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener">949/11 หมู่12 เนินตาแมว, Trat</a>
         </li>
       </ul>
-      <a class="footer-mini-cta" href="#callback-section" data-en="Book a placement interview →" data-th="นัดสัมภาษณ์วัดระดับ →">Book a placement interview →</a>
+      <a class="footer-mini-cta" href="#callback-section" data-en="Book a placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับ&nbsp;→">Book a placement interview&nbsp;→</a>
       <p class="footer-cta-sub" data-en="Find the right class for your child." data-th="หาคลาสที่เหมาะกับลูกของคุณ">Find the right class for your child.</p>
       <div class="footer-social-row">
         <span class="footer-social-label" data-en="Follow us" data-th="ติดตามเรา">Follow us</span>
@@ -2659,6 +2449,10 @@
         const v = thOn ? el.getAttribute('data-th') : el.getAttribute('data-en');
         if (v != null) el.textContent = v;
       });
+      // Keep the drawer's language row in sync with the pill
+      const mOn = document.getElementById('menu-lang-on');
+      const mAlt = document.getElementById('menu-lang-alt');
+      if (mOn && mAlt) { mOn.textContent = thOn ? 'ไทย' : 'EN'; mAlt.textContent = thOn ? 'EN' : 'ไทย'; }
     }
 
     btn.addEventListener('click', (e) => {
@@ -2666,6 +2460,10 @@
       apply(!document.body.classList.contains('lang-th'));
       document.dispatchEvent(new CustomEvent('lang-changed', { detail: { lang: document.body.classList.contains('lang-th') ? 'th' : 'en' } }));
     });
+
+    // The drawer's secondary language link triggers the same toggle
+    const mAlt = document.getElementById('menu-lang-alt');
+    if (mAlt) mAlt.addEventListener('click', (e) => { e.preventDefault(); btn.click(); });
 
     // Sync UI to the initial body state. If page loads with body.lang-th
     // (Thai as default), run the data-th swap so [data-th] labels switch too.
@@ -3143,7 +2941,11 @@
   // ===== FAQ accordion =====
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
-    q.addEventListener('click', () => item.classList.toggle('open'));
+    q.setAttribute('aria-expanded', 'false');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   });
 
   // ===== Open callback CTA → scroll to form =====

@@ -3,8 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>TEC — Trat Language School</title>
-<meta name="description" content="Thai · English · Chinese. A boutique language school in Trat since 2014." />
+<title>TEC — โรงเรียนสอนภาษา ตราด · Thai English Chinese | Trat Language School</title>
+<meta name="description" content="Thai · English · Chinese. A boutique language school in Trat since 2014. โรงเรียนสอนภาษาในตราด ก่อตั้งปี 2014" />
+<link rel="canonical" href="https://tecschool.org/">
+<meta name="theme-color" content="#FED501">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TEC — Thai English Chinese School">
+<meta property="og:title" content="TEC — โรงเรียนสอนภาษา ตราด · Thai English Chinese School">
+<meta property="og:description" content="Thai · English · Chinese. A boutique language school in Trat since 2014.">
+<meta property="og:url" content="https://tecschool.org/">
+<meta property="og:image" content="https://tecschool.org/assets/og-tec.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="th_TH">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -106,6 +118,16 @@
     height: clamp(6px, 0.7vw, 10px);
     margin-top: -2px;
     overflow: visible;
+  }
+  /* Phones: the desktop right-offset pushes the note off the left edge —
+     centre it above the headline instead */
+  @media (max-width: 640px) {
+    .trust-note {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      top: clamp(48px, 9vh, 90px);
+    }
   }
 
   /* ---------- Hero stack ---------- */
@@ -387,10 +409,42 @@
   }
   .version-switch:hover { opacity: 1; color: var(--tec-ink); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LanguageSchool",
+  "name": "TEC — Thai English Chinese School (Trat English Community)",
+  "alternateName": "TEC ตราด",
+  "url": "https://tecschool.org/",
+  "logo": "https://tecschool.org/tec-robot-logo.png",
+  "image": "https://tecschool.org/assets/og-tec.jpg",
+  "telephone": "+66990195890",
+  "email": "tratenglish@gmail.com",
+  "foundingDate": "2014",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ",
+    "addressLocality": "เมืองตราด",
+    "addressRegion": "ตราด",
+    "postalCode": "23000",
+    "addressCountry": "TH"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 12.2368935, "longitude": 102.5225231 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "13:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "08:00", "closes": "18:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/tectratenglish/",
+    "https://www.youtube.com/@tratenglishcommunity",
+    "https://www.tiktok.com/@tratenglish"
+  ]
+}
+</script>
 </head>
 <body>
 
-  <img class="paint-bg" src="V2 Paint splatters Home page.png" alt="" aria-hidden="true" />
+  <img class="paint-bg" src="home-splatter.webp" alt="" aria-hidden="true" />
 
   <div class="trust-note" role="img" aria-label="Trusted in Trat since 2014">
     <span class="text">Trusted in Trat since 2014</span>

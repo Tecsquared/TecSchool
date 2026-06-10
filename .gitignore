@@ -22,7 +22,9 @@ Untitled.png
 Web Site hero v2.jpeg
 founder Mas.png
 colour scheme.png
-# NOTE: V2 Paint splatters Home page.png is intentionally NOT ignored — the home page uses it as the background.
+# Source PNGs for the splatter backgrounds — the site now ships the .webp versions
+V2 Paint splatters Home page.png
+splatter-yellow.png
 
 # -- Internal working folders --
 _work/
