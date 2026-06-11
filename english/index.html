@@ -2627,20 +2627,25 @@
     // Bump PHOTO_V whenever level photos are re-exported (busts the browser image cache)
     const PHOTO_V = 5;
     // Stage name → public Notion course page ("Link for Customers" column in
-    // the Products + Services database). Stages without a published link yet
-    // keep the "coming soon" button behaviour — fill the Notion column and
-    // add the link here when ready.
+    // the Products + Services database). Movers and Flyers share one combined
+    // page each, matching how the Notion database groups them.
     const courseLinks = {
       'Teeny TEC':       'https://tratenglish.notion.site/Teeny-TEC-ae87555210a54f3396a11b56c768f6d0',
       'Tiny TEC':        'https://tratenglish.notion.site/Tiny-TEC-fa708735254c48f5973fbea2d6df7f43',
       'Young Learner 1': 'https://tratenglish.notion.site/Young-Learner-1-e5e3847cd4a24c0a9bceadba456cfac3',
       'Young Learner 2': 'https://tratenglish.notion.site/Young-Learner-2-e52e5f951ece48799b74b783ad83fd3d',
+      'Starters Prep':   'https://tratenglish.notion.site/StartersPrep-27f9c08c2aaa80af9eabf1ba62ad760c',
       'Starters 1':      'https://tratenglish.notion.site/Starters-1-e82cd67e86bf4c47b5b5cabfc193e3c1',
       'Starters 2':      'https://tratenglish.notion.site/Starters-2-fa4691e8565c4748a6074968a27bc2b3',
+      'Movers 1':        'https://tratenglish.notion.site/Movers1-2-9e109f47add34defbc05b5e71ca67b3b',
+      'Movers 2':        'https://tratenglish.notion.site/Movers1-2-9e109f47add34defbc05b5e71ca67b3b',
+      'Flyers 1':        'https://tratenglish.notion.site/Flyers-1-2-6524dedac6ea4ec3b8f6872f736cb348',
+      'Flyers 2':        'https://tratenglish.notion.site/Flyers-1-2-6524dedac6ea4ec3b8f6872f736cb348',
       'SpeakWrite 1':    'https://tratenglish.notion.site/Speak-Write-1-d75c18f525fc480c84bad760a34b1f05',
       'SpeakWrite 2':    'https://tratenglish.notion.site/Speak-Write-2-b9199ef2d3bc48bbae5193e8b4dc921e',
       'Reader':          'https://tratenglish.notion.site/Reader-efd2536c6cae44839b708cca10d3c219',
       'Reader Plus':     'https://tratenglish.notion.site/Speaker-f21f096b71db4d4f8f1faad4e380b19a',
+      'Phonics Plus':    'https://tratenglish.notion.site/Phonics-Plus-fc17775b2b6f4b3d9f200f3e1a4d4f60',
       'One-to-One':      'https://tratenglish.notion.site/One-to-One-edd22022817245debbb19f2172e6edb1'
     };
     // Stage name → level photo
