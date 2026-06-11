@@ -186,10 +186,10 @@
     aspect-ratio: 16/9; background: #000;
     cursor: pointer;
   }
-  .vignette .vignette-frame img, .vignette .vignette-frame iframe {
+  .vignette .vignette-frame video {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; border: 0; display: block;
+    object-fit: cover; display: block;
   }
   .vignette .play-fab {
     position: absolute; right: 14%; top: 50%;
@@ -540,8 +540,12 @@
     <div><span class="launch-badge" data-en="🎉 First intake now open" data-th="🎉 เปิดรับสมัครรุ่นแรกแล้ว">🎉 เปิดรับสมัครรุ่นแรกแล้ว</span></div>
 
     <figure class="vignette" id="hero-vignette">
-      <div class="vignette-frame" id="yt-frame">
-        <img src="https://i.ytimg.com/vi/B4hWbZLfxGI/hqdefault.jpg" alt="Damien from TEC — why families choose value over cheap" loading="lazy">
+      <div class="vignette-frame">
+        <video class="vignette-video" playsinline preload="none"
+               poster="/assets/video/chinese-hero-poster.jpg"
+               aria-label="Damien from TEC — choose value over cheap: why the TEC system beats cheap tutoring">
+          <source src="/assets/video/chinese-hero.mp4" type="video/mp4">
+        </video>
         <button class="play-fab" type="button" aria-label="Play video"></button>
       </div>
     </figure>
@@ -833,23 +837,33 @@
     })();
   })();
 
-  // ===== Hero video — lite YouTube embed, loads only on tap =====
-  // Swap YT_ID for the Chinese-dubbed version when it's uploaded.
+  // ===== Hero video — self-hosted, tap to play (same pattern as the English page) =====
+  // Replace assets/video/chinese-hero.mp4 with the Mandarin-dubbed cut when it's ready.
   (function () {
-    const YT_ID = 'B4hWbZLfxGI';
-    const frame = document.getElementById('yt-frame');
-    const vignette = document.getElementById('hero-vignette');
-    if (!frame) return;
-    frame.addEventListener('click', function () {
-      if (vignette.classList.contains('is-playing')) return;
-      vignette.classList.add('is-playing');
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0';
-      iframe.title = 'TEC video';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      frame.innerHTML = '';
-      frame.appendChild(iframe);
+    var pv = document.getElementById('hero-vignette');
+    if (!pv) return;
+    var vid   = pv.querySelector('.vignette-video');
+    var fab   = pv.querySelector('.play-fab');
+    var frame = pv.querySelector('.vignette-frame');
+    if (!vid || !fab) return;
+
+    function start() {
+      if (pv.classList.contains('is-playing')) return;
+      vid.setAttribute('controls', '');
+      pv.classList.add('is-playing');
+      var p = vid.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () { /* fall back to native controls */ });
+      }
+    }
+
+    fab.addEventListener('click', function (e) { e.stopPropagation(); start(); });
+    if (frame) frame.addEventListener('click', start);
+
+    vid.addEventListener('ended', function () {
+      pv.classList.remove('is-playing');
+      vid.removeAttribute('controls');
+      vid.load();   /* restores the poster for replay */
     });
   })();
 
