@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chinese at TEC — โรงเรียนสอนภาษาจีนสำหรับเด็ก จ.ตราด · 中文课程</title>
-<meta name="description" content="ภาษาจีนสำหรับเด็กที่ TEC ตราด — คลาสเล็ก 6–8 คน เส้นทาง Panda 1–3 ระบบ Visible Learning เดียวกับโรงเรียนภาษาอังกฤษของเรา | Chinese for kids at TEC, Trat. Small classes, the Panda pathway, and the same TEC Method behind our English school.">
+<meta name="description" content="ภาษาจีนสำหรับเด็กที่ TEC ตราด — คลาสเล็ก 6–8 คน เส้นทาง 8 ระดับจากแพนด้าสู่มังกร ระบบ Visible Learning เดียวกับโรงเรียนภาษาอังกฤษของเรา | Chinese for kids at TEC, Trat. Small classes and the Panda-to-Dragon pathway, built on the TEC Method.">
 <link rel="canonical" href="https://www.tecschool.org/chinese/">
 <meta name="theme-color" content="#FF208D">
 <meta property="og:type" content="website">
@@ -65,6 +65,13 @@
   }
   header, main, footer, .sticky-cta { position: relative; z-index: 1; }
 
+  /* ===== Pill-driven language swap (same system as the English page) ===== */
+  .th { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; font-weight: 600; }
+  .lang-th-block { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; }
+  body:not(.lang-th) .lang-th-block { display: none !important; }
+  body.lang-th        .lang-en-block { display: none !important; }
+  body.lang-th        .lang-th-block { display: revert; }
+
   /* ===== Header (matches the English page) ===== */
   .site-header {
     position: sticky; top: 0; z-index: 20;
@@ -89,7 +96,7 @@
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700; font-size: 12px;
     padding: 5px 11px; border-radius: 20px;
-    white-space: nowrap;
+    white-space: nowrap; cursor: pointer;
     transition: opacity 150ms ease, transform 150ms ease;
     color: var(--tec-ink); background: var(--tec-pill-bg);
   }
@@ -109,20 +116,16 @@
     max-width: 1180px; margin: 0 auto;
   }
   .section-title {
-    font-family: "chaloops", system-ui, sans-serif;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(28px, 4.8vw, 48px);
-    line-height: 1.08;
+    line-height: 1.12;
     margin-bottom: clamp(18px, 2.4vw, 28px);
   }
-  .th { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; font-weight: 600; }
-  .en-sub { display: block; font-family: "chaloops", system-ui, sans-serif; font-size: 0.62em; opacity: 0.75; margin-top: 6px; font-weight: 700; }
+  body:not(.lang-th) .section-title { font-family: "chaloops", system-ui, sans-serif; line-height: 1.08; }
   .lede { font-size: clamp(15px, 1.6vw, 18px); color: var(--tec-ink-soft); max-width: 720px; }
-  .lede .en { display: block; font-size: 0.88em; opacity: 0.75; margin-top: 4px; }
   .center { text-align: center; }
   .center .lede { margin-left: auto; margin-right: auto; }
-
-  /* Pink "ZH" word-mark treatment (mirrors .tecmark on the English page) */
   .zhmark { color: var(--tec-pink); }
 
   /* ===== Hero ===== */
@@ -217,13 +220,8 @@
     }
   }
   .vignette.is-playing .play-fab { display: none; }
-  .video-note {
-    font-family: 'Nunito Sans', sans-serif; font-size: 12px;
-    color: var(--tec-ink-soft); opacity: 0.7; margin-top: -40px; margin-bottom: 40px;
-  }
 
   .hero-title {
-    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(26px, 4.6vw, 50px);
     line-height: 1.2;
@@ -232,12 +230,8 @@
     margin: 0 auto;
     text-wrap: balance;
   }
-  .hero-title .en {
-    display: block;
-    font-family: "chaloops", system-ui, sans-serif;
-    font-size: 0.52em; font-weight: 700;
-    opacity: 0.8; margin-top: 16px;
-  }
+  .hero-title .lang-th-block { font-weight: 700; }
+  .hero-title .lang-en-block { font-family: "chaloops", system-ui, sans-serif; line-height: 1.1; }
   .hero-cta {
     display: inline-block;
     margin: 34px auto 0;
@@ -255,7 +249,6 @@
     box-shadow: 0 8px 18px rgba(0,0,0,0.18);
     outline: none;
   }
-  .hero-cta .en { display: block; font-size: 0.72em; opacity: 0.85; font-family: "chaloops", system-ui, sans-serif; }
 
   /* ===== Why TEC tiles ===== */
   .tile-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
@@ -278,9 +271,8 @@
     margin-bottom: 4px;
   }
   .tile p { font-size: 13.5px; color: var(--tec-ink-soft); line-height: 1.45; }
-  .tile p .en { display: block; opacity: 0.75; font-size: 12.5px; margin-top: 3px; }
 
-  /* ===== Panda pathway ===== */
+  /* ===== Panda → Dragon pathway ===== */
   .panda-wrap {
     background: linear-gradient(180deg, rgba(255,32,141,0.06) 0%, rgba(254,213,1,0.05) 100%);
     border-radius: 28px;
@@ -288,36 +280,43 @@
     margin-top: 8px;
   }
   .panda-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 24px; }
-  @media (min-width: 768px) { .panda-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 600px) { .panda-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .panda-grid { grid-template-columns: repeat(4, 1fr); } }
   .panda-card {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.85);
     border: 2.5px solid var(--tec-ink);
     border-radius: 20px;
-    padding: 24px 22px;
+    padding: 10px 10px 18px;
     box-shadow: 5px 6px 0 rgba(0,0,0,0.10);
     position: relative;
     transition: transform 200ms ease;
   }
   .panda-card:hover { transform: translateY(-4px); }
-  .panda-card .panda-emoji { font-size: 40px; line-height: 1; }
-  .panda-card h3 {
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700; font-size: 26px;
-    margin: 10px 0 2px;
+  .panda-card .photo {
+    border-radius: 13px; overflow: hidden;
+    aspect-ratio: 1/1;
   }
+  .panda-card .photo img { width: 100%; height: 100%; object-fit: cover; }
   .panda-card .stage-num {
-    position: absolute; top: -14px; right: 16px;
+    position: absolute; top: 2px; left: 2px;
     background: var(--tec-pink); color: #fff;
     font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700; font-size: 16px;
-    width: 34px; height: 34px; border-radius: 50%;
+    font-weight: 700; font-size: 15px;
+    min-width: 32px; height: 32px; padding: 0 8px;
+    border-radius: 16px;
     border: 2px solid var(--tec-ink);
     display: flex; align-items: center; justify-content: center;
+    z-index: 2;
   }
-  .panda-card .blurb { font-size: 14px; color: var(--tec-ink-soft); margin-top: 8px; }
-  .panda-card .blurb .en { display: block; font-size: 12.5px; opacity: 0.75; margin-top: 4px; }
+  .panda-card.dragon .stage-num { background: var(--tec-ink); }
+  .panda-card h3 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 21px;
+    margin: 12px 6px 2px;
+  }
+  .panda-card .blurb { font-size: 13.5px; color: var(--tec-ink-soft); margin: 4px 6px 0; line-height: 1.45; }
   .panda-meta {
-    margin-top: 24px;
+    margin-top: 26px;
     display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
     font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
     font-weight: 600; font-size: 13px;
@@ -350,7 +349,6 @@
     font-weight: 600; font-size: clamp(16px, 2vw, 19px);
     line-height: 1.5;
   }
-  .trust-strip .trust-text .en { display: block; font-size: 0.82em; opacity: 0.75; margin-top: 6px; font-weight: 500; }
   .trust-strip .trust-link {
     display: inline-block; margin-top: 10px;
     font-family: "chaloops", system-ui, sans-serif;
@@ -398,7 +396,6 @@
     font-size: 14.5px; color: var(--tec-ink-soft); line-height: 1.55;
   }
   .faq-a > div { padding: 0 12px 18px; }
-  .faq-a .en { display: block; opacity: 0.75; font-size: 13.5px; margin-top: 6px; }
   .faq-item.open .faq-a { max-height: 400px; }
 
   /* ===== Form ===== */
@@ -464,7 +461,7 @@
     font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
     font-weight: 700; font-size: 20px;
   }
-  .community-note .en { display: block; font-family: "chaloops", system-ui, sans-serif; font-size: 0.78em; opacity: 0.75; margin-top: 4px; }
+  .community-note .sub { display: block; font-family: "chaloops", system-ui, sans-serif; font-size: 0.78em; opacity: 0.75; margin-top: 4px; }
 
   /* ===== Sticky bottom bar (mobile) ===== */
   .sticky-cta {
@@ -512,7 +509,7 @@
   }
 </style>
 </head>
-<body>
+<body class="lang-th">
 
 <img class="paint-bg" src="/chinese-splatter.webp" alt="" aria-hidden="true">
 
@@ -523,11 +520,12 @@
       <span class="brand-text">TEC</span>
     </a>
     <nav class="lang-pills" aria-label="Languages we teach at TEC">
-      <a class="lang-switch th" href="/thai">Thai</a>
-      <a class="lang-switch en" href="/english">English</a>
+      <a class="lang-switch th" href="/thai" aria-label="Thai courses (coming soon)">Thai</a>
+      <a class="lang-switch en" href="/english" aria-label="English courses">English</a>
       <a class="lang-switch zh active" href="/chinese" aria-current="page">Chinese</a>
     </nav>
     <span class="spacer"></span>
+    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="Switch this page to English" aria-pressed="true" data-en-label="TH" data-th-label="EN">EN</a>
   </div>
 </header>
 
@@ -539,7 +537,7 @@
       <span class="type" id="morph-type"></span><span class="caret" aria-hidden="true"></span>
     </div>
 
-    <div><span class="launch-badge">🎉 เปิดรับสมัครรุ่นแรกแล้ว · First intake now open</span></div>
+    <div><span class="launch-badge" data-en="🎉 First intake now open" data-th="🎉 เปิดรับสมัครรุ่นแรกแล้ว">🎉 เปิดรับสมัครรุ่นแรกแล้ว</span></div>
 
     <figure class="vignette" id="hero-vignette">
       <div class="vignette-frame" id="yt-frame">
@@ -549,85 +547,105 @@
     </figure>
 
     <h1 class="hero-title">
-      โรงเรียนที่สอนภาษาอังกฤษให้เด็กตราดมา 13 ปี<br>ตอนนี้สอนภาษา<span class="zhmark">จีน</span>แล้ว
-      <span class="en">The school that's taught Trat English for 13 years now teaches <span class="zhmark">Chinese</span>.</span>
+      <span class="lang-th-block">โรงเรียนที่สอนภาษาอังกฤษให้เด็กตราดมา 13 ปี<br>ตอนนี้สอนภาษา<span class="zhmark">จีน</span>แล้ว</span>
+      <span class="lang-en-block">The school that's taught Trat English for 13 years<br>now teaches <span class="zhmark">Chinese</span>.</span>
     </h1>
 
-    <a class="hero-cta" href="#callback-section">นัดสัมภาษณ์วัดระดับฟรี&nbsp;→
-      <span class="en">Book a free placement interview</span>
-    </a>
+    <a class="hero-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">นัดสัมภาษณ์วัดระดับฟรี&nbsp;→</a>
   </section>
 
   <!-- ===== Why TEC for Chinese ===== -->
   <section class="sec">
-    <h2 class="section-title">ทำไมเรียนภาษาจีนที่ TEC
-      <span class="en-sub">Why learn Chinese at TEC</span>
+    <h2 class="section-title">
+      <span class="lang-th-block">ทำไมเรียนภาษาจีนที่ TEC</span>
+      <span class="lang-en-block">Why learn Chinese at TEC</span>
     </h2>
-    <p class="lede">ระบบเดียวกับที่ทำให้ฝั่งภาษาอังกฤษของเราต่างจากติวเตอร์ — นำมาใช้กับภาษาจีนตั้งแต่วันแรก
-      <span class="en">The same system that sets our English school apart from tutors — applied to Chinese from day one.</span>
-    </p>
+    <p class="lede" data-en="The same system that sets our English school apart from tutors — applied to Chinese from day one." data-th="ระบบเดียวกับที่ทำให้ฝั่งภาษาอังกฤษของเราต่างจากติวเตอร์ — นำมาใช้กับภาษาจีนตั้งแต่วันแรก">ระบบเดียวกับที่ทำให้ฝั่งภาษาอังกฤษของเราต่างจากติวเตอร์ — นำมาใช้กับภาษาจีนตั้งแต่วันแรก</p>
 
     <div class="tile-grid">
       <div class="tile"><img class="tile-icon" src="/assets/icons/speaking.png" alt="" width="96" height="96" loading="lazy"><div>
-        <h4>พูดจีนตั้งแต่วันแรก</h4>
-        <p>ทุกคาบ เด็กได้พูดจริง ไม่ใช่นั่งท่องตาม<span class="en">Children speak Chinese in every lesson — never just repeat it.</span></p>
+        <h4 data-en="Speaking from day one" data-th="พูดจีนตั้งแต่วันแรก">พูดจีนตั้งแต่วันแรก</h4>
+        <p data-en="Children speak Chinese in every lesson — never just repeat it." data-th="ทุกคาบ เด็กได้พูดจริง ไม่ใช่นั่งท่องตาม">ทุกคาบ เด็กได้พูดจริง ไม่ใช่นั่งท่องตาม</p>
       </div></div>
       <div class="tile"><img class="tile-icon" src="/assets/icons/streamed.png" alt="" width="96" height="96" loading="lazy"><div>
-        <h4>คลาสเล็กจริง 6–8 คน</h4>
-        <p>ครูเห็นเด็กทุกคน ทุกคาบ<span class="en">Genuinely small classes of 6–8 — the teacher sees every child, every lesson.</span></p>
+        <h4 data-en="Genuinely small classes" data-th="คลาสเล็กจริง 6–8 คน">คลาสเล็กจริง 6–8 คน</h4>
+        <p data-en="Six to eight students — the teacher sees every child, every lesson." data-th="ครูเห็นเด็กทุกคน ทุกคาบ">ครูเห็นเด็กทุกคน ทุกคาบ</p>
       </div></div>
       <div class="tile"><img class="tile-icon" src="/assets/icons/checklist.png" alt="" width="96" height="96" loading="lazy"><div>
         <h4>Visible Learning</h4>
-        <p>ผู้ปกครองเห็นพัฒนาการของลูกชัด ๆ เหมือนฝั่งภาษาอังกฤษ<span class="en">Parents see their child's progress clearly — the same reporting system as our English school.</span></p>
+        <p data-en="Parents see their child's progress clearly — the same reporting system as our English school." data-th="ผู้ปกครองเห็นพัฒนาการของลูกชัด ๆ เหมือนฝั่งภาษาอังกฤษ">ผู้ปกครองเห็นพัฒนาการของลูกชัด ๆ เหมือนฝั่งภาษาอังกฤษ</p>
       </div></div>
       <div class="tile"><img class="tile-icon" src="/assets/icons/teaching.png" alt="" width="96" height="96" loading="lazy"><div>
-        <h4>ระบบ TEC Method</h4>
-        <p>หลักสูตรออกแบบเป็นเส้นทาง ไม่ใช่บทเรียนคิดไปทีละสัปดาห์<span class="en">A designed pathway under the TEC Method — not week-to-week lesson ideas.</span></p>
+        <h4 data-en="The TEC Method" data-th="ระบบ TEC Method">ระบบ TEC Method</h4>
+        <p data-en="A designed pathway — not week-to-week lesson ideas." data-th="หลักสูตรออกแบบเป็นเส้นทาง ไม่ใช่บทเรียนคิดไปทีละสัปดาห์">หลักสูตรออกแบบเป็นเส้นทาง ไม่ใช่บทเรียนคิดไปทีละสัปดาห์</p>
       </div></div>
     </div>
   </section>
 
-  <!-- ===== The Panda pathway ===== -->
+  <!-- ===== The Panda → Dragon pathway ===== -->
   <section class="sec" id="courses">
     <div class="panda-wrap">
-      <h2 class="section-title center">เส้นทางแพนด้า 🐼
-        <span class="en-sub">The Panda pathway</span>
+      <h2 class="section-title center">
+        <span class="lang-th-block">เส้นทางจากแพนด้า 🐼 สู่มังกร 🐉</span>
+        <span class="lang-en-block">From Panda 🐼 to Dragon 🐉</span>
       </h2>
-      <p class="lede center">เริ่มจากศูนย์ได้เลย — แต่ละระดับต่อยอดจากระดับก่อนหน้า เหมือนเส้นทางภาษาอังกฤษของเรา
-        <span class="en">Start from zero — each level builds on the last, just like our English pathway.</span>
-      </p>
+      <p class="lede center" data-en="Eight mapped levels — start from zero and build step by step, just like our English pathway." data-th="8 ระดับที่วางแผนไว้ทั้งสาย — เริ่มจากศูนย์ได้ และต่อยอดทีละขั้น เหมือนเส้นทางภาษาอังกฤษของเรา">8 ระดับที่วางแผนไว้ทั้งสาย — เริ่มจากศูนย์ได้ และต่อยอดทีละขั้น เหมือนเส้นทางภาษาอังกฤษของเรา</p>
 
       <div class="panda-grid">
         <div class="panda-card">
           <span class="stage-num">1</span>
-          <div class="panda-emoji">🐼</div>
-          <h3>Panda 1</h3>
-          <p class="blurb">คำแรก เสียง และโทนเสียง ผ่านเพลงและการเล่น — ให้ภาษาจีนเป็นเรื่องสนุกตั้งแต่ก้าวแรก
-            <span class="en">First words, sounds and tones through songs and play — Chinese starts fun.</span>
-          </p>
+          <div class="photo"><img src="/assets/chinese-levels/01-teeny-panda.jpg" alt="Teeny Panda — the littlest learners at TEC" loading="lazy"></div>
+          <h3>Teeny Panda 🐼</h3>
+          <p class="blurb" data-en="The littlest first step — songs, games and the sounds of Chinese through play." data-th="ก้าวแรกสุดของหนูน้อย — เพลง เกม และเสียงภาษาจีนผ่านการเล่น">ก้าวแรกสุดของหนูน้อย — เพลง เกม และเสียงภาษาจีนผ่านการเล่น</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">2</span>
-          <div class="panda-emoji">🐼📖</div>
-          <h3>Panda 2</h3>
-          <p class="blurb">อ่านพินอิน เขียนตัวอักษรแรก และเริ่มบทสนทนาในชีวิตประจำวัน
-            <span class="en">Reading pinyin, first characters, and everyday conversation.</span>
-          </p>
+          <div class="photo"><img src="/assets/chinese-levels/02-tiny-panda.jpg" alt="Tiny Panda — young learners at TEC" loading="lazy"></div>
+          <h3>Tiny Panda 🐼</h3>
+          <p class="blurb" data-en="First words and confidence, through activities little ones love." data-th="คำศัพท์แรกและความมั่นใจ ผ่านกิจกรรมที่เด็กเล็กรัก">คำศัพท์แรกและความมั่นใจ ผ่านกิจกรรมที่เด็กเล็กรัก</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">3</span>
-          <div class="panda-emoji">🐼🗣️</div>
-          <h3>Panda 3</h3>
-          <p class="blurb">สื่อสารได้มั่นใจ อ่าน-เขียนตัวอักษรได้มากขึ้น พร้อมต่อยอดสู่ระดับถัดไป
-            <span class="en">Confident communication, stronger reading and writing — ready for what's next.</span>
-          </p>
+          <div class="photo"><img src="/assets/chinese-levels/03-panda-1.jpg" alt="Panda 1 at TEC" loading="lazy"></div>
+          <h3>Panda 1 🐼</h3>
+          <p class="blurb" data-en="Words, sounds and tones — Chinese starts fun." data-th="คำ เสียง และโทนเสียง — ภาษาจีนเริ่มต้นแบบสนุก">คำ เสียง และโทนเสียง — ภาษาจีนเริ่มต้นแบบสนุก</p>
+        </div>
+        <div class="panda-card">
+          <span class="stage-num">4</span>
+          <div class="photo"><img src="/assets/chinese-levels/04-panda-2.jpg" alt="Panda 2 at TEC" loading="lazy"></div>
+          <h3>Panda 2 🐼</h3>
+          <p class="blurb" data-en="Reading pinyin, first characters and everyday conversation." data-th="อ่านพินอิน เขียนตัวอักษรแรก และบทสนทนาประจำวัน">อ่านพินอิน เขียนตัวอักษรแรก และบทสนทนาประจำวัน</p>
+        </div>
+        <div class="panda-card">
+          <span class="stage-num">5</span>
+          <div class="photo"><img src="/assets/chinese-levels/05-panda-3.jpg" alt="Panda 3 at TEC" loading="lazy"></div>
+          <h3>Panda 3 🐼</h3>
+          <p class="blurb" data-en="Confident communication, stronger reading and writing — ready for the Dragon levels." data-th="สื่อสารได้มั่นใจ อ่าน-เขียนได้มากขึ้น พร้อมก้าวสู่ระดับมังกร">สื่อสารได้มั่นใจ อ่าน-เขียนได้มากขึ้น พร้อมก้าวสู่ระดับมังกร</p>
+        </div>
+        <div class="panda-card dragon">
+          <span class="stage-num">6</span>
+          <div class="photo"><img src="/assets/chinese-levels/06-dragon-1.jpg" alt="Dragon 1 at TEC" loading="lazy"></div>
+          <h3>Dragon 1 🐉</h3>
+          <p class="blurb" data-en="Into the Dragon levels — longer sentences, more serious reading and writing." data-th="ก้าวสู่ระดับมังกร — ประโยคยาวขึ้น อ่าน-เขียนจริงจังขึ้น">ก้าวสู่ระดับมังกร — ประโยคยาวขึ้น อ่าน-เขียนจริงจังขึ้น</p>
+        </div>
+        <div class="panda-card dragon">
+          <span class="stage-num">7</span>
+          <div class="photo"><img src="/assets/chinese-levels/07-dragon-2.jpg" alt="Dragon 2 at TEC" loading="lazy"></div>
+          <h3>Dragon 2 🐉</h3>
+          <p class="blurb" data-en="Telling stories, explaining ideas, using real Chinese." data-th="เล่าเรื่อง อธิบายความคิด และใช้ภาษาจีนได้จริง">เล่าเรื่อง อธิบายความคิด และใช้ภาษาจีนได้จริง</p>
+        </div>
+        <div class="panda-card dragon">
+          <span class="stage-num">8</span>
+          <div class="photo"><img src="/assets/chinese-levels/08-dragon-3.jpg" alt="Dragon 3 at TEC" loading="lazy"></div>
+          <h3>Dragon 3 🐉</h3>
+          <p class="blurb" data-en="Confident, real-world Chinese." data-th="ใช้ภาษาจีนในโลกจริงได้อย่างมั่นใจ">ใช้ภาษาจีนในโลกจริงได้อย่างมั่นใจ</p>
         </div>
       </div>
 
       <div class="panda-meta">
-        <span>👧 อายุ 4–15 ปี · Ages 4–15</span>
-        <span>👥 คลาสละ 6–8 คน · 6–8 per class</span>
-        <span>📚 สื่อ Easy Steps to Chinese</span>
+        <span data-en="👧 Ages 4–15" data-th="👧 อายุ 4–15 ปี">👧 อายุ 4–15 ปี</span>
+        <span data-en="👥 6–8 per class" data-th="👥 คลาสละ 6–8 คน">👥 คลาสละ 6–8 คน</span>
+        <span>📚 Easy Steps to Chinese</span>
       </div>
     </div>
   </section>
@@ -640,106 +658,106 @@
         <img src="/assets/founders/damien.jpg" alt="Damien Herlihy — TEC co-founder">
       </div>
       <div class="trust-text">
-        ภาษาจีนที่ TEC สร้างโดยทีมเดียวกับโรงเรียนภาษาอังกฤษของเรา — มาสและเดเมียน อยู่กับเด็กตราดมาตั้งแต่ปี 2014
-        <span class="en">Chinese at TEC is built by the same team behind our English school — Mas and Damien, with Trat's children since 2014.</span>
-        <a class="trust-link" href="/english/#about">อ่านเรื่องของเรา · Our story&nbsp;→</a>
+        <span class="lang-th-block">ภาษาจีนที่ TEC สร้างโดยทีมเดียวกับโรงเรียนภาษาอังกฤษของเรา — มาสและเดเมียน อยู่กับเด็กตราดมาตั้งแต่ปี 2014</span>
+        <span class="lang-en-block">Chinese at TEC is built by the same team behind our English school — Mas and Damien, with Trat's children since 2014.</span>
+        <a class="trust-link" href="/english/#about" data-en="Our story&nbsp;→" data-th="อ่านเรื่องของเรา&nbsp;→">อ่านเรื่องของเรา&nbsp;→</a>
       </div>
     </div>
 
     <div class="tour-gallery">
       <figure class="tour-photo">
         <img src="/assets/facilities/01-building-design.jpg?v=1" alt="The TEC identity — colourful letters made by a child's hands" loading="lazy">
-        <figcaption>ออกแบบอย่างตั้งใจทุกตารางเมตร</figcaption>
+        <figcaption data-en="Designed with intent" data-th="ออกแบบอย่างตั้งใจทุกตารางเมตร">ออกแบบอย่างตั้งใจทุกตารางเมตร</figcaption>
       </figure>
       <figure class="tour-photo">
         <img src="/assets/facilities/04-classroom-1.jpg?v=1" alt="Children learning hands-on in a TEC classroom" loading="lazy">
-        <figcaption>เรียนแบบลงมือทำ</figcaption>
+        <figcaption data-en="Hands-on learning" data-th="เรียนแบบลงมือทำ">เรียนแบบลงมือทำ</figcaption>
       </figure>
       <figure class="tour-photo">
         <img src="/assets/facilities/06-classroom-2.jpg?v=1" alt="TEC students speaking and engaged in class" loading="lazy">
-        <figcaption>พูดอย่างมั่นใจ</figcaption>
+        <figcaption data-en="Confident speaking" data-th="พูดอย่างมั่นใจ">พูดอย่างมั่นใจ</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===== FAQ ===== -->
   <section class="sec">
-    <h2 class="section-title center">คำถามที่อยากถามแต่ไม่กล้าถาม
-      <span class="en-sub">Quiet questions, answered</span>
+    <h2 class="section-title center">
+      <span class="lang-th-block">คำถามที่อยากถามแต่ไม่กล้าถาม</span>
+      <span class="lang-en-block">Quiet questions, answered</span>
     </h2>
     <div class="faq" id="faq">
       <div class="faq-item">
-        <button class="faq-q">ลูกไม่มีพื้นฐานภาษาจีนเลย เรียนได้ไหม?</button>
-        <div class="faq-a"><div>ได้แน่นอนค่ะ Panda 1 ออกแบบมาให้เริ่มจากศูนย์ การสัมภาษณ์วัดระดับฟรีจะช่วยหาจุดเริ่มที่เหมาะกับลูก — ไม่มีการตัดสิน ไม่มีการตีตรา
-          <span class="en">Absolutely. Panda 1 is designed for complete beginners, and the free placement interview finds the right starting point — no shame, no labels.</span>
-        </div></div>
+        <button class="faq-q" data-en="My child has zero Chinese — can they join?" data-th="ลูกไม่มีพื้นฐานภาษาจีนเลย เรียนได้ไหม?">ลูกไม่มีพื้นฐานภาษาจีนเลย เรียนได้ไหม?</button>
+        <div class="faq-a"><div data-en="Absolutely. The early levels are designed for complete beginners, and the free placement interview finds the right starting point — no shame, no labels." data-th="ได้แน่นอนค่ะ ระดับแรก ๆ ออกแบบมาให้เริ่มจากศูนย์ การสัมภาษณ์วัดระดับฟรีจะช่วยหาจุดเริ่มที่เหมาะกับลูก — ไม่มีการตัดสิน ไม่มีการตีตรา">ได้แน่นอนค่ะ ระดับแรก ๆ ออกแบบมาให้เริ่มจากศูนย์ การสัมภาษณ์วัดระดับฟรีจะช่วยหาจุดเริ่มที่เหมาะกับลูก — ไม่มีการตัดสิน ไม่มีการตีตรา</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">รับเด็กอายุเท่าไหร่บ้าง?</button>
-        <div class="faq-a"><div>อายุ 4–15 ปีค่ะ คลาสจัดตามระดับและวัย ไม่จับคละห้อง
-          <span class="en">Ages 4–15. Classes are grouped by level and age — never mixed-ability rooms.</span>
-        </div></div>
+        <button class="faq-q" data-en="What ages do you take?" data-th="รับเด็กอายุเท่าไหร่บ้าง?">รับเด็กอายุเท่าไหร่บ้าง?</button>
+        <div class="faq-a"><div data-en="Ages 4–15. Classes are grouped by level and age — never mixed-ability rooms." data-th="อายุ 4–15 ปีค่ะ คลาสจัดตามระดับและวัย ไม่จับคละห้อง">อายุ 4–15 ปีค่ะ คลาสจัดตามระดับและวัย ไม่จับคละห้อง</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">คลาสละกี่คน?</button>
-        <div class="faq-a"><div>6–8 คนต่อคลาสค่ะ เล็กพอที่ครูจะเห็นเด็กทุกคนในทุกคาบ
-          <span class="en">Six to eight students per class — small enough that the teacher sees every child, every lesson.</span>
-        </div></div>
+        <button class="faq-q" data-en="How big are the classes?" data-th="คลาสละกี่คน?">คลาสละกี่คน?</button>
+        <div class="faq-a"><div data-en="Six to eight students per class — small enough that the teacher sees every child, every lesson." data-th="6–8 คนต่อคลาสค่ะ เล็กพอที่ครูจะเห็นเด็กทุกคนในทุกคาบ">6–8 คนต่อคลาสค่ะ เล็กพอที่ครูจะเห็นเด็กทุกคนในทุกคาบ</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">ค่าเรียนเท่าไหร่?</button>
-        <div class="faq-a"><div>ค่าเรียนขึ้นอยู่กับระดับและตารางเรียนของลูก เราคุยรายละเอียดกันในวันสัมภาษณ์วัดระดับฟรีค่ะ
-          <span class="en">Fees depend on your child's level and timetable — we go through everything at the free placement interview.</span>
-        </div></div>
+        <button class="faq-q" data-en="How much does it cost?" data-th="ค่าเรียนเท่าไหร่?">ค่าเรียนเท่าไหร่?</button>
+        <div class="faq-a"><div data-en="Fees depend on your child's level and timetable — we go through everything at the free placement interview." data-th="ค่าเรียนขึ้นอยู่กับระดับและตารางเรียนของลูก เราคุยรายละเอียดกันในวันสัมภาษณ์วัดระดับฟรีค่ะ">ค่าเรียนขึ้นอยู่กับระดับและตารางเรียนของลูก เราคุยรายละเอียดกันในวันสัมภาษณ์วัดระดับฟรีค่ะ</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">เรียนที่ไหน เวลาไหน?</button>
-        <div class="faq-a"><div>ที่โรงเรียน TEC — 949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด เปิดศุกร์ 13.00–20.00 น. และเสาร์-อาทิตย์ 08.00–18.00 น. ตารางคลาสภาษาจีนคอนเฟิร์มในวันสัมภาษณ์ค่ะ
-          <span class="en">At TEC — 949/11 Moo 12, Noen Ta Maeo Rd, Wang Krachae, Mueang Trat. Open Fridays 1–8pm, weekends 8am–6pm. Chinese class times are confirmed at the interview.</span>
-        </div></div>
+        <button class="faq-q" data-en="Where and when are classes?" data-th="เรียนที่ไหน เวลาไหน?">เรียนที่ไหน เวลาไหน?</button>
+        <div class="faq-a"><div data-en="At TEC — 949/11 Moo 12, Noen Ta Maeo Rd, Wang Krachae, Mueang Trat. Open Fridays 1–8pm, weekends 8am–6pm. Chinese class times are confirmed at the interview." data-th="ที่โรงเรียน TEC — 949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด เปิดศุกร์ 13.00–20.00 น. และเสาร์-อาทิตย์ 08.00–18.00 น. ตารางคลาสภาษาจีนคอนเฟิร์มในวันสัมภาษณ์ค่ะ">ที่โรงเรียน TEC — 949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด เปิดศุกร์ 13.00–20.00 น. และเสาร์-อาทิตย์ 08.00–18.00 น. ตารางคลาสภาษาจีนคอนเฟิร์มในวันสัมภาษณ์ค่ะ</div></div>
       </div>
     </div>
   </section>
 
   <!-- ===== Callback form ===== -->
   <section class="sec" id="callback-section">
-    <h2 class="section-title center">จองที่ในรุ่นแรกของลูก
-      <span class="en-sub">Save your child's spot in the first intake</span>
+    <h2 class="section-title center">
+      <span class="lang-th-block">จองที่ในรุ่นแรกของลูก</span>
+      <span class="lang-en-block">Save your child's spot in the first intake</span>
     </h2>
-    <p class="lede center" style="max-width:560px">ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที — ไม่มีข้อผูกมัด
-      <span class="en">Leave your details and we'll call you back to arrange a free 30-minute placement interview — no obligation.</span>
-    </p>
+    <p class="lede center" style="max-width:560px" data-en="Leave your details and we'll call you back to arrange a free 30-minute placement interview — no obligation." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที — ไม่มีข้อผูกมัด">ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที — ไม่มีข้อผูกมัด</p>
 
     <form class="form-block" id="callback-form" action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New CHINESE course enquiry — tecschool.org">
       <input type="hidden" name="_cc" value="tratenglish@gmail.com">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="Course" value="Chinese — Panda pathway">
+      <input type="hidden" name="Course" value="Chinese — Panda to Dragon pathway">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
-      <label for="cb-name">ชื่อ <span style="opacity:.6">/ Name</span></label>
+      <label for="cb-name" class="lang-en-block">Name <span style="opacity:.6">/ ชื่อ</span></label>
+      <label for="cb-name" class="lang-th-block">ชื่อ <span style="opacity:.6">/ Name</span></label>
       <input type="text" id="cb-name" name="Name" autocomplete="name" required>
 
-      <label for="cb-contact">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
+      <label for="cb-contact" class="lang-en-block">LINE handle or phone <span style="opacity:.6">/ LINE หรือเบอร์โทร</span></label>
+      <label for="cb-contact" class="lang-th-block">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
       <input type="tel" id="cb-contact" name="LINE or phone" autocomplete="tel" required>
 
       <label class="checkbox-row">
         <input type="checkbox" name="Consent" value="Yes — agreed to be contacted" required>
-        <span>ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
+        <span class="lang-en-block">I agree to be contacted by TEC. (You can unsubscribe anytime.) <em style="display:block;opacity:.7;margin-top:2px">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</em></span>
+        <span class="lang-th-block">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
       </label>
 
-      <button type="submit" class="submit">ส่ง · Send</button>
+      <button type="submit" class="submit" data-en="Send" data-th="ส่ง">ส่ง</button>
     </form>
 
     <div class="form-thanks" id="callback-thanks" hidden>
-      <p class="thanks-title">ขอบคุณค่ะ 🎉</p>
-      <p class="thanks-sub">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ<br><span style="opacity:.75">We've got your details — we'll call you back soon.</span></p>
-      <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</a>
+      <p class="thanks-title lang-en-block">Thanks! 🎉</p>
+      <p class="thanks-title lang-th-block">ขอบคุณค่ะ 🎉</p>
+      <p class="thanks-sub lang-en-block">We've got your details — we'll call you back soon to set up your free placement interview.</p>
+      <p class="thanks-sub lang-th-block">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ</p>
+      <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">
+        <span class="lang-en-block">Prefer to chat now? Message us on LINE&nbsp;→</span>
+        <span class="lang-th-block">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</span>
+      </a>
     </div>
 
-    <p class="community-note">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค
-      <span class="en">Join the Community Today</span>
+    <p class="community-note">
+      <span class="lang-th-block">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค</span>
+      <span class="lang-en-block">Join the Community Today</span>
+      <span class="sub lang-th-block">Join the Community Today</span>
     </p>
   </section>
 
@@ -748,20 +766,40 @@
 <!-- Sticky bottom CTA bar (mobile only) -->
 <div class="sticky-cta" aria-label="Quick contact">
   <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE"><svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></a>
-  <a class="book-btn" href="#callback-section">นัดสัมภาษณ์วัดระดับฟรี</a>
+  <a class="book-btn" href="#callback-section" data-en="Book a free placement interview" data-th="นัดสัมภาษณ์วัดระดับฟรี">นัดสัมภาษณ์วัดระดับฟรี</a>
 </div>
 
 <footer class="site-footer">
   <strong style="font-family:'chaloops',system-ui,sans-serif;font-size:16px;color:var(--tec-ink)">TEC — Thai English Chinese School</strong>
   <div class="contact-row">
     <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">LINE: TEC14</a>
-    <a href="tel:+66990195890">099 019 5890</a>
+    <a href="tel:+66990195890" data-en="+66 99 019 5890" data-th="099 019 5890">099 019 5890</a>
     <a href="mailto:tratenglish@gmail.com">tratenglish@gmail.com</a>
   </div>
   <p class="legal">© 2026 TEC · <a href="/privacy/">Privacy · PDPA · Terms</a> · <a href="/english/">English</a> · <a href="/thai/">Thai</a></p>
 </footer>
 
 <script>
+  // ===== Page-level TH/EN pill toggle (same system as the English page) =====
+  (function () {
+    const btn = document.getElementById('lang-toggle');
+    if (!btn) return;
+    const swapTargets = Array.from(document.querySelectorAll('[data-en][data-th]'));
+    function apply(thOn) {
+      document.body.classList.toggle('lang-th', thOn);
+      document.documentElement.setAttribute('lang', thOn ? 'th' : 'en');
+      btn.setAttribute('aria-pressed', thOn ? 'true' : 'false');
+      btn.textContent = thOn ? (btn.dataset.thLabel || 'EN') : (btn.dataset.enLabel || 'TH');
+      btn.setAttribute('aria-label', thOn ? 'Switch this page to English' : 'Switch this page to Thai');
+      swapTargets.forEach(el => {
+        const v = thOn ? el.getAttribute('data-th') : el.getAttribute('data-en');
+        if (v != null) el.textContent = v;
+      });
+    }
+    btn.addEventListener('click', (e) => { e.preventDefault(); apply(!document.body.classList.contains('lang-th')); });
+    apply(document.body.classList.contains('lang-th'));
+  })();
+
   // ===== Hero typing-morph banner — Thai ↔ Chinese (the unifying element) =====
   (function () {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -849,7 +887,9 @@
       .catch(function () {
         btn.removeAttribute('aria-busy');
         btn.disabled = false;
-        alert('ส่งไม่สำเร็จค่ะ ขออภัย — รบกวนทักเราทาง LINE (ID: TEC14) หรืออีเมล tratenglish@gmail.com');
+        alert(document.body.classList.contains('lang-th')
+          ? 'ส่งไม่สำเร็จค่ะ ขออภัย — รบกวนทักเราทาง LINE (ID: TEC14) หรืออีเมล tratenglish@gmail.com'
+          : "Sorry — that didn't send. Please message us on LINE (ID: TEC14) or email tratenglish@gmail.com.");
       });
     });
   })();
