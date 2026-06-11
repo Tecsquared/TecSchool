@@ -1,75 +1,97 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chinese for kids — TEC · 即将推出</title>
-<meta name="description" content="A Mandarin programme for young Trat learners — coming soon from TEC. ภาษาจีนสำหรับเด็ก เร็ว ๆ นี้">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chinese at TEC — โรงเรียนสอนภาษาจีนสำหรับเด็ก จ.ตราด · 中文课程</title>
+<meta name="description" content="ภาษาจีนสำหรับเด็กที่ TEC ตราด — คลาสเล็ก 6–8 คน เส้นทาง Panda 1–3 ระบบ Visible Learning เดียวกับโรงเรียนภาษาอังกฤษของเรา | Chinese for kids at TEC, Trat. Small classes, the Panda pathway, and the same TEC Method behind our English school.">
 <link rel="canonical" href="https://www.tecschool.org/chinese/">
 <meta name="theme-color" content="#FF208D">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TEC — Thai English Chinese School">
-<meta property="og:title" content="Chinese for kids — TEC · coming soon">
-<meta property="og:description" content="A Mandarin programme for young Trat learners — same TEC pedagogy: real reading, real speaking, and a clear pathway.">
+<meta property="og:title" content="Chinese at TEC — โรงเรียนสอนภาษาจีนสำหรับเด็ก จ.ตราด">
+<meta property="og:description" content="โรงเรียนที่สอนภาษาอังกฤษให้เด็กตราดมาตั้งแต่ปี 2014 — ตอนนี้สอนภาษาจีนแล้ว เปิดรับสมัครรุ่นแรก">
 <meta property="og:url" content="https://www.tecschool.org/chinese/">
 <meta property="og:image" content="https://www.tecschool.org/assets/og-tec.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="th_TH">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
 <link rel="preconnect" href="https://use.typekit.net">
-<link rel="preconnect" href="https://p.typekit.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/agc2tne.css">
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Thai:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --tec-blue:   #1DB2FF;
     --tec-yellow: #FED501;
     --tec-pink:   #FF208D;
+    --tec-pink-pastel: #FFD3E8;
+    --tec-bg:     #F4F2EC;
+    --tec-pill-bg:#ECEAE3;
     --tec-ink:    #1A1A1A;
-    --tec-cream:  #FCFBF6;
+    --tec-ink-soft:#2B2B2B;
+    --shadow-neu:
+       4px  4px 10px 0 rgba(255, 255, 255, 0.85),
+      -4px -4px 10px 0 rgba(120, 110,  90, 0.28),
+      inset -4px -4px  8px 0 rgba(255, 255, 255, 0.30),
+      inset  4px  4px  8px 0 rgba(0, 0, 0, 0.22);
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: var(--tec-pink);
-    color: var(--tec-cream);
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    line-height: 1.5;
+    background: var(--tec-bg);
+    color: var(--tec-ink);
+    font-family: 'Roboto', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-bottom: 90px; /* sticky bar room on mobile */
   }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
   img { max-width: 100%; display: block; }
-  a { color: inherit; }
+  a { color: inherit; text-decoration: none; }
 
+  .paint-bg {
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    object-fit: fill; transform: scale(1.24);
+    pointer-events: none; user-select: none;
+    z-index: 0; opacity: 0.4;
+  }
+  header, main, footer, .sticky-cta { position: relative; z-index: 1; }
+
+  /* ===== Header (matches the English page) ===== */
   .site-header {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(255, 32, 141, 0.92);
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(244, 242, 236, 0.92);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
   }
   .site-header .row {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 10px 16px;
+    max-width: 1280px; margin: 0 auto; padding: 10px 16px;
     display: flex; align-items: center; gap: 12px;
   }
-  .logo-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
+  .logo-link { display: inline-flex; align-items: center; gap: 8px; }
   .logo { width: 44px; height: auto; }
   .brand-text {
     font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700; font-size: 22px; color: var(--tec-cream);
-    letter-spacing: -0.01em;
+    font-weight: 700; font-size: 22px; color: var(--tec-ink);
   }
+  @media (max-width: 640px) { .brand-text { display: none; } }
+  .spacer { flex: 1; }
   .lang-pills { display: inline-flex; gap: 5px; }
   .lang-switch {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700; font-size: 12px;
     padding: 5px 11px; border-radius: 20px;
-    text-decoration: none; white-space: nowrap;
+    white-space: nowrap;
     transition: opacity 150ms ease, transform 150ms ease;
+    color: var(--tec-ink); background: var(--tec-pill-bg);
   }
   .lang-switch.th { background: var(--tec-blue);   color: #fff; }
   .lang-switch.en { background: var(--tec-yellow); color: var(--tec-ink); }
@@ -81,72 +103,418 @@
     box-shadow: 0 0 0 2.5px rgba(255,255,255,0.95);
   }
 
-  main {
-    flex: 1;
-    padding: clamp(56px, 12vw, 140px) clamp(20px, 5vw, 40px);
-    max-width: 760px; width: 100%;
-    margin: 0 auto;
-    text-align: center;
+  /* ===== Sections ===== */
+  section.sec {
+    padding: clamp(44px, 7vw, 88px) clamp(20px, 5vw, 40px);
+    max-width: 1180px; margin: 0 auto;
   }
-  h1 {
+  .section-title {
     font-family: "chaloops", system-ui, sans-serif;
     font-weight: 700;
-    font-size: clamp(40px, 8vw, 72px);
-    line-height: 1.05;
-    margin: 0 0 14px;
-    color: var(--tec-cream);
+    font-size: clamp(28px, 4.8vw, 48px);
+    line-height: 1.08;
+    margin-bottom: clamp(18px, 2.4vw, 28px);
   }
-  .zh-subtitle {
+  .th { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; font-weight: 600; }
+  .en-sub { display: block; font-family: "chaloops", system-ui, sans-serif; font-size: 0.62em; opacity: 0.75; margin-top: 6px; font-weight: 700; }
+  .lede { font-size: clamp(15px, 1.6vw, 18px); color: var(--tec-ink-soft); max-width: 720px; }
+  .lede .en { display: block; font-size: 0.88em; opacity: 0.75; margin-top: 4px; }
+  .center { text-align: center; }
+  .center .lede { margin-left: auto; margin-right: auto; }
+
+  /* Pink "ZH" word-mark treatment (mirrors .tecmark on the English page) */
+  .zhmark { color: var(--tec-pink); }
+
+  /* ===== Hero ===== */
+  .hero { text-align: center; padding-top: clamp(36px, 6vw, 72px); }
+  .morph-banner {
     font-family: "chaloops", system-ui, sans-serif;
     font-weight: 700;
-    font-size: clamp(24px, 4.4vw, 38px);
-    color: var(--tec-yellow);
-    margin: 0 0 26px;
-    line-height: 1.15;
+    font-size: clamp(20px, 2.8vw, 36px);
+    color: var(--tec-pink);
+    letter-spacing: -0.005em;
+    min-height: 1.3em;
+    margin-bottom: clamp(16px, 2.4vw, 28px);
   }
-  .soon {
-    font-family: "chaloops", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: clamp(18px, 2.4vw, 24px);
-    color: var(--tec-cream);
-    opacity: 0.9;
-    margin: 0 0 30px;
+  .morph-banner .caret {
+    display: inline-block; width: 3px; height: 1em; margin-left: 2px;
+    background: var(--tec-ink); vertical-align: -0.12em;
+    animation: caretBlink 900ms steps(1) infinite;
   }
-  .blurb {
-    font-size: 16px; line-height: 1.65;
-    max-width: 540px; margin: 0 auto 36px;
-    color: var(--tec-cream); opacity: 0.95;
-  }
-  .actions {
-    display: flex; flex-direction: column; gap: 12px;
-    max-width: 360px; margin: 0 auto;
-  }
-  @media (min-width: 600px) {
-    .actions { flex-direction: row; max-width: none; justify-content: center; }
-  }
-  .btn {
+  @keyframes caretBlink { 50% { opacity: 0; } }
+
+  .launch-badge {
     display: inline-block;
-    padding: 14px 22px;
+    background: var(--tec-pink); color: #fff;
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-weight: 700; font-size: 14px;
+    padding: 8px 18px; border-radius: 999px;
+    border: 2px solid var(--tec-ink);
+    box-shadow: 3px 4px 0 rgba(0,0,0,0.12);
+    transform: rotate(-1.5deg);
+    margin-bottom: 22px;
+  }
+
+  /* Speech-bubble video frame — same shape as the English hero, pink trim */
+  .vignette {
+    position: relative;
+    margin: 10px auto 52px;
+    max-width: 630px;
+    background: #FCFBF6;
+    border: 3px solid var(--tec-ink);
+    border-radius: 28px;
+    padding: clamp(12px, 2.2vw, 18px);
+    box-shadow: 6px 8px 0 rgba(0,0,0,0.10);
+  }
+  .vignette::after {
+    content: "";
+    position: absolute; left: 50%; bottom: -16px;
+    width: 34px; height: 34px;
+    background: #FCFBF6;
+    border-right: 3px solid var(--tec-ink);
+    border-bottom: 3px solid var(--tec-ink);
+    border-radius: 0 0 11px 0;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -1; pointer-events: none;
+  }
+  .vignette .vignette-frame {
+    position: relative; border-radius: 16px; overflow: hidden;
+    border: 4px solid var(--tec-pink);
+    aspect-ratio: 16/9; background: #000;
+    cursor: pointer;
+  }
+  .vignette .vignette-frame img, .vignette .vignette-frame iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; border: 0; display: block;
+  }
+  .vignette .play-fab {
+    position: absolute; right: 14%; top: 50%;
+    transform: translateY(-50%);
+    width: 110px; height: 110px;
+    border: none; padding: 0; border-radius: 50%;
+    background: var(--tec-pink);
+    box-shadow: var(--shadow-neu);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 3;
+    transition: transform 140ms ease;
+  }
+  .vignette .play-fab:hover { transform: translateY(-50%) scale(1.06); }
+  .vignette .play-fab::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 34px solid #fff;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    margin-left: 8px;
+  }
+  @media (max-width: 520px) {
+    .vignette .play-fab { width: 78px; height: 78px; right: 10%; }
+    .vignette .play-fab::after {
+      border-left: 24px solid #fff;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+  }
+  .vignette.is-playing .play-fab { display: none; }
+  .video-note {
+    font-family: 'Nunito Sans', sans-serif; font-size: 12px;
+    color: var(--tec-ink-soft); opacity: 0.7; margin-top: -40px; margin-bottom: 40px;
+  }
+
+  .hero-title {
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 4.6vw, 50px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 980px;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+  .hero-title .en {
+    display: block;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-size: 0.52em; font-weight: 700;
+    opacity: 0.8; margin-top: 16px;
+  }
+  .hero-cta {
+    display: inline-block;
+    margin: 34px auto 0;
+    padding: 18px 32px;
+    background: var(--tec-pink); color: #fff;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: clamp(16px, 2vw, 19px);
+    border-radius: 18px;
+    border: 2.5px solid var(--tec-ink);
+    box-shadow: var(--shadow-neu);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .hero-cta:hover, .hero-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    outline: none;
+  }
+  .hero-cta .en { display: block; font-size: 0.72em; opacity: 0.85; font-family: "chaloops", system-ui, sans-serif; }
+
+  /* ===== Why TEC tiles ===== */
+  .tile-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+  @media (min-width: 600px) { .tile-grid { grid-template-columns: 1fr 1fr; } }
+  .tile {
+    background: rgba(255,255,255,0.55);
     border-radius: 14px;
+    padding: clamp(20px, 2.6vw, 28px);
+    display: flex; gap: 16px; align-items: flex-start;
+    box-shadow: var(--shadow-neu);
+  }
+  .tile .tile-icon {
+    flex: none; width: 96px; height: 96px;
+    border-radius: 16px; object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .tile h4 {
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .tile p { font-size: 13.5px; color: var(--tec-ink-soft); line-height: 1.45; }
+  .tile p .en { display: block; opacity: 0.75; font-size: 12.5px; margin-top: 3px; }
+
+  /* ===== Panda pathway ===== */
+  .panda-wrap {
+    background: linear-gradient(180deg, rgba(255,32,141,0.06) 0%, rgba(254,213,1,0.05) 100%);
+    border-radius: 28px;
+    padding: clamp(28px, 5vw, 48px);
+    margin-top: 8px;
+  }
+  .panda-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 24px; }
+  @media (min-width: 768px) { .panda-grid { grid-template-columns: repeat(3, 1fr); } }
+  .panda-card {
+    background: rgba(255,255,255,0.8);
+    border: 2.5px solid var(--tec-ink);
+    border-radius: 20px;
+    padding: 24px 22px;
+    box-shadow: 5px 6px 0 rgba(0,0,0,0.10);
+    position: relative;
+    transition: transform 200ms ease;
+  }
+  .panda-card:hover { transform: translateY(-4px); }
+  .panda-card .panda-emoji { font-size: 40px; line-height: 1; }
+  .panda-card h3 {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 26px;
+    margin: 10px 0 2px;
+  }
+  .panda-card .stage-num {
+    position: absolute; top: -14px; right: 16px;
+    background: var(--tec-pink); color: #fff;
     font-family: "chaloops", system-ui, sans-serif;
     font-weight: 700; font-size: 16px;
-    text-decoration: none;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-    transition: transform 150ms ease;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 2px solid var(--tec-ink);
+    display: flex; align-items: center; justify-content: center;
   }
-  .btn:hover { transform: translateY(-2px); }
-  .btn.primary   { background: var(--tec-yellow); color: var(--tec-ink); }
-  .btn.secondary { background: rgba(255,255,255,0.15); color: var(--tec-cream); border: 2px solid rgba(255,255,255,0.55); }
+  .panda-card .blurb { font-size: 14px; color: var(--tec-ink-soft); margin-top: 8px; }
+  .panda-card .blurb .en { display: block; font-size: 12.5px; opacity: 0.75; margin-top: 4px; }
+  .panda-meta {
+    margin-top: 24px;
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-weight: 600; font-size: 13px;
+  }
+  .panda-meta span {
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid rgba(0,0,0,0.1);
+    padding: 7px 14px; border-radius: 999px;
+  }
 
-  .footer-line {
-    text-align: center; padding: 22px;
-    font-family: 'Roboto', sans-serif; font-size: 13px;
-    color: rgba(252,251,246,0.75);
+  /* ===== Trust strip ===== */
+  .trust-strip {
+    display: grid; grid-template-columns: 1fr; gap: 22px;
+    align-items: center;
+    background: rgba(255,255,255,0.55);
+    border-radius: 22px;
+    padding: clamp(24px, 3.4vw, 36px);
+    box-shadow: var(--shadow-neu);
   }
-  .footer-line a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  @media (min-width: 768px) { .trust-strip { grid-template-columns: auto 1fr; } }
+  .trust-avatars { display: flex; justify-content: center; }
+  .trust-avatars img {
+    width: 92px; height: 92px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--tec-ink);
+    background: #fff;
+  }
+  .trust-avatars img + img { margin-left: -18px; }
+  .trust-strip .trust-text {
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-weight: 600; font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.5;
+  }
+  .trust-strip .trust-text .en { display: block; font-size: 0.82em; opacity: 0.75; margin-top: 6px; font-weight: 500; }
+  .trust-strip .trust-link {
+    display: inline-block; margin-top: 10px;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; color: var(--tec-pink);
+    border-bottom: 2px solid var(--tec-yellow);
+  }
+
+  /* ===== Facilities row ===== */
+  .tour-gallery { margin-top: 24px; display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 768px) { .tour-gallery { grid-template-columns: repeat(3, 1fr); } }
+  .tour-photo {
+    aspect-ratio: 1/1; border: 2.5px solid var(--tec-ink);
+    border-radius: 14px; overflow: hidden; position: relative;
+  }
+  .tour-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .tour-photo figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 22px 12px 11px;
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: #fff; text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  }
+
+  /* ===== FAQ ===== */
+  .faq { margin-top: 20px; max-width: 920px; margin-left: auto; margin-right: auto; }
+  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .faq-q {
+    appearance: none; background: transparent; border: none;
+    width: 100%; text-align: left;
+    padding: 18px 12px; cursor: pointer;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 16.5px;
+    color: var(--tec-ink);
+    display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  }
+  .faq-q::after {
+    content: '+'; font-size: 22px; color: var(--tec-pink);
+    transition: transform 200ms; flex: none;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 300ms ease;
+    font-size: 14.5px; color: var(--tec-ink-soft); line-height: 1.55;
+  }
+  .faq-a > div { padding: 0 12px 18px; }
+  .faq-a .en { display: block; opacity: 0.75; font-size: 13.5px; margin-top: 6px; }
+  .faq-item.open .faq-a { max-height: 400px; }
+
+  /* ===== Form ===== */
+  .form-block {
+    max-width: 480px; margin: 36px auto 0;
+    background: rgba(255,255,255,0.7);
+    border-radius: 22px; padding: 28px;
+    box-shadow: var(--shadow-neu);
+  }
+  .form-block label {
+    display: block;
+    font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif;
+    font-weight: 600; font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .form-block input[type=text], .form-block input[type=tel] {
+    width: 100%; padding: 12px 14px;
+    border-radius: 12px; border: 1.5px solid #C9C5BA;
+    background: rgba(255,255,255,0.85);
+    font-family: 'Roboto', sans-serif; font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .form-block input:focus { outline: 2px solid var(--tec-pink); outline-offset: 1px; }
+  .form-block .checkbox-row {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px; color: var(--tec-ink-soft);
+    margin-bottom: 18px;
+  }
+  .form-block .checkbox-row input { margin-top: 4px; }
+  .form-block .submit {
+    width: 100%; appearance: none; border: none; cursor: pointer;
+    padding: 14px; border-radius: 14px;
+    background: var(--tec-pink); color: #fff;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 17px;
+    box-shadow: var(--shadow-neu);
+  }
+  .form-block .submit[aria-busy="true"] { opacity: .6; cursor: progress; }
+  .form-thanks {
+    max-width: 480px; margin: 36px auto 0;
+    background: rgba(255,255,255,0.7);
+    border-radius: 22px; padding: 34px 28px;
+    box-shadow: var(--shadow-neu);
+    text-align: center;
+  }
+  .form-thanks .thanks-title {
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .form-thanks .thanks-sub { font-size: 14px; line-height: 1.6; color: var(--tec-ink-soft); margin: 0 auto 22px; max-width: 340px; }
+  .form-thanks .line-cta {
+    display: inline-block;
+    padding: 13px 24px; border-radius: 14px;
+    background: #06C755; color: #fff;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 15px;
+    box-shadow: var(--shadow-neu);
+  }
+
+  .community-note {
+    text-align: center; margin-top: 40px;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: 20px;
+  }
+  .community-note .en { display: block; font-family: "chaloops", system-ui, sans-serif; font-size: 0.78em; opacity: 0.75; margin-top: 4px; }
+
+  /* ===== Sticky bottom bar (mobile) ===== */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;
+    background: rgba(244, 242, 236, 0.96);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 10px 12px env(safe-area-inset-bottom, 10px);
+    display: flex; gap: 8px; align-items: center;
+  }
+  @media (min-width: 768px) { .sticky-cta { display: none; } }
+  .sticky-cta .line-btn, .sticky-cta .book-btn {
+    appearance: none; border: none; cursor: pointer;
+    padding: 12px; border-radius: 14px;
+    font-family: 'Noto Sans Thai', "chaloops", system-ui, sans-serif;
+    font-weight: 700;
+    box-shadow: var(--shadow-neu);
+    display: inline-flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .sticky-cta .line-btn { background: #06C755; color: #fff; width: 48px; height: 48px; flex: none; }
+  .sticky-cta .book-btn { flex: 1; background: var(--tec-pink); color: #fff; font-size: 14px; }
+
+  /* ===== Footer (slim) ===== */
+  .site-footer {
+    background: rgba(0,0,0,0.055);
+    margin-top: 64px;
+    padding: clamp(40px, 6vw, 60px) clamp(20px, 5vw, 32px) clamp(32px, 4vw, 44px);
+    border-top: 4px solid var(--tec-pink);
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif; font-size: 14px;
+    color: var(--tec-ink-soft);
+  }
+  .site-footer .contact-row {
+    display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: center;
+    margin: 14px 0 18px;
+    font-weight: 600;
+  }
+  .site-footer a:hover { color: var(--tec-pink); }
+  .site-footer .legal { font-size: 12.5px; opacity: 0.8; }
+  .site-footer .legal a { text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 </style>
 </head>
 <body>
+
+<img class="paint-bg" src="/chinese-splatter.webp" alt="" aria-hidden="true">
 
 <header class="site-header">
   <div class="row">
@@ -159,23 +527,332 @@
       <a class="lang-switch en" href="/english">English</a>
       <a class="lang-switch zh active" href="/chinese" aria-current="page">Chinese</a>
     </nav>
+    <span class="spacer"></span>
   </div>
 </header>
 
 <main>
-  <h1>Chinese for kids</h1>
-  <p class="zh-subtitle">中文课程 · ภาษาจีนสำหรับเด็ก</p>
-  <p class="soon">Coming soon · 即将推出</p>
-  <p class="blurb">A Mandarin programme for young Trat learners — coming alongside our English school. Same TEC pedagogy: real reading, real speaking, and a clear pathway from first words to confident communication.</p>
-  <div class="actions">
-    <a class="btn primary" href="/english">See our English school →</a>
-    <a class="btn secondary" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">Chat with us on LINE</a>
-  </div>
+
+  <!-- ===== Hero ===== -->
+  <section class="sec hero">
+    <div class="morph-banner" id="morph-banner" aria-label="เรียนภาษาจีนที่ TEC · 在 TEC 学中文">
+      <span class="type" id="morph-type"></span><span class="caret" aria-hidden="true"></span>
+    </div>
+
+    <div><span class="launch-badge">🎉 เปิดรับสมัครรุ่นแรกแล้ว · First intake now open</span></div>
+
+    <figure class="vignette" id="hero-vignette">
+      <div class="vignette-frame" id="yt-frame">
+        <img src="https://i.ytimg.com/vi/B4hWbZLfxGI/hqdefault.jpg" alt="Damien from TEC — why families choose value over cheap" loading="lazy">
+        <button class="play-fab" type="button" aria-label="Play video"></button>
+      </div>
+    </figure>
+
+    <h1 class="hero-title">
+      โรงเรียนที่สอนภาษาอังกฤษให้เด็กตราดมา 13 ปี<br>ตอนนี้สอนภาษา<span class="zhmark">จีน</span>แล้ว
+      <span class="en">The school that's taught Trat English for 13 years now teaches <span class="zhmark">Chinese</span>.</span>
+    </h1>
+
+    <a class="hero-cta" href="#callback-section">นัดสัมภาษณ์วัดระดับฟรี&nbsp;→
+      <span class="en">Book a free placement interview</span>
+    </a>
+  </section>
+
+  <!-- ===== Why TEC for Chinese ===== -->
+  <section class="sec">
+    <h2 class="section-title">ทำไมเรียนภาษาจีนที่ TEC
+      <span class="en-sub">Why learn Chinese at TEC</span>
+    </h2>
+    <p class="lede">ระบบเดียวกับที่ทำให้ฝั่งภาษาอังกฤษของเราต่างจากติวเตอร์ — นำมาใช้กับภาษาจีนตั้งแต่วันแรก
+      <span class="en">The same system that sets our English school apart from tutors — applied to Chinese from day one.</span>
+    </p>
+
+    <div class="tile-grid">
+      <div class="tile"><img class="tile-icon" src="/assets/icons/speaking.png" alt="" width="96" height="96" loading="lazy"><div>
+        <h4>พูดจีนตั้งแต่วันแรก</h4>
+        <p>ทุกคาบ เด็กได้พูดจริง ไม่ใช่นั่งท่องตาม<span class="en">Children speak Chinese in every lesson — never just repeat it.</span></p>
+      </div></div>
+      <div class="tile"><img class="tile-icon" src="/assets/icons/streamed.png" alt="" width="96" height="96" loading="lazy"><div>
+        <h4>คลาสเล็กจริง 6–8 คน</h4>
+        <p>ครูเห็นเด็กทุกคน ทุกคาบ<span class="en">Genuinely small classes of 6–8 — the teacher sees every child, every lesson.</span></p>
+      </div></div>
+      <div class="tile"><img class="tile-icon" src="/assets/icons/checklist.png" alt="" width="96" height="96" loading="lazy"><div>
+        <h4>Visible Learning</h4>
+        <p>ผู้ปกครองเห็นพัฒนาการของลูกชัด ๆ เหมือนฝั่งภาษาอังกฤษ<span class="en">Parents see their child's progress clearly — the same reporting system as our English school.</span></p>
+      </div></div>
+      <div class="tile"><img class="tile-icon" src="/assets/icons/teaching.png" alt="" width="96" height="96" loading="lazy"><div>
+        <h4>ระบบ TEC Method</h4>
+        <p>หลักสูตรออกแบบเป็นเส้นทาง ไม่ใช่บทเรียนคิดไปทีละสัปดาห์<span class="en">A designed pathway under the TEC Method — not week-to-week lesson ideas.</span></p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ===== The Panda pathway ===== -->
+  <section class="sec" id="courses">
+    <div class="panda-wrap">
+      <h2 class="section-title center">เส้นทางแพนด้า 🐼
+        <span class="en-sub">The Panda pathway</span>
+      </h2>
+      <p class="lede center">เริ่มจากศูนย์ได้เลย — แต่ละระดับต่อยอดจากระดับก่อนหน้า เหมือนเส้นทางภาษาอังกฤษของเรา
+        <span class="en">Start from zero — each level builds on the last, just like our English pathway.</span>
+      </p>
+
+      <div class="panda-grid">
+        <div class="panda-card">
+          <span class="stage-num">1</span>
+          <div class="panda-emoji">🐼</div>
+          <h3>Panda 1</h3>
+          <p class="blurb">คำแรก เสียง และโทนเสียง ผ่านเพลงและการเล่น — ให้ภาษาจีนเป็นเรื่องสนุกตั้งแต่ก้าวแรก
+            <span class="en">First words, sounds and tones through songs and play — Chinese starts fun.</span>
+          </p>
+        </div>
+        <div class="panda-card">
+          <span class="stage-num">2</span>
+          <div class="panda-emoji">🐼📖</div>
+          <h3>Panda 2</h3>
+          <p class="blurb">อ่านพินอิน เขียนตัวอักษรแรก และเริ่มบทสนทนาในชีวิตประจำวัน
+            <span class="en">Reading pinyin, first characters, and everyday conversation.</span>
+          </p>
+        </div>
+        <div class="panda-card">
+          <span class="stage-num">3</span>
+          <div class="panda-emoji">🐼🗣️</div>
+          <h3>Panda 3</h3>
+          <p class="blurb">สื่อสารได้มั่นใจ อ่าน-เขียนตัวอักษรได้มากขึ้น พร้อมต่อยอดสู่ระดับถัดไป
+            <span class="en">Confident communication, stronger reading and writing — ready for what's next.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="panda-meta">
+        <span>👧 อายุ 4–15 ปี · Ages 4–15</span>
+        <span>👥 คลาสละ 6–8 คน · 6–8 per class</span>
+        <span>📚 สื่อ Easy Steps to Chinese</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Trust strip ===== -->
+  <section class="sec">
+    <div class="trust-strip">
+      <div class="trust-avatars">
+        <img src="/assets/founders/suthamas.jpg" alt="Suthamas Chaisiri — TEC co-founder">
+        <img src="/assets/founders/damien.jpg" alt="Damien Herlihy — TEC co-founder">
+      </div>
+      <div class="trust-text">
+        ภาษาจีนที่ TEC สร้างโดยทีมเดียวกับโรงเรียนภาษาอังกฤษของเรา — มาสและเดเมียน อยู่กับเด็กตราดมาตั้งแต่ปี 2014
+        <span class="en">Chinese at TEC is built by the same team behind our English school — Mas and Damien, with Trat's children since 2014.</span>
+        <a class="trust-link" href="/english/#about">อ่านเรื่องของเรา · Our story&nbsp;→</a>
+      </div>
+    </div>
+
+    <div class="tour-gallery">
+      <figure class="tour-photo">
+        <img src="/assets/facilities/01-building-design.jpg?v=1" alt="The TEC identity — colourful letters made by a child's hands" loading="lazy">
+        <figcaption>ออกแบบอย่างตั้งใจทุกตารางเมตร</figcaption>
+      </figure>
+      <figure class="tour-photo">
+        <img src="/assets/facilities/04-classroom-1.jpg?v=1" alt="Children learning hands-on in a TEC classroom" loading="lazy">
+        <figcaption>เรียนแบบลงมือทำ</figcaption>
+      </figure>
+      <figure class="tour-photo">
+        <img src="/assets/facilities/06-classroom-2.jpg?v=1" alt="TEC students speaking and engaged in class" loading="lazy">
+        <figcaption>พูดอย่างมั่นใจ</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec">
+    <h2 class="section-title center">คำถามที่อยากถามแต่ไม่กล้าถาม
+      <span class="en-sub">Quiet questions, answered</span>
+    </h2>
+    <div class="faq" id="faq">
+      <div class="faq-item">
+        <button class="faq-q">ลูกไม่มีพื้นฐานภาษาจีนเลย เรียนได้ไหม?</button>
+        <div class="faq-a"><div>ได้แน่นอนค่ะ Panda 1 ออกแบบมาให้เริ่มจากศูนย์ การสัมภาษณ์วัดระดับฟรีจะช่วยหาจุดเริ่มที่เหมาะกับลูก — ไม่มีการตัดสิน ไม่มีการตีตรา
+          <span class="en">Absolutely. Panda 1 is designed for complete beginners, and the free placement interview finds the right starting point — no shame, no labels.</span>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">รับเด็กอายุเท่าไหร่บ้าง?</button>
+        <div class="faq-a"><div>อายุ 4–15 ปีค่ะ คลาสจัดตามระดับและวัย ไม่จับคละห้อง
+          <span class="en">Ages 4–15. Classes are grouped by level and age — never mixed-ability rooms.</span>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">คลาสละกี่คน?</button>
+        <div class="faq-a"><div>6–8 คนต่อคลาสค่ะ เล็กพอที่ครูจะเห็นเด็กทุกคนในทุกคาบ
+          <span class="en">Six to eight students per class — small enough that the teacher sees every child, every lesson.</span>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">ค่าเรียนเท่าไหร่?</button>
+        <div class="faq-a"><div>ค่าเรียนขึ้นอยู่กับระดับและตารางเรียนของลูก เราคุยรายละเอียดกันในวันสัมภาษณ์วัดระดับฟรีค่ะ
+          <span class="en">Fees depend on your child's level and timetable — we go through everything at the free placement interview.</span>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">เรียนที่ไหน เวลาไหน?</button>
+        <div class="faq-a"><div>ที่โรงเรียน TEC — 949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด เปิดศุกร์ 13.00–20.00 น. และเสาร์-อาทิตย์ 08.00–18.00 น. ตารางคลาสภาษาจีนคอนเฟิร์มในวันสัมภาษณ์ค่ะ
+          <span class="en">At TEC — 949/11 Moo 12, Noen Ta Maeo Rd, Wang Krachae, Mueang Trat. Open Fridays 1–8pm, weekends 8am–6pm. Chinese class times are confirmed at the interview.</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Callback form ===== -->
+  <section class="sec" id="callback-section">
+    <h2 class="section-title center">จองที่ในรุ่นแรกของลูก
+      <span class="en-sub">Save your child's spot in the first intake</span>
+    </h2>
+    <p class="lede center" style="max-width:560px">ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที — ไม่มีข้อผูกมัด
+      <span class="en">Leave your details and we'll call you back to arrange a free 30-minute placement interview — no obligation.</span>
+    </p>
+
+    <form class="form-block" id="callback-form" action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New CHINESE course enquiry — tecschool.org">
+      <input type="hidden" name="_cc" value="tratenglish@gmail.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Course" value="Chinese — Panda pathway">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+      <label for="cb-name">ชื่อ <span style="opacity:.6">/ Name</span></label>
+      <input type="text" id="cb-name" name="Name" autocomplete="name" required>
+
+      <label for="cb-contact">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
+      <input type="tel" id="cb-contact" name="LINE or phone" autocomplete="tel" required>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Consent" value="Yes — agreed to be contacted" required>
+        <span>ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
+      </label>
+
+      <button type="submit" class="submit">ส่ง · Send</button>
+    </form>
+
+    <div class="form-thanks" id="callback-thanks" hidden>
+      <p class="thanks-title">ขอบคุณค่ะ 🎉</p>
+      <p class="thanks-sub">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ<br><span style="opacity:.75">We've got your details — we'll call you back soon.</span></p>
+      <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</a>
+    </div>
+
+    <p class="community-note">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค
+      <span class="en">Join the Community Today</span>
+    </p>
+  </section>
+
 </main>
 
-<p class="footer-line">
-  © TEC — Trat English Community · LINE: <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">TEC14</a>
-</p>
+<!-- Sticky bottom CTA bar (mobile only) -->
+<div class="sticky-cta" aria-label="Quick contact">
+  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE"><svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></a>
+  <a class="book-btn" href="#callback-section">นัดสัมภาษณ์วัดระดับฟรี</a>
+</div>
 
+<footer class="site-footer">
+  <strong style="font-family:'chaloops',system-ui,sans-serif;font-size:16px;color:var(--tec-ink)">TEC — Thai English Chinese School</strong>
+  <div class="contact-row">
+    <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">LINE: TEC14</a>
+    <a href="tel:+66990195890">099 019 5890</a>
+    <a href="mailto:tratenglish@gmail.com">tratenglish@gmail.com</a>
+  </div>
+  <p class="legal">© 2026 TEC · <a href="/privacy/">Privacy · PDPA · Terms</a> · <a href="/english/">English</a> · <a href="/thai/">Thai</a></p>
+</footer>
+
+<script>
+  // ===== Hero typing-morph banner — Thai ↔ Chinese (the unifying element) =====
+  (function () {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const out = document.getElementById('morph-type');
+    if (!out) return;
+    const THAI_STR = 'เรียนภาษาจีนที่ TEC';
+    const ZH_STR   = '在 TEC 学中文';
+    if (reduced) { out.textContent = ZH_STR; return; }
+    const TYPE = 70, ERASE = 36, HOLD = 1500, PAUSE = 320;
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const type = str => new Promise(res => {
+      let i = 0;
+      (function step() {
+        out.textContent = str.slice(0, i);
+        if (i++ <= str.length) setTimeout(step, TYPE); else res();
+      })();
+    });
+    const erase = () => new Promise(res => {
+      let s = out.textContent;
+      (function step() {
+        s = s.slice(0, -1); out.textContent = s;
+        if (s.length) setTimeout(step, ERASE); else res();
+      })();
+    });
+    (async function loop() {
+      await wait(500);
+      while (true) {
+        await type(THAI_STR); await wait(HOLD); await erase(); await wait(PAUSE);
+        await type(ZH_STR);   await wait(HOLD); await erase(); await wait(PAUSE);
+      }
+    })();
+  })();
+
+  // ===== Hero video — lite YouTube embed, loads only on tap =====
+  // Swap YT_ID for the Chinese-dubbed version when it's uploaded.
+  (function () {
+    const YT_ID = 'B4hWbZLfxGI';
+    const frame = document.getElementById('yt-frame');
+    const vignette = document.getElementById('hero-vignette');
+    if (!frame) return;
+    frame.addEventListener('click', function () {
+      if (vignette.classList.contains('is-playing')) return;
+      vignette.classList.add('is-playing');
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0';
+      iframe.title = 'TEC video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
+    });
+  })();
+
+  // ===== FAQ accordion =====
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    q.setAttribute('aria-expanded', 'false');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // ===== Callback form (same flow as the English page) =====
+  (function () {
+    var form = document.getElementById('callback-form');
+    var thanks = document.getElementById('callback-thanks');
+    if (!form || !thanks) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.submit');
+      btn.setAttribute('aria-busy', 'true');
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('status ' + res.status);
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function () {
+        btn.removeAttribute('aria-busy');
+        btn.disabled = false;
+        alert('ส่งไม่สำเร็จค่ะ ขออภัย — รบกวนทักเราทาง LINE (ID: TEC14) หรืออีเมล tratenglish@gmail.com');
+      });
+    });
+  })();
+</script>
 </body>
 </html>
