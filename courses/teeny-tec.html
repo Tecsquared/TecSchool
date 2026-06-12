@@ -1,0 +1,165 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Teeny TEC — TEC School</title><meta name="description" content="คอร์สภาษาอังกฤษสำหรับเด็กเล็ก · TEC School Trat"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Mitr:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{
+  --blue:#1DB2FF; --yellow:#FED501; --pink:#FF208D; --grey:#9C9C9C;
+  --cream:#F4F2EC; --card:#FBFAF6; --ink:#1A1A1A; --ink-soft:#3a3a37;
+  --shadow:7px 8px 0 rgba(26,26,26,0.10);
+  --shadow-sm:4px 5px 0 rgba(26,26,26,0.09);
+  --thai:'Sarabun',sans-serif; --thd:'Mitr',sans-serif; --disp:'Fredoka','Mitr',sans-serif;
+  --s:1;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--cream);color:var(--ink);font-family:var(--thai);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+.pad{padding-left:16mm;padding-right:16mm;}
+.inset{margin-left:16mm;margin-right:16mm;}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.10;pointer-events:none;z-index:0;}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:calc(9px*var(--s));border-bottom:3px solid var(--ink);position:relative;z-index:2;}
+.wordmark{font-family:var(--disp);font-weight:700;font-size:calc(26px*var(--s));letter-spacing:.5px;
+  line-height:1;display:flex;align-items:center;gap:9px;}
+.wordmark .tt{color:var(--ink);}
+.wordmark .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);display:inline-block;}
+.mk{display:inline-flex;gap:3px;}
+.mk b{font-weight:700;}
+.mk .t{color:var(--blue);} .mk .e{color:var(--yellow);-webkit-text-stroke:1.4px var(--ink);paint-order:stroke fill;} .mk .c{color:var(--pink);}
+.top .meta{font-size:calc(11px*var(--s));color:var(--grey);text-align:right;line-height:1.5;letter-spacing:.3px;}
+.top .meta b{color:var(--ink-soft);font-weight:600;font-family:var(--disp);}
+
+/* hero */
+.hero{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;
+  margin-top:calc(20px*var(--s));position:relative;z-index:2;}
+.hero .copy{flex:1;}
+.kicker{display:inline-block;font-family:var(--thd);font-weight:500;font-size:calc(12.5px*var(--s));
+  color:var(--ink);background:var(--yellow);padding:5px 14px;border-radius:999px;
+  border:2px solid var(--ink);box-shadow:var(--shadow-sm);letter-spacing:.3px;}
+h1.title{font-family:var(--disp);font-weight:700;font-size:calc(54px*var(--s));line-height:.96;
+  margin-top:calc(12px*var(--s));letter-spacing:-.5px;color:var(--ink);}
+h1.title .t-t{color:var(--blue);} h1.title .t-e{color:var(--yellow);-webkit-text-stroke:2.4px var(--ink);paint-order:stroke fill;} h1.title .t-c{color:var(--pink);}
+.accent{display:flex;gap:6px;margin-top:calc(10px*var(--s));}
+.accent i{width:30px;height:7px;border-radius:4px;display:block;}
+.accent i:nth-child(1){background:var(--blue);} .accent i:nth-child(2){background:var(--yellow);} .accent i:nth-child(3){background:var(--pink);}
+.subtitle{font-family:var(--thd);font-weight:500;font-size:calc(19px*var(--s));color:var(--ink-soft);
+  margin-top:calc(9px*var(--s));line-height:1.3;}
+.hero .mascot{width:calc(140px*var(--s));flex:none;margin-top:-4px;filter:drop-shadow(5px 7px 0 rgba(26,26,26,0.10));}
+
+.intro{margin-top:calc(16px*var(--s));font-size:calc(15px*var(--s));line-height:1.6;color:var(--ink-soft);
+  position:relative;z-index:2;}
+
+/* concept pills */
+.concepts{display:flex;gap:12px;margin-top:calc(14px*var(--s));position:relative;z-index:2;flex-wrap:wrap;}
+.concept{display:flex;align-items:center;gap:10px;padding:9px 16px;border-radius:14px;
+  border:2.5px solid var(--ink);background:var(--card);box-shadow:var(--shadow-sm);}
+.concept .d{width:14px;height:14px;border-radius:50%;flex:none;border:2px solid var(--ink);}
+.concept:nth-child(1) .d{background:var(--blue);} .concept:nth-child(2) .d{background:var(--pink);} .concept:nth-child(3) .d{background:var(--yellow);}
+.concept b{font-family:var(--disp);font-weight:600;font-size:calc(15px*var(--s));}
+
+/* section heading */
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:calc(13px*var(--s));position:relative;z-index:2;}
+.sec-h .robot{width:calc(46px*var(--s));height:calc(46px*var(--s));flex:none;object-fit:contain;}
+.sec-h .tt{font-family:var(--thd);font-weight:600;font-size:calc(22px*var(--s));color:var(--ink);line-height:1.05;}
+.sec-h .tt small{display:block;font-family:var(--disp);font-weight:500;font-size:calc(11px*var(--s));
+  color:var(--grey);letter-spacing:.6px;text-transform:uppercase;margin-top:2px;}
+.sec-h .rule{flex:1;height:3px;background:var(--ink);border-radius:2px;opacity:.85;}
+.section{margin-top:calc(22px*var(--s));position:relative;z-index:2;}
+
+/* facts grid */
+.facts{display:grid;gap:12px;}
+.facts.c2{grid-template-columns:1fr 1fr;}
+.facts.c3{grid-template-columns:1fr 1fr 1fr;}
+.fact{background:var(--card);border:2.5px solid var(--ink);border-radius:16px;
+  padding:calc(13px*var(--s)) 15px calc(14px*var(--s));box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.fact .bar{position:absolute;top:0;left:0;right:0;height:7px;}
+.fact:nth-child(3n+1) .bar{background:var(--blue);} .fact:nth-child(3n+2) .bar{background:var(--yellow);} .fact:nth-child(3n+3) .bar{background:var(--pink);}
+.fact .lab{font-family:var(--thai);font-weight:600;font-size:calc(12.5px*var(--s));color:var(--grey);
+  margin-top:3px;display:flex;align-items:center;gap:6px;}
+.fact .lab .e{font-size:calc(17px*var(--s));line-height:1;}
+.fact .val{font-family:var(--thd);font-weight:600;font-size:calc(16px*var(--s));color:var(--ink);
+  margin-top:6px;line-height:1.25;}
+
+/* included callout */
+.included{display:flex;align-items:center;gap:14px;margin-top:calc(16px*var(--s));
+  background:var(--card);border:2.5px solid var(--ink);border-radius:16px;
+  padding:12px 18px 12px 14px;box-shadow:var(--shadow-sm);position:relative;z-index:2;}
+.included .robot{width:calc(50px*var(--s));flex:none;}
+.included .lab{font-family:var(--disp);font-weight:600;font-size:calc(12px*var(--s));color:var(--grey);
+  text-transform:uppercase;letter-spacing:.5px;}
+.included .val{font-family:var(--thd);font-weight:500;font-size:calc(15px*var(--s));color:var(--ink);line-height:1.35;margin-top:2px;}
+
+/* steps list (how it works) */
+.steps{display:flex;flex-direction:column;gap:calc(10px*var(--s));}
+.step{display:flex;gap:14px;background:var(--card);border:2.5px solid var(--ink);border-radius:14px;
+  padding:calc(11px*var(--s)) 18px;box-shadow:var(--shadow-sm);align-items:flex-start;}
+.step .num{flex:none;width:calc(32px*var(--s));height:calc(32px*var(--s));border-radius:50%;
+  border:2.5px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-weight:700;font-size:calc(16px*var(--s));color:var(--ink);margin-top:1px;}
+.step:nth-child(4n+1) .num{background:var(--blue);} .step:nth-child(4n+2) .num{background:var(--yellow);}
+.step:nth-child(4n+3) .num{background:var(--pink);color:#fff;} .step:nth-child(4n+4) .num{background:var(--ink);color:#fff;}
+.step .b2{font-size:calc(14px*var(--s));line-height:1.5;color:var(--ink-soft);padding-top:calc(4px*var(--s));}
+.step .b2 b{color:var(--ink);font-weight:600;}
+
+/* benefits / gains */
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:calc(10px*var(--s)) 16px;}
+.benefits.one{grid-template-columns:1fr;}
+.benefit{display:flex;gap:11px;align-items:flex-start;font-size:calc(13.5px*var(--s));line-height:1.45;color:var(--ink-soft);}
+.benefit .tick{flex:none;width:calc(23px*var(--s));height:calc(23px*var(--s));border-radius:50%;
+  background:var(--yellow);border:2.2px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-size:calc(12px*var(--s));color:var(--ink);font-weight:700;margin-top:1px;}
+.benefit:nth-child(3n+2) .tick{background:var(--blue);} .benefit:nth-child(3n+3) .tick{background:var(--pink);color:#fff;}
+
+/* trailing note */
+.note{margin-top:calc(14px*var(--s));background:#fff7d6;border:2.5px solid var(--ink);border-left-width:9px;
+  border-radius:12px;padding:11px 16px;font-size:calc(13.5px*var(--s));line-height:1.45;color:var(--ink);position:relative;z-index:2;}
+
+/* CTA strip (page 1) */
+.cta{display:flex;align-items:center;gap:18px;background:var(--yellow);border:3px solid var(--ink);
+  border-radius:20px;padding:14px 22px;box-shadow:var(--shadow);position:relative;z-index:2;}
+.cta .robot{width:calc(66px*var(--s));flex:none;margin:-24px 0;}
+.cta .t{flex:1;font-family:var(--thd);font-weight:500;font-size:calc(15px*var(--s));line-height:1.35;color:var(--ink);}
+.cta .t b{font-weight:600;font-size:calc(18px*var(--s));display:block;margin-top:2px;}
+.cta .ph{flex:none;text-align:right;font-family:var(--disp);font-weight:600;font-size:calc(14px*var(--s));line-height:1.7;color:var(--ink);}
+.cta .ph .r{display:flex;align-items:center;justify-content:flex-end;gap:7px;}
+
+/* footer band (page 2) */
+.footer{background:var(--ink);color:#fff;padding:20px 16mm;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;}
+.footer .tag{font-family:var(--disp);font-weight:600;font-size:calc(24px*var(--s));line-height:1.12;letter-spacing:.2px;}
+.footer .tag .b{color:var(--blue);} .footer .tag .y{color:var(--yellow);} .footer .tag .p{color:var(--pink);}
+.footer .contact{text-align:right;font-size:calc(12px*var(--s));line-height:1.7;color:#d8d8d8;flex:none;}
+.footer .contact b{color:#fff;font-family:var(--disp);font-weight:600;font-size:calc(15px*var(--s));letter-spacing:.4px;}
+.footer .contact .row{display:flex;align-items:center;justify-content:flex-end;gap:7px;}
+.footer .robot{width:calc(70px*var(--s));flex:none;}
+
+.brandfoot{font-family:var(--disp);font-weight:500;font-size:calc(10.5px*var(--s));color:var(--grey);letter-spacing:.4px;}
+.pageno{font-family:var(--disp);font-weight:500;font-size:calc(10.5px*var(--s));color:var(--grey);}
+
+body{padding:24px 16px 60px;}
+.sheet{max-width:880px;margin:0 auto;background:var(--cream);}
+.page{position:relative;padding:18px 0 0;}
+.page.first{margin-bottom:34px;}
+.pad{padding-left:clamp(16px,4.5vw,40px);padding-right:clamp(16px,4.5vw,40px);}
+.inset{margin-left:clamp(16px,4.5vw,40px);margin-right:clamp(16px,4.5vw,40px);}
+.p1foot{padding-bottom:8px;}
+.dlbar{max-width:880px;margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.dlbar a.back{font-family:var(--disp);font-weight:600;color:var(--ink-soft);text-decoration:none;font-size:14px;}
+.dlbar a.dl{font-family:var(--disp);font-weight:700;background:var(--ink);color:#fff;text-decoration:none;
+  padding:11px 20px;border-radius:999px;font-size:14px;box-shadow:var(--shadow-sm);}
+.footer{border-radius:20px;margin-top:24px;}
+.hero .mascot{width:150px;}
+@media(max-width:680px){
+  .hero{flex-direction:column-reverse;align-items:flex-start;}
+  .hero .mascot{width:120px;align-self:flex-end;margin-top:-8px;}
+  h1.title{font-size:44px;}
+  .facts.c2,.facts.c3{grid-template-columns:1fr 1fr;}
+  .benefits{grid-template-columns:1fr;}
+  .cta{flex-direction:column;align-items:flex-start;}
+  .cta .ph{text-align:left;} .cta .ph .r{justify-content:flex-start;}
+  .footer{flex-direction:column;align-items:flex-start;text-align:left;}
+  .footer .contact{text-align:left;} .footer .contact .row{justify-content:flex-start;}
+  .top .meta{font-size:10px;}
+}
+@media(max-width:420px){ .facts.c2,.facts.c3{grid-template-columns:1fr;} h1.title{font-size:38px;} }
+</style></head><body><div class="dlbar"><a class="back" href="/english/#courses">← กลับสู่คอร์สเรียน</a><a class="dl" href="teeny-tec.pdf" download>⬇ ดาวน์โหลด PDF</a></div><div class="sheet"><section class="page first" style="--s:1"><div class="blob" style="width:300px;height:300px;background:var(--yellow);top:-90px;right:-70px;"></div><div class="blob" style="width:230px;height:230px;background:var(--blue);bottom:120px;left:-110px;"></div><header class="top pad"><div class="wordmark"><span class="mk"><b class="t">T</b><b class="e">E</b><b class="c">C</b></span><span class="dot"></span><span class="tt">School</span></div><div class="meta"><b>English Journey</b><br>Play to Learn</div></header><div class="body"><div class="hero pad"><div class="copy"><h1 class="title">Teeny <span class="t-t">T</span><span class="t-e">E</span><span class="t-c">C</span></h1><div class="accent"><i></i><i></i><i></i></div><div class="subtitle">คอร์สภาษาอังกฤษสำหรับเด็กเล็ก</div></div><img class="mascot" src="assets/robot-hero.png" alt="TEC robot"></div><p class="intro pad">Teeny TEC เป็นคอร์สสำหรับเด็กเล็กที่ยังมีสมาธิไม่มาก แต่เรียนรู้และจดจำได้รวดเร็ว และสนุกกับการทำกิจกรรม คอร์สนี้เน้นเสริมสร้างภาษาอังกฤษตามวัย ผ่านการเล่นและการลงมือทำ</p><div class="concepts pad"><div class="concept"><span class="d"></span><b>Play to Learn</b></div><div class="concept"><span class="d"></span><b>Learning by Doing</b></div></div><div class="section pad"><div class="sec-h"><div class="tt">รายละเอียดคอร์ส<small>Course at a glance</small></div><div class="rule"></div></div><div class="facts c3"><div class="fact"><div class="bar"></div><div class="lab">ช่วงอายุ</div><div class="val">2.5–4 ปี</div></div><div class="fact"><div class="bar"></div><div class="lab">ตารางเรียน</div><div class="val">2 คลาสต่อสัปดาห์ คลาสละ 1 ชั่วโมง</div></div><div class="fact"><div class="bar"></div><div class="lab">ระยะเวลาคอร์ส</div><div class="val">104 ชั่วโมง (ขึ้นอยู่กับความพร้อมของนักเรียน เพื่อขึ้น Tiny TEC)</div></div><div class="fact"><div class="bar"></div><div class="lab">จำนวนนักเรียน</div><div class="val">สูงสุด 5–10 คนต่อคลาส</div></div><div class="fact"><div class="bar"></div><div class="lab">ครูผู้สอน</div><div class="val">ครูหลัก 1 คน และผู้ช่วย 2 คน (นักเรียน 7 คนขึ้นไป)</div></div><div class="fact"><div class="bar"></div><div class="lab">ค่าเรียน</div><div class="val">360–400 บาทต่อชั่วโมง (ชำระทุก 20 หรือ 40 ชั่วโมง)</div></div></div></div><div class="included inset"><img class="robot" src="assets/checklist.png" alt=""><div><div class="lab">สิ่งที่ได้รับ · What's included</div><div class="val">กล่องอุปกรณ์ ใบกิจกรรม และกลุ่ม Line ของคลาส</div></div></div></div><div class="p1foot pad"><div class="cta"><img class="robot" src="assets/phone.png" alt=""><div class="t">สนใจสมัครเรียน หรืออยากสอบถามรายละเอียดเพิ่มเติม?<b>ติดต่อ TEC School ได้เลย</b></div><div class="ph"><div class="r">📞 099 019 5890</div><div class="r">🌐 tecschool.org</div></div></div><div class="footwrap"><span class="brandfoot">TEC · Trat English Community</span><span class="pageno">1 / 2</span></div></div></section><section class="page" style="--s:1"><div class="blob" style="width:300px;height:300px;background:var(--pink);top:-90px;right:-70px;"></div><div class="blob" style="width:230px;height:230px;background:var(--blue);bottom:120px;left:-110px;"></div><header class="top pad"><div class="wordmark"><span class="mk"><b class="t">T</b><b class="e">E</b><b class="c">C</b></span><span class="dot"></span><span class="tt">School</span></div><div class="meta"><b>English Journey</b><br>Play to Learn</div></header><div class="body"><div class="section pad"><div class="sec-h"><img class="robot" src="assets/calendar.png" alt=""><div class="tt">รูปแบบการเรียน<small>How it works</small></div><div class="rule"></div></div><div class="steps"><div class="step"><div class="num">1</div><div class="b2">หลักสูตรมาตรฐาน 10 ธีม รวม 104 บทเรียน พัฒนาจากงานวิจัยด้านพัฒนาการเด็กเล็ก และดัดแปลงให้เหมาะกับเด็กที่ใช้ภาษาอังกฤษเป็นภาษาที่สอง</div></div><div class="step"><div class="num">2</div><div class="b2">คลาสแรกของสัปดาห์: คำศัพท์ หนังสือ ตัวอักษร และการบ้าน — คลาสที่สอง: ทบทวน เพลง ตัวอักษร ตรวจการบ้าน และกิจกรรมประดิษฐ์</div></div><div class="step"><div class="num">3</div><div class="b2">กิจกรรมต่อเนื่องกันทุกสัปดาห์ เด็กๆ จะได้สร้าง Routine ในห้องเรียน ทั้งเพลง Chants การอ่านหนังสือ และการบ้าน — การมาเรียนสม่ำเสมอจึงสำคัญมาก</div></div><div class="step"><div class="num">4</div><div class="b2">ไม่มีกำหนดเวลาจบคอร์ส นักเรียนเรียนจนพร้อม แล้วครูจะเป็นผู้ประเมินเพื่อเลื่อนขึ้นคอร์สหลัก Tiny TEC</div></div></div></div><div class="section pad"><div class="sec-h"><img class="robot" src="assets/reading.png" alt=""><div class="tt">เด็กๆ จะได้อะไร<small>What your child gains</small></div><div class="rule"></div></div><div class="benefits "><div class="benefit"><span class="tick">✓</span><span>ใช้ภาษาอังกฤษได้อย่างเป็นธรรมชาติ ผ่านการเล่นและกิจวัตร แทนการท่องจำ</span></div><div class="benefit"><span class="tick">✓</span><span>มั่นใจ สนุก และมีทัศนคติที่ดีต่อการเรียนภาษาอังกฤษ</span></div><div class="benefit"><span class="tick">✓</span><span>รู้จักชื่อและเสียงตัวอักษร รวมถึงคำศัพท์พื้นฐาน</span></div><div class="benefit"><span class="tick">✓</span><span>เริ่มต้นการใช้ดินสอในการขีดเขียน</span></div><div class="benefit"><span class="tick">✓</span><span>ฟังและปฏิบัติตามคำสั่งครูได้ และเข้าสังคมผ่านการเล่นเป็นภาษาอังกฤษ</span></div><div class="benefit"><span class="tick">✓</span><span>รักการอ่านจากการฟังนิทานภาษาอังกฤษ และมีวินัยจากการเข้าเรียนและส่งการบ้านสม่ำเสมอ</span></div></div></div></div><div class="footer"><div class="tag">Play. <span class="b">Read.</span> <span class="p">Lead.</span><br>Build a Future in <span class="y">English.</span></div><div class="contact"><b>TEC School</b><br><div class="row">tecschool.org</div><div class="row">tratenglish@gmail.com</div><div class="row">099 019 5890</div></div><img class="robot" src="assets/robot-logo.png" alt=""></div></section></div></body></html>
