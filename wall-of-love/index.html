@@ -223,8 +223,17 @@
     margin-top: 12px;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700; font-size: 13.5px;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 9px;
   }
+  /* Cropped student face(s) on a written testimonial */
+  .q-avatars { display: inline-flex; flex: none; }
+  .q-avatars img {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 2px solid var(--tec-ink); object-fit: cover;
+    background: var(--tec-blue);
+    box-shadow: 1.5px 1.5px 0 rgba(0,0,0,0.16);
+  }
+  .q-avatars img + img { margin-left: -15px; }
 
   /* --- Photo card --- */
   .wall-card.photo { padding: 10px 10px 12px; }
@@ -235,6 +244,27 @@
     font-weight: 700; font-size: 19px;
     text-align: center; color: var(--tec-ink-soft);
   }
+
+  /* --- Google review card (real screenshot + a different TEC robot each time) --- */
+  .wall-card.greview { padding: 12px 12px 13px; overflow: visible; }
+  .wall-card.greview::before { display: none; } /* no washi tape — the robot is the topper */
+  .wall-card.greview .g-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 12px;
+    color: var(--tec-ink-soft); margin: 2px 0 9px 2px;
+  }
+  .wall-card.greview .g-shot {
+    width: 100%; border-radius: 10px;
+    border: 1.5px solid rgba(0,0,0,0.10);
+  }
+  .wall-card.greview .g-robot {
+    position: absolute; top: -26px; right: -10px;
+    width: 58px; height: auto; transform: rotate(7deg);
+    filter: drop-shadow(1.5px 2px 0 rgba(0,0,0,0.16));
+    pointer-events: none; z-index: 4;
+    transition: transform 220ms cubic-bezier(.2,.8,.3,1);
+  }
+  .wall-card.greview:hover .g-robot { transform: rotate(0deg) translateY(-4px) scale(1.06); }
 
   /* --- Sticker card (true brand facts between testimonials) --- */
   .wall-card.sticker { text-align: center; border-style: solid; }
@@ -395,23 +425,67 @@
     { type: 'video', name: 'Klua', sub: 'TEC student · นักเรียน TEC',
       poster: '/assets/video/klua-card.jpg?v=4', src: '/assets/video/klua.mp4' },
 
+    { type: 'greview', src: '/assets/wall/google/01.png', robot: 'thumbsup', name: 'Parudee Hatch' },
+
+    { type: 'quote', avatar: '/assets/wall/boon.jpg',
+      name: 'แม่ของบุญ', sub: "Boon's mum · ผู้ปกครอง TEC",
+      text: 'TEC สร้างให้เด็กที่กลัวและไม่ปลื้มเมื่อต้องออกเสียงภาษาอังกฤษ กลายมาเป็นคนที่ชอบออกเสียง มั่นใจในทักษะของตนเอง ซึ่งเป็นการสนองตอบต่อเป้าหมายอันดับแรก ๆ ของการที่ให้ลูกมาเรียนที่ TEC ค่ะ' },
+
+    { type: 'greview', src: '/assets/wall/google/02.png', robot: 'speaking', name: 'C Chayut' },
+
     { type: 'sticker', tint: 'yellow', big: '90%',
       small: 'ของเด็ก TEC สอบเข้า EP ได้ — โดยไม่ต้องลงคอร์สติวสอบเฉพาะ',
       en: 'of TEC kids get into EP — without dedicated test-prep courses' },
 
+    { type: 'greview', src: '/assets/wall/google/03.png', robot: 'reading', name: 'khwanrudee anannawee' },
+
     { type: 'video', name: 'Neptune', sub: 'TEC student · นักเรียน TEC',
       poster: '/assets/video/neptune-card.jpg?v=1', src: '/assets/video/neptune.mp4' },
+
+    { type: 'quote', avatar: '/assets/wall/heyha.jpg',
+      name: 'แม่ของเฮฮา', sub: "HeyHa's mum · ผู้ปกครอง TEC",
+      text: 'หลังจากที่ได้มาเรียนที่ TEC เฮฮามีพัฒนาทักษะด้านภาษาอังกฤษอย่างมาก ทั้งฟัง พูด อ่าน และเขียน เทคนิคการเรียนการสอนภาษาอังกฤษที่ผ่านการทำกิจกรรม ทำให้เด็กไม่รู้สึกว่าเบื่อกับการเรียน' },
+
+    { type: 'greview', src: '/assets/wall/google/04.png', robot: 'writing', name: 'Pimjai Poniyiam' },
 
     { type: 'sticker', tint: 'blue', big: '2014',
       small: 'สอนภาษาให้คนตราดมาตั้งแต่ปี 2014',
       en: 'Helping Trat learn languages since 2014' },
 
+    { type: 'greview', src: '/assets/wall/google/05.png', robot: 'listening', name: 'Khun Cee' },
+
+    { type: 'quote', avatar: '/assets/wall/phum.jpg',
+      name: 'แม่ของภูมิ', sub: "Phum's mum · ผู้ปกครอง TEC",
+      text: 'น้องกล้าแสดงออก กล้าพูด และมั่นใจในการออกเสียงมากขึ้นค่ะ ตอนนี้น้องสะกดคำเป็นบ้างแล้ว และจำคำศัพท์ได้ประมาณนึงค่ะ น้องสนุกในการมาเรียนที่ TEC และชอบเรียนภาษาอังกฤษมากขึ้นค่ะ' },
+
+    { type: 'greview', src: '/assets/wall/google/06.png', robot: 'phone', name: 'Khunamai Foifoo' },
+
     { type: 'video', name: 'Seua', sub: 'TEC student · นักเรียน TEC',
       poster: '/assets/video/seua-card.jpg?v=3', src: '/assets/video/seua.mp4' },
 
+    { type: 'greview', src: '/assets/wall/google/07.png', robot: 'location', name: 'Chattep Srisuwanadit' },
+
+    { type: 'quote', avatar: ['/assets/wall/lekthai.jpg', '/assets/wall/rbig.jpg'],
+      name: 'แม่ของไทย / อาร์บิก', sub: "Thai & R-Big's mum · ผู้ปกครอง TEC",
+      text: 'กล้าพูดภาษาอังกฤษถึงแม้จะไม่ได้เข้าใจทั้งหมด ทำให้ลูกชอบภาษาอังกฤษโดยไม่รู้ตัว' },
+
+    { type: 'greview', src: '/assets/wall/google/08.png', robot: 'steps', name: 'Pritsana Anan' },
+
     { type: 'sticker', tint: 'pink', big: 'A1→B1',
       small: 'เส้นทาง Cambridge: Starters → Movers → Flyers',
-      en: 'The Cambridge pathway: Starters → Movers → Flyers' }
+      en: 'The Cambridge pathway: Starters → Movers → Flyers' },
+
+    { type: 'greview', src: '/assets/wall/google/09.png', robot: 'teaching', name: 'Sunshine' },
+
+    { type: 'quote', avatar: ['/assets/wall/pipo.jpg', '/assets/wall/papaeng.jpg'],
+      name: 'แม่ไปโป้ + ปาแปง', sub: "Pipo & Papaeng's mum · ผู้ปกครอง TEC",
+      text: 'TEC สอนให้เข้าใจแบบที่ไม่ต้องท่องจำ การเห็นผลจะช้าเพราะมันเป็นความรู้ความเข้าใจแบบค่อยซึมซับ แต่เด็กจะสามารถนำมาใช้ได้จริง' },
+
+    { type: 'greview', src: '/assets/wall/google/10.png', robot: 'calendar', name: 'รุ่นเก่า ครองสรรพ' },
+
+    { type: 'greview', src: '/assets/wall/google/11.png', robot: 'checklist', name: 'amiga prasato' },
+
+    { type: 'greview', src: '/assets/wall/google/12.png', robot: 'thumbsup', name: 'Stang Channel' }
   ];
 
   const SOURCE_BADGE = {
@@ -434,16 +508,30 @@
       }
       if (t.type === 'quote') {
         const stars = t.stars ? '<div class="stars">' + '★'.repeat(Math.min(5, t.stars)) + '</div>' : '';
+        const faces = t.avatar ? [].concat(t.avatar) : [];
+        const avatars = faces.length
+          ? '<span class="q-avatars">' + faces.map(s => '<img src="' + esc(s) + '" alt="" loading="lazy">').join('') + '</span>'
+          : (SOURCE_BADGE[t.source] || '');
         return '<blockquote class="wall-card quote">'
           + '<span class="mark" aria-hidden="true">&ldquo;</span>' + stars
           + '<p class="text">' + esc(t.text) + '</p>'
-          + '<footer class="who">' + (SOURCE_BADGE[t.source] || '') + '<span>' + esc(t.name || '') + '<span class="sub">' + esc(t.sub || '') + '</span></span></footer>'
+          + '<footer class="who">' + avatars + '<span>' + esc(t.name || '') + '<span class="sub">' + esc(t.sub || '') + '</span></span></footer>'
           + '</blockquote>';
       }
       if (t.type === 'photo') {
         return '<figure class="wall-card photo">'
           + '<img src="' + esc(t.src) + '" alt="' + esc(t.cap || 'TEC moment') + '" loading="lazy">'
           + '<figcaption class="cap">' + esc(t.cap || '') + '</figcaption>'
+          + '</figure>';
+      }
+      if (t.type === 'greview') {
+        const robot = t.robot
+          ? '<img class="g-robot" src="/assets/wall/robots/' + esc(t.robot) + '.png" alt="" aria-hidden="true" loading="lazy">'
+          : '';
+        return '<figure class="wall-card greview">'
+          + robot
+          + '<figcaption class="g-tag">' + SOURCE_BADGE.google + 'Google review · รีวิวจริงบน Google</figcaption>'
+          + '<img class="g-shot" src="' + esc(t.src) + '" alt="5-star Google review for TEC by ' + esc(t.name || 'a TEC family') + '" loading="lazy">'
           + '</figure>';
       }
       if (t.type === 'sticker') {
