@@ -4,8 +4,11 @@
    - Injects a readable "Found via" field into every enquiry form, so each
      FormSubmit email says where the person came from.
    - Fires Vercel Web Analytics custom events for LINE / phone / email clicks,
-     PDF downloads, and form submissions. Safe no-op if analytics is disabled. */
+     PDF downloads, and form submissions. Safe no-op if analytics is disabled.
+   - POSTs a copy of each enquiry to the Notion enquiry-webhook worker, which
+     files it in "DB: Enquiries (TEC)". FormSubmit email is unaffected. */
 (function () {
+  var ENQUIRY_WEBHOOK = 'https://www.notion.so/webhooks/worker/d04bd900-8630-4051-9599-ec4f025fa497/019f2667-71e8-7ac3-9781-c262b343ab30/meqbMk0s9tX2Qd1z/onEnquiry';
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
@@ -72,5 +75,32 @@
     var subjectField = form.querySelector('input[name="_subject"]');
     var label = (subjectField && subjectField.value) || form.id || 'form';
     window.va('event', { name: 'enquiry_submit', data: { page: location.pathname, form: label } });
+
+    try {
+      var fd = new FormData(form);
+      if (fd.get('_honey')) return; // bot filled the honeypot: no copy
+      var path = location.pathname;
+      var programme = path.indexOf('/chinese') === 0 ? 'Chinese'
+                    : path.indexOf('/thai') === 0 ? 'Thai'
+                    : 'English';
+      var payload = JSON.stringify({
+        name: fd.get('Name') || '',
+        contact: fd.get('LINE or phone') || fd.get('Email') || '',
+        location: fd.get('Where are you now') || '',
+        programme: programme,
+        foundVia: sourceLabel(),
+        page: location.href
+      });
+      // text/plain keeps this a CORS "simple request" (no preflight);
+      // fire-and-forget — the enquiry email works even if this fails.
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(ENQUIRY_WEBHOOK, new Blob([payload], { type: 'text/plain' }));
+      } else {
+        fetch(ENQUIRY_WEBHOOK, {
+          method: 'POST', mode: 'no-cors', keepalive: true,
+          headers: { 'Content-Type': 'text/plain' }, body: payload
+        });
+      }
+    } catch (e) { /* copy failed: FormSubmit email still goes out */ }
   }, true);
 })();
