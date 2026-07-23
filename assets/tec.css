@@ -1,0 +1,63 @@
+/* ============================================================
+   TEC — shared design system
+   Linked by every page. Each page sets ONE identity class on
+   <body>: page-thai | page-english | page-chinese.
+   This carries the homepage "three doors" colour inward:
+   the language you tapped becomes the ambient colour of the
+   page you land on. Replaces the retired watercolour splatters.
+   ============================================================ */
+
+:root {
+  --tec-blue:   #1DB2FF;
+  --tec-yellow: #FED501;
+  --tec-pink:   #FF208D;
+  --tec-bg:     #F4F2EC;
+  --tec-ink:    #1A1A1A;
+}
+
+/* --- Per-page accent tokens (match the homepage door tints) --- */
+body.page-thai    { --accent: var(--tec-blue);   --accent-tint: #CCDDF4; --accent-deep: #0C6BAE; }
+body.page-english { --accent: var(--tec-yellow); --accent-tint: #F4E9BC; --accent-deep: #806200; }
+body.page-chinese { --accent: var(--tec-pink);   --accent-tint: #F8D3E1; --accent-deep: #C60F69; }
+
+/* --- Soft hero wash ---
+   A gentle band of the page's language colour at the very top,
+   fading into the cream base. Painted as the body background so
+   it always sits behind content — no z-index juggling, no
+   watercolour image. */
+body.page-thai,
+body.page-english,
+body.page-chinese {
+  background-color: var(--tec-bg);
+  background-image: linear-gradient(
+    180deg,
+    var(--accent-tint) 0%,
+    rgba(244, 242, 236, 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% min(560px, 56vh);
+  background-attachment: scroll; /* wash sits at the top of the page and scrolls away */
+}
+
+/* --- Reusable accents (opt-in) ---
+   Available for hand-made flourishes that echo the homepage,
+   recoloured per page via --accent. Use as needed. */
+
+/* Painterly underline swash — recolour the stroke with currentColor
+   or var(--accent) at the call site. */
+.tec-swash { display: block; height: 0.62em; width: 100%; overflow: visible; }
+.tec-swash path { stroke: var(--accent); }
+
+/* Circular arrow affordance, matching the homepage doors. */
+.tec-go {
+  width: 3.4em; height: 3.4em; border-radius: 50%;
+  border: 2.5px solid var(--accent-deep);
+  color: var(--accent-deep);
+  display: grid; place-items: center; flex: none;
+  transition: background-color .3s ease, color .3s ease, transform .3s ease;
+}
+.tec-go svg { width: 44%; height: 44%; display: block; }
+@media (hover: hover) {
+  .tec-go:hover { background: var(--accent); color: #fff; transform: scale(1.06); }
+}

@@ -61,12 +61,6 @@
   a { color: inherit; text-decoration: none; }
   .th { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; font-weight: 600; }
 
-  .paint-bg {
-    position: fixed; inset: 0; width: 100%; height: 100%;
-    object-fit: fill; transform: scale(1.24);
-    pointer-events: none; user-select: none;
-    z-index: 0; opacity: 0.35;
-  }
   header, main, footer, .sticky-cta { position: relative; z-index: 1; }
 
   /* ===== Header (matches the English & Chinese pages) ===== */
@@ -719,10 +713,9 @@
 <!-- Cookieless analytics + enquiry source capture -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/assets/tec-track.js"></script>
+<link rel="stylesheet" href="/assets/tec.css">
 </head>
-<body>
-
-<img class="paint-bg" src="/thai-splatter.webp" alt="" aria-hidden="true">
+<body class="page-thai">
 
 <header class="site-header">
   <div class="row">
