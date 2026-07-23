@@ -192,7 +192,7 @@
     width: min(92%, 460px);
     color: var(--tec-ink);
     pointer-events: none;
-    bottom: clamp(20px, 4vh, 40px);
+    bottom: clamp(118px, 17vh, 168px);
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: clamp(13px, 1.3vw, 16px);
@@ -209,11 +209,11 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
-    width: min(92vw, 640px);
+    width: min(94vw, 760px);
     background: #FBFAF6;
-    border-radius: clamp(22px, 2.4vw, 32px);
+    border-radius: clamp(24px, 2.6vw, 36px);
     box-shadow: var(--card-shadow);
-    padding: clamp(20px, 2.8vw, 36px) clamp(24px, 4vw, 56px) clamp(22px, 3vw, 34px);
+    padding: clamp(24px, 3.2vw, 44px) clamp(28px, 4.6vw, 68px) clamp(26px, 3.4vw, 42px);
     text-align: center;
     opacity: 0;
     transform: translate(-50%, -14px);
@@ -236,7 +236,7 @@
   }
   .tec .letter {
     display: inline-block;
-    font-size: clamp(48px, 6.4vw, 96px);
+    font-size: clamp(62px, 8.4vw, 140px);
     line-height: 0.85;
     letter-spacing: -0.02em;
     text-shadow: 5px 6px 0 rgba(0,0,0,0.10);
@@ -260,9 +260,40 @@
     font-family: "chaloops", "Fredoka", system-ui, sans-serif;
     font-weight: 700;
     color: var(--tec-ink);
-    font-size: clamp(30px, 4.4vw, 60px);
+    font-size: clamp(40px, 5.8vw, 84px);
     line-height: 1;
-    margin-top: clamp(6px, 1vw, 12px);
+    margin-top: clamp(8px, 1.2vw, 16px);
+  }
+
+  /* ============================================================
+     BOTTOM STRIP — school descriptor + trust stamp, moved out of
+     the card so the T·E·C identity can breathe bigger up top.
+     ============================================================ */
+  .site-foot {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(16px, 3vh, 32px);
+    transform: translateX(-50%);
+    z-index: 4;
+    width: min(94vw, 640px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(6px, 1vw, 10px);
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    animation: footIn 700ms ease 520ms forwards;
+  }
+  @keyframes footIn { to { opacity: 1; } }
+
+  .foot-sub {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: clamp(14px, 1.5vw, 19px);
+    line-height: 1.35;
+    color: var(--tec-ink);
+    opacity: 0.9;
   }
 
   /* Handwritten trust badge with painterly underline */
@@ -271,12 +302,11 @@
     flex-direction: column;
     align-items: center;
     gap: 2px;
-    margin-top: clamp(10px, 1.4vw, 16px);
   }
   .trust-note .text {
     font-family: 'Caveat', cursive;
     font-weight: 700;
-    font-size: clamp(18px, 2vw, 26px);
+    font-size: clamp(19px, 2.1vw, 28px);
     color: var(--tec-ink);
     line-height: 1;
     white-space: nowrap;
@@ -289,16 +319,6 @@
     overflow: visible;
   }
 
-  .card-sub {
-    margin-top: clamp(12px, 1.6vw, 18px);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: clamp(13px, 1.4vw, 18px);
-    line-height: 1.35;
-    color: var(--tec-ink);
-    opacity: 0.82;
-  }
-
   /* ============================================================
      SHORT LAPTOP VIEWPORTS (landscape, height-constrained) —
      make the card compact and size type by height so the whole
@@ -309,13 +329,15 @@
       top: clamp(14px, 3vh, 30px);
       padding: clamp(14px, 2.2vh, 26px) clamp(24px, 4vw, 52px) clamp(16px, 2.4vh, 26px);
     }
-    .tec .letter { font-size: clamp(40px, 8.4vh, 74px); }
+    .tec .letter { font-size: clamp(48px, 10.5vh, 96px); }
     .tec .e { -webkit-text-stroke-width: 2.5px; }
-    .headline { font-size: clamp(24px, 5.6vh, 46px); }
-    .card-sub { font-size: clamp(12px, 2vh, 16px); margin-top: clamp(8px, 1.4vh, 14px); }
-    .panel { padding-top: clamp(230px, 40vh, 300px); padding-bottom: clamp(48px, 8vh, 80px); }
+    .headline { font-size: clamp(28px, 6.8vh, 56px); }
+    .panel { padding-top: clamp(210px, 38vh, 290px); padding-bottom: clamp(48px, 8vh, 80px); }
     .greeting { font-size: clamp(48px, 12vh, 104px); }
     .go { width: clamp(46px, 8vh, 64px); height: clamp(46px, 8vh, 64px); }
+    .eng-note { bottom: clamp(96px, 15vh, 150px); }
+    .site-foot { bottom: clamp(12px, 2.4vh, 26px); }
+    .foot-sub { font-size: clamp(13px, 2vh, 17px); }
   }
 
   /* ============================================================
@@ -354,18 +376,29 @@
       width: auto;
       margin-top: 4px;
     }
+    .site-foot {
+      position: static;
+      transform: none;
+      width: auto;
+      margin: clamp(10px, 3vw, 18px) 16px clamp(12px, 4vw, 20px);
+      animation: none;
+      opacity: 1;
+    }
     /* On touch, keep the coloured-text-on-tint look (no hover state) */
   }
 
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
-    .panel, .hero-card {
+    .panel, .hero-card, .site-foot {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;
     }
     .hero-card { transform: translateX(-50%) !important; }
-    @media (max-width: 760px) { .hero-card { transform: none !important; } }
+    .site-foot { transform: translateX(-50%) !important; }
+    @media (max-width: 760px) {
+      .hero-card, .site-foot { transform: none !important; }
+    }
     .greeting, .go { transition: none !important; }
   }
 
@@ -477,16 +510,6 @@
         <span class="letter c">C</span>
       </div>
       <h1 class="headline">I want to learn</h1>
-      <div class="trust-note" role="img" aria-label="Trusted in Trat since 2014">
-        <span class="text">Trusted in Trat since 2014</span>
-        <svg class="underline" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M4,8 C 40,3 80,11 120,6 C 155,2 185,10 216,5"
-                stroke="#FED501" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.95"/>
-          <circle cx="218" cy="6"  r="1.6" fill="#FED501" opacity="0.7"/>
-          <circle cx="42"  cy="11" r="1.2" fill="#FED501" opacity="0.6"/>
-        </svg>
-      </div>
-      <p class="card-sub">Thai · English · Chinese for young learners</p>
     </div>
 
     <!-- Door 1 · Thai -->
@@ -516,6 +539,20 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </span>
     </a>
+
+    <!-- Bottom strip · school descriptor + trust stamp (moved out of the card) -->
+    <div class="site-foot">
+      <p class="foot-sub">Thai · English · Chinese — young learners to adults</p>
+      <div class="trust-note" role="img" aria-label="Trusted in Trat since 2014">
+        <span class="text">Trusted in Trat since 2014</span>
+        <svg class="underline" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4,8 C 40,3 80,11 120,6 C 155,2 185,10 216,5"
+                stroke="#FED501" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.95"/>
+          <circle cx="218" cy="6"  r="1.6" fill="#FED501" opacity="0.7"/>
+          <circle cx="42"  cy="11" r="1.2" fill="#FED501" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
 
   </main>
 
