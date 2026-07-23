@@ -32,21 +32,23 @@
     --tec-blue:    #1DB2FF;
     --tec-yellow:  #FED501;
     --tec-pink:    #FF208D;
-    --tec-grey:    #9C9C9C;
-    --tec-bg:      #F4F2EC;
-    --tec-pill-bg: #ECEAE3;
     --tec-ink:     #1A1A1A;
-    --tec-ink-soft:#2B2B2B;
+    --tec-bg:      #F4F2EC;
 
-    /* Hard offset shadows — flat, no blur — that's what gives the mockup its "weight" */
-    --shadow-letter:        8px 10px 0 rgba(0,0,0,0.10);
-    --shadow-letter-primary: 10px 12px 0 rgba(0,0,0,0.13);
+    /* Soft panel tints — pastels of the three brand colours over the cream base */
+    --thai-tint:    #CCDDF4;
+    --eng-tint:     #F4E9BC;
+    --chi-tint:     #F8D3E1;
 
-    --shadow-btn:         0 10px 0 rgba(0,0,0,0.18);
-    --shadow-btn-primary: 0 14px 0 rgba(0,0,0,0.22);
+    /* Slightly deeper tints for the seams / hover pre-state */
+    --thai-deep:    #C9DBF2;
+    --eng-deep:     #F0E4A6;
+    --chi-deep:     #F7C9DC;
 
-    --shadow-btn-hover:         0 14px 0 rgba(0,0,0,0.22), 0 22px 36px rgba(0,0,0,0.10);
-    --shadow-btn-primary-hover: 0 18px 0 rgba(0,0,0,0.26), 0 28px 44px rgba(0,0,0,0.14);
+    /* Darker gold for small English text that must stay legible on the yellow panel */
+    --eng-gold:     #C99B00;
+
+    --card-shadow: 0 18px 40px rgba(20, 18, 12, 0.14), 0 4px 12px rgba(20, 18, 12, 0.08);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,87 +64,166 @@
 
   body {
     min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
     overflow-x: hidden;
+  }
+
+  /* ============================================================
+     STAGE — three full-height panels ("three doors")
+     Desktop: side-by-side, English centre panel a touch wider.
+     ============================================================ */
+  .stage {
     position: relative;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
   }
 
-  /* ---------- Paint-splatter background layer (behind everything) ---------- */
-  .paint-bg {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;       /* stretches to keep splatters anchored in viewport corners */
-    /* Scale up slightly so the corner clusters push outward into the corners,
-       freeing up the centre for T·E·C and the buttons */
-    transform: scale(1.14);
-    transform-origin: center;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-
-  /* Make sure all real content sits above the paint */
-  main, .version-switch { position: relative; z-index: 1; }
-
-  /* ---------- Top-right handwritten "Trusted in Trat" annotation ---------- */
-  /* Sits below + to the left of the top-right corner splatter so it doesn't touch */
-  .trust-note {
-    position: absolute;
-    top:   clamp(56px, 9vh, 100px);
-    right: clamp(225px, 20.5vw, 320px);
-    transform: rotate(-1deg);
-    transform-origin: center;
-    pointer-events: none;
-    user-select: none;
-    z-index: 2;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-  .trust-note .text {
-    font-family: 'Caveat', cursive;
-    font-weight: 700;
-    font-size: clamp(20px, 2.25vw, 30px);
-    color: var(--tec-ink);   /* same near-black as the headline */
-    line-height: 1;
-    letter-spacing: 0;
-    white-space: nowrap;
-  }
-  .trust-note .underline {
-    display: block;
-    width: 76%;
-    height: clamp(6px, 0.7vw, 10px);
-    margin-top: -2px;
-    overflow: visible;
-  }
-  /* Phones: the desktop right-offset pushes the note off the left edge —
-     centre it above the headline instead */
-  @media (max-width: 640px) {
-    .trust-note {
-      right: auto;
-      left: 50%;
-      transform: translateX(-50%) rotate(-1deg);
-      top: clamp(48px, 9vh, 90px);
-    }
-  }
-
-  /* ---------- Hero stack ---------- */
-  main {
-    flex: 1;
+  /* ---------- A panel is the whole tappable "door" ---------- */
+  .panel {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: clamp(8px, 1.4vw, 20px) clamp(16px, 5vw, 32px) clamp(16px, 2.4vw, 32px);
-    gap: clamp(14px, 2.2vw, 28px);
-    text-align: center;
+    gap: clamp(18px, 2.4vw, 34px);
+    padding: clamp(320px, 45vh, 380px) clamp(16px, 3vw, 40px) clamp(64px, 9vh, 110px);
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 420ms ease;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: panelIn 720ms cubic-bezier(.2,.8,.25,1) forwards;
+  }
+  .panel-thai    { background: var(--thai-tint); animation-delay: 120ms; }
+  .panel-english { background: var(--eng-tint);  animation-delay: 220ms; }
+  .panel-chinese { background: var(--chi-tint);  animation-delay: 320ms; }
+
+  @keyframes panelIn {
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ---------- T · E · C brand mark ---------- */
+  /* ---------- Greeting (the hero of each door) ---------- */
+  .greeting {
+    font-family: "chaloops", "Fredoka", system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 0.95;
+    font-size: clamp(56px, 8.5vw, 132px);
+    letter-spacing: -0.01em;
+    text-shadow: 4px 5px 0 rgba(0,0,0,0.07);
+    transition: transform 420ms cubic-bezier(.2,.8,.25,1), color 420ms ease;
+  }
+  .panel-thai    .greeting { color: var(--tec-blue); }
+  .panel-english .greeting {
+    color: var(--tec-yellow);
+    /* Thin ink stroke keeps the yellow readable on the pale-yellow panel
+       (same treatment as the E in the wordmark). */
+    -webkit-text-stroke: 2.5px var(--tec-ink);
+    paint-order: stroke fill;
+  }
+  .panel-chinese .greeting { color: var(--tec-pink); }
+
+  /* ---------- Language label ---------- */
+  .lang {
+    font-family: "chaloops", "Fredoka", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 2vw, 28px);
+    letter-spacing: 0.01em;
+  }
+  /* Deeper hue-matched shades so the small labels stay legible on the tints */
+  .panel-thai    .lang { color: #0C6BAE; }
+  .panel-english .lang { color: #806200; }
+  .panel-chinese .lang { color: #C60F69; }
+
+  /* ---------- Circular arrow affordance ---------- */
+  .go {
+    width: clamp(52px, 5vw, 72px);
+    height: clamp(52px, 5vw, 72px);
+    border-radius: 50%;
+    border: 2.5px solid currentColor;
+    display: grid;
+    place-items: center;
+    transition: background-color 320ms ease, color 320ms ease, transform 320ms ease;
+  }
+  .go svg { width: 44%; height: 44%; display: block; }
+  .panel-thai    .go { color: #0C6BAE; }
+  .panel-english .go { color: #806200; }
+  .panel-chinese .go { color: #C60F69; }
+
+  /* ---------- Hover / focus: the door "opens" — deepen to brand colour ---------- */
+  @media (hover: hover) {
+    .panel-thai:hover    { background: var(--tec-blue); }
+    .panel-english:hover { background: var(--tec-yellow); }
+    .panel-chinese:hover { background: var(--tec-pink); }
+
+    .panel:hover .greeting { transform: scale(1.04); }
+    .panel:hover .go       { transform: scale(1.08); }
+
+    /* Thai + Chinese flip to white text; English stays ink on yellow */
+    .panel-thai:hover    .greeting,
+    .panel-thai:hover    .lang,
+    .panel-chinese:hover .greeting,
+    .panel-chinese:hover .lang { color: #fff; }
+    .panel-thai:hover    .greeting,
+    .panel-chinese:hover .greeting { -webkit-text-stroke: 0; }
+
+    .panel-thai:hover    .go,
+    .panel-chinese:hover .go { color: #fff; }
+    .panel-thai:hover    .go { background: rgba(255,255,255,0.16); }
+    .panel-chinese:hover .go { background: rgba(255,255,255,0.16); }
+
+    .panel-english:hover .greeting { color: var(--tec-ink); -webkit-text-stroke: 0; }
+    .panel-english:hover .lang,
+    .panel-english:hover .go { color: var(--tec-ink); }
+    .panel-english:hover .go { background: rgba(0,0,0,0.06); }
+  }
+
+  .panel:focus-visible {
+    outline: 3px solid var(--tec-ink);
+    outline-offset: -6px;
+  }
+
+  /* ---------- English-panel credential note (bottom) ---------- */
+  .eng-note {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: min(92%, 460px);
+    color: var(--tec-ink);
+    pointer-events: none;
+    bottom: clamp(20px, 4vh, 40px);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: clamp(13px, 1.3vw, 16px);
+    color: var(--tec-ink);
+    opacity: 0.78;
+  }
+
+  /* ============================================================
+     HERO CARD — floating T·E·C identity, overlaps all three doors
+     ============================================================ */
+  .hero-card {
+    position: absolute;
+    top: clamp(24px, 5vh, 60px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: min(92vw, 640px);
+    background: #FBFAF6;
+    border-radius: clamp(22px, 2.4vw, 32px);
+    box-shadow: var(--card-shadow);
+    padding: clamp(20px, 2.8vw, 36px) clamp(24px, 4vw, 56px) clamp(22px, 3vw, 34px);
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, -14px);
+    animation: cardIn 700ms cubic-bezier(.2,.85,.25,1.05) 80ms forwards;
+  }
+  @keyframes cardIn {
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  /* T · E · C wordmark */
   .tec {
     font-family: "chaloops", "Fredoka", system-ui, sans-serif;
     font-weight: 700;
@@ -150,264 +231,148 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(20px, 3.4vw, 50px);
+    gap: clamp(12px, 1.8vw, 22px);
     user-select: none;
-    margin-top: clamp(8px, 1.5vw, 22px);
   }
-
   .tec .letter {
     display: inline-block;
-    font-size: clamp(96px, 17vw, 240px);
+    font-size: clamp(48px, 6.4vw, 96px);
     line-height: 0.85;
     letter-spacing: -0.02em;
-    text-shadow: var(--shadow-letter);
-    transform: translateY(40px);
-    opacity: 0;
-    animation: letterIn 700ms cubic-bezier(.2,.9,.25,1.15) forwards;
-    will-change: transform, opacity;
+    text-shadow: 5px 6px 0 rgba(0,0,0,0.10);
   }
-  .tec .t  { color: var(--tec-blue);   animation-delay: 120ms; }
-  .tec .e  {
+  .tec .t { color: var(--tec-blue); }
+  .tec .e {
     color: var(--tec-yellow);
-    font-size: clamp(108px, 19vw, 270px);
-    text-shadow: var(--shadow-letter-primary);
     -webkit-text-stroke: 3px var(--tec-ink);
     paint-order: stroke fill;
-    animation-delay: 280ms;
   }
-  .tec .c  { color: var(--tec-pink);   animation-delay: 440ms; }
-
-  /* Solid black dot dividers — sized in CSS, not text bullets */
+  .tec .c { color: var(--tec-pink); }
   .tec .sep {
-    display: inline-block;
-    width: clamp(14px, 1.6vw, 22px);
-    height: clamp(14px, 1.6vw, 22px);
+    width: clamp(9px, 1vw, 14px);
+    height: clamp(9px, 1vw, 14px);
     background: var(--tec-ink);
     border-radius: 50%;
-    transform: translateY(0);
-    opacity: 0;
-    animation: sepIn 500ms ease forwards;
     flex: none;
   }
-  .tec .sep:nth-of-type(1) { animation-delay: 220ms; }
-  .tec .sep:nth-of-type(2) { animation-delay: 380ms; }
 
-  @keyframes letterIn {
-    0%   { opacity: 0; transform: translateY(40px) scale(0.92); }
-    60%  { opacity: 1; transform: translateY(-6px) scale(1.04); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes sepIn {
-    to { opacity: 1; }
-  }
-
-  /* ---------- Headline ---------- */
   .headline {
     font-family: "chaloops", "Fredoka", system-ui, sans-serif;
     font-weight: 700;
     color: var(--tec-ink);
-    font-size: clamp(40px, 9vw, 118px);
+    font-size: clamp(30px, 4.4vw, 60px);
     line-height: 1;
-    letter-spacing: -0.005em;
-    opacity: 0;
-    transform: translateY(8px);
-    animation: fadeUp 600ms ease forwards;
-    animation-delay: 700ms;
+    margin-top: clamp(6px, 1vw, 12px);
   }
 
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ---------- Buttons row ---------- */
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(16px, 2vw, 22px);
-    width: 100%;
-    max-width: 1100px;
-    align-items: stretch;
-  }
-
-  /* ===== V2: Neumorphic button (Uiverse / Peary74 style) — adapted for brand colours ===== */
-  .btn {
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    font-family: "chaloops", "Fredoka", system-ui, sans-serif;
-    font-weight: 700;
-    background: transparent;
-    border-radius: 30px;
-    padding: 22px 28px;
-    min-height: 70px;
-    font-size: clamp(24px, 3vw, 36px);
-    line-height: 1;
-    text-decoration: none;
+  /* Handwritten trust badge with painterly underline */
+  .trust-note {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    letter-spacing: 1px;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
-    opacity: 0;
-    animation: btnIn 500ms ease forwards;
-    transition:
-      letter-spacing 600ms ease,
-      color 600ms ease,
-      background-color 600ms ease,
-      box-shadow 600ms ease;
-    /* Neumorphic shadow tuned for the cream background */
-    box-shadow:
-       4px  4px 10px 0 rgba(255, 255, 255, 0.85),
-      -4px -4px 10px 0 rgba(120, 110,  90, 0.28),
-      inset -4px -4px  8px 0 rgba(255, 255, 255, 0.30),
-      inset  4px  4px  8px 0 rgba(0, 0, 0, 0.22);
-    border-top:    1px solid rgba(255, 255, 255, 0.12);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    gap: 2px;
+    margin-top: clamp(10px, 1.4vw, 16px);
   }
-
-  .btn .label {
-    display: inline-block;
+  .trust-note .text {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--tec-ink);
+    line-height: 1;
     white-space: nowrap;
   }
-
-  @keyframes btnIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .trust-note .underline {
+    display: block;
+    width: 82%;
+    height: clamp(6px, 0.7vw, 9px);
+    margin-top: -1px;
+    overflow: visible;
   }
 
-  /* Per-button: default text colour = language colour. On hover: fill with that colour. */
-  .btn-thai    { color: var(--tec-blue);   animation-delay: 1000ms; }
-  .btn-english { color: #C99B00;           animation-delay: 1100ms; } /* darker yellow for legibility on cream */
-  .btn-chinese { color: var(--tec-pink);   animation-delay: 1200ms; }
-
-  .btn:hover, .btn:focus-visible {
-    letter-spacing: 4px;
-    color: #fff;
-    outline: none;
-  }
-  .btn-thai:hover, .btn-thai:focus-visible       { background: var(--tec-blue); }
-  .btn-english:hover, .btn-english:focus-visible { background: var(--tec-yellow); color: #1A1A1A; }
-  .btn-chinese:hover, .btn-chinese:focus-visible { background: var(--tec-pink); }
-
-  .btn:active {
-    box-shadow:
-      inset -4px -4px  8px 0 rgba(255, 255, 255, 0.20),
-      inset  4px  4px 12px 0 rgba(0, 0, 0, 0.30);
+  .card-sub {
+    margin-top: clamp(12px, 1.6vw, 18px);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: clamp(13px, 1.4vw, 18px);
+    line-height: 1.35;
+    color: var(--tec-ink);
+    opacity: 0.82;
   }
 
-  /* Keep buttons visible after entrance — no heartbeat in v2 */
-  body.ready .btn { opacity: 1; }
-
-  /* ---------- Desktop layout: horizontal button row ---------- */
-  @media (min-width: 768px) {
-    .buttons {
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: clamp(20px, 2.6vw, 36px);
+  /* ============================================================
+     SHORT LAPTOP VIEWPORTS (landscape, height-constrained) —
+     make the card compact and size type by height so the whole
+     gate still fits one screen without the card colliding.
+     ============================================================ */
+  @media (min-width: 761px) and (max-height: 780px) {
+    .hero-card {
+      top: clamp(14px, 3vh, 30px);
+      padding: clamp(14px, 2.2vh, 26px) clamp(24px, 4vw, 52px) clamp(16px, 2.4vh, 26px);
     }
-    .btn {
-      flex: 0 1 240px;
-      max-width: 280px;
-      padding: 22px 32px;
-      min-height: 76px;
-      font-size: clamp(22px, 2.6vw, 34px);
+    .tec .letter { font-size: clamp(40px, 8.4vh, 74px); }
+    .tec .e { -webkit-text-stroke-width: 2.5px; }
+    .headline { font-size: clamp(24px, 5.6vh, 46px); }
+    .card-sub { font-size: clamp(12px, 2vh, 16px); margin-top: clamp(8px, 1.4vh, 14px); }
+    .panel { padding-top: clamp(230px, 40vh, 300px); padding-bottom: clamp(48px, 8vh, 80px); }
+    .greeting { font-size: clamp(48px, 12vh, 104px); }
+    .go { width: clamp(46px, 8vh, 64px); height: clamp(46px, 8vh, 64px); }
+  }
+
+  /* ============================================================
+     MOBILE — the three doors become three stacked bands,
+     the card sits above them in normal flow.
+     ============================================================ */
+  @media (max-width: 760px) {
+    .stage {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
     }
-    /* English: noticeably bigger — matches the mockup proportion */
-    .btn-english {
-      flex: 0 1 380px;
-      max-width: 440px;
-      padding: 30px 44px;
-      min-height: 100px;
-      font-size: clamp(28px, 3.4vw, 48px);
+    .hero-card {
+      position: static;
+      transform: none;
+      width: auto;
+      margin: clamp(12px, 3.4vw, 22px) clamp(14px, 4vw, 24px) clamp(8px, 2.6vw, 14px);
+      animation: cardInMobile 600ms ease 60ms both;
     }
+    @keyframes cardInMobile {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .panel {
+      flex: 1 1 0;
+      min-height: clamp(150px, 21vh, 220px);
+      padding: clamp(18px, 4.5vw, 32px) 20px;
+      gap: clamp(6px, 2vw, 12px);
+      transform: translateY(12px);
+    }
+    .greeting { font-size: clamp(48px, 14vw, 84px); }
+    .go { width: clamp(44px, 11vw, 54px); height: clamp(44px, 11vw, 54px); }
+    .eng-note {
+      position: static;
+      transform: none;
+      width: auto;
+      margin-top: 4px;
+    }
+    /* On touch, keep the coloured-text-on-tint look (no hover state) */
   }
 
-  @media (min-width: 1100px) {
-    .btn         { padding: 26px 40px; min-height: 86px; }
-    .btn-english { padding: 36px 56px; min-height: 116px; }
-  }
-
-  /* ---------- Type-out animation for button labels ---------- */
-  .label .char {
-    opacity: 0;
-    display: inline-block;
-    transform: translateY(4px);
-    animation: charIn 40ms ease forwards;
-  }
-
-  @keyframes charIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ---------- Cycling label swap (blur + slide) ---------- */
-  .label.cycle {
-    position: relative;
-    display: inline-block;
-    line-height: 1;
-    /* Hold layout stable as text length changes; the .btn smooths width via transition */
-  }
-  .label.cycle .word {
-    display: inline-block;
-    transition:
-      opacity 320ms ease,
-      transform 320ms cubic-bezier(.2,.8,.3,1),
-      filter 320ms ease;
-  }
-  .label.cycle .word.enter {
-    opacity: 0;
-    transform: translateY(10px);
-    filter: blur(10px);
-  }
-  .label.cycle .word.in {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-  .label.cycle .word.out {
-    opacity: 0;
-    transform: translateY(-10px);
-    filter: blur(10px);
-  }
-
-  /* (v1's transform/box-shadow override removed — v2 uses the neumorphic transition above) */
-
-  /* ---------- Reduced motion fallback ---------- */
+  /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
-    .tec .letter, .tec .sep,
-    .headline,
-    .btn,
-    body.ready .btn-thai,
-    body.ready .btn-english,
-    body.ready .btn-chinese,
-    .label .char {
+    .panel, .hero-card {
       animation: none !important;
-      transition: none !important;
       opacity: 1 !important;
       transform: none !important;
     }
-    .btn-english { transform: scale(1.04) !important; }
+    .hero-card { transform: translateX(-50%) !important; }
+    @media (max-width: 760px) { .hero-card { transform: none !important; } }
+    .greeting, .go { transition: none !important; }
   }
 
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
   }
-
-  .version-switch {
-    position: fixed;
-    bottom: 12px;
-    right: 14px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    color: var(--tec-grey);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    opacity: 0.7;
-    z-index: 50;
-  }
-  .version-switch:hover { opacity: 1; color: var(--tec-ink); }
 </style>
 <script type="application/ld+json">
 {
@@ -500,107 +465,59 @@
 </head>
 <body>
 
-  <img class="paint-bg" src="home-splatter.webp" alt="" aria-hidden="true" />
+  <main class="stage">
 
-  <div class="trust-note" role="img" aria-label="Trusted in Trat since 2014">
-    <span class="text">Trusted in Trat since 2014</span>
-    <svg class="underline" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
-      <!-- Painterly brush stroke: imperfect curve with slight thickness variation -->
-      <path d="M4,8 C 40,3 80,11 120,6 C 155,2 185,10 216,5"
-            stroke="#FED501" stroke-width="7" stroke-linecap="round" fill="none"
-            opacity="0.95"/>
-      <!-- Tiny drips for painterly feel -->
-      <circle cx="218" cy="6"  r="1.6" fill="#FED501" opacity="0.7"/>
-      <circle cx="42"  cy="11" r="1.2" fill="#FED501" opacity="0.6"/>
-    </svg>
-  </div>
-
-  <main>
-    <div class="tec" aria-label="T E C">
-      <span class="letter t">T</span>
-      <span class="sep" aria-hidden="true"></span>
-      <span class="letter e">E</span>
-      <span class="sep" aria-hidden="true"></span>
-      <span class="letter c">C</span>
+    <!-- Floating identity card, overlapping all three doors -->
+    <div class="hero-card">
+      <div class="tec" aria-label="T E C">
+        <span class="letter t">T</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="letter e">E</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="letter c">C</span>
+      </div>
+      <h1 class="headline">I want to learn</h1>
+      <div class="trust-note" role="img" aria-label="Trusted in Trat since 2014">
+        <span class="text">Trusted in Trat since 2014</span>
+        <svg class="underline" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4,8 C 40,3 80,11 120,6 C 155,2 185,10 216,5"
+                stroke="#FED501" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.95"/>
+          <circle cx="218" cy="6"  r="1.6" fill="#FED501" opacity="0.7"/>
+          <circle cx="42"  cy="11" r="1.2" fill="#FED501" opacity="0.6"/>
+        </svg>
+      </div>
+      <p class="card-sub">Thai · English · Chinese for young learners</p>
     </div>
 
-    <h1 class="headline">I want to learn</h1>
+    <!-- Door 1 · Thai -->
+    <a href="/thai" class="panel panel-thai" aria-label="Learn Thai — สวัสดี">
+      <span class="greeting" lang="th">สวัสดี</span>
+      <span class="lang">Thai</span>
+      <span class="go" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
 
-    <div class="buttons" role="group" aria-label="Choose a language">
-      <a href="/thai"    class="btn btn-thai"    data-cycle='["Thai","สวัสดี"]'    data-interval="3600"><span class="label cycle" aria-hidden="true"></span><span class="sr-only">Thai</span></a>
-      <a href="/english" class="btn btn-english" data-cycle='["English","Hello"]'   data-interval="3600"><span class="label cycle" aria-hidden="true"></span><span class="sr-only">English</span></a>
-      <a href="/chinese" class="btn btn-chinese" data-cycle='["Chinese","你好"]'     data-interval="3600"><span class="label cycle" aria-hidden="true"></span><span class="sr-only">Chinese</span></a>
-    </div>
+    <!-- Door 2 · English (centre, wider) -->
+    <a href="/english" class="panel panel-english" aria-label="Learn English — Hello">
+      <span class="greeting">Hello</span>
+      <span class="lang">English</span>
+      <span class="go" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+      <span class="eng-note">Cambridge YLE pathway · 90% EP pass rate</span>
+    </a>
+
+    <!-- Door 3 · Chinese -->
+    <a href="/chinese" class="panel panel-chinese" aria-label="Learn Chinese — 你好">
+      <span class="greeting" lang="zh">你好</span>
+      <span class="lang">Chinese</span>
+      <span class="go" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
   </main>
 
-<script>
-  (function () {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const btns = document.querySelectorAll('.btn');
-    const SWAP_MS = 320; // matches CSS transition
-
-    function makeWord(text, state) {
-      const span = document.createElement('span');
-      span.className = 'word ' + state;
-      span.textContent = text;
-      return span;
-    }
-
-    function swapTo(label, text) {
-      // Defensive: kill any stragglers from previous swaps (in/out/enter)
-      const stragglers = Array.from(label.querySelectorAll('.word'));
-      const next = makeWord(text, 'enter');
-      label.appendChild(next);
-
-      // Force layout so .enter is the starting frame, then transition in
-      next.offsetHeight;
-      requestAnimationFrame(() => {
-        next.classList.remove('enter');
-        next.classList.add('in');
-
-        stragglers.forEach(old => {
-          old.classList.remove('in', 'enter');
-          old.classList.add('out');
-        });
-      });
-
-      // Hard cleanup — guaranteed removal of every prior word after the transition
-      setTimeout(() => {
-        stragglers.forEach(old => { try { old.remove(); } catch (_) {} });
-      }, SWAP_MS + 50);
-    }
-
-    btns.forEach((btn, i) => {
-      const cycle = JSON.parse(btn.dataset.cycle);
-      const label = btn.querySelector('.label');
-      const interval = parseInt(btn.dataset.interval, 10) || 3500;
-      let idx = 0;
-
-      // Seed first word — start hidden, animate in via the entrance flow
-      const first = makeWord(cycle[0], reduced ? 'in' : 'enter');
-      label.appendChild(first);
-
-      if (reduced) return; // no cycling
-
-      // Animate first word in after the entrance + button-fade-in
-      const entranceDelay = 1100 + i * 100; // matches .btn animation-delay
-      setTimeout(() => {
-        first.classList.replace('enter', 'in');
-      }, entranceDelay);
-
-      // Begin cycling, staggered so buttons don't swap in lockstep
-      const cycleStart = entranceDelay + 1500 + i * 400;
-      setTimeout(() => {
-        setInterval(() => {
-          idx = (idx + 1) % cycle.length;
-          swapTo(label, cycle[idx]);
-        }, interval);
-      }, cycleStart);
-    });
-
-    // Switch on heartbeat after entrance settles
-    setTimeout(() => document.body.classList.add('ready'), reduced ? 0 : 1700);
-  })();
-</script>
 </body>
 </html>
