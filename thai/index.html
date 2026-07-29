@@ -151,9 +151,9 @@
   }
 
   /* Speech-bubble hero frame — same shape as the English & Chinese heroes, blue trim.
-     VIDEO SLOT: when the Damien + Meow hero video is ready, replace the <img> inside
-     .vignette-frame with the <video> block from the Chinese page (poster + /assets/video/thai-hero.mp4)
-     and re-enable the play-fab button + video JS at the bottom of this file. */
+     Holds the 15s course trailer (assets/video/thai-hero.mp4). Swap that file for
+     the Damien + Meow "meet your teachers" cut when it's shot; the poster and the
+     play-to-start behaviour below stay as they are. */
   .vignette {
     position: relative;
     margin: 10px auto 52px;
@@ -179,21 +179,41 @@
     position: relative; border-radius: 16px; overflow: hidden;
     border: 4px solid var(--tec-blue);
     aspect-ratio: 16/9; background: #000;
+    cursor: pointer;
   }
-  .vignette .vignette-frame img {
+  .vignette .vignette-frame video {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: cover; display: block;
   }
-  .vignette .coming-tag {
-    position: absolute; left: 50%; bottom: 10px;
-    transform: translateX(-50%);
-    background: rgba(26,26,26,0.78); color: #fff;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700; font-size: 12px;
-    padding: 6px 14px; border-radius: 999px;
-    white-space: nowrap;
+  .vignette .play-fab {
+    position: absolute; right: 14%; top: 50%;
+    transform: translateY(-50%);
+    width: 110px; height: 110px;
+    border: none; padding: 0; border-radius: 50%;
+    background: var(--tec-blue);
+    box-shadow: var(--shadow-neu);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 3;
+    transition: transform 140ms ease;
   }
+  .vignette .play-fab:hover { transform: translateY(-50%) scale(1.06); }
+  .vignette .play-fab::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 34px solid #fff;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    margin-left: 8px;
+  }
+  @media (max-width: 640px) {
+    .vignette .play-fab { width: 78px; height: 78px; right: 10%; }
+    .vignette .play-fab::after {
+      border-left-width: 24px; border-top-width: 15px; border-bottom-width: 15px;
+      margin-left: 6px;
+    }
+  }
+  .vignette.is-playing .play-fab { display: none; }
 
   .hero-title {
     font-family: "chaloops", system-ui, sans-serif;
@@ -744,8 +764,12 @@
 
     <figure class="vignette" id="hero-vignette">
       <div class="vignette-frame">
-        <img src="/assets/thai-hero-robot.png" alt="The TEC robot says sawatdee — hello, your first Thai word">
-        <span class="coming-tag">🎬 Meet your teachers · video coming soon</span>
+        <video class="vignette-video" playsinline preload="none"
+               poster="/assets/video/thai-hero-poster.jpg"
+               aria-label="TEC Thai course trailer — the Mangosteen to Durian pathway, 8 hours a week in Trat">
+          <source src="/assets/video/thai-hero.mp4" type="video/mp4">
+        </video>
+        <button class="play-fab" type="button" aria-label="Play video"></button>
       </div>
     </figure>
 
@@ -1102,6 +1126,35 @@
         await type(TH_STR); await wait(HOLD); await erase(); await wait(PAUSE);
       }
     })();
+  })();
+
+  // ===== Hero video — self-hosted, tap to play (same pattern as the English & Chinese pages) =====
+  (function () {
+    var pv = document.getElementById('hero-vignette');
+    if (!pv) return;
+    var vid   = pv.querySelector('.vignette-video');
+    var fab   = pv.querySelector('.play-fab');
+    var frame = pv.querySelector('.vignette-frame');
+    if (!vid || !fab) return;
+
+    function start() {
+      if (pv.classList.contains('is-playing')) return;
+      vid.setAttribute('controls', '');
+      pv.classList.add('is-playing');
+      var p = vid.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () { /* fall back to native controls */ });
+      }
+    }
+
+    fab.addEventListener('click', function (e) { e.stopPropagation(); start(); });
+    if (frame) frame.addEventListener('click', start);
+
+    vid.addEventListener('ended', function () {
+      pv.classList.remove('is-playing');
+      vid.removeAttribute('controls');
+      vid.load();   /* restores the poster for replay */
+    });
   })();
 
   // ===== FAQ accordion =====
