@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -378,7 +378,7 @@
 <main>
   <div class="wall-head">
     <h1>The TEC Wall of Love <span class="heart">💖</span>
-      <span class="th-sub">เสียงจริงจากผู้ปกครองและนักเรียน TEC</span>
+      <span class="th-sub" lang="th">เสียงจริงจากผู้ปกครองและนักเรียน TEC</span>
     </h1>
     <p class="lede">Real parents. Real students. Real words. · เรื่องจริงจากครอบครัว TEC</p>
   </div>
@@ -387,9 +387,9 @@
 
   <div class="wall-end">
     <p class="slogan">Could your child be up here next year?
-      <span class="th">ปีหน้า… อาจเป็นเรื่องของลูกคุณก็ได้นะคะ</span>
+      <span class="th" lang="th">ปีหน้า… อาจเป็นเรื่องของลูกคุณก็ได้นะคะ</span>
     </p>
-    <a class="cta" href="/english/#callback-section">นัดสัมภาษณ์วัดระดับฟรี&nbsp;→ <span style="font-size:.8em;opacity:.8">Book a free placement interview</span></a>
+    <a class="cta" href="/english/#callback-section" lang="th">นัดสัมภาษณ์วัดระดับฟรี&nbsp;→ <span style="font-size:.8em;opacity:.8" lang="en">Book a free placement interview</span></a>
   </div>
 </main>
 
@@ -522,7 +522,7 @@
           : (SOURCE_BADGE[t.source] || '');
         return '<blockquote class="wall-card quote">'
           + '<span class="mark" aria-hidden="true">&ldquo;</span>' + stars
-          + '<p class="text">' + esc(t.text) + '</p>'
+          + '<p class="text" lang="th">' + esc(t.text) + '</p>'
           + '<footer class="who">' + avatars + '<span>' + esc(t.name || '') + '<span class="sub">' + esc(t.sub || '') + '</span></span></footer>'
           + '</blockquote>';
       }
@@ -545,7 +545,7 @@
       if (t.type === 'sticker') {
         return '<div class="wall-card sticker ' + esc(t.tint || 'yellow') + '">'
           + '<div class="big">' + esc(t.big) + '</div>'
-          + '<div class="small">' + esc(t.small) + '<span class="en">' + esc(t.en || '') + '</span></div>'
+          + '<div class="small" lang="th">' + esc(t.small) + '<span class="en" lang="en">' + esc(t.en || '') + '</span></div>'
           + '</div>';
       }
       return '';
@@ -555,7 +555,7 @@
       // The standing invitation card always sits last
       + '<div class="wall-card add">'
       + '<h3>Loved TEC? Add your voice 💛</h3>'
-      + '<p>รัก TEC เหมือนกันไหมคะ? เล่าให้ครอบครัวอื่นฟังหน่อย — รีวิวของคุณช่วยพ่อแม่อีกหลายบ้านตัดสินใจได้เลยค่ะ</p>'
+      + '<p lang="th">รัก TEC เหมือนกันไหมคะ? เล่าให้ครอบครัวอื่นฟังหน่อย — รีวิวของคุณช่วยพ่อแม่อีกหลายบ้านตัดสินใจได้เลยค่ะ</p>'
       + '<div class="row">'
       + '<a class="rev-btn" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener"><span class="badge g">G</span> รีวิวบน Google · Review on Google</a>'
       + '<a class="rev-btn" href="https://www.facebook.com/tectratenglish/reviews" target="_blank" rel="noopener"><span class="badge fb">f</span> รีวิวบน Facebook · Review on Facebook</a>'
