@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ไม่พบหน้านี้ · Page not found | TEC</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#FED501" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/favicon-180.png" />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://p.typekit.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/agc2tne.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/tec.css" />
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: var(--tec-ink);
+      font-family: "Roboto", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      padding: 18px clamp(20px, 5vw, 64px);
+      border-bottom: 2px solid var(--tec-ink);
+      background: rgba(244, 242, 236, 0.9);
+    }
+
+    .header-row,
+    .footer-row {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: "chaloops", "Nunito Sans", sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .logo { width: 46px; height: auto; }
+
+    .header-link {
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    main {
+      flex: 1;
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      padding: clamp(52px, 10vw, 110px) 0;
+    }
+
+    .error-card {
+      width: 100%;
+      padding: clamp(32px, 7vw, 64px);
+      text-align: center;
+      background: #FCFBF6;
+      border: 3px solid var(--tec-ink);
+      border-radius: 28px;
+      box-shadow: 10px 10px 0 var(--tec-blue);
+    }
+
+    .error-code {
+      margin: 0 0 12px;
+      color: var(--tec-pink);
+      font-family: "chaloops", "Nunito Sans", sans-serif;
+      font-size: clamp(50px, 12vw, 92px);
+      font-weight: 700;
+      line-height: 0.9;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "chaloops", "Nunito Sans", sans-serif;
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 1.1;
+    }
+
+    .thai-copy,
+    .english-copy {
+      max-width: 540px;
+      margin: 18px auto 0;
+      font-size: clamp(17px, 2.6vw, 20px);
+      line-height: 1.6;
+    }
+
+    .english-copy {
+      padding-top: 18px;
+      border-top: 2px dashed rgba(26, 26, 26, 0.25);
+      color: #4b4b4b;
+      font-family: "Nunito Sans", sans-serif;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-width: 190px;
+      padding: 13px 22px;
+      border: 2.5px solid var(--tec-ink);
+      border-radius: 999px;
+      background: var(--tec-yellow);
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 4px 4px 0 var(--tec-ink);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .button.secondary { background: var(--tec-blue); }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--tec-ink);
+    }
+
+    .site-footer {
+      padding: 22px clamp(20px, 5vw, 64px);
+      border-top: 2px solid var(--tec-ink);
+      background: #FCFBF6;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 14px;
+    }
+
+    .footer-row p { margin: 0; }
+
+    @media (max-width: 560px) {
+      .brand-text { display: none; }
+      .footer-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .button { width: 100%; }
+      .error-card { box-shadow: 7px 7px 0 var(--tec-blue); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body class="page-thai">
+  <header class="site-header">
+    <div class="header-row">
+      <a href="/" class="logo-link" aria-label="หน้าแรก TEC">
+        <img class="logo" src="/tec-robot-logo.png?v=2" alt="" />
+        <span class="brand-text">TEC</span>
+      </a>
+      <a class="header-link" href="/english/" lang="en">English</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="error-card" aria-labelledby="page-title">
+      <p class="error-code" aria-hidden="true">404</p>
+      <h1 id="page-title">ไม่พบหน้านี้</h1>
+      <p class="thai-copy">ขออภัย หน้าที่คุณกำลังมองหาไม่มีอยู่ หรืออาจถูกย้ายไปแล้ว</p>
+      <div class="english-copy" lang="en">
+        <p><strong>Page not found.</strong> Sorry, the page you’re looking for doesn’t exist or may have moved.</p>
+      </div>
+      <nav class="actions" aria-label="ลิงก์กลับไปยังเว็บไซต์">
+        <a class="button" href="/">กลับหน้าแรก · Home</a>
+        <a class="button secondary" href="/english/" lang="en">Visit the English site</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-row">
+      <p>TEC · Thai · English · Chinese</p>
+      <p>สอนภาษาให้คนตราดมาตั้งแต่ปี 2014</p>
+    </div>
+  </footer>
+</body>
+</html>
