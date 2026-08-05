@@ -371,7 +371,7 @@
       <img class="logo" src="/tec-robot-logo.png?v=2" alt="">
       <span class="brand-text">TEC</span>
     </a>
-    <a class="back-link" href="/english/">← Back to TEC / กลับสู่เว็บไซต์</a>
+    <a class="back-link" href="/english/">← Back to TEC / <span lang="th">กลับสู่เว็บไซต์</span></a>
   </div>
 </header>
 
@@ -380,7 +380,7 @@
     <h1>The TEC Wall of Love <span class="heart">💖</span>
       <span class="th-sub" lang="th">เสียงจริงจากผู้ปกครองและนักเรียน TEC</span>
     </h1>
-    <p class="lede">Real parents. Real students. Real words. · เรื่องจริงจากครอบครัว TEC</p>
+    <p class="lede">Real parents. Real students. Real words. · <span lang="th">เรื่องจริงจากครอบครัว TEC</span></p>
   </div>
 
   <div class="wall" id="wall"></div>
@@ -506,12 +506,17 @@
   (function () {
     const wall = document.getElementById('wall');
     const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const bilingual = s => {
+      const parts = String(s || '').split(' · ');
+      if (parts.length < 2) return esc(s || '');
+      return '<span lang="en">' + esc(parts.shift()) + '</span> · <span lang="th">' + esc(parts.join(' · ')) + '</span>';
+    };
 
     function cardHTML(t) {
       if (t.type === 'video') {
         return '<figure class="wall-card video" data-video="' + esc(t.src) + '" tabindex="0" role="button" aria-label="Play ' + esc(t.name) + '\'s testimonial video">'
           + '<div class="frame"><img src="' + esc(t.poster) + '" alt="' + esc(t.name) + ', a TEC student" loading="lazy"><span class="play" aria-hidden="true">▶</span></div>'
-          + '<figcaption class="who">' + SOURCE_BADGE.video + '<span>' + esc(t.name) + '<span class="sub">' + esc(t.sub || '') + '</span></span></figcaption>'
+          + '<figcaption class="who">' + SOURCE_BADGE.video + '<span>' + esc(t.name) + '<span class="sub">' + bilingual(t.sub) + '</span></span></figcaption>'
           + '</figure>';
       }
       if (t.type === 'quote') {
@@ -523,7 +528,7 @@
         return '<blockquote class="wall-card quote">'
           + '<span class="mark" aria-hidden="true">&ldquo;</span>' + stars
           + '<p class="text" lang="th">' + esc(t.text) + '</p>'
-          + '<footer class="who">' + avatars + '<span>' + esc(t.name || '') + '<span class="sub">' + esc(t.sub || '') + '</span></span></footer>'
+          + '<footer class="who">' + avatars + '<span>' + esc(t.name || '') + '<span class="sub">' + bilingual(t.sub) + '</span></span></footer>'
           + '</blockquote>';
       }
       if (t.type === 'photo') {
@@ -538,7 +543,7 @@
           : '';
         return '<figure class="wall-card greview">'
           + robot
-          + '<figcaption class="g-tag">' + SOURCE_BADGE.google + 'Google review · รีวิวจริงบน Google</figcaption>'
+          + '<figcaption class="g-tag">' + SOURCE_BADGE.google + '<span lang="en">Google review</span> · <span lang="th">รีวิวจริงบน Google</span></figcaption>'
           + '<img class="g-shot" src="' + esc(t.src) + '" alt="5-star Google review for TEC by ' + esc(t.name || 'a TEC family') + '" loading="lazy">'
           + '</figure>';
       }
@@ -557,8 +562,8 @@
       + '<h3>Loved TEC? Add your voice 💛</h3>'
       + '<p lang="th">รัก TEC เหมือนกันไหมคะ? เล่าให้ครอบครัวอื่นฟังหน่อย — รีวิวของคุณช่วยพ่อแม่อีกหลายบ้านตัดสินใจได้เลยค่ะ</p>'
       + '<div class="row">'
-      + '<a class="rev-btn" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener"><span class="badge g">G</span> รีวิวบน Google · Review on Google</a>'
-      + '<a class="rev-btn" href="https://www.facebook.com/tectratenglish/reviews" target="_blank" rel="noopener"><span class="badge fb">f</span> รีวิวบน Facebook · Review on Facebook</a>'
+      + '<a class="rev-btn" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener"><span class="badge g">G</span> <span lang="th">รีวิวบน Google</span> · <span lang="en">Review on Google</span></a>'
+      + '<a class="rev-btn" href="https://www.facebook.com/tectratenglish/reviews" target="_blank" rel="noopener"><span class="badge fb">f</span> <span lang="th">รีวิวบน Facebook</span> · <span lang="en">Review on Facebook</span></a>'
       + '</div></div>';
 
     /* Video modal */

@@ -212,7 +212,7 @@
   .section-title .th { display: block; font-size: 0.72em; opacity: 0.9; margin-top: 8px; font-weight: 700; }
 
   /* ===== Pill-driven language swap =====
-     Existing `<span class="th">` stacks INSIDE English elements stay visible
+     Existing `<span class="th" lang="th">` stacks INSIDE English elements stay visible
      regardless of pill state — they're already paired. The pill only swaps
      siblings tagged .lang-en / .lang-th and short labels tagged [data-th]. */
   .lang-th-block { font-family: 'Noto Sans Thai', 'Nunito Sans', sans-serif; }
@@ -1922,26 +1922,26 @@
 
 <header class="site-header">
   <div class="row">
-    <a href="../" class="logo-link" aria-label="TEC home">
+    <a href="../" class="logo-link" aria-label="หน้าหลัก TEC">
       <img class="logo" src="../tec-robot-logo.png?v=2" alt="" />
       <span class="brand-text">TEC</span>
     </a>
-    <nav class="lang-pills" aria-label="Languages we teach at TEC">
-      <a class="lang-switch th" href="/thai" aria-label="Thai courses (coming soon)">Thai</a>
-      <a class="lang-switch en active" href="/english" aria-current="page">English</a>
-      <a class="lang-switch zh" href="/chinese" aria-label="Chinese courses">Chinese</a>
+    <nav class="lang-pills" aria-label="ภาษาที่สอนที่ TEC">
+      <a class="lang-switch th" href="/thai" aria-label="คอร์สภาษาไทย (เร็ว ๆ นี้)" lang="en">Thai</a>
+      <a class="lang-switch en active" href="/english" aria-current="page" lang="en">English</a>
+      <a class="lang-switch zh" href="/chinese" aria-label="คอร์สภาษาจีน" lang="en">Chinese</a>
     </nav>
     <span class="spacer"></span>
-    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="Switch this page to English" aria-pressed="true" data-en-label="TH" data-th-label="EN">EN</a>
-    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
+    <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="เปลี่ยนหน้านี้เป็นภาษาอังกฤษ" aria-pressed="true" data-en-label="TH" data-th-label="EN">EN</a>
+    <button class="menu-btn" id="menu-btn" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="menu-drawer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7"  x2="20" y2="7"/><line x1="4" y1="13" x2="20" y2="13"/><line x1="4" y1="19" x2="20" y2="19"/></svg>
     </button>
   </div>
 </header>
 
 <div class="menu-backdrop" id="menu-backdrop"></div>
-<aside class="menu-drawer" id="menu-drawer" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
-  <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
+<aside class="menu-drawer" id="menu-drawer" role="dialog" aria-modal="true" aria-label="เมนูเว็บไซต์" aria-hidden="true">
+  <button class="menu-close" id="menu-close" aria-label="ปิดเมนู">✕</button>
   <nav class="menu-nav">
     <a href="#about"        data-en="About"        data-th="เกี่ยวกับเรา">About</a>
     <a href="#courses"      data-en="Courses"      data-th="คอร์สเรียน">Courses</a>
@@ -1958,78 +1958,78 @@
 
   <!-- ============ P2: Hero (POLISHED) — language morph + parrot vignette ============ -->
   <section class="sec hero" data-marker="P2">
-    <div class="morph-banner" id="morph-banner" aria-label="Study English at TEC">
+    <div class="morph-banner" id="morph-banner" aria-label="เรียนภาษาอังกฤษที่ TEC">
       <span class="type" id="morph-type"></span><span class="caret" aria-hidden="true"></span>
     </div>
 
     <figure class="vignette" id="parrot-vignette">
       <div class="vignette-frame">
-        <video class="vignette-video" playsinline preload="none"
+        <video class="vignette-video" playsinline preload="none" lang="en"
                poster="../assets/video/parrot-poster.jpg"
-               aria-label="TEC: raise a confident speaker, not a parrot — why memorised answers fail, and what TEC does instead">
+               aria-label="TEC: สร้างเด็กที่พูดได้อย่างมั่นใจ ไม่ใช่นกแก้ว — ทำไมการท่องจำคำตอบจึงไม่ได้ผล และ TEC ทำอย่างไรแทน">
           <source src="../assets/video/parrot.mp4" type="video/mp4">
           Your browser can't play this video.
           <a href="../assets/video/parrot.mp4">Watch the clip</a>.
         </video>
-        <button class="play-fab" type="button" aria-label="Play video"></button>
+        <button class="play-fab" type="button" aria-label="เล่นวิดีโอ"></button>
       </div>
     </figure>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" lang="en">
       At <span class="tecmark">TEC</span> we teach the language.<br>The test takes care of itself.
-      <span class="th">ที่ <span class="tecmark">TEC</span> เราสอนภาษา ส่วนการสอบ — เราจัดการให้</span>
+      <span class="th" lang="th">ที่ <span class="tecmark">TEC</span> เราสอนภาษา ส่วนการสอบ — เราจัดการให้</span>
     </h1>
-    <p class="hero-sub lang-en-block">Play. Read. Lead. Build a future at <span class="tecmark">TEC</span>.</p>
-    <p class="hero-sub lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tecmark">TEC</span>.</p>
+    <p class="hero-sub lang-en-block" lang="en">Play. Read. Lead. Build a future at <span class="tecmark">TEC</span>.</p>
+    <p class="hero-sub lang-th-block" lang="th">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tecmark">TEC</span>.</p>
     <a class="hero-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P3: Founders (wireframe) ============ -->
   <section class="sec" data-marker="P3" id="about">
     <h2 class="section-title">
-      <span class="lang-en-block">Meet the people behind <span class="tecmark">TEC</span></span>
-      <span class="lang-th-block">มารู้จักคนเบื้องหลัง <span class="tecmark">TEC</span></span>
+      <span class="lang-en-block" lang="en">Meet the people behind <span class="tecmark">TEC</span></span>
+      <span class="lang-th-block" lang="th">มารู้จักคนเบื้องหลัง <span class="tecmark">TEC</span></span>
     </h2>
 
     <div class="founders" style="margin-top:32px">
       <article class="founder-card" data-order="1-mas">
-        <div class="avatar"><img src="../assets/founders/suthamas.jpg" alt="Suthamas Chaisiri — TEC co-founder and Director, born in Trat" width="168" height="168" loading="lazy" decoding="async"></div>
+        <div class="avatar"><img src="../assets/founders/suthamas.jpg" alt="สุธามาศ ไชยศิริ — ผู้ร่วมก่อตั้งและผู้อำนวยการ TEC ชาวตราดโดยกำเนิด" width="168" height="168" loading="lazy" decoding="async"></div>
         <h3 data-en="Suthamas Chaisiri" data-th="สุฑามาศ ไชยศิริ">Suthamas Chaisiri</h3>
         <div class="role" data-en="Owner & Director · Born in Trat" data-th="เจ้าของและผู้อำนวยการ · ชาวตราดโดยกำเนิด">Owner & Director · Born in Trat</div>
-        <blockquote class="bio-short lang-en-block">
+        <blockquote class="bio-short lang-en-block" lang="en">
           "Born in Trat. I built TEC to give the children of Trat the strong English foundation I didn't have growing up."
         </blockquote>
-        <blockquote class="bio-full lang-en-block">
+        <blockquote class="bio-full lang-en-block" lang="en">
           "I was born in Trat, and English was once one of my biggest fears. The courses I tried before university did not work for me. That experience made me want to give the children of Trat the strong English foundation I did not have growing up. After studying in New Zealand and Australia, where I completed a Master of International Business, I returned home and became an English teacher. Damien and I spent two years planning TEC before we opened in 2014. TEC is my biggest project in life."
         </blockquote>
-        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less">Read more</button>
-        <blockquote class="bio-short bio-th lang-th-block">
+        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less" lang="en">Read more</button>
+        <blockquote class="bio-short bio-th lang-th-block" lang="th">
           "มาสเป็นคนตราดค่ะ สมัยก่อนภาษาอังกฤษเป็นสิ่งที่มาสกลัวที่สุดเลย คอร์สที่เคยลองเรียนก่อนเข้ามหาวิทยาลัยไม่ได้ผลเลยสักที่ ประสบการณ์นั้นทำให้มาสอยากมอบพื้นฐานภาษาอังกฤษที่แข็งแรงให้กับเด็ก ๆ ตราด แบบที่มาสไม่เคยมีตอนเด็ก"
         </blockquote>
-        <blockquote class="bio-full bio-th lang-th-block">
+        <blockquote class="bio-full bio-th lang-th-block" lang="th">
           "มาสเป็นคนตราดค่ะ สมัยก่อนภาษาอังกฤษเป็นสิ่งที่มาสกลัวที่สุดเลย คอร์สที่เคยลองเรียนก่อนเข้ามหาวิทยาลัยไม่ได้ผลเลยสักที่ ประสบการณ์นั้นทำให้มาสอยากมอบพื้นฐานภาษาอังกฤษที่แข็งแรงให้กับเด็ก ๆ ตราด แบบที่มาสไม่เคยมีตอนเด็ก หลังจากไปเรียนต่อที่นิวซีแลนด์และออสเตรเลีย จบปริญญาโทด้านธุรกิจระหว่างประเทศ (Master of International Business) ก็กลับบ้านมาเป็นครู มาสกับเดเมียนใช้เวลาวางแผน TEC สองปีเต็ม เปิดโรงเรียนในปี 2014 — TEC เป็นงานที่ใหญ่ที่สุดในชีวิตของมาสเลยค่ะ"
         </blockquote>
-        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ">อ่านเพิ่มเติม</button>
+        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ" lang="th">อ่านเพิ่มเติม</button>
       </article>
 
       <article class="founder-card" data-order="2-damien">
-        <div class="avatar"><img src="../assets/founders/damien.jpg" alt="Damien Herlihy — TEC co-founder and Director of Studies" width="200" height="200" loading="lazy" decoding="async"></div>
+        <div class="avatar"><img src="../assets/founders/damien.jpg" alt="เดเมียน เฮอร์ลิฮี — ผู้ร่วมก่อตั้งและผู้อำนวยการฝ่ายวิชาการ TEC" width="200" height="200" loading="lazy" decoding="async"></div>
         <h3 data-en="Damien Herlihy" data-th="เดเมียน เฮอร์ลิฮี">Damien Herlihy</h3>
         <div class="role" data-en="Owner & Director of Studies · 25+ years" data-th="เจ้าของและผู้อำนวยการฝ่ายวิชาการ · ออกแบบหลักสูตร · ประสบการณ์กว่า 25 ปี">Owner & Director of Studies · 25+ years</div>
-        <blockquote class="bio-short lang-en-block">
+        <blockquote class="bio-short lang-en-block" lang="en">
           "Award-winning English teacher, syllabus designer, and learning-science nerd. I designed the TEC Method and have spent 25+ years in English language education refining it."
         </blockquote>
-        <blockquote class="bio-full lang-en-block">
+        <blockquote class="bio-full lang-en-block" lang="en">
           "I have spent more than 25 years in English language education as an award-winning teacher, IELTS examiner, Director of Studies, and teacher trainer. I hold a Master's degree in Teaching English as a Second Language and have also worked with Pavilion ELT. I am especially interested in how language teaching connects with the science of how we learn. That thinking shaped the TEC Method, the syllabus I designed and continue to refine every year. TEC is my life's work."
         </blockquote>
-        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less">Read more</button>
-        <blockquote class="bio-short bio-th lang-th-block">
+        <button class="read-more lang-en-block" type="button" aria-expanded="false" data-more="Read more" data-less="Show less" lang="en">Read more</button>
+        <blockquote class="bio-short bio-th lang-th-block" lang="th">
           "ผมเป็นครูสอนภาษาอังกฤษที่ได้รับรางวัล Action Research Award มีประสบการณ์ในวงการมากว่าสองทศวรรษ — ทั้งในฐานะครู ผู้ตรวจข้อสอบ IELTS และผู้อำนวยการฝ่ายวิชาการ"
         </blockquote>
-        <blockquote class="bio-full bio-th lang-th-block">
+        <blockquote class="bio-full bio-th lang-th-block" lang="th">
           "ผมเป็นครูสอนภาษาอังกฤษที่ได้รับรางวัล Action Research Award มีประสบการณ์ในวงการมากว่าสองทศวรรษ — ทั้งในฐานะครู ผู้ตรวจข้อสอบ IELTS และผู้อำนวยการฝ่ายวิชาการ จบปริญญาโทด้านการสอนภาษาอังกฤษเป็นภาษาที่สอง (Masters in Teaching English as a Second Language) เคยร่วมงานกับ Pavilion ELT สำนักพิมพ์ชั้นนำของอังกฤษ ผมเป็นคนออกแบบหลักสูตรของเราเอง — TEC Method — และปรับปรุงทุกปีครับ นี่คืองานในชีวิตของผมเลยครับ"
         </blockquote>
-        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ">อ่านเพิ่มเติม</button>
+        <button class="read-more lang-th-block" type="button" aria-expanded="false" data-more="อ่านเพิ่มเติม" data-less="ย่อกลับ" lang="th">อ่านเพิ่มเติม</button>
       </article>
     </div>
 
@@ -2037,7 +2037,7 @@
 
   <!-- ============ How TEC Works — 7-tile grid (wireframe) ============ -->
   <section class="sec" data-marker="P3.5">
-    <h2 class="section-title">How TEC works <span class="th">วิธีที่เราสอน</span></h2>
+  <h2 class="section-title" lang="en">How TEC works <span class="th" lang="th">วิธีที่เราสอน</span></h2>
     <p class="lede" data-en="Six things that make TEC different from a tutor — scan in 30 seconds." data-th="หกสิ่งที่ทำให้ TEC ต่างจากติวเตอร์ — สแกนใน 30 วินาที">Six things that make TEC different from a tutor — scan in 30 seconds.</p>
 
     <div class="tile-grid">
@@ -2058,17 +2058,17 @@
       <div class="desc" data-en="of TEC kids get into EP — without doing the dedicated test-prep courses the competition sells." data-th="ของเด็ก TEC สอบเข้า EP ได้ — โดยไม่ต้องลงคอร์สติวสอบเฉพาะแบบที่อื่นเขาขาย">of TEC kids get into EP — without doing the dedicated test-prep courses the competition sells.</div>
       <div class="stat-reason" data-en="Because we build real language ability first, not exam tricks." data-th="เพราะเราสร้างความสามารถทางภาษาจริงก่อน ไม่ใช่เทคนิคทำข้อสอบ">Because we build real language ability first, not exam tricks.</div>
     </div>
-    <p class="stats-caption">EP-ready — and able to actually speak the language.<br><span style="opacity:.7">พร้อมเข้า EP — และพูดภาษาอังกฤษได้จริง</span></p>
+    <p class="stats-caption" lang="en">EP-ready — and able to actually speak the language.<br><span style="opacity:.7" lang="th">พร้อมเข้า EP — และพูดภาษาอังกฤษได้จริง</span></p>
     <a class="inline-cta" href="#callback-section" data-en="Book a free placement interview&nbsp;→" data-th="นัดสัมภาษณ์วัดระดับฟรี&nbsp;→">Book a free placement interview&nbsp;→</a>
   </section>
 
   <!-- ============ P5: Journey slider (POLISHED — THE PEAK) ============ -->
   <section class="sec full" data-marker="P5" id="courses">
     <div class="inner">
-      <p class="peak-eyebrow lang-en-block"><span class="highlight">A 10-year system</span> — not ad-hoc tutoring. A whole mapped pathway.</p>
-      <p class="peak-eyebrow lang-th-block"><span class="highlight">ระบบ 10 ปี</span> — ไม่ใช่ติวเตอร์รับจ้าง แต่เป็นเส้นทางที่วางแผนไว้ทั้งสาย</p>
-      <p class="lede lang-en-block">We've got you! From your child's first steps in English to an IELTS-ready teenage speaker. Tap through every stage. Every step planned, tracked, and visible. This could be your child.</p>
-      <p class="lede lang-th-block">วางใจเราได้เลยค่ะ! ตั้งแต่ก้าวแรกของลูกในภาษาอังกฤษ จนถึงวัยรุ่นที่พร้อมสอบ IELTS แตะดูทุกระดับ ทุกก้าววางแผนไว้ ติดตามได้ มองเห็นได้ชัด — ลูกของคุณก็เป็นแบบนี้ได้นะคะ</p>
+      <p class="peak-eyebrow lang-en-block" lang="en"><span class="highlight">A 10-year system</span> — not ad-hoc tutoring. A whole mapped pathway.</p>
+      <p class="peak-eyebrow lang-th-block" lang="th"><span class="highlight">ระบบ 10 ปี</span> — ไม่ใช่ติวเตอร์รับจ้าง แต่เป็นเส้นทางที่วางแผนไว้ทั้งสาย</p>
+      <p class="lede lang-en-block" lang="en">We've got you! From your child's first steps in English to an IELTS-ready teenage speaker. Tap through every stage. Every step planned, tracked, and visible. This could be your child.</p>
+      <p class="lede lang-th-block" lang="th">วางใจเราได้เลยค่ะ! ตั้งแต่ก้าวแรกของลูกในภาษาอังกฤษ จนถึงวัยรุ่นที่พร้อมสอบ IELTS แตะดูทุกระดับ ทุกก้าววางแผนไว้ ติดตามได้ มองเห็นได้ชัด — ลูกของคุณก็เป็นแบบนี้ได้นะคะ</p>
 
       <div class="journey" id="journey">
         <div class="journey-header">
@@ -2076,8 +2076,8 @@
             <div class="stage-counter" id="stage-counter"><span id="stage-num">1</span> of <span id="stage-total">13</span></div>
           </div>
           <div style="font-family:'Nunito Sans',sans-serif;font-size:13px;color:var(--tec-ink-soft)">
-            <span class="lang-en-block">Sample student: <strong>"AI"</strong> · anonymised</span>
-            <span class="lang-th-block">ตัวอย่างนักเรียน: <strong>"AI"</strong> · ไม่ระบุชื่อจริง</span>
+            <span class="lang-en-block" lang="en">Sample student: <strong>"AI"</strong> · anonymised</span>
+            <span class="lang-th-block" lang="th">ตัวอย่างนักเรียน: <strong>"AI"</strong> · ไม่ระบุชื่อจริง</span>
           </div>
         </div>
         <div class="progress"><div class="progress-fill" id="journey-progress"></div></div>
@@ -2115,42 +2115,42 @@
     <div class="portfolio-reveal" style="margin-top:8px">
       <div class="portfolio-graphic">
         <h3 class="portfolio-graphic-title" data-en="What you'll see as a TEC parent" data-th="ผู้ปกครอง TEC จะได้เห็นอะไรบ้าง">What you'll see as a TEC parent</h3>
-        <div class="portfolio-screenshot has-image"><img src="../assets/visible-learning-report.jpg?v=1" alt="A TEC parent holding an iPad showing a child's weekly Visible Learning report card" loading="lazy"></div>
+        <div class="portfolio-screenshot has-image"><img src="../assets/visible-learning-report.jpg?v=1" alt="ผู้ปกครอง TEC ถือ iPad ที่แสดงรายงาน Visible Learning รายสัปดาห์ของเด็ก" loading="lazy"></div>
       </div>
       <div class="portfolio-text">
-        <p class="portfolio-caption lang-en-block">Every TEC parent sees this. Every week.<span class="body">Your child's Visible Learning report tracks progress against the Cambridge Young Learners testing system — updated weekly, across the whole course.</span></p>
-        <p class="portfolio-caption lang-th-block">ผู้ปกครอง TEC ทุกคนเห็นแบบนี้ ทุกสัปดาห์<span class="body">รายงาน Visible Learning ของลูกติดตามพัฒนาการเทียบกับระบบสอบ Cambridge Young Learners — อัปเดตทุกสัปดาห์ ตลอดทั้งคอร์ส</span></p>
-        <ul class="portfolio-bullets lang-en-block">
+        <p class="portfolio-caption lang-en-block" lang="en">Every TEC parent sees this. Every week.<span class="body">Your child's Visible Learning report tracks progress against the Cambridge Young Learners testing system — updated weekly, across the whole course.</span></p>
+        <p class="portfolio-caption lang-th-block" lang="th">ผู้ปกครอง TEC ทุกคนเห็นแบบนี้ ทุกสัปดาห์<span class="body">รายงาน Visible Learning ของลูกติดตามพัฒนาการเทียบกับระบบสอบ Cambridge Young Learners — อัปเดตทุกสัปดาห์ ตลอดทั้งคอร์ส</span></p>
+        <ul class="portfolio-bullets lang-en-block" lang="en">
           <li>Weekly skill scores — speaking, listening, reading &amp; writing, spelling</li>
           <li>Bilingual teacher comments (Thai &amp; English)</li>
           <li>Phonics tracked step by step</li>
           <li>Your own private link from week one</li>
         </ul>
-        <ul class="portfolio-bullets lang-th-block">
+        <ul class="portfolio-bullets lang-th-block" lang="th">
           <li>คะแนนทักษะรายสัปดาห์ — พูด ฟัง อ่าน-เขียน สะกดคำ</li>
           <li>คอมเมนต์ครู 2 ภาษา (ไทย-อังกฤษ)</li>
           <li>ติดตามโฟนิกส์ทีละขั้น</li>
           <li>ลิงก์ส่วนตัวของคุณตั้งแต่สัปดาห์แรก</li>
         </ul>
-        <p class="portfolio-close lang-en-block">And when they're ready, you're invited in person to their Visible Learning graduation.</p>
-        <p class="portfolio-close lang-th-block">และเมื่อลูกพร้อม คุณจะได้รับเชิญมาร่วมพิธีจบการศึกษา Visible Learning ของลูกด้วยตัวเอง</p>
+        <p class="portfolio-close lang-en-block" lang="en">And when they're ready, you're invited in person to their Visible Learning graduation.</p>
+        <p class="portfolio-close lang-th-block" lang="th">และเมื่อลูกพร้อม คุณจะได้รับเชิญมาร่วมพิธีจบการศึกษา Visible Learning ของลูกด้วยตัวเอง</p>
       </div>
     </div>
   </section>
 
   <!-- ============ P7: Price comparison + Pipo+Papaeng quote (wireframe) ============ -->
   <section class="sec" data-marker="P7">
-    <h2 class="section-title">Choose value over cheap. <span class="th">เลือกคุณค่ามากกว่าราคาถูก</span></h2>
+  <h2 class="section-title" lang="en">Choose value over cheap. <span class="th" lang="th">เลือกคุณค่ามากกว่าราคาถูก</span></h2>
     <p class="lede" data-en="Same child. Two very different years of English. Drag the slider and see it." data-th="เด็กคนเดียวกัน แต่ปีของภาษาอังกฤษต่างกันลิบลับ ลากสไลด์ดูได้เลย">Same child. Two very different years of English. Drag the slider and see it.</p>
 
     <div class="ba-compare">
       <div class="ba-stage">
         <div class="ba-slider" id="ba-slider" style="--ba-pos:50%">
-          <img class="ba-after" src="../assets/value-school.jpg?v=2" alt="A bright, warm TEC classroom — confident, happy students with real books" loading="lazy">
-          <img class="ba-before" src="../assets/cheap-school.jpg?v=1" alt="A dull, joyless cheap tutoring room — bored students with photocopied worksheets" loading="lazy">
+          <img class="ba-after" src="../assets/value-school.jpg?v=2" alt="ห้องเรียน TEC ที่สว่างและอบอุ่น — นักเรียนที่มั่นใจและมีความสุขพร้อมหนังสือจริง" loading="lazy">
+          <img class="ba-before" src="../assets/cheap-school.jpg?v=1" alt="ห้องติวราคาถูกที่หม่นหมองและไร้ชีวิตชีวา — นักเรียนเบื่อหน่ายกับใบงานถ่ายเอกสาร" loading="lazy">
           <span class="ba-label cheap" data-en="The cheap tutor" data-th="ติวเตอร์ราคาถูก">The cheap tutor</span>
           <span class="ba-label tec">TEC</span>
-          <div class="ba-handle" id="ba-handle" role="slider" tabindex="0" aria-label="Drag to compare a cheap tutor with TEC" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <div class="ba-handle" id="ba-handle" role="slider" tabindex="0" aria-label="ลากเพื่อเปรียบเทียบติวเตอร์ราคาถูกกับ TEC" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
             <span class="ba-grip" aria-hidden="true">‹›</span>
           </div>
         </div>
@@ -2159,7 +2159,7 @@
       <div class="ba-text">
         <div class="price-col cheap ba-text-layer" id="ba-text-cheap">
           <h4 data-en="The cheap monthly tutor" data-th="ติวเตอร์ราคาถูกรายเดือน">The cheap monthly tutor</h4>
-          <ul class="lang-en-block">
+          <ul class="lang-en-block" lang="en">
             <li>Large classes</li>
             <li>No tracking</li>
             <li>Generic lessons</li>
@@ -2167,7 +2167,7 @@
             <li>No follow-up</li>
             <li>Pay monthly (easy to drop)</li>
           </ul>
-          <ul class="lang-th-block">
+          <ul class="lang-th-block" lang="th">
             <li>คลาสใหญ่</li>
             <li>ไม่ติดตามผล</li>
             <li>บทเรียนทั่วไป</li>
@@ -2178,7 +2178,7 @@
         </div>
         <div class="price-col tec ba-text-layer" id="ba-text-tec">
           <h4>TEC</h4>
-          <ul class="lang-en-block">
+          <ul class="lang-en-block" lang="en">
             <li>Small streamed classes</li>
             <li>Visible Learning portfolio</li>
             <li>One-to-one feedback</li>
@@ -2186,7 +2186,7 @@
             <li>Cambridge YLE pathway</li>
             <li>Whole-course commitment (forces consistency)</li>
           </ul>
-          <ul class="lang-th-block">
+          <ul class="lang-th-block" lang="th">
             <li>คลาสเล็ก จัดตามระดับ</li>
             <li>พอร์ต Visible Learning</li>
             <li>ฟีดแบ็กตัวต่อตัว</li>
@@ -2198,8 +2198,8 @@
       </div>
     </div>
 
-    <p class="price-punchline lang-en-block">"You might decide to pay 50 baht a week less on your child's education because you think it's similar.<br>It isn't."</p>
-    <p class="price-punchline lang-th-block">"บางคนอาจจะคิดว่ายอมจ่ายน้อยลงอาทิตย์ละ 50 บาท เพราะมองว่าก็คล้าย ๆ กัน<br>— มันไม่ใช่เลยค่ะ"</p>
+    <p class="price-punchline lang-en-block" lang="en">"You might decide to pay 50 baht a week less on your child's education because you think it's similar.<br>It isn't."</p>
+    <p class="price-punchline lang-th-block" lang="th">"บางคนอาจจะคิดว่ายอมจ่ายน้อยลงอาทิตย์ละ 50 บาท เพราะมองว่าก็คล้าย ๆ กัน<br>— มันไม่ใช่เลยค่ะ"</p>
   </section>
 
   <!-- ============ P8: Virtual building tour (wireframe) ============ -->
@@ -2209,27 +2209,27 @@
 
     <div class="tour-gallery">
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/01-building-design.jpg?v=1" alt="The TEC identity — colourful letters made by a child's hands" loading="lazy">
+        <img src="../assets/facilities/01-building-design.jpg?v=1" alt="อัตลักษณ์ของ TEC — ตัวอักษรสีสันสดใสที่ทำด้วยมือเด็ก" loading="lazy">
         <figcaption data-en="Designed with intent" data-th="ออกแบบอย่างตั้งใจทุกตารางเมตร">Designed with intent</figcaption>
       </figure>
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/02-entrance.jpg?v=1" alt="A child writing during a phonics lesson at TEC" loading="lazy">
+        <img src="../assets/facilities/02-entrance.jpg?v=1" alt="เด็กกำลังเขียนระหว่างบทเรียนโฟนิกส์ที่ TEC" loading="lazy">
         <figcaption data-en="Phonics children can use" data-th="โฟนิกส์ที่ลูกใช้ได้จริง">Phonics children can use</figcaption>
       </figure>
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/03-reading-corner.jpg?v=1" alt="A child choosing a book in the TEC reading corner" loading="lazy">
+        <img src="../assets/facilities/03-reading-corner.jpg?v=1" alt="เด็กกำลังเลือกหนังสือในมุมอ่านหนังสือของ TEC" loading="lazy">
         <figcaption data-en="Real reading, not memorising" data-th="อ่านได้จริง ไม่ใช่ท่องจำ">Real reading, not memorising</figcaption>
       </figure>
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/04-classroom-1.jpg?v=1" alt="Children learning hands-on in a TEC classroom" loading="lazy">
+        <img src="../assets/facilities/04-classroom-1.jpg?v=1" alt="เด็ก ๆ เรียนรู้ผ่านการลงมือทำในห้องเรียน TEC" loading="lazy">
         <figcaption data-en="Hands-on learning" data-th="เรียนแบบลงมือทำ">Hands-on learning</figcaption>
       </figure>
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/05-garden.jpg?v=1" alt="A small group of TEC children outside in the garden" loading="lazy">
+        <img src="../assets/facilities/05-garden.jpg?v=1" alt="เด็ก TEC กลุ่มเล็ก ๆ อยู่ด้านนอกในสวน" loading="lazy">
         <figcaption data-en="Small-group support" data-th="ดูแลแบบกลุ่มเล็ก">Small-group support</figcaption>
       </figure>
       <figure class="tour-photo has-image">
-        <img src="../assets/facilities/06-classroom-2.jpg?v=1" alt="TEC students speaking and engaged in class" loading="lazy">
+        <img src="../assets/facilities/06-classroom-2.jpg?v=1" alt="นักเรียน TEC พูดและมีส่วนร่วมในชั้นเรียน" loading="lazy">
         <figcaption data-en="Confident speaking" data-th="พูดอย่างมั่นใจ">Confident speaking</figcaption>
       </figure>
     </div>
@@ -2241,25 +2241,25 @@
   <section class="sec" data-marker="P9" id="testimonials">
     <div class="folder-section">
       <h2 class="section-title" tabindex="0">
-        Wall of love <span class="heart-pulse" aria-hidden="true">💖</span><br>
+        <span lang="en">Wall of love</span> <span class="heart-pulse" aria-hidden="true">💖</span><br>
         <span style="font-size:0.55em;font-weight:600;display:block;margin-top:8px;color:var(--tec-ink-soft)" data-en="From TEC parents" data-th="จากผู้ปกครอง TEC">From TEC parents</span>
       </h2>
 
-      <div class="folder-stage" id="folder" tabindex="0" role="button" aria-pressed="false" aria-label="Open folder to reveal testimonials">
+      <div class="folder-stage" id="folder" tabindex="0" role="button" aria-pressed="false" aria-label="เปิดแฟ้มเพื่อดูคำรับรอง">
         <div class="folder">
           <div class="folder-card has-video">
-            <img src="../assets/video/klua-card.jpg?v=4" alt="Klua, a TEC student" loading="lazy">
-            <button class="fc-play" data-video="../assets/video/klua.mp4" aria-label="Play Klua's testimonial video">▶</button>
+            <img src="../assets/video/klua-card.jpg?v=4" alt="เกลือ นักเรียน TEC" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/klua.mp4" aria-label="เล่นวิดีโอคำรับรองของเกลือ">▶</button>
             <span class="fc-name" data-en="Klua" data-th="เกลือ">Klua</span>
           </div>
           <div class="folder-card has-video">
-            <img src="../assets/video/neptune-card.jpg?v=1" alt="Neptune, a TEC student" loading="lazy">
-            <button class="fc-play" data-video="../assets/video/neptune.mp4" aria-label="Play Neptune's testimonial video">▶</button>
+            <img src="../assets/video/neptune-card.jpg?v=1" alt="เนปจูน นักเรียน TEC" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/neptune.mp4" aria-label="เล่นวิดีโอคำรับรองของเนปจูน">▶</button>
             <span class="fc-name" data-en="Neptune" data-th="เนปจูน">Neptune</span>
           </div>
           <div class="folder-card has-video">
-            <img src="../assets/video/seua-card.jpg?v=3" alt="Seua, a TEC student" loading="lazy">
-            <button class="fc-play" data-video="../assets/video/seua.mp4" aria-label="Play Seua's testimonial video">▶</button>
+            <img src="../assets/video/seua-card.jpg?v=3" alt="เสือ นักเรียน TEC" loading="lazy">
+            <button class="fc-play" data-video="../assets/video/seua.mp4" aria-label="เล่นวิดีโอคำรับรองของเสือ">▶</button>
             <span class="fc-name" data-en="Seua" data-th="เสือ">Seua</span>
           </div>
           <div class="folder-body"></div>
@@ -2271,36 +2271,36 @@
           </div>
         </div>
       </div>
-      <p class="folder-cta lang-en-block">Tap the folder to fan out the testimonials · or press <span class="key">Enter</span></p>
-      <p class="folder-cta lang-th-block">แตะที่แฟ้มเพื่อกางคำรีวิว · หรือกด <span class="key">Enter</span></p>
+      <p class="folder-cta lang-en-block" lang="en">Tap the folder to fan out the testimonials · or press <span class="key" lang="en">Enter</span></p>
+      <p class="folder-cta lang-th-block" lang="th">แตะที่แฟ้มเพื่อกางคำรีวิว · หรือกด <span class="key" lang="en">Enter</span></p>
 
       <a class="inline-cta" href="/wall-of-love/" data-en="Visit the TEC Wall of Love 💖&nbsp;→" data-th="ดูกำแพงความรักของ TEC 💖&nbsp;→">Visit the TEC Wall of Love 💖&nbsp;→</a>
 
 
       <p style="margin-top:36px;font-family:'chaloops';font-weight:700;font-size:22px;color:var(--tec-ink)">
         ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค<br>
-        <span style="font-size:0.7em;color:var(--tec-ink-soft);font-weight:600">Join the Community Today</span>
+        <span style="font-size:0.7em;color:var(--tec-ink-soft);font-weight:600" lang="en">Join the Community Today</span>
       </p>
     </div>
   </section>
 
   <div class="video-modal" id="video-modal" aria-hidden="true">
     <div class="video-modal-inner">
-      <button class="video-modal-close" id="video-modal-close" aria-label="Close video">✕</button>
+      <button class="video-modal-close" id="video-modal-close" aria-label="ปิดวิดีโอ">✕</button>
       <video controls playsinline preload="none"></video>
     </div>
   </div>
 
   <div class="video-modal" id="map-modal" aria-hidden="true">
     <div class="map-modal-inner">
-      <button class="video-modal-close" id="map-modal-close" aria-label="Close map">✕</button>
-      <iframe title="TEC location on Google Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <button class="video-modal-close" id="map-modal-close" aria-label="ปิดแผนที่">✕</button>
+      <iframe title="ที่ตั้ง TEC บน Google Maps" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
   <!-- ============ FAQ accordion (wireframe) ============ -->
   <section class="sec" data-marker="FAQ">
-    <h2 class="section-title center">Quiet questions, answered. <span class="th">คำถามที่อยากถามแต่ไม่กล้าถาม</span></h2>
+  <h2 class="section-title center" lang="en">Quiet questions, answered. <span class="th" lang="th">คำถามที่อยากถามแต่ไม่กล้าถาม</span></h2>
 
     <div class="faq" id="faq">
       <div class="faq-item">
@@ -2326,11 +2326,11 @@
       <div class="faq-item">
         <button class="faq-q" data-en="Where is TEC and what are the class times?" data-th="TEC อยู่ที่ไหน และเรียนเวลาไหนบ้าง?">Where is TEC and what are the class times?</button>
         <div class="faq-a"><div>
-          <div class="lang-en-block">949/11 หมู่12 ถนน เนินตาแมว, วังกระแจะ, Mueang Trat District, Trat 23000, Thailand</div>
-          <div class="lang-th-block">949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด จังหวัดตราด 23000</div>
+          <div class="lang-en-block" lang="en"><span lang="th">949/11 หมู่12 ถนน เนินตาแมว, วังกระแจะ</span>, Mueang Trat District, Trat 23000, Thailand</div>
+          <div class="lang-th-block" lang="th">949/11 หมู่ 12 ถนนเนินตาแมว ตำบลวังกระแจะ อำเภอเมืองตราด จังหวัดตราด 23000</div>
           <div style="margin-top:6px"><a class="map-popup-link" href="https://www.google.com/maps/place/Trat+English+Community+(TEC)/@12.2368935,102.5199482,17z/data=!3m1!4b1!4m6!3m5!1s0x31044156ebe5cbf9:0xecf301cd0f3013f7!8m2!3d12.2368935!4d102.5225231!16s%2Fg%2F11g6922l4c" target="_blank" rel="noopener" style="color:var(--tec-pink);font-weight:700" data-en="Open in Google Maps&nbsp;→" data-th="เปิดใน Google Maps&nbsp;→">Open in Google Maps&nbsp;→</a></div>
-          <div style="margin-top:14px" class="lang-en-block"><strong style="color:var(--tec-ink)">When we're open:</strong> Fridays 1–8pm · Saturdays &amp; Sundays 8am–6pm. <span style="opacity:.7">(Closed Monday to Thursday.)</span></div>
-          <div style="margin-top:14px" class="lang-th-block"><strong style="color:var(--tec-ink)">เวลาเปิดทำการ:</strong> ศุกร์ 13.00–20.00 น. · เสาร์และอาทิตย์ 08.00–18.00 น. <span style="opacity:.7">(ปิดวันจันทร์ถึงพฤหัสบดี)</span></div>
+          <div style="margin-top:14px" class="lang-en-block" lang="en"><strong style="color:var(--tec-ink)">When we're open:</strong> Fridays 1–8pm · Saturdays &amp; Sundays 8am–6pm. <span style="opacity:.7">(Closed Monday to Thursday.)</span></div>
+          <div style="margin-top:14px" class="lang-th-block" lang="th"><strong style="color:var(--tec-ink)">เวลาเปิดทำการ:</strong> ศุกร์ 13.00–20.00 น. · เสาร์และอาทิตย์ 08.00–18.00 น. <span style="opacity:.7">(ปิดวันจันทร์ถึงพฤหัสบดี)</span></div>
         </div></div>
       </div>
     </div>
@@ -2339,14 +2339,14 @@
 
   <!-- ============ P10: CTA section (wireframe) ============ -->
   <section class="sec" data-marker="P10" id="contact">
-    <h2 class="section-title center">Take the next step. <span class="th">ก้าวต่อไป</span></h2>
+  <h2 class="section-title center" lang="en">Take the next step. <span class="th" lang="th">ก้าวต่อไป</span></h2>
 
     <div class="cta-grid">
       <div class="cta-card line">
         <div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" style="width:26px;height:26px"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></div>
         <h4 data-en="Ask us anything on LINE" data-th="ถามเราได้ทุกอย่างทาง LINE">Ask us anything on LINE</h4>
-        <p class="lang-en-block">Send us a message — schedules, fees, your child's level, anything you'd like to ask before booking. We're usually back within a few hours. Handle: <strong>TEC14</strong>.</p>
-        <p class="lang-th-block">ทักเราเข้ามาได้เลย — ตารางเรียน ค่าเรียน ระดับของลูก หรืออะไรก็ตามที่อยากถามก่อนตัดสินใจ เรามักตอบกลับภายในไม่กี่ชั่วโมง LINE ID: <strong>TEC14</strong></p>
+        <p class="lang-en-block" lang="en">Send us a message — schedules, fees, your child's level, anything you'd like to ask before booking. We're usually back within a few hours. Handle: <strong>TEC14</strong>.</p>
+        <p class="lang-th-block" lang="th">ทักเราเข้ามาได้เลย — ตารางเรียน ค่าเรียน ระดับของลูก หรืออะไรก็ตามที่อยากถามก่อนตัดสินใจ เรามักตอบกลับภายในไม่กี่ชั่วโมง LINE ID: <strong>TEC14</strong></p>
         <a class="cta-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" data-en="Open LINE" data-th="เปิด LINE">Open LINE</a>
       </div>
       <div class="cta-card callback">
@@ -2357,15 +2357,15 @@
       </div>
     </div>
 
-    <p class="community-note">
+    <p class="community-note" lang="en">
       Join the Community Today
-      <span class="th">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค</span>
+      <span class="th" lang="th">ร่วมเป็นส่วนหนึ่งของเส้นทางสายเทค</span>
     </p>
   </section>
 
   <!-- ============ P11: Get a call back form (wireframe) ============ -->
   <section class="sec" data-marker="P11" id="callback-section">
-    <h2 class="section-title center">Let's set up your free placement interview. <span class="th">นัดสัมภาษณ์วัดระดับฟรี</span></h2>
+  <h2 class="section-title center" lang="en">Let's set up your free placement interview. <span class="th" lang="th">นัดสัมภาษณ์วัดระดับฟรี</span></h2>
     <p class="lede center" style="text-align:center;max-width:560px;margin-left:auto;margin-right:auto" data-en="Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation." data-th="ฝากเบอร์ไว้ เราจะโทรกลับเพื่อนัดสัมภาษณ์วัดระดับฟรี 30 นาที กับครูอาวุโส — ไม่มีข้อผูกมัด">Leave your details and we'll call you back to organise a free 30-minute placement interview with a senior teacher — no obligation.</p>
 
     <form class="form-block" id="callback-form" action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
@@ -2375,31 +2375,31 @@
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
-      <label for="cb-name" class="lang-en-block">Name <span style="opacity:.6">/ ชื่อ</span></label>
-      <label for="cb-name" class="lang-th-block">ชื่อ <span style="opacity:.6">/ Name</span></label>
+      <label for="cb-name" class="lang-en-block" lang="en">Name <span style="opacity:.6" lang="th">/ ชื่อ</span></label>
+      <label for="cb-name" class="lang-th-block" lang="th">ชื่อ <span style="opacity:.6" lang="en">/ Name</span></label>
       <input type="text" id="cb-name" name="Name" autocomplete="name" required />
 
-      <label for="cb-contact" class="lang-en-block">LINE handle or phone <span style="opacity:.6">/ LINE หรือเบอร์โทร</span></label>
-      <label for="cb-contact" class="lang-th-block">LINE หรือเบอร์โทร <span style="opacity:.6">/ LINE handle or phone</span></label>
+      <label for="cb-contact" class="lang-en-block" lang="en">LINE handle or phone <span style="opacity:.6" lang="th">/ LINE หรือเบอร์โทร</span></label>
+      <label for="cb-contact" class="lang-th-block" lang="th">LINE หรือเบอร์โทร <span style="opacity:.6" lang="en">/ LINE handle or phone</span></label>
       <input type="tel" id="cb-contact" name="LINE or phone" autocomplete="tel" required />
 
       <label class="checkbox-row">
         <input type="checkbox" name="Consent" value="Yes — agreed to be contacted" required />
-        <span class="lang-en-block">I agree to be contacted by TEC. (You can unsubscribe anytime.) <em style="display:block;opacity:.7;margin-top:2px">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</em></span>
-        <span class="lang-th-block">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
+        <span class="lang-en-block" lang="en">I agree to be contacted by TEC. (You can unsubscribe anytime.) <em style="display:block;opacity:.7;margin-top:2px" lang="th">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</em></span>
+        <span class="lang-th-block" lang="th">ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา <em style="display:block;opacity:.7;margin-top:2px" lang="en">I agree to be contacted by TEC. (You can unsubscribe anytime.)</em></span>
       </label>
 
       <button type="submit" class="submit" data-en="Send" data-th="ส่ง">Send</button>
     </form>
 
     <div class="form-thanks" id="callback-thanks" hidden>
-      <p class="thanks-title lang-en-block">Thanks! 🎉</p>
-      <p class="thanks-title lang-th-block">ขอบคุณค่ะ 🎉</p>
-      <p class="thanks-sub lang-en-block">We've got your details — we'll call you back soon to set up your free placement interview.</p>
-      <p class="thanks-sub lang-th-block">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ</p>
+      <p class="thanks-title lang-en-block" lang="en">Thanks! 🎉</p>
+      <p class="thanks-title lang-th-block" lang="th">ขอบคุณค่ะ 🎉</p>
+      <p class="thanks-sub lang-en-block" lang="en">We've got your details — we'll call you back soon to set up your free placement interview.</p>
+      <p class="thanks-sub lang-th-block" lang="th">เราได้รับข้อมูลของคุณแล้ว เราจะโทรกลับเร็ว ๆ นี้ เพื่อนัดสัมภาษณ์วัดระดับฟรีนะคะ</p>
       <a class="line-cta" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">
-        <span class="lang-en-block">Prefer to chat now? Message us on LINE&nbsp;→</span>
-        <span class="lang-th-block">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</span>
+        <span class="lang-en-block" lang="en">Prefer to chat now? Message us on LINE&nbsp;→</span>
+        <span class="lang-th-block" lang="th">อยากคุยเลยไหมคะ? แชทกับเราทาง LINE&nbsp;→</span>
       </a>
     </div>
 
@@ -2435,15 +2435,15 @@
     })();
     </script>
 
-    <p class="closing-slogan lang-en-block">Play. Read. Lead. Build a Future at <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
-    <p class="closing-slogan lang-th-block">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
+    <p class="closing-slogan lang-en-block" lang="en">Play. Read. Lead. Build a Future at <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
+    <p class="closing-slogan lang-th-block" lang="th">เล่น. อ่าน. นำทาง. สร้างอนาคตที่ <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span>.</p>
   </section>
 
 </main>
 
 <!-- ============ Sticky bottom CTA bar (mobile only) ============ -->
-<div class="sticky-cta" aria-label="Quick contact">
-  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="Chat with TEC on LINE"><svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></a>
+<div class="sticky-cta" aria-label="ติดต่อด่วน">
+  <a class="line-btn" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener" aria-label="แชทกับ TEC ทาง LINE"><svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.4 1.32 4.55 3.4 6L4.5 21l4.5-2.4c.96.27 1.97.4 3 .4 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/></svg></a>
   <a class="callback-btn" href="#callback-section" data-en="Get a callback" data-th="ให้เราโทรกลับ">Get a callback</a>
 </div>
 
@@ -2452,9 +2452,9 @@
   <div class="row">
     <div>
       <div class="footer-logo-row">
-        <img src="../tec-robot-logo.png?v=2" alt="TEC — I love languages mascot" />
-        <h5 class="lang-en-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — <span class="lang-th">Thai</span> <span class="lang-en">English</span> <span class="lang-zh">Chinese</span> School</h5>
-        <h5 class="lang-th-block"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษา<span class="lang-th">ไทย</span>-<span class="lang-en">อังกฤษ</span>-<span class="lang-zh">จีน</span></h5>
+        <img src="../tec-robot-logo.png?v=2" alt="มาสคอต TEC — ฉันรักภาษา" />
+        <h5 class="lang-en-block" lang="en"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — <span class="lang-th">Thai</span> <span class="lang-en">English</span> <span class="lang-zh">Chinese</span> School</h5>
+        <h5 class="lang-th-block" lang="th"><span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษา<span class="lang-th">ไทย</span>-<span class="lang-en">อังกฤษ</span>-<span class="lang-zh">จีน</span></h5>
       </div>
       <p class="footer-tagline" data-en="Helping Trat learn languages since 2014." data-th="สอนภาษาให้คนตราดมาตั้งแต่ปี 2014">Helping Trat learn languages since 2014.</p>
       <ul class="footer-contact-list">
@@ -2514,19 +2514,19 @@
   <div class="footer-info-card">
     <div class="info-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-      <p class="lang-en-block" style="margin:0">Languages we teach: <span class="lang-en">English</span> · <span class="lang-zh">Chinese</span> · <span class="lang-th">Thai for non-Thais</span> (coming soon)</p>
-      <p class="lang-th-block" style="margin:0">ภาษาที่เราสอน: <span class="lang-en">อังกฤษ</span> · <span class="lang-zh">จีน</span> · <span class="lang-th">ไทยสำหรับชาวต่างชาติ</span> (เร็ว ๆ นี้)</p>
+      <p class="lang-en-block" style="margin:0" lang="en">Languages we teach: <span class="lang-en">English</span> · <span class="lang-zh">Chinese</span> · <span class="lang-th">Thai for non-Thais</span> (coming soon)</p>
+      <p class="lang-th-block" style="margin:0" lang="th">ภาษาที่เราสอน: <span class="lang-en">อังกฤษ</span> · <span class="lang-zh">จีน</span> · <span class="lang-th">ไทยสำหรับชาวต่างชาติ</span> (เร็ว ๆ นี้)</p>
     </div>
     <div class="info-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2M13 11h2M9 14h2M13 14h2M9 17h2M13 17h2"/></svg>
-      <p class="lang-en-block" style="margin:0">Registered with Thailand's <a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">Office of the Private Education Commission</a>.</p>
-      <p class="lang-th-block" style="margin:0">จดทะเบียนกับ<a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">สำนักงานคณะกรรมการส่งเสริมการศึกษาเอกชน</a>ของประเทศไทย</p>
+      <p class="lang-en-block" style="margin:0" lang="en">Registered with Thailand's <a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">Office of the Private Education Commission</a>.</p>
+      <p class="lang-th-block" style="margin:0" lang="th">จดทะเบียนกับ<a href="https://school.opec.go.th/school/1123200004" target="_blank" rel="noopener">สำนักงานคณะกรรมการส่งเสริมการศึกษาเอกชน</a>ของประเทศไทย</p>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <span class="lang-en-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — Thai English Chinese School. All rights reserved.</span>
-    <span class="lang-th-block">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษาไทย-อังกฤษ-จีน สงวนลิขสิทธิ์</span>
+    <span class="lang-en-block" lang="en">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — Thai English Chinese School. All rights reserved.</span>
+    <span class="lang-th-block" lang="th">© 2025 <span class="tec-rainbow"><span class="t">T</span><span class="e">E</span><span class="c">C</span></span> — โรงเรียนสอนภาษาไทย-อังกฤษ-จีน สงวนลิขสิทธิ์</span>
     <div class="legal-inline">
       <a href="/privacy/" data-en="Privacy" data-th="ความเป็นส่วนตัว">Privacy</a>
       <a href="/privacy/#terms" data-en="Terms" data-th="ข้อตกลงการใช้">Terms</a>
@@ -2540,7 +2540,7 @@
   // Adds body.lang-th when on. Swaps:
   //   - sibling pairs: .lang-en-block hides, .lang-th-block shows
   //   - inline labels: any element with both data-en and data-th has its textContent swapped
-  // Existing <span class="th"> stacks (inside section titles, hero) stay visible always.
+  // Existing <span class="th" lang="th"> stacks (inside section titles, hero) stay visible always.
   (function () {
     const btn = document.getElementById('lang-toggle');
     if (!btn) return;
@@ -2556,7 +2556,7 @@
       document.documentElement.setAttribute('lang', thOn ? 'th' : 'en');
       btn.setAttribute('aria-pressed', thOn ? 'true' : 'false');
       btn.textContent = thOn ? (btn.dataset.thLabel || 'EN') : (btn.dataset.enLabel || 'TH');
-      btn.setAttribute('aria-label', thOn ? 'Switch this page to English' : 'Switch this page to Thai');
+      btn.setAttribute('aria-label', thOn ? 'เปลี่ยนหน้านี้เป็นภาษาอังกฤษ' : 'Switch this page to Thai');
       swapTargets.forEach(el => {
         const v = thOn ? el.getAttribute('data-th') : el.getAttribute('data-en');
         if (v != null) el.textContent = v;
@@ -2597,6 +2597,7 @@
     const ENG_STR  = 'Study English at TEC';
 
     if (reduced) {
+      out.lang = 'en';
       out.textContent = ENG_STR;
       return;
     }
@@ -2608,6 +2609,7 @@
 
     const wait = ms => new Promise(r => setTimeout(r, ms));
     const type = str => new Promise(res => {
+      out.lang = str === THAI_STR ? 'th' : 'en';
       let i = 0;
       (function step() {
         out.textContent = str.slice(0, i);
@@ -2784,13 +2786,14 @@
       const pf = photos[s.name];
       if (pf) {
         photoEl.classList.add('has-photo');
-        photoEl.innerHTML = '<img src="../assets/level-photos/' + pf + '.jpg?v=' + PHOTO_V + '" alt="' + s.name + ' at TEC" loading="lazy">';
+        photoEl.innerHTML = '<img src="../assets/level-photos/' + pf + '.jpg?v=' + PHOTO_V + '" alt="' + s.name + ' ที่ TEC" loading="lazy">';
       } else {
         photoEl.classList.remove('has-photo');
         photoEl.textContent = '[Real classroom photo: ' + s.name + ']';
       }
       audioBtn.textContent = i18n('findMore');
       portfolioEl.classList.toggle('lang-th-block', isTh);
+      portfolioEl.setAttribute('lang', isTh ? 'th' : 'en');
       const pfText = (isTh && s.portfolio_th) ? s.portfolio_th : s.portfolio;
       portfolioEl.innerHTML = '<strong>' + i18n('whatYourChild') + '</strong>' + pfText;
 
