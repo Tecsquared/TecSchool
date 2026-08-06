@@ -120,7 +120,7 @@
     border-top: 1px solid rgba(0,0,0,0.07);
   }
 </style>
-<!-- Cookieless analytics + enquiry source capture -->
+<!-- Cookieless analytics: Vercel Web Analytics + PostHog; enquiry source capture -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/assets/tec-track.js"></script>
 </head>
@@ -140,7 +140,7 @@
   <h1>Privacy, PDPA &amp; Terms
     <span class="th" lang="th">นโยบายความเป็นส่วนตัว การคุ้มครองข้อมูลส่วนบุคคล และข้อตกลงการใช้</span>
   </h1>
-  <p class="updated">Last updated 11 June 2026 · <span lang="th">อัปเดตล่าสุด 11 มิถุนายน 2026</span></p>
+  <p class="updated">Last updated 6 August 2026 · <span lang="th">อัปเดตล่าสุด 6 สิงหาคม 2026</span></p>
 
   <section id="who">
     <h2>Who we are <span class="th" lang="th">เราคือใคร</span></h2>
@@ -156,16 +156,32 @@
   <section id="pdpa">
     <h2>What we collect, and why <span class="th" lang="th">เราเก็บข้อมูลอะไร และทำไม</span></h2>
     <div class="pair">
-      <p class="thai" lang="th">เว็บไซต์นี้เก็บข้อมูลส่วนบุคคลเพียงจุดเดียว คือแบบฟอร์ม "ให้เราโทรกลับ" ซึ่งขอ <strong>ชื่อ</strong> และ <strong>LINE ID หรือเบอร์โทรศัพท์</strong> ของคุณ และจะส่งได้ก็ต่อเมื่อคุณติ๊กยินยอมให้เราติดต่อกลับเท่านั้น เราใช้ข้อมูลนี้เพื่อโทรกลับและนัดสัมภาษณ์วัดระดับตามที่คุณขอ — ไม่ใช้เพื่ออย่างอื่น</p>
-      <p class="eng">This website collects personal data in exactly one place: the "Get a callback" form, which asks for your <strong>name</strong> and <strong>LINE ID or phone number</strong>, and only submits with your ticked consent. We use it to call you back and arrange the placement interview you asked about — nothing else.</p>
+      <p class="thai" lang="th">หากคุณใช้แบบฟอร์ม "ให้เราโทรกลับ" เราจะขอ <strong>ชื่อ</strong> และ <strong>LINE ID หรือเบอร์โทรศัพท์</strong> ของคุณ แบบฟอร์มจะส่งได้ก็ต่อเมื่อคุณติ๊กยินยอมให้เราติดต่อกลับ เราใช้ข้อมูลนี้เพื่อโทรกลับและนัดสัมภาษณ์วัดระดับตามที่คุณขอ — ไม่ใช้เพื่ออย่างอื่น</p>
+      <p class="eng">If you use the "Get a callback" form, we ask for your <strong>name</strong> and <strong>LINE ID or phone number</strong>. The form only submits with your ticked consent. We use this information to call you back and arrange the placement interview you asked about — nothing else.</p>
     </div>
     <div class="pair">
-      <p class="thai" lang="th">แบบฟอร์มส่งข้อมูลไปยังอีเมลของโรงเรียนผ่านบริการ FormSubmit เราไม่ขายหรือส่งต่อข้อมูลของคุณให้บุคคลที่สาม และเว็บไซต์นี้<strong>ไม่ใช้คุกกี้โฆษณาหรือคุกกี้วิเคราะห์พฤติกรรม</strong></p>
-      <p class="eng">Form submissions are delivered to the school's email via the FormSubmit service. We do not sell or pass your details to third parties, and this website uses <strong>no advertising or analytics cookies</strong>.</p>
+      <p class="thai" lang="th">FormSubmit ส่งคำขอของคุณไปที่อีเมล tratenglishmgt@gmail.com และส่งสำเนาไปที่ tratenglish@gmail.com เว็บไซต์ของเรายังส่งสำเนาไปยังรายการติดตามคำขอของโรงเรียนใน Notion</p>
+      <p class="eng">FormSubmit delivers your enquiry to tratenglishmgt@gmail.com, with a copy to tratenglish@gmail.com. Our site also sends a copy to the school's Notion enquiry tracker.</p>
     </div>
     <div class="pair">
       <p class="thai" lang="th">เราเก็บข้อมูลติดต่อของคุณไว้เท่าที่จำเป็นต่อการติดต่อกลับและการสมัครเรียนเท่านั้น คุณขอให้เราลบได้ทุกเมื่อ</p>
       <p class="eng">We keep your contact details only as long as needed to follow up your enquiry or enrolment. You can ask us to delete them at any time.</p>
+    </div>
+    <div class="pair">
+      <p class="thai" lang="th">ระหว่างที่คุณเข้าชม เราเก็บพารามิเตอร์ UTM และเว็บไซต์ที่ส่งคุณมาไว้ใน sessionStorage ของเบราว์เซอร์ ข้อมูลนี้จะถูกล้างเมื่อคุณปิดแท็บ หากคุณส่งคำขอ เราจะใส่ข้อมูล "คุณรู้จักเราจากไหน" ที่ได้จากข้อมูลนี้ไว้กับคำขอในอีเมล FormSubmit และสำเนาใน Notion เพื่อให้เรารู้ว่าโพสต์หรือโฆษณาใดได้ผล เราไม่ใช้ข้อมูลนี้เพื่ออย่างอื่น</p>
+      <p class="eng">During your visit, we keep UTM parameters and the site that referred you in your browser's sessionStorage. This is cleared when you close the tab. If you send an enquiry, we include a "Found via" attribution derived from this information with the enquiry in the FormSubmit email and the Notion copy, so we know which of our posts or ads work. We do not use it for anything else.</p>
+    </div>
+  </section>
+
+  <section id="analytics">
+    <h2>Analytics <span class="th" lang="th">การวิเคราะห์การใช้งาน</span></h2>
+    <div class="pair">
+      <p class="thai" lang="th">เราใช้ PostHog ซึ่งมีเซิร์ฟเวอร์ในสหภาพยุโรป และ Vercel Web Analytics เพื่อดูว่าผู้คนเข้าชมหน้าใดและคลิกลิงก์ใด ทั้งสองบริการไม่ใช้คุกกี้ PostHog ใช้เฉพาะหน่วยความจำชั่วคราวของเบราว์เซอร์ ไม่ใช้พื้นที่เก็บข้อมูลถาวร และไม่ติดตามการคลิกโดยอัตโนมัติหรือบันทึกหน้าจอการใช้งาน</p>
+      <p class="eng">We use PostHog, on EU servers, and Vercel Web Analytics to understand which pages people visit and which links they click. Both services are cookieless. PostHog uses temporary browser memory only, not persistent browser storage, and has no autocapture or session recording.</p>
+    </div>
+    <div class="pair">
+      <p class="thai" lang="th">บริการวิเคราะห์เหล่านี้ไม่ตั้งคุกกี้ เราไม่ใช้คุกกี้โฆษณา ไม่ติดตามคุณข้ามเว็บไซต์ และไม่ขายข้อมูลของคุณ</p>
+      <p class="eng">These analytics services set no cookies. We use no advertising cookies, do not track you across websites, and do not sell your data.</p>
     </div>
   </section>
 
@@ -199,8 +215,12 @@
   <section id="links">
     <h2>External services <span class="th" lang="th">บริการภายนอก</span></h2>
     <div class="pair">
-      <p class="thai" lang="th">บางส่วนของเว็บไซต์เชื่อมไปยังบริการภายนอก — หน้ารายละเอียดคอร์สบน Notion, แผนที่ Google Maps (โหลดเมื่อคุณแตะดูเท่านั้น), LINE, Facebook, YouTube และ TikTok รวมถึงฟอนต์จาก Google และ Adobe บริการเหล่านี้มีนโยบายความเป็นส่วนตัวของตัวเอง</p>
-      <p class="eng">Parts of this site link to external services — course pages on Notion, a Google Maps embed (which loads only when you tap it), LINE, Facebook, YouTube and TikTok, plus fonts served by Google and Adobe. Each has its own privacy policy.</p>
+      <p class="thai" lang="th">บางส่วนของเว็บไซต์เชื่อมไปยังบริการภายนอก — หน้ารายละเอียดคอร์สบน Notion, แผนที่ Google Maps (โหลดเมื่อคุณแตะดูเท่านั้น), LINE, Facebook, YouTube และ TikTok บริการเหล่านี้มีนโยบายความเป็นส่วนตัวของตัวเอง</p>
+      <p class="eng">Parts of this site link to external services — course pages on Notion, a Google Maps embed (which loads only when you tap it), LINE, Facebook, YouTube and TikTok. Each has its own privacy policy.</p>
+    </div>
+    <div class="pair">
+      <p class="thai" lang="th">หน้าส่วนใหญ่ใช้ฟอนต์จากเซิร์ฟเวอร์ของเราเอง แต่บางหน้า รวมถึงหน้านี้และใบปลิวคอร์ส ยังดาวน์โหลดฟอนต์จาก Google Fonts และหลายหน้าดาวน์โหลดสไตล์ชีตฟอนต์จาก Adobe (Typekit) คำขอเหล่านี้ไปยังเซิร์ฟเวอร์ของ Google หรือ Adobe ซึ่งจะเห็นที่อยู่ IP ของคุณเหมือนคำขอเว็บทั่วไป ฟอนต์เหล่านี้ไม่ใช้คุกกี้</p>
+      <p class="eng">Most pages serve fonts from our own server. Some pages, including this privacy page and the course flyers, still fetch fonts from Google Fonts, and several pages fetch a font stylesheet from Adobe (Typekit). Those requests go to Google or Adobe servers, which see your IP address as they would with any web request. No cookies are involved.</p>
     </div>
   </section>
 
