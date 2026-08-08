@@ -1,6 +1,8 @@
-/* TEC cookieless visitor tracking.
-   - Persists UTM tags + first external referrer in sessionStorage (no cookies,
-     per the privacy page promise) so the source survives internal navigation.
+/* TEC privacy-conscious visitor tracking.
+   - Persists an anonymous PostHog identity in localStorage (no analytics
+     cookies) so one visit is not split into a new person on every page.
+   - Persists UTM tags + first external referrer in sessionStorage so the
+     source survives internal navigation.
    - Injects a readable "Found via" field into every enquiry form, so each
      FormSubmit email says where the person came from.
    - Fires Vercel Web Analytics custom events for LINE / phone / email clicks,
@@ -9,16 +11,31 @@
      files it in "DB: Enquiries (TEC)". FormSubmit email is unaffected. */
 (function () {
   var ENQUIRY_WEBHOOK = 'https://www.notion.so/webhooks/worker/d04bd900-8630-4051-9599-ec4f025fa497/019f2667-71e8-7ac3-9781-c262b343ab30/meqbMk0s9tX2Qd1z/onEnquiry';
+  var INTERNAL_STORAGE_KEY = 'posthog_internal_user';
+  var isInternal = false;
+
+  try {
+    var internalParams = new URLSearchParams(location.search);
+    var internalParam = internalParams.get('posthog_internal');
+    if (internalParam === '1') localStorage.setItem(INTERNAL_STORAGE_KEY, 'true');
+    if (internalParam === '0') localStorage.removeItem(INTERNAL_STORAGE_KEY);
+    isInternal = localStorage.getItem(INTERNAL_STORAGE_KEY) === 'true';
+    if (internalParam === '1' || internalParam === '0') {
+      internalParams.delete('posthog_internal');
+      var cleanQuery = internalParams.toString();
+      history.replaceState(null, '', location.pathname + (cleanQuery ? '?' + cleanQuery : '') + location.hash);
+    }
+  } catch (e) { /* storage unavailable: treat the browser as external */ }
 
   // PostHog's project token is a public, write-only browser key. Keep the
-  // school site cookieless and capture only the explicit events below.
+  // school site free of analytics cookies and capture only useful events.
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
   window.posthog.init('phc_w7ATS3q7xnYq3ozyKgVeeeREh6zyiVit2qvvFDvT4LYg', {
     api_host: 'https://eu.i.posthog.com',
     defaults: '2026-05-30',
     person_profiles: 'identified_only',
     autocapture: false,
-    capture_pageview: true,
+    capture_pageview: false,
     capture_pageleave: true,
     capture_dead_clicks: false,
     capture_exceptions: false,
@@ -26,8 +43,10 @@
     capture_performance: false,
     disable_session_recording: true,
     disable_surveys: true,
-    persistence: 'memory'
+    persistence: 'localStorage'
   });
+  window.posthog.register({ is_internal_user: isInternal });
+  window.posthog.capture('$pageview');
 
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 
@@ -85,6 +104,22 @@
       input.value = sourceLabel();
       forms[i].appendChild(input);
     }
+
+    var thanksPanels = document.querySelectorAll('.form-thanks');
+    for (var j = 0; j < thanksPanels.length; j++) {
+      (function (panel) {
+        var observer = new MutationObserver(function () {
+          if (panel.hidden || panel.getAttribute('data-analytics-confirmed') === 'true') return;
+          panel.setAttribute('data-analytics-confirmed', 'true');
+          trackEvent('enquiry_submitted', {
+            page: location.pathname,
+            form: panel.id || 'enquiry-form'
+          });
+          observer.disconnect();
+        });
+        observer.observe(panel, { attributes: true, attributeFilter: ['hidden'] });
+      })(thanksPanels[j]);
+    }
   });
 
   document.addEventListener('click', function (ev) {
@@ -139,7 +174,7 @@
     var form = ev.target;
     var subjectField = form.querySelector('input[name="_subject"]');
     var label = (subjectField && subjectField.value) || form.id || 'form';
-    trackEvent('enquiry_submit', { page: location.pathname, form: label });
+    trackEvent('enquiry_started', { page: location.pathname, form: label });
 
     try {
       var fd = new FormData(form);
