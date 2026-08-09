@@ -120,7 +120,7 @@
     border-top: 1px solid rgba(0,0,0,0.07);
   }
 </style>
-<!-- Cookieless analytics: Vercel Web Analytics + PostHog; enquiry source capture -->
+<!-- Privacy-conscious analytics + consent-gated Meta Pixel; enquiry source capture -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/assets/tec-track.js"></script>
 </head>
@@ -180,8 +180,24 @@
       <p class="eng">We use PostHog, on EU servers, and Vercel Web Analytics to understand which pages people visit and which links they click. Both services are cookieless. PostHog stores a random browser identifier in local storage so page visits and return visits can be understood as one journey. Analytics events do not include names, email addresses, form messages or payment details, and session recording is disabled.</p>
     </div>
     <div class="pair">
-      <p class="thai" lang="th">บริการวิเคราะห์เหล่านี้ไม่ตั้งคุกกี้ เราไม่ใช้คุกกี้โฆษณา ไม่ติดตามคุณข้ามเว็บไซต์ และไม่ขายข้อมูลของคุณ</p>
-      <p class="eng">These analytics services set no cookies. We use no advertising cookies, do not track you across websites, and do not sell your data.</p>
+      <p class="thai" lang="th">บริการวิเคราะห์เหล่านี้ไม่ตั้งคุกกี้ เราไม่ขายข้อมูลของคุณ การติดตามเพื่อการโฆษณาของ Meta เป็นตัวเลือกแยกต่างหากตามที่อธิบายด้านล่าง และจะไม่ทำงานจนกว่าคุณจะยินยอม</p>
+      <p class="eng">These analytics services set no cookies, and we do not sell your data. Optional Meta advertising tracking is separate, as explained below, and remains off until you consent.</p>
+    </div>
+  </section>
+
+  <section id="marketing">
+    <h2>Optional advertising measurement <span class="th" lang="th">การวัดผลโฆษณา (ไม่บังคับ)</span></h2>
+    <div class="pair">
+      <p class="thai" lang="th">หากคุณกด “ยอมรับ” ในตัวเลือกความเป็นส่วนตัว เราจะโหลด Meta Pixel เพื่อวัดผลโฆษณาและสร้างกลุ่มผู้ชมของผู้ที่เคยเข้าชมเว็บไซต์ TEC เพื่อแสดงโฆษณาที่เกี่ยวข้องบน Facebook และ Instagram Meta อาจตั้งคุกกี้ <code>_fbp</code> และ <code>_fbc</code> และรับข้อมูลเกี่ยวกับหน้าที่คุณเข้าชม อุปกรณ์/เบราว์เซอร์ และการส่งแบบฟอร์มสำเร็จ เราไม่ส่งชื่อ เบอร์โทร LINE ID ข้อความในแบบฟอร์ม หรือข้อมูลการชำระเงินให้ Meta</p>
+      <p class="eng">If you choose “Allow marketing” in the privacy choices, we load the Meta Pixel to measure advertising and build an audience of previous TEC website visitors so we can show relevant ads on Facebook and Instagram. Meta may set <code>_fbp</code> and <code>_fbc</code> cookies and receive the page visited, device/browser information and a successful-enquiry event. We do not send Meta names, phone numbers, LINE IDs, form contents or payment details.</p>
+    </div>
+    <div class="pair">
+      <p class="thai" lang="th">การยินยอมเป็นทางเลือก คุณสามารถปฏิเสธได้โดยที่เว็บไซต์ยังใช้งานได้ตามปกติ และเปลี่ยนใจได้ทุกเมื่อผ่านปุ่ม “ตั้งค่าความเป็นส่วนตัว” ที่มุมล่างของเว็บไซต์ เมื่อถอนความยินยอม เราจะหยุดส่งเหตุการณ์ใหม่และพยายามลบคุกกี้ Meta ของเว็บไซต์นี้ ข้อมูลที่ส่งไปแล้วอาจถูกประมวลผลโดย Meta ตามนโยบายของ Meta รวมถึงนอกประเทศไทย</p>
+      <p class="eng">Consent is optional. You can decline and the site will continue to work normally. You can change your choice at any time using the “Privacy choices” button at the bottom of the site. If you withdraw consent, we stop new events and attempt to delete this site's Meta cookies. Data already sent may be processed by Meta under its policies, including outside Thailand.</p>
+    </div>
+    <div class="card">
+      <button type="button" onclick="window.tecOpenMarketingPreferences && window.tecOpenMarketingPreferences()">Privacy choices / <span lang="th">ตั้งค่าความเป็นส่วนตัว</span></button>
+      · <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Privacy Policy</a>
     </div>
   </section>
 
