@@ -46,11 +46,13 @@
     persistence: 'localStorage'
   });
   window.posthog.register({ is_internal_user: isInternal });
-  window.posthog.capture('$pageview');
+  window.posthog.capture('$pageview', { is_internal_user: isInternal });
 
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 
   function trackEvent(name, data) {
+    data = data || {};
+    data.is_internal_user = isInternal;
     window.va('event', { name: name, data: data });
     window.posthog.capture(name, data);
   }
