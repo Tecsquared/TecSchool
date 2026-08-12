@@ -112,14 +112,31 @@
   }
 
   function setupMarketingConsent() {
+    var pagePath = location.pathname.replace(/\/index\.html$/, '/');
+    if (pagePath === '/') return;
+
+    var useThai = /^\/(english|chinese|courses|wall-of-love)(\/|$)/.test(pagePath);
+    var consentCopy = useThai ? {
+      title: 'เราใช้คุกกี้',
+      message: 'คุณเลือกเปิดหรือปิดคุกกี้ได้',
+      on: 'เปิด',
+      off: 'ปิด',
+      settings: 'ตั้งค่าคุกกี้'
+    } : {
+      title: 'We use cookies',
+      message: 'You can turn cookies on or off.',
+      on: 'On',
+      off: 'Off',
+      settings: 'Cookie settings'
+    };
+
     var style = document.createElement('style');
     style.textContent =
-      '#tec-marketing-consent{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:720px;margin:auto;background:#fff;color:#1a1a1a;border:2px solid #1a1a1a;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.24);padding:18px;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}' +
-      '#tec-marketing-consent h2{font:700 20px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;margin:0 0 8px;padding:0}' +
-      '#tec-marketing-consent p{margin:0 0 12px}' +
-      '#tec-marketing-consent a{color:#b0005c;font-weight:700}' +
+      '#tec-marketing-consent{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:440px;margin:auto;background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:16px;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}' +
+      '#tec-marketing-consent h2{font:700 18px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;margin:0 0 6px;padding:0}' +
+      '#tec-marketing-consent p{margin:0 0 10px}' +
       '.tec-consent-actions{display:flex;gap:10px;flex-wrap:wrap}' +
-      '.tec-consent-actions button,#tec-privacy-choices{appearance:none;border:2px solid #1a1a1a;border-radius:999px;padding:10px 16px;font:700 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}' +
+      '.tec-consent-actions button,#tec-privacy-choices{appearance:none;border:1px solid #1a1a1a;border-radius:999px;padding:9px 14px;font:700 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}' +
       '.tec-consent-allow{background:#fed501;color:#1a1a1a}' +
       '.tec-consent-decline{background:#fff;color:#1a1a1a}' +
       '#tec-privacy-choices{position:fixed;z-index:99998;left:12px;bottom:12px;background:#fff;color:#1a1a1a;box-shadow:0 4px 16px rgba(0,0,0,.16);font-size:12px;padding:8px 12px}' +
@@ -129,7 +146,7 @@
     var choicesButton = document.createElement('button');
     choicesButton.id = 'tec-privacy-choices';
     choicesButton.type = 'button';
-    choicesButton.textContent = 'Privacy choices / ตั้งค่าความเป็นส่วนตัว';
+    choicesButton.textContent = consentCopy.settings;
     choicesButton.setAttribute('aria-haspopup', 'dialog');
 
     function closePanel() {
@@ -149,11 +166,11 @@
       panel.setAttribute('aria-modal', 'false');
       panel.setAttribute('aria-labelledby', 'tec-consent-title');
       panel.innerHTML =
-        '<h2 id="tec-consent-title">Advertising privacy / ความเป็นส่วนตัวด้านโฆษณา</h2>' +
-        '<p>With your permission, TEC uses the Meta Pixel to measure ads and show relevant TEC ads to past website visitors. It stays off unless you allow it. We never send your form answers. <a href="/privacy/#marketing">Read more / อ่านเพิ่มเติม</a></p>' +
+        '<h2 id="tec-consent-title">' + consentCopy.title + '</h2>' +
+        '<p>' + consentCopy.message + '</p>' +
         '<div class="tec-consent-actions">' +
-          '<button type="button" class="tec-consent-allow">Allow marketing / ยอมรับ</button>' +
-          '<button type="button" class="tec-consent-decline">No thanks / ไม่ยอมรับ</button>' +
+          '<button type="button" class="tec-consent-allow">' + consentCopy.on + '</button>' +
+          '<button type="button" class="tec-consent-decline">' + consentCopy.off + '</button>' +
         '</div>';
       document.body.appendChild(panel);
 
