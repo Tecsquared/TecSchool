@@ -117,14 +117,12 @@
 
     var useThai = /^\/(english|chinese|courses|wall-of-love)(\/|$)/.test(pagePath);
     var consentCopy = useThai ? {
-      title: 'เราใช้คุกกี้',
-      message: 'คุณเลือกเปิดหรือปิดคุกกี้ได้',
+      message: 'คุกกี้',
       on: 'เปิด',
       off: 'ปิด',
       settings: 'ตั้งค่าคุกกี้'
     } : {
-      title: 'We use cookies',
-      message: 'You can turn cookies on or off.',
+      message: 'Cookies',
       on: 'On',
       off: 'Off',
       settings: 'Cookie settings'
@@ -132,15 +130,13 @@
 
     var style = document.createElement('style');
     style.textContent =
-      '#tec-marketing-consent{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:440px;margin:auto;background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:16px;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}' +
-      '#tec-marketing-consent h2{font:700 18px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;margin:0 0 6px;padding:0}' +
-      '#tec-marketing-consent p{margin:0 0 10px}' +
-      '.tec-consent-actions{display:flex;gap:10px;flex-wrap:wrap}' +
-      '.tec-consent-actions button,#tec-privacy-choices{appearance:none;border:1px solid #1a1a1a;border-radius:999px;padding:9px 14px;font:700 14px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}' +
+      '#tec-marketing-consent{position:fixed;z-index:99999;left:10px;bottom:10px;display:flex;align-items:center;gap:5px;background:#fff;color:#1a1a1a;border:1px solid #d8d5cc;border-radius:999px;box-shadow:0 3px 10px rgba(0,0,0,.1);padding:4px 5px 4px 9px;font:600 12px/1 system-ui,-apple-system,Segoe UI,sans-serif}' +
+      '.tec-consent-copy{white-space:nowrap}' +
+      '.tec-consent-actions{display:flex;gap:4px}' +
+      '.tec-consent-actions button,#tec-privacy-choices{appearance:none;border:1px solid #1a1a1a;border-radius:999px;padding:5px 8px;font:700 11px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}' +
       '.tec-consent-allow{background:#fed501;color:#1a1a1a}' +
-      '.tec-consent-decline{background:#fff;color:#1a1a1a}' +
-      '#tec-privacy-choices{position:fixed;z-index:99998;left:12px;bottom:12px;background:#fff;color:#1a1a1a;box-shadow:0 4px 16px rgba(0,0,0,.16);font-size:12px;padding:8px 12px}' +
-      '@media(max-width:520px){#tec-marketing-consent{left:10px;right:10px;bottom:10px;padding:16px}.tec-consent-actions button{width:100%}}';
+      '.tec-consent-decline{background:#f4f2ec;color:#1a1a1a}' +
+      '#tec-privacy-choices{position:fixed;z-index:99998;left:10px;bottom:10px;background:#fff;color:#1a1a1a;box-shadow:0 3px 10px rgba(0,0,0,.1);font-size:11px;padding:6px 9px}';
     document.head.appendChild(style);
 
     var choicesButton = document.createElement('button');
@@ -166,8 +162,7 @@
       panel.setAttribute('aria-modal', 'false');
       panel.setAttribute('aria-labelledby', 'tec-consent-title');
       panel.innerHTML =
-        '<h2 id="tec-consent-title">' + consentCopy.title + '</h2>' +
-        '<p>' + consentCopy.message + '</p>' +
+        '<span id="tec-consent-title" class="tec-consent-copy">' + consentCopy.message + '</span>' +
         '<div class="tec-consent-actions">' +
           '<button type="button" class="tec-consent-allow">' + consentCopy.on + '</button>' +
           '<button type="button" class="tec-consent-decline">' + consentCopy.off + '</button>' +
