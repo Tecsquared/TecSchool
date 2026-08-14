@@ -20,6 +20,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="preload" as="image" href="/assets/video/chinese-hero-poster.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://use.typekit.net">
 <link rel="preconnect" href="https://p.typekit.net">
 <link rel="stylesheet" href="https://use.typekit.net/agc2tne.css" media="print" onload="this.media='all'">
@@ -739,7 +740,7 @@
   "name": "TEC — Thai English Chinese School (Trat English Community)",
   "alternateName": "TEC ตราด",
   "description": "ภาษาจีนสำหรับเด็กที่ TEC ตราด — คลาสเล็ก 6–8 คน เส้นทาง 8 ระดับจากแพนด้าสู่มังกร ระบบ Visible Learning เดียวกับโรงเรียนภาษาอังกฤษของเรา | Chinese for kids at TEC, Trat — small classes and the Panda-to-Dragon pathway, on the same TEC Method.",
-  "url": "https://www.tecschool.org/chinese/",
+  "url": "https://www.tecschool.org/",
   "logo": "https://www.tecschool.org/tec-robot-logo.png",
   "image": "https://www.tecschool.org/assets/og-tec.jpg",
   "telephone": "+66990195890",
@@ -819,6 +820,19 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.tecschool.org/chinese/#webpage",
+  "url": "https://www.tecschool.org/chinese/",
+  "name": "Chinese at TEC — Chinese classes for children in Trat",
+  "isPartOf": { "@id": "https://www.tecschool.org/#website" },
+  "about": { "@id": "https://www.tecschool.org/#organization" },
+  "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.tecschool.org/assets/video/chinese-hero-poster.jpg" },
+  "inLanguage": ["th", "zh"]
+}
+</script>
 <!-- Cookieless analytics: Vercel Web Analytics + PostHog; enquiry source capture -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/assets/tec-track.js?v=3"></script>
@@ -834,9 +848,9 @@
       <span class="brand-text">TEC</span>
     </a>
     <nav class="lang-pills" aria-label="ภาษาที่สอนที่ TEC">
-      <a class="lang-switch th" href="/thai" aria-label="คอร์สภาษาไทย (เร็ว ๆ นี้)" lang="en">Thai</a>
-      <a class="lang-switch en" href="/english" aria-label="คอร์สภาษาอังกฤษ" lang="en">English</a>
-      <a class="lang-switch zh active" href="/chinese" aria-current="page" lang="en">Chinese</a>
+      <a class="lang-switch th" href="/thai/" aria-label="คอร์สภาษาไทย (เร็ว ๆ นี้)" lang="en">Thai</a>
+      <a class="lang-switch en" href="/english/" aria-label="คอร์สภาษาอังกฤษ" lang="en">English</a>
+      <a class="lang-switch zh active" href="/chinese/" aria-current="page" lang="en">Chinese</a>
     </nav>
     <span class="spacer"></span>
     <a class="lang-switch lang-toggle" id="lang-toggle" href="#" aria-label="เปลี่ยนหน้านี้เป็นภาษาอังกฤษ" aria-pressed="true" data-en-label="TH" data-th-label="EN">EN</a>
@@ -856,7 +870,7 @@
     <figure class="vignette" id="hero-vignette">
       <div class="vignette-frame">
         <video class="vignette-video" playsinline preload="none"
-               poster="/assets/video/chinese-hero-poster.jpg?v=2"
+               poster="/assets/video/chinese-hero-poster.webp"
                aria-label="เดเมียนจาก TEC — เลือกคุณค่ามากกว่าราคาถูก: ทำไมระบบ TEC จึงดีกว่าการติวราคาถูก">
           <source src="/assets/video/chinese-hero.mp4" type="video/mp4">
         </video>
@@ -912,49 +926,49 @@
       <div class="panda-grid">
         <div class="panda-card">
           <span class="stage-num">1</span>
-          <div class="photo"><img src="/assets/chinese-levels/01-teeny-panda.jpg" alt="Teeny Panda — ผู้เรียนตัวน้อยที่สุดที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/01-teeny-panda-430.webp" srcset="/assets/chinese-levels/01-teeny-panda-430.webp 430w, /assets/chinese-levels/01-teeny-panda-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Teeny Panda — ผู้เรียนตัวน้อยที่สุดที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Teeny Panda 🐼</h3>
           <p class="blurb" data-en="The littlest first step — songs, games and the sounds of Chinese through play." data-th="ก้าวแรกสุดของหนูน้อย — เพลง เกม และเสียงภาษาจีนผ่านการเล่น">ก้าวแรกสุดของหนูน้อย — เพลง เกม และเสียงภาษาจีนผ่านการเล่น</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">2</span>
-          <div class="photo"><img src="/assets/chinese-levels/02-tiny-panda.jpg" alt="Tiny Panda — ผู้เรียนวัยเยาว์ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/02-tiny-panda-430.webp" srcset="/assets/chinese-levels/02-tiny-panda-430.webp 430w, /assets/chinese-levels/02-tiny-panda-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Tiny Panda — ผู้เรียนวัยเยาว์ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Tiny Panda 🐼</h3>
           <p class="blurb" data-en="First words and confidence, through activities little ones love." data-th="คำศัพท์แรกและความมั่นใจ ผ่านกิจกรรมที่เด็กเล็กรัก">คำศัพท์แรกและความมั่นใจ ผ่านกิจกรรมที่เด็กเล็กรัก</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">3</span>
-          <div class="photo"><img src="/assets/chinese-levels/03-panda-1.jpg" alt="Panda 1 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/03-panda-1-430.webp" srcset="/assets/chinese-levels/03-panda-1-430.webp 430w, /assets/chinese-levels/03-panda-1-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Panda 1 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Panda 1 🐼</h3>
           <p class="blurb" data-en="Words, sounds and tones — Chinese starts fun." data-th="คำ เสียง และโทนเสียง — ภาษาจีนเริ่มต้นแบบสนุก">คำ เสียง และโทนเสียง — ภาษาจีนเริ่มต้นแบบสนุก</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">4</span>
-          <div class="photo"><img src="/assets/chinese-levels/04-panda-2.jpg" alt="Panda 2 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/04-panda-2-430.webp" srcset="/assets/chinese-levels/04-panda-2-430.webp 430w, /assets/chinese-levels/04-panda-2-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Panda 2 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Panda 2 🐼</h3>
           <p class="blurb" data-en="Reading pinyin, first characters and everyday conversation." data-th="อ่านพินอิน เขียนตัวอักษรแรก และบทสนทนาประจำวัน">อ่านพินอิน เขียนตัวอักษรแรก และบทสนทนาประจำวัน</p>
         </div>
         <div class="panda-card">
           <span class="stage-num">5</span>
-          <div class="photo"><img src="/assets/chinese-levels/05-panda-3.jpg" alt="Panda 3 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/05-panda-3-430.webp" srcset="/assets/chinese-levels/05-panda-3-430.webp 430w, /assets/chinese-levels/05-panda-3-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Panda 3 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Panda 3 🐼</h3>
           <p class="blurb" data-en="Confident communication, stronger reading and writing — ready for the Dragon levels." data-th="สื่อสารได้มั่นใจ อ่าน-เขียนได้มากขึ้น พร้อมก้าวสู่ระดับมังกร">สื่อสารได้มั่นใจ อ่าน-เขียนได้มากขึ้น พร้อมก้าวสู่ระดับมังกร</p>
         </div>
         <div class="panda-card dragon">
           <span class="stage-num">6</span>
-          <div class="photo"><img src="/assets/chinese-levels/06-dragon-1.jpg" alt="Dragon 1 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/06-dragon-1-430.webp" srcset="/assets/chinese-levels/06-dragon-1-430.webp 430w, /assets/chinese-levels/06-dragon-1-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Dragon 1 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Dragon 1 🐉</h3>
           <p class="blurb" data-en="Into the Dragon levels — longer sentences, more serious reading and writing." data-th="ก้าวสู่ระดับมังกร — ประโยคยาวขึ้น อ่าน-เขียนจริงจังขึ้น">ก้าวสู่ระดับมังกร — ประโยคยาวขึ้น อ่าน-เขียนจริงจังขึ้น</p>
         </div>
         <div class="panda-card dragon">
           <span class="stage-num">7</span>
-          <div class="photo"><img src="/assets/chinese-levels/07-dragon-2.jpg" alt="Dragon 2 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/07-dragon-2-430.webp" srcset="/assets/chinese-levels/07-dragon-2-430.webp 430w, /assets/chinese-levels/07-dragon-2-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Dragon 2 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Dragon 2 🐉</h3>
           <p class="blurb" data-en="Telling stories, explaining ideas, using real Chinese." data-th="เล่าเรื่อง อธิบายความคิด และใช้ภาษาจีนได้จริง">เล่าเรื่อง อธิบายความคิด และใช้ภาษาจีนได้จริง</p>
         </div>
         <div class="panda-card dragon">
           <span class="stage-num">8</span>
-          <div class="photo"><img src="/assets/chinese-levels/08-dragon-3.jpg" alt="Dragon 3 ที่ TEC" loading="lazy"></div>
+          <div class="photo"><img src="/assets/chinese-levels/08-dragon-3-430.webp" srcset="/assets/chinese-levels/08-dragon-3-430.webp 430w, /assets/chinese-levels/08-dragon-3-860.webp 860w" sizes="(min-width: 980px) 22vw, (min-width: 600px) 45vw, 92vw" alt="Dragon 3 ที่ TEC" width="430" height="430" loading="lazy" decoding="async"></div>
           <h3>Dragon 3 🐉</h3>
           <p class="blurb" data-en="Confident, real-world Chinese." data-th="ใช้ภาษาจีนในโลกจริงได้อย่างมั่นใจ">ใช้ภาษาจีนในโลกจริงได้อย่างมั่นใจ</p>
         </div>
@@ -972,8 +986,8 @@
   <section class="sec">
     <div class="trust-strip">
       <div class="trust-avatars">
-        <img src="/assets/founders/suthamas.jpg" alt="สุธามาศ ไชยศิริ — ผู้ร่วมก่อตั้ง TEC">
-        <img src="/assets/founders/damien.jpg" alt="เดเมียน เฮอร์ลิฮี — ผู้ร่วมก่อตั้ง TEC">
+        <img src="/assets/founders/suthamas-400.webp" alt="สุธามาศ ไชยศิริ — ผู้ร่วมก่อตั้ง TEC" width="200" height="200" loading="lazy" decoding="async">
+        <img src="/assets/founders/damien-400.webp" alt="เดเมียน เฮอร์ลิฮี — ผู้ร่วมก่อตั้ง TEC" width="200" height="200" loading="lazy" decoding="async">
       </div>
       <div class="trust-text">
         <span class="lang-th-block" lang="th">ภาษาจีนที่ TEC สร้างโดยทีมเดียวกับโรงเรียนภาษาอังกฤษของเรา — มาสและเดเมียน อยู่กับเด็กตราดมาตั้งแต่ปี 2014</span>
