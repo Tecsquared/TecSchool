@@ -147,6 +147,40 @@ if (courseSitemapEntries.length !== 18) {
   pass('all course sitemap dates reflect the current source changes');
 }
 
+const secondaryPages = new Map([
+  ['privacy/index.html', 'https://www.tecschool.org/privacy/'],
+  ['wall-of-love/index.html', 'https://www.tecschool.org/wall-of-love/'],
+]);
+for (const [file, url] of secondaryPages) {
+  const html = read(file);
+  if (!html.includes(`<link rel="canonical" href="${url}">`)) fail(`${file} has an unexpected canonical URL`);
+  const types = [];
+  for (const [index, match] of [...html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/g)].entries()) {
+    try {
+      types.push(JSON.parse(match[1])['@type']);
+    } catch (error) {
+      fail(`${file} JSON-LD block ${index + 1} is invalid: ${error.message}`);
+    }
+  }
+  if (!types.includes('WebPage')) fail(`${file} has no WebPage structured data`);
+  if (!types.includes('BreadcrumbList')) fail(`${file} has no breadcrumb structured data`);
+
+  const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const sitemapBlock = sitemap.match(new RegExp(`<url>[\\s\\S]*?<loc>${escapedUrl}<\\/loc>[\\s\\S]*?<lastmod>([^<]+)<\\/lastmod>[\\s\\S]*?<\\/url>`));
+  if (!sitemapBlock) fail(`sitemap is missing ${url}`);
+  else if (sitemapBlock[1] !== '2026-08-14') fail(`${url} sitemap date does not reflect the current source changes`);
+}
+const privacy = read('privacy/index.html');
+if (!privacy.includes('href="/assets/fonts/fonts.css"')) fail('privacy page does not use the self-hosted main font bundle');
+if (privacy.includes('fonts.googleapis.com') || privacy.includes('fonts.gstatic.com')) fail('privacy page still loads fonts from Google');
+for (const file of ['english/index.html', 'thai/index.html', 'chinese/index.html']) {
+  if (!read(file).includes('href="/privacy/"')) fail(`${file} does not link to the privacy page`);
+}
+if (!read('english/index.html').includes('href="/wall-of-love/"')) fail('English landing page does not link to the Wall of Love');
+if (!failures.some((item) => item.includes('privacy page') || item.includes('Wall of Love') || item.includes('WebPage structured') || item.includes('sitemap date'))) {
+  pass('remaining discovery pages have canonical links, structured identity, and current sitemap dates');
+}
+
 if (failures.length) {
   for (const message of failures) console.error(`FAIL ${message}`);
   process.exit(1);
