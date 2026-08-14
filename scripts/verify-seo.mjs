@@ -86,6 +86,67 @@ for (const file of optimizedAssets) {
 }
 if (!failures.some((item) => item.includes('optimized asset'))) pass('optimized hero and founder assets exist');
 
+const courseDir = path.join(root, 'courses');
+const courseDetailFiles = fs.readdirSync(courseDir)
+  .filter((name) => name.endsWith('.html') && name !== 'index.html')
+  .sort();
+if (courseDetailFiles.length !== 17) fail(`expected 17 course detail pages; found ${courseDetailFiles.length}`);
+
+const courseFontFile = 'assets/fonts/fonts-courses.css';
+const courseFontCss = read(courseFontFile);
+for (const match of courseFontCss.matchAll(/url\(['"]?([^'")]+)['"]?\)/g)) {
+  const fontAsset = match[1].startsWith('/')
+    ? path.join(root, match[1].slice(1))
+    : path.resolve(path.dirname(path.join(root, courseFontFile)), match[1]);
+  if (!fs.existsSync(fontAsset)) fail(`${courseFontFile} references missing font asset ${match[1]}`);
+}
+
+const courseHub = read('courses/index.html');
+if (!courseHub.includes('href="/english/"')) fail('course hub does not link back to the canonical English landing page');
+const hubCourseLinks = new Set(
+  [...courseHub.matchAll(/href="([^"/]+\.html)"/g)].map((match) => match[1]),
+);
+for (const name of courseDetailFiles) {
+  if (!hubCourseLinks.has(name)) fail(`course hub does not link to ${name}`);
+
+  const file = `courses/${name}`;
+  const html = read(file);
+  if (html.includes('fonts.googleapis.com') || html.includes('fonts.gstatic.com')) {
+    fail(`${file} still loads fonts from Google`);
+  }
+  if (!html.includes('href="/assets/fonts/fonts-courses.css"')) {
+    fail(`${file} does not load the self-hosted course fonts`);
+  }
+  if (!html.includes('href="/courses/"')) fail(`${file} does not link back to the course hub`);
+  if (!html.includes(`<link rel="canonical" href="https://www.tecschool.org/courses/${name}">`)) {
+    fail(`${file} has an unexpected canonical URL`);
+  }
+
+  const jsonLd = [...html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  const types = [];
+  for (const [index, match] of jsonLd.entries()) {
+    try {
+      types.push(JSON.parse(match[1])['@type']);
+    } catch (error) {
+      fail(`${file} JSON-LD block ${index + 1} is invalid: ${error.message}`);
+    }
+  }
+  if (!types.includes('Course')) fail(`${file} has no Course structured data`);
+  if (!types.includes('BreadcrumbList')) fail(`${file} has no breadcrumb structured data`);
+}
+if (!failures.some((item) => item.includes('course hub') || item.includes('fonts') || item.includes('Course structured') || item.includes('breadcrumb structured') || item.includes('unexpected canonical'))) {
+  pass('course hub and detail pages form a canonical, self-hosted crawl path');
+}
+
+const courseSitemapEntries = [...sitemap.matchAll(/<url>[\s\S]*?<loc>https:\/\/www\.tecschool\.org\/courses\/[^<]*<\/loc>[\s\S]*?<lastmod>([^<]+)<\/lastmod>[\s\S]*?<\/url>/g)];
+if (courseSitemapEntries.length !== 18) {
+  fail(`expected 18 course sitemap entries; found ${courseSitemapEntries.length}`);
+} else if (courseSitemapEntries.some((match) => match[1] !== '2026-08-14')) {
+  fail('course sitemap entries do not have the current source-change date');
+} else {
+  pass('all course sitemap dates reflect the current source changes');
+}
+
 if (failures.length) {
   for (const message of failures) console.error(`FAIL ${message}`);
   process.exit(1);
