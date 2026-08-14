@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/english", "destination": "/english/", "permanent": true },
+    { "source": "/thai", "destination": "/thai/", "permanent": true },
+    { "source": "/chinese", "destination": "/chinese/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
