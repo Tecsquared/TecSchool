@@ -679,6 +679,151 @@
   }
   .schedule-note strong { font-family: 'Nunito Sans', sans-serif; }
 
+  /* ===== Weekly rhythm + level graphic ===== */
+  .rhythm { margin: 26px auto 0; max-width: 900px; }
+  .rhythm-card {
+    background: rgba(255,255,255,0.85);
+    border: 2.5px solid var(--tec-ink);
+    border-radius: 22px;
+    padding: clamp(20px, 3vw, 30px);
+    box-shadow: 5px 6px 0 rgba(0,0,0,0.10);
+  }
+  .rhythm-head {
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: clamp(19px, 2.4vw, 24px);
+    line-height: 1.15; text-align: center; text-wrap: balance;
+  }
+  .rhythm-sub {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700; font-size: 12.5px; letter-spacing: 0.04em;
+    color: var(--tec-ink-soft); opacity: 0.85;
+    text-align: center; margin-top: 3px;
+  }
+  .rhythm-sr {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
+
+  /* week strip: Tue leads, Sat-Mon dimmed */
+  .week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 18px; }
+  .day {
+    background: #fff;
+    border: 2px solid var(--tec-ink);
+    border-radius: 14px;
+    padding: 10px 6px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    text-align: center;
+  }
+  .day svg {
+    width: 20px; height: 20px; flex-shrink: 0;
+    fill: none; stroke: currentColor; stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .day .d-name { font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.04em; }
+  .day .d-what { font-size: 11.5px; line-height: 1.3; color: var(--tec-ink-soft); }
+  .day.online { border-color: var(--tec-blue); box-shadow: 3px 3px 0 rgba(29,178,255,0.30); }
+  .day.online svg { color: var(--tec-blue); }
+  .day.f2f { box-shadow: 3px 3px 0 rgba(0,0,0,0.10); }
+  .day.off {
+    background: var(--tec-pill-bg);
+    border-color: rgba(0,0,0,0.18);
+    color: var(--tec-ink-soft); opacity: 0.68;
+    box-shadow: none;
+  }
+  @media (max-width: 560px) {
+    .rhythm-card { padding: 18px 12px; }
+    .week { gap: 5px; }
+    .day { padding: 9px 3px; gap: 4px; }
+    .day svg { width: 17px; height: 17px; }
+    .day .d-name { font-size: 10.5px; letter-spacing: 0; }
+    .day .d-what { font-size: 9.5px; }
+  }
+  /* below 360px the strip stacks instead of squashing */
+  @media (max-width: 359px) {
+    .week { grid-template-columns: 1fr; gap: 6px; }
+    .day { flex-direction: row; text-align: left; gap: 10px; padding: 9px 12px; }
+    .day .d-name { font-size: 12px; letter-spacing: 0.04em; }
+    .day .d-what { font-size: 11.5px; margin-left: auto; text-align: right; }
+  }
+
+  .rhythm-foot {
+    margin: 8px auto 0; max-width: 520px; text-align: center;
+    font-size: 13px; line-height: 1.5; color: var(--tec-ink-soft); opacity: 0.9;
+  }
+  .rhythm-line {
+    margin: 16px auto 0; max-width: 560px; text-align: center;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 700;
+    font-size: 14px; line-height: 1.5; color: var(--tec-ink-soft);
+  }
+
+  /* Group / One-to-One toggle: pure CSS, works with JavaScript off */
+  .plan-in { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .plan-toggle {
+    display: flex; gap: 4px; justify-content: center;
+    width: fit-content; margin: 20px auto 0;
+    background: var(--tec-pill-bg);
+    border: 2px solid var(--tec-ink);
+    border-radius: 999px; padding: 4px;
+  }
+  .plan-toggle label {
+    cursor: pointer; min-height: 44px;
+    display: flex; align-items: center;
+    padding: 8px 18px; border-radius: 999px;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 13.5px;
+    color: var(--tec-ink-soft);
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  #plan-group:checked ~ .plan-toggle label[for="plan-group"],
+  #plan-solo:checked  ~ .plan-toggle label[for="plan-solo"] {
+    background: var(--tec-blue); color: #fff;
+  }
+  #plan-group:focus-visible ~ .plan-toggle label[for="plan-group"],
+  #plan-solo:focus-visible  ~ .plan-toggle label[for="plan-solo"] {
+    outline: 3px solid var(--tec-ink); outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) { .plan-toggle label { transition: none; } }
+
+  .lvl { margin-top: 16px; }
+  .lvl-bar {
+    background: var(--tec-blue-pastel);
+    border: 2px solid var(--tec-ink);
+    border-radius: 14px;
+    padding: 12px 16px; text-align: center;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 700; font-size: 14.5px;
+  }
+  .lvl-bar .lvl-weeks {
+    display: block; margin-top: 2px;
+    font-size: 12px; letter-spacing: 0.04em;
+    color: var(--tec-ink-soft);
+  }
+  .lvl-figs { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
+  @media (min-width: 520px) { .lvl-figs { grid-template-columns: 1fr 1fr; } }
+  .fig {
+    background: #fff; border: 2px solid var(--tec-ink);
+    border-radius: 14px; padding: 12px 14px; text-align: center;
+  }
+  .fig b {
+    display: block;
+    font-family: "chaloops", system-ui, sans-serif;
+    font-weight: 700; font-size: clamp(24px, 3vw, 28px);
+    line-height: 1.1; color: var(--tec-blue);
+  }
+  .fig span {
+    display: block; margin-top: 3px;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 700;
+    font-size: 12px; letter-spacing: 0.04em; color: var(--tec-ink-soft);
+  }
+  /* default (and no-JS, no-interaction) state = Group */
+  .plan-solo-only { display: none; }
+  #plan-solo:checked ~ .lvl .plan-group-only { display: none; }
+  #plan-solo:checked ~ .lvl .plan-solo-only  { display: block; }
+
+  .tier-note {
+    margin: 18px auto 0; max-width: 620px; text-align: center;
+    font-size: 13.5px; line-height: 1.55; color: var(--tec-ink-soft);
+  }
+
   /* ===== ED visa block ===== */
   .visa-block {
     background: rgba(255,255,255,0.7);
@@ -944,7 +1089,7 @@
     {
       "@type": "Offer",
       "name": "Thai for Foreigners — Group Programme (per level)",
-      "description": "Small-group Thai classes (max 6 students): 104 face-to-face contact hours per level over 13 weeks (8 hours a week), with online support materials, regular language excursions and ED visa enrolment documents. Full three-level pathway ฿109,000.",
+      "description": "Small-group Thai classes (4-6 students): one level runs 13 weeks at 8 hours a week (6 hours face-to-face across three mornings (Wed-Fri, 10:00-12:00), plus a flexibly scheduled 2-hour online guided-learning session on Tuesday), with online support materials, regular language excursions and ED visa enrolment documents. Full three-level pathway ฿109,000. Groups of 2-3 run at ฿49,900 per level per student on the same schedule.",
       "price": "39900",
       "priceCurrency": "THB",
       "category": "Language course"
@@ -952,8 +1097,8 @@
     {
       "@type": "Offer",
       "name": "Thai for Foreigners — One-to-One Programme (per level)",
-      "description": "Private one-to-one Thai lessons: 104 contact hours per level over 13 weeks (8 hours a week), with a personalised course built from the learner's real life, weekly spoken feedback, language excursions and ED visa enrolment documents. Full three-level pathway ฿165,000.",
-      "price": "59900",
+      "description": "Private one-to-one Thai lessons: one level runs 13 weeks at 8 hours a week (6 hours face-to-face across three mornings (Wed-Fri, 10:00-12:00), plus a flexibly scheduled 2-hour online guided-learning session on Tuesday), with a personalised course built from the learner's real life, weekly spoken feedback, language excursions and ED visa enrolment documents. Full three-level pathway ฿189,900.",
+      "price": "69900",
       "priceCurrency": "THB",
       "category": "Language course"
     }
@@ -1036,7 +1181,7 @@
       </div></div>
       <div class="tile"><div class="tile-emoji">⏰</div><div>
         <h4>8 hours a week: double the usual</h4>
-        <p>Most ED-visa schools timetable around 4 hours a week. You get 8 face-to-face hours, plus online support materials between classes.</p>
+        <p>Most ED-visa schools timetable around 4 hours a week. You get 8: six hours face-to-face, plus two hours of guided learning online. Support materials between classes, too.</p>
       </div></div>
       <div class="tile"><div class="tile-emoji">🛵</div><div>
         <h4>Language excursions</h4>
@@ -1118,10 +1263,10 @@
       </div>
 
       <div class="fruit-meta">
-        <span>🗓 Mon–Thu classes</span>
-        <span>🏝 Fri–Sun always free</span>
-        <span>👥 Max 6 per group</span>
-        <span>⏱ 104 contact hours per level</span>
+        <span>🗓 Tue–Fri classes</span>
+        <span>🏝 Sat–Mon always free</span>
+        <span>👥 4–6 per group</span>
+        <span>⏱ 8 hours a week</span>
         <span>🥭 Trat, the fruit province</span>
       </div>
     </div>
@@ -1130,17 +1275,17 @@
   <!-- ===== Programmes & pricing ===== -->
   <section class="sec" id="programmes">
     <h2 class="section-title center">Two programmes, one pathway</h2>
-    <p class="lede center">You enrol in the full Mangosteen-to-Durian pathway (that's what your visa paperwork shows) and pay level by level as you progress. Every level is <strong>104 face-to-face contact hours over 13 weeks</strong> at 8 hours a week, with online support materials, language excursions, and ED visa enrolment documents included.</p>
+    <p class="lede center">You enrol in the full Mangosteen-to-Durian pathway (that&rsquo;s what your visa paperwork shows) and pay level by level as you progress. Every level runs <strong>13 weeks, about three months</strong>, at 8 hours a week, with online support materials, language excursions, and ED visa enrolment documents included.</p>
 
     <div class="price-grid">
       <div class="price-card">
         <div class="prog-name">Group Programme</div>
-        <div class="prog-tag">SMALL GROUP · MAX 6 STUDENTS</div>
+        <div class="prog-tag">SMALL GROUP &middot; 4&ndash;6 STUDENTS</div>
         <div class="price">฿39,900 <small>/ level</small></div>
-        <div class="prog-tag">104 CONTACT HOURS · UNDER ฿400/HOUR</div>
+        <div class="prog-tag">13 WEEKS PER LEVEL &middot; ABOUT 3 MONTHS</div>
         <ul>
-          <li>8 hours a week, face-to-face</li>
-          <li>Small group, never more than 6</li>
+          <li>8 hours a week: 3 face-to-face mornings + 1 online session</li>
+          <li>Small group, 4&ndash;6 students*</li>
           <li>Pay as you progress, level by level</li>
           <li>Full pathway (3 levels): <strong>฿109,000</strong>, saving ฿10,700</li>
           <li>Language excursions every few weeks</li>
@@ -1152,15 +1297,15 @@
 
       <div class="price-card featured">
         <div class="prog-name">One-to-One Programme</div>
-        <div class="prog-tag">PRIVATE · BUILT AROUND YOUR LIFE</div>
-        <div class="price">฿59,900 <small>/ level</small></div>
-        <div class="prog-tag">104 PRIVATE HOURS · EVERY LESSON YOURS</div>
+        <div class="prog-tag">PRIVATE &middot; BUILT AROUND YOUR LIFE</div>
+        <div class="price">฿69,900 <small>/ level</small></div>
+        <div class="prog-tag">13 WEEKS PER LEVEL &middot; EVERY LESSON YOURS</div>
         <ul>
-          <li>8 hours a week, private, one-to-one all the way</li>
+          <li>8 hours a week: 3 face-to-face mornings + 1 online session</li>
           <li>A course built from <em>your</em> life: we interview you about who you talk to and what you need Thai for, then build your course around it</li>
           <li>Schedule arranged around you</li>
           <li>Weekly feedback on your real spoken Thai</li>
-          <li>Full pathway (3 levels): <strong>฿165,000</strong>, saving ฿14,700</li>
+          <li>Full pathway (3 levels): <strong>฿189,900</strong>, saving ฿19,800</li>
           <li>Language excursions included</li>
           <li>ED visa enrolment documents &amp; guidance</li>
         </ul>
@@ -1168,9 +1313,81 @@
       </div>
     </div>
 
-    <p class="value-line">💡 Comparable schools charge around ฿440 per contact hour. Our group levels work out under ฿400, and every hour is counted and published: 104 per level, no vague "courses."</p>
+    <!-- Weekly rhythm + level graphic (CSS-only toggle, works with JavaScript off) -->
+    <div class="rhythm">
+      <div class="rhythm-card">
+        <div class="rhythm-head">Your week, and your level</div>
+        <div class="rhythm-sub">6 HOURS FACE-TO-FACE &middot; 2 HOURS ONLINE &middot; 3 DAYS OFF</div>
 
-    <p class="schedule-note"><strong>The weekly rhythm:</strong> Monday &amp; Tuesday 2–4pm · Wednesday &amp; Thursday 10am–12pm.<br>Four days of Thai, then a three-day weekend. Koh Chang, Koh Mak and Koh Kood are about 40 minutes away. Learn like a local Monday to Thursday; live like you're on holiday Friday to Sunday.<br><strong>One level ≈ one 13-week term</strong>, which lines up neatly with the ED visa's 90-day extension rhythm.</p>
+        <div class="week">
+          <div class="day online">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span class="d-name">TUE</span>
+            <span class="d-what">Online<br>2 hrs<br>flexible</span>
+          </div>
+          <div class="day f2f">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2v5M4.9 7.9l1.4 1.4M2 15h2M20 15h2M17.7 9.3l1.4-1.4M22 20H2M8 6l4-4 4 4"/><path d="M16 15a4 4 0 0 0-8 0"/></svg>
+            <span class="d-name">WED</span>
+            <span class="d-what">Morning<br>10am&ndash;12pm</span>
+          </div>
+          <div class="day f2f">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2v5M4.9 7.9l1.4 1.4M2 15h2M20 15h2M17.7 9.3l1.4-1.4M22 20H2M8 6l4-4 4 4"/><path d="M16 15a4 4 0 0 0-8 0"/></svg>
+            <span class="d-name">THU</span>
+            <span class="d-what">Morning<br>10am&ndash;12pm</span>
+          </div>
+          <div class="day f2f">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2v5M4.9 7.9l1.4 1.4M2 15h2M20 15h2M17.7 9.3l1.4-1.4M22 20H2M8 6l4-4 4 4"/><path d="M16 15a4 4 0 0 0-8 0"/></svg>
+            <span class="d-name">FRI</span>
+            <span class="d-what">Morning<br>10am&ndash;12pm</span>
+          </div>
+          <div class="day off">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 7c.9.7 1.8 1.2 3 1.2S7.1 7.7 8 7s1.8-1.2 3-1.2S13.1 6.3 14 7s1.8 1.2 3 1.2S19.1 7.7 20 7"/><path d="M2 13c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/><path d="M2 19c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/></svg>
+            <span class="d-name">SAT</span>
+            <span class="d-what">Free</span>
+          </div>
+          <div class="day off">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 7c.9.7 1.8 1.2 3 1.2S7.1 7.7 8 7s1.8-1.2 3-1.2S13.1 6.3 14 7s1.8 1.2 3 1.2S19.1 7.7 20 7"/><path d="M2 13c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/><path d="M2 19c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/></svg>
+            <span class="d-name">SUN</span>
+            <span class="d-what">Free</span>
+          </div>
+          <div class="day off">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 7c.9.7 1.8 1.2 3 1.2S7.1 7.7 8 7s1.8-1.2 3-1.2S13.1 6.3 14 7s1.8 1.2 3 1.2S19.1 7.7 20 7"/><path d="M2 13c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/><path d="M2 19c.9.7 1.8 1.2 3 1.2s2.1-.5 3-1.2 1.8-1.2 3-1.2 2.1.5 3 1.2 1.8 1.2 3 1.2 2.1-.5 3-1.2"/></svg>
+            <span class="d-name">MON</span>
+            <span class="d-what">Free</span>
+          </div>
+        </div>
+
+        <p class="rhythm-line">Learn like a local Tuesday to Friday; live like you&rsquo;re on holiday Saturday to Monday.</p>
+        <p class="rhythm-foot">Tuesday&rsquo;s session is online and the time is flexible, so you can join it from the island. That&rsquo;s four days away, every week, if you want them.</p>
+
+        <p class="rhythm-sr" id="plan-help">Choose a programme to see its prices.</p>
+        <input class="plan-in" type="radio" name="plan" id="plan-group" aria-describedby="plan-help" checked>
+        <input class="plan-in" type="radio" name="plan" id="plan-solo" aria-describedby="plan-help">
+        <div class="plan-toggle">
+          <label for="plan-group">Group</label>
+          <label for="plan-solo">One-to-One</label>
+        </div>
+
+        <div class="lvl">
+          <div class="lvl-bar">
+            One level
+            <span class="lvl-weeks">13 WEEKS &middot; ABOUT 3 MONTHS</span>
+          </div>
+          <div class="lvl-figs">
+            <div class="fig plan-group-only"><b>฿39,900</b><span>PER LEVEL, PER STUDENT</span></div>
+            <div class="fig plan-group-only"><b>~฿385</b><span>PER HOUR (ESTIMATE)</span></div>
+            <div class="fig plan-solo-only"><b>฿69,900</b><span>PER LEVEL</span></div>
+            <div class="fig plan-solo-only"><b>~฿670</b><span>PER HOUR (ESTIMATE)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="tier-note">*Groups of 2&ndash;3 run at ฿49,900 per level each &mdash; same schedule, same hours.</p>
+
+    <p class="value-line">💡 Every price is on this page. You pay level by level, so you always know what the next one costs before you start it. No packages, no vague &ldquo;courses&rdquo;, no &ldquo;contact us for a quote&rdquo;.</p>
+
+    <p class="schedule-note"><strong>The weekly rhythm:</strong> Tuesday is a 2-hour online guided-learning session at a time that suits you, joined from anywhere. Wednesday, Thursday and Friday are face-to-face mornings, 10am&ndash;12pm. Saturday, Sunday and Monday are yours.<br>Koh Chang, Koh Mak and Koh Kood are about 40 minutes away.<br><strong>One level &asymp; one 13-week term</strong>, which lines up neatly with the ED visa&rsquo;s 90-day extension rhythm.</p>
   </section>
 
   <!-- ===== ED visa ===== -->
@@ -1221,7 +1438,7 @@
       <div class="trat-card">
         <div class="big">🏝</div>
         <h4>The islands, every weekend</h4>
-        <p>Koh Chang, Koh Mak and Koh Kood are about 40 minutes away, and your timetable keeps Friday to Sunday free, every week.</p>
+        <p>Koh Chang, Koh Mak and Koh Kood are about 40 minutes away, and your timetable keeps Saturday to Monday free, every week.</p>
       </div>
       <div class="trat-card">
         <div class="big">🥭</div>
@@ -1259,7 +1476,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">What's the time commitment?</button>
-        <div class="faq-a"><div>8 hours a week, Monday to Thursday: Mon &amp; Tue 2–4pm, Wed &amp; Thu 10am–12pm (one-to-one schedules are arranged around you). Genuine attendance and participation are required to maintain active student status for the visa, and honestly, they're also how you'll actually learn Thai.</div></div>
+        <div class="faq-a"><div>8 hours a week, Tuesday to Friday: six hours face-to-face across three mornings (Wednesday, Thursday and Friday, 10am&ndash;12pm) plus a 2-hour online guided-learning session on Tuesday, at a flexible time (one-to-one schedules are arranged around you). Saturday, Sunday and Monday are free, and because Tuesday is online you can join it from the islands. Genuine attendance and participation are required to maintain active student status for the visa, and honestly, they're also how you'll actually learn Thai.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Do I need to be in Thailand already?</button>
