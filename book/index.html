@@ -411,6 +411,7 @@
     font-size: 16px; /* 16px stops iOS Safari zooming on focus */
   }
   .field input:focus { outline: 2px solid var(--tec-ink); outline-offset: 1px; border-color: var(--tec-ink); }
+  .field:focus-within label { color: #806200; }
   .field input[aria-invalid="true"] { border-color: var(--err); }
 
   .err {
@@ -446,13 +447,15 @@
   .submit[aria-busy="true"] { opacity: .6; cursor: progress; }
 
   /* Risk reversal, immediately under the button (Clubhouse / Base) */
-  .reassure {
-    margin-top: 9px;
-    text-align: center;
+  .reassure { margin-top: 9px; text-align: center; }
+  .reassure span {
+    display: inline-block;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: #F1EFE7;
     font-size: 12.5px;
     font-weight: 600;
     color: var(--tec-ink-soft);
-    opacity: .85;
   }
 
   /* Secondary channel: a quiet text row, never a twin button (Blank Street) */
@@ -555,7 +558,8 @@
     .field label { font-size: 12.5px; margin-bottom: 4px; }
     .field input[type=text], .field input[type=tel] { padding: 10px 12px; }
     .submit { margin-top: 7px; padding: 13px; font-size: 17px; }
-    .reassure { margin-top: 7px; font-size: 12px; }
+    .reassure { margin-top: 7px; }
+    .reassure span { font-size: 12px; padding: 4px 11px; }
     .line-row { margin-top: 9px; padding-top: 9px; font-size: 13px; }
   }
   /* Where the proof line is hidden for space, keep the claim available to
@@ -671,7 +675,7 @@
         </div>
 
         <button type="submit" class="submit">จองเวลาสัมภาษณ์</button>
-        <p class="reassure">ฟรี · 30 นาที · ไม่มีค่าใช้จ่าย · ยกเลิกได้</p>
+        <p class="reassure"><span>ฟรี · 30 นาที · ไม่มีค่าใช้จ่าย · ยกเลิกได้</span></p>
       </form>
 
       <a class="line-row" id="line-backup" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือแชท LINE ก่อนก็ได้ → TEC14</a>
