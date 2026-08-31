@@ -69,3 +69,55 @@ schedule note, the FAQ, both JSON-LD offers, `llms.txt` and `llms-full.txt`.
 page. Changing the timetable means changing all seven — grep for
 `face-to-face`, `hours a week` and `hours/week` across `thai/index.html`,
 `llms.txt` and `llms-full.txt` before calling a schedule change done.
+
+---
+
+## R2 — `/book` ships `noindex`, fires two submit events, and never fires `placement_interview_clicked`
+
+**Date:** 2026-08-31
+**Scope:** new `book/index.html`; one redirect in `vercel.json`; one regex
+branch in `assets/tec-track.js`. Branch
+`claude/tecschool-placement-landing-yxfh1h`.
+
+A slim Thai-first landing page for Facebook ad traffic to the free 30-minute
+placement interview. High-intent paid traffic was landing on `/english/`,
+where the callback form sits at section P11, far below a brochure. `/book` is
+one screen: Klua's clip as the single proof moment, two fields, one CTA.
+
+Three rulings, each of which will look like a bug to whoever reads the code
+next:
+
+**1. `noindex, follow`, and deliberately absent from `sitemap.xml`.** `/book`
+and `/english/` target the same Thai queries. `/english/` is the page that
+should rank (priority 1.0 in the sitemap); a two-field landing page competing
+with it would split the signal and add a thin page to the site's quality
+profile. Do not "fix" the missing sitemap entry.
+
+**2. The page fires both `enquiry_submitted` and `enquiry_submit`.** This is
+not a duplicate. `tec-track.js` fires `enquiry_submitted` automatically for
+every page, via the `MutationObserver` on `.form-thanks`; the ad conversion
+action is pointed at `enquiry_submit`, so the page captures that one itself.
+Renaming the shared event would have silently broken every existing
+`enquiry_submitted` dashboard for `/english`, `/thai`, `/chinese` and
+`/courses`. Both fire; `enquiry_started` is unchanged.
+
+**3. `placement_interview_clicked` must not fire here.** On `/book` the whole
+page *is* the placement-interview CTA, so counting a click on it would inflate
+the funnel against the other pages, where the event means "scrolled down and
+chose to engage". `tec-track.js` fires it for any `href` containing
+`#callback-section` and for `button#open-callback` — so `/book` uses neither
+name, and its sticky CTA is a `<button form="book-form">` rather than an
+anchor. Anyone adding a jump-link to this page must keep it off those two
+identifiers.
+
+**Standing implication (the F2 trap again):** the `90% / EP` claim is now
+published in **five** places — `english/index.html` (the `og:description`),
+`wall-of-love/index.html` (the `sticker` entry in the `WALL` array),
+`book/index.html` (the `EP 90%` pill and the `.proof-line` beneath it),
+`llms.txt` and `llms-full.txt`. Grep for `90%` and `EP` across all five before
+calling a change to that figure done.
+
+**Rollback condition:** `/book` is additive — deleting `book/` and reverting
+the one-line `vercel.json` redirect removes it with no effect on any other
+page. The `tec-track.js` change only adds a branch the existing pages cannot
+match.
