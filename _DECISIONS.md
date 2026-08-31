@@ -121,3 +121,40 @@ calling a change to that figure done.
 the one-line `vercel.json` redirect removes it with no effect on any other
 page. The `tec-track.js` change only adds a branch the existing pages cannot
 match.
+
+---
+
+## F3 — Remote sessions cannot read the AI-OS notes, so conventions get re-derived every time
+
+**Date:** 2026-08-31
+**Found in:** the working environment, not in shipped code.
+
+A session was told to fetch a video from "the AI inbox" and could not find it.
+It searched Google Drive (no folder by that name and no video files at all),
+Notion, and the Gmail labels, then had to ask. The cause was not a bad search.
+
+Claude Code on the web clones this repo **fresh**, so every `.gitignore` entry
+is absent from disk. `HANDOVER.md`, `_work/`, `mockups/` and `seo/` do not
+exist there, and `.claude/` contains only `settings.local.json`. Meanwhile
+`R1` above cites `AI-OS.md` and the header of this file cites
+`04-wiki/ai-system/decisions-log-convention.md` — neither is in this
+repository. Both are local-vault paths, unreadable from a remote session.
+
+So every convention that lives only in the vault is invisible, and each new
+session re-derives it from the code, slowly and sometimes wrongly.
+
+**Fix applied:** added a committed `CLAUDE.md` at the repo root, which Claude
+Code loads automatically in every session including fresh remote clones. It
+records the deploy shape, the `tec-track.js` behaviours that silently act on
+any new form or CTA, the brand tokens, the video-orientation check, the
+sandbox's inability to decode H.264, and the five places the 90%/EP claim
+appears.
+
+**Still open:** `CLAUDE.md` carries a TODO for the actual location of the AI
+inbox — only Damien can supply that. Until it is filled in, the same question
+will recur.
+
+**Standing implication:** a convention that a session must follow belongs in
+`CLAUDE.md` or `_DECISIONS.md`, both committed. Writing it only in the local
+vault, or relying on a session to remember it, does not work — a fresh
+container has neither the files nor the memory.
