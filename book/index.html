@@ -26,7 +26,6 @@
 <link rel="icon" href="/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="/favicon-180.png">
 
-<link rel="preload" as="image" href="/assets/video/klua-card.jpg?v=4" fetchpriority="high">
 <link rel="preconnect" href="https://use.typekit.net">
 <link rel="preconnect" href="https://p.typekit.net">
 <link rel="stylesheet" href="https://use.typekit.net/agc2tne.css" media="print" onload="this.media='all'">
@@ -252,7 +251,27 @@
     font-weight: 700;
     font-size: clamp(14px, 4.2vw, 17px);
     line-height: 1.3;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
+  }
+
+  /* Headline sits ABOVE the clip, not over it. The clip has burnt-in captions
+     along the bottom and faces through the middle, so any overlay lands on
+     one or the other. */
+  .headline { flex: none; text-align: center; margin-bottom: 9px; }
+  .headline h1 {
+    font-size: clamp(20px, 5.6vw, 28px);
+    line-height: 1.22;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .headline .h1-en {
+    display: block;
+    margin-top: 2px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    color: var(--tec-ink-soft);
+    opacity: .72;
   }
   .kicker .en {
     display: block;
@@ -269,31 +288,39 @@
      off screen. */
   .wall-card.video {
     flex: 1 1 auto;
-    min-height: 104px;   /* floor; below this the clip stops reading as a face */
+    min-height: 150px;   /* below this the crop is a slit, not a face */
     display: flex;
     flex-direction: column;
     background: transparent;
     padding: 0;
     cursor: pointer;
   }
+  /* A 9:16 clip sized by leftover height collapses to a ~140px sliver once a
+     two-field form is also above the fold. So the inline frame fills the
+     column width and crops to the upper part of the clip, where the faces
+     are. The cropped-off bottom carries the burnt-in captions — that is fine
+     here, because this still is only the invitation: tapping opens the whole
+     frame full-screen, uncropped, where the captions are readable. */
   .wall-card.video .frame {
     position: relative;
     flex: 1 1 auto;
     min-height: 0;
+    width: 100%;
+    margin-inline: auto;
     border-radius: 16px;
     overflow: hidden;
     background: #000;
     box-shadow: 0 6px 22px rgba(0,0,0,.18);
   }
-  .wall-card.video .frame > img,
   .wall-card.video .frame > video {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;  /* hold the face, not the chest, as the frame shortens */
+    object-position: 50% 28%;  /* hold the faces; the caption band is below */
     background: #000;
+    display: block;
   }
   .wall-card.video .play {
-    position: absolute; left: 50%; top: 42%;
+    position: absolute; left: 50%; top: 50%;
     transform: translate(-50%, -50%);
     width: 62px; height: 62px; border-radius: 50%;
     background: var(--tec-yellow); color: var(--tec-ink);
@@ -305,32 +332,15 @@
   }
   .wall-card.video:hover .play { transform: translate(-50%, -50%) scale(1.1); }
 
-  /* Dark scrim carrying the headline, per the brief */
-  .scrim {
-    position: absolute; inset: auto 0 0 0;
-    padding: 34px 16px 14px;
-    background: linear-gradient(to top,
-      rgba(0,0,0,.86) 0%, rgba(0,0,0,.62) 42%, rgba(0,0,0,0) 100%);
-    color: #fff;
-    pointer-events: none;
-  }
-  .scrim h1 {
-    font-size: clamp(19px, 5.4vw, 27px);
-    line-height: 1.25;
-    font-weight: 700;
-    text-wrap: balance;
-  }
-  .scrim .h1-en {
-    display: block;
-    margin-top: 3px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    font-size: 12.5px;
-    opacity: .82;
+  /* The EP claim, a row under the headline rather than an overlay. */
+  .proof-row {
+    flex: none;
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 7px;
+    margin-bottom: 8px;
   }
   .pill {
     display: inline-block;
-    margin-bottom: 7px;
     padding: 3px 10px;
     border-radius: 999px;
     background: var(--tec-yellow);
@@ -340,21 +350,14 @@
     font-size: 12px;
     letter-spacing: .02em;
   }
+  .proof-row .claim { font-size: 12px; line-height: 1.35; color: var(--tec-ink-soft); }
+  .proof-row .claim b { font-weight: 700; color: var(--tec-ink); }
 
-  /* The 90% claim spelled out, so the EP pill is not cryptic. It lives over
-     the video rather than under it: scrim space is free, page height is not. */
-  .scrim .proof-line {
-    margin-top: 5px;
-    font-size: 12px;
-    line-height: 1.4;
-    color: rgba(255,255,255,.9);
-  }
-  .scrim .proof-line b { font-weight: 700; color: #fff; }
-
-  /* Caption, bottom-right inside the frame — same reason. */
+  /* Caption chip, top-left inside the frame — clear of the bottom, where the
+     burnt-in captions run. */
   .who {
     position: absolute;
-    right: 9px; top: 9px;
+    left: 9px; top: 9px;
     display: flex; align-items: center; gap: 5px;
     padding: 3px 8px 3px 4px;
     border-radius: 999px;
@@ -497,6 +500,66 @@
     text-underline-offset: 3px;
   }
 
+  /* Very short screens: a cropped still degenerates into a letterbox slit,
+     so drop it and offer the clip as a compact row instead. Same full-screen
+     player, one tap, no wasted height. */
+  .clip-link {
+    display: none;
+    flex: none;
+    width: 100%;
+    align-items: center; gap: 9px;
+    margin-bottom: 8px;
+    padding: 9px 12px;
+    border: 1.5px solid var(--wf-border);
+    border-radius: 12px;
+    background: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--tec-ink);
+    text-align: left;
+    cursor: pointer;
+  }
+  .clip-link .dot {
+    flex: none;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--tec-yellow); color: var(--tec-ink);
+    border: 2px solid var(--tec-ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; padding-left: 2px;
+  }
+  .clip-link .sub { display: block; font-weight: 600; font-size: 11px; opacity: .7; }
+  @media (max-height: 660px) and (max-width: 779px) {
+    .wall-card.video { display: none; }
+    .clip-link { display: flex; }
+  }
+
+  /* ===== Full-screen player =====
+     The whole 9:16 frame, uncropped, so the burnt-in captions are readable.
+     Same shape as the Wall of Love modal. */
+  .vfs {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.94);
+    display: none; align-items: center; justify-content: center;
+    padding: env(safe-area-inset-top) 12px env(safe-area-inset-bottom);
+  }
+  .vfs.open { display: flex; }
+  .vfs video {
+    width: auto; height: 100%;
+    max-width: 100%; max-height: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #000;
+  }
+  .vfs-close {
+    position: absolute; top: calc(10px + env(safe-area-inset-top)); right: 12px;
+    width: 42px; height: 42px; border-radius: 50%;
+    border: none; cursor: pointer;
+    background: rgba(255,255,255,.92); color: #1A1A1A;
+    font-size: 19px; line-height: 1;
+  }
+
   /* ===== Below the fold ===== */
   .info {
     max-width: 520px;
@@ -547,11 +610,11 @@
   @media (max-height: 720px) and (max-width: 779px) {
     .kicker { font-size: 14px; margin-bottom: 5px; }
     .kicker .en { display: none; }
-    .scrim { padding: 26px 12px 10px; }
-    .scrim .proof-line { display: none; }
-    .scrim .h1-en { display: none; }
-    .who { font-size: 10px; top: 7px; right: 7px; }
-    .play { width: 48px; height: 48px; font-size: 17px; top: 34%; }
+    .headline { margin-bottom: 7px; }
+    .headline .h1-en { display: none; }
+    .proof-row .claim { display: none; }
+    .who { font-size: 10px; top: 7px; left: 7px; }
+    .play { width: 48px; height: 48px; font-size: 17px; }
     .sheet { padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); margin-top: 9px; }
     .sheet .lede { font-size: 12.5px; margin-bottom: 9px; }
     .field { margin-bottom: 9px; }
@@ -615,26 +678,36 @@
       <span class="en" lang="en">Want your child to be able to do this?</span>
     </p>
 
+    <div class="headline">
+      <h1>นัดสัมภาษณ์วัดระดับฟรี 30 นาที<span class="h1-en" lang="en">Free 30-min placement</span></h1>
+    </div>
+
+    <p class="proof-row">
+      <span class="pill">EP 90%</span>
+      <span class="claim"><b>90% ของเด็ก TEC ได้เข้า EP</b> — โดยไม่ต้องเรียนคอร์สติวสอบ</span>
+    </p>
+
+    <button class="clip-link" id="clip-link" type="button">
+      <span class="dot" aria-hidden="true">▶</span>
+      <span>ดูคลิปนักเรียน TEC พูดอังกฤษ<span class="sub">26 วินาที · เสียงจริง ไม่ได้ซ้อม</span></span>
+    </button>
+
     <!-- Wall of Love card pattern: figure.wall-card.video + data-video.
          data-video deliberately lives on a <figure>, not a <button>:
          tec-track.js fires testimonial_played only for buttons, and this
          page's play should not land in the Wall of Love's numbers. -->
-    <figure class="wall-card video" id="klua-player"
-            data-video="/assets/video/klua.mp4#t=207"
+    <figure class="wall-card video" id="hero-player"
+            data-video="/assets/video/book-hero.mp4"
             tabindex="0" role="button"
-            aria-label="เล่นคลิปของ Klua — Play Klua's clip">
+            aria-label="เล่นคลิปนักเรียน TEC พูดภาษาอังกฤษ — Play the clip">
       <div class="frame">
-        <img src="/assets/video/klua-card.jpg?v=4" alt="Klua นักเรียน TEC" fetchpriority="high">
+        <video preload="metadata" playsinline muted
+               src="/assets/video/book-hero.mp4#t=0.1"></video>
         <span class="play" aria-hidden="true">▶</span>
         <figcaption class="who">
           <span class="badge" aria-hidden="true">▶</span>
-          <span>Klua <span class="sub">· นักเรียน TEC</span></span>
+          <span>นักเรียน TEC</span>
         </figcaption>
-        <div class="scrim">
-          <span class="pill">EP 90%</span>
-          <h1>นัดสัมภาษณ์วัดระดับฟรี 30 นาที<span class="h1-en" lang="en">Free 30-min placement</span></h1>
-          <p class="proof-line"><b>90% ของเด็ก TEC ได้เข้า EP</b> — โดยไม่ต้องเรียนคอร์สติวสอบ</p>
-        </div>
       </div>
     </figure>
   </div>
@@ -704,6 +777,11 @@
   <p>TEC — Trat English Community · <a href="/english/">ดูข้อมูลโรงเรียนทั้งหมด</a></p>
 </section>
 
+<div class="vfs" id="vfs" aria-hidden="true" role="dialog" aria-modal="true" aria-label="คลิปนักเรียน TEC">
+  <button class="vfs-close" id="vfs-close" type="button" aria-label="ปิด">✕</button>
+  <video id="vfs-video" controls playsinline preload="none"></video>
+</div>
+
 <div class="sticky-bar" id="sticky-bar" hidden>
   <button type="submit" form="book-form" class="submit">จองเวลาสัมภาษณ์</button>
 </div>
@@ -716,7 +794,7 @@
   var thanks  = document.getElementById('book-thanks');
   var sticky  = document.getElementById('sticky-bar');
   var lineRow = document.getElementById('line-backup');
-  var player  = document.getElementById('klua-player');
+  var player  = document.getElementById('hero-player');
 
   function capture(name, props) {
     if (window.posthog && typeof window.posthog.capture === 'function') {
@@ -725,54 +803,53 @@
   }
 
   /* ---------- The clip ----------
-     Klua's file is 4:07 long and the English section starts at 3:27. Both the
-     media fragment and an explicit currentTime are used: Safari and Chrome
-     disagree about #t= on a src set from script, and the file is faststart
-     (moov at byte 32) so the seek is a short range request, not a full
-     download. */
-  var START_AT = 207;
+     Purpose-cut 26s vertical clip that opens on the content, so there is no
+     seek to do — the START_AT / #t=207 machinery the old landscape source
+     needed is gone. The inline still is cropped to the faces; playback is
+     full-screen so the burnt-in captions are readable. */
+  var SRC = '/assets/video/book-hero.mp4';
+  var vfs = document.getElementById('vfs');
+  var vfsVideo = document.getElementById('vfs-video');
+  var vfsClose = document.getElementById('vfs-close');
+  var lastFocus = null;
 
-  function playKlua() {
-    if (!player || player.dataset.playing === 'true') return;
-    player.dataset.playing = 'true';
+  function openClip() {
+    if (!vfs) return;
+    lastFocus = document.activeElement;
+    vfsVideo.src = SRC;
+    vfs.classList.add('open');
+    vfs.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    vfsClose.focus();
+    vfsVideo.play().catch(function () { /* blocked: controls are there */ });
+    capture('hero_video_play', { page: location.pathname });
+  }
 
-    var frame = player.querySelector('.frame');
-    var img   = frame.querySelector('img');
-    var play  = frame.querySelector('.play');
-    var scrim = frame.querySelector('.scrim');
-
-    var v = document.createElement('video');
-    v.controls = true;
-    v.playsInline = true;
-    v.setAttribute('playsinline', '');
-    v.preload = 'metadata';
-    v.poster = '/assets/video/klua-card.jpg?v=4';
-    v.src = '/assets/video/klua.mp4#t=' + START_AT;
-
-    v.addEventListener('loadedmetadata', function () {
-      if (v.currentTime < 1) {
-        try { v.currentTime = START_AT; } catch (e) { /* seek unsupported: play from 0 */ }
-      }
-    }, { once: true });
-
-    if (img) img.remove();
-    if (play) play.remove();
-    if (scrim) scrim.remove();
-    frame.insertBefore(v, frame.firstChild);
-
-    player.removeAttribute('role');
-    player.removeAttribute('tabindex');
-    player.removeAttribute('aria-label');
-    player.style.cursor = 'default';
-
-    v.play().catch(function () { /* autoplay blocked: the controls are there */ });
-    capture('klua_play', { page: location.pathname, start_at: START_AT });
+  function closeClip() {
+    if (!vfs) return;
+    vfsVideo.pause();
+    vfsVideo.removeAttribute('src');
+    vfsVideo.load();
+    vfs.classList.remove('open');
+    vfs.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
   }
 
   if (player) {
-    player.addEventListener('click', playKlua);
+    player.addEventListener('click', openClip);
     player.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playKlua(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openClip(); }
+    });
+  }
+  var clipLink = document.getElementById('clip-link');
+  if (clipLink) clipLink.addEventListener('click', openClip);
+
+  if (vfs) {
+    vfsClose.addEventListener('click', closeClip);
+    vfs.addEventListener('click', function (e) { if (e.target === vfs) closeClip(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && vfs.classList.contains('open')) closeClip();
     });
   }
 
