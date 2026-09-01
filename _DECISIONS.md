@@ -150,9 +150,14 @@ any new form or CTA, the brand tokens, the video-orientation check, the
 sandbox's inability to decode H.264, and the five places the 90%/EP claim
 appears.
 
-**Still open:** `CLAUDE.md` carries a TODO for the actual location of the AI
-inbox — only Damien can supply that. Until it is filled in, the same question
-will recur.
+**Resolved:** the "AI inbox" is
+`C:\Users\User\Documents\AI-Second-Brain\00-AI-Inbox-App` — a folder on
+Damien's own PC. It is reachable by an assistant running on that machine and
+by nothing else. A web session has no mount from his filesystem (`/mnt/c`
+does not exist; `/mnt/attach` is empty unless a file is attached to the
+chat), so files dropped there never arrive. `CLAUDE.md` now records this
+along with the three ways to actually get a file here, so no future session
+repeats the hunt.
 
 **Standing implication:** a convention that a session must follow belongs in
 `CLAUDE.md` or `_DECISIONS.md`, both committed. Writing it only in the local

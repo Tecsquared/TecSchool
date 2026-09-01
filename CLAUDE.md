@@ -15,17 +15,40 @@ this repo, so a remote session cannot read them.
 here. Context that lives only in the local vault is invisible and will be
 re-derived, badly, every session.
 
-### Where Damien shares files with AI
+### The "AI inbox" is a local folder — a web session cannot read it
 
-> **TODO — Damien to fill in.** The "AI inbox". A session searched Google
-> Drive (no folder by that name, no video files at all), Notion, and Gmail
-> labels without finding it. Record the exact location here — a Drive folder
-> URL, a Dropbox path, whatever it is — so no future session has to ask.
+```
+C:\Users\User\Documents\AI-Second-Brain\00-AI-Inbox-App
+```
 
-Note which accounts matter: Drive/Gmail connectors may authenticate as a
-*personal* account while the school's files live under `tratenglish@gmail.com`
-or `tratenglishmgt@gmail.com`. Check whose data you are actually reading
-before concluding something is missing.
+Damien drops files there for AI to pick up. That works for an assistant
+running **on his PC**. It does not work here: a web session runs in an
+isolated cloud container with nothing from his machine mounted — there is no
+`/mnt/c`, and `/mnt/attach` is empty unless a file is attached to the chat.
+
+So when he says "it's in the AI inbox", **do not go hunting**. One session
+burned a dozen calls searching Google Drive, Notion and Gmail labels for a
+folder that was never in any of them. Say plainly that the folder is on his
+machine and ask for the file one of these ways:
+
+1. **Upload to the branch on github.com** — Add file → Upload files, into
+   `assets/video/` (or wherever it belongs), committed to the working branch.
+   Best for binaries; no git knowledge needed.
+2. **Drag it into the chat.**
+3. **Google Drive**, if it is small — but note a multi-MB download returns
+   base64 into the context window, so this is unsuitable for video.
+
+Also check *whose* account a connector is on before concluding a file is
+missing. The Gmail connector authenticates as Damien's **personal** account
+(PARA labels, family, tax), while school mail goes to `tratenglish@gmail.com`
+and `tratenglishmgt@gmail.com` — so a search for enquiry email finds nothing
+there and that is not evidence of a problem. Google Drive is on
+`tratenglish@gmail.com` and holds 27 videos, all class recordings and kids'
+songs, newest January 2025; no marketing footage lives there.
+
+And do not filter a Drive search by date on a first pass. A session searched
+`mimeType contains 'video/' and modifiedTime > …`, got nothing, and reported
+"no video files at all" — there were 27.
 
 ## Shape of the site
 
