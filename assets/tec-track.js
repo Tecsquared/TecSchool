@@ -115,7 +115,7 @@
     var pagePath = location.pathname.replace(/\/index\.html$/, '/');
     if (pagePath === '/') return;
 
-    var useThai = /^\/(english|chinese|courses|wall-of-love)(\/|$)/.test(pagePath);
+    var useThai = /^\/(english|chinese|courses|wall-of-love|book)(\/|$)/.test(pagePath);
     var consentCopy = useThai ? {
       message: 'คุกกี้',
       on: 'เปิด',
