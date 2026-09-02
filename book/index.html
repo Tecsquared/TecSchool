@@ -236,8 +236,13 @@
   .shell {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    height: 100svh;
+    /* min-height, with the player on a zero flex-basis. A fixed height made
+       the sheet overflow and paint under .info the moment validation errors
+       grew it — the LINE fallback became unreachable on every phone except
+       390x844. A zero basis still lets the player eat all slack, but it can
+       never force the shell to overflow. */
+    min-height: 100vh;
+    min-height: 100svh;
     max-width: 520px;
     margin: 0 auto;
     padding: 8px 14px 0;
@@ -287,7 +292,7 @@
      a 9:16 phone clip and made to flex so the sheet below never gets pushed
      off screen. */
   .wall-card.video {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 150px;   /* below this the crop is a slit, not a face */
     display: flex;
     flex-direction: column;
@@ -333,25 +338,18 @@
   .wall-card.video:hover .play { transform: translate(-50%, -50%) scale(1.1); }
 
   /* The EP claim, a row under the headline rather than an overlay. */
-  .proof-row {
-    flex: none;
-    display: flex; align-items: center; justify-content: center;
-    flex-wrap: wrap; gap: 7px;
-    margin-bottom: 8px;
-  }
+  .proof-row { flex: none; text-align: center; margin-bottom: 9px; }
   .pill {
     display: inline-block;
-    padding: 3px 10px;
+    padding: 5px 13px;
     border-radius: 999px;
     background: var(--tec-yellow);
     color: var(--tec-ink);
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: .02em;
+    font-size: 12.5px;
+    line-height: 1.4;
+    font-weight: 600;
   }
-  .proof-row .claim { font-size: 12px; line-height: 1.35; color: var(--tec-ink-soft); }
-  .proof-row .claim b { font-weight: 700; color: var(--tec-ink); }
+  .pill b { font-weight: 800; }
 
   /* Caption chip, top-left inside the frame — clear of the bottom, where the
      burnt-in captions run. */
@@ -381,7 +379,10 @@
   .sheet {
     flex: none;
     margin: 12px -14px 0;
-    padding: 16px 18px calc(18px + env(safe-area-inset-bottom));
+    /* Extra bottom padding reserves the footprint of tec-track.js's fixed
+       cookie pill (bottom-left, z-index 99999), which otherwise sits on top
+       of the last row in the sheet. */
+    padding: 16px 18px calc(52px + env(safe-area-inset-bottom));
     background: #fff;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -4px 22px rgba(0,0,0,.10);
@@ -402,8 +403,7 @@
     font-size: 13px;
     margin-bottom: 5px;
   }
-  .field input[type=text],
-  .field input[type=tel] {
+  .field input[type=text] {
     width: 100%;
     padding: 12px 14px;
     border-radius: 12px;
@@ -426,13 +426,43 @@
   }
   .err:not(:empty) { display: block; }
 
+  /* Submit failure, inline rather than a native alert(): the recovery route
+     stays tappable and the form keeps what the parent typed. */
+  .send-error {
+    margin-bottom: 10px;
+    padding: 11px 13px;
+    border-radius: 12px;
+    background: #FDF1F0;
+    border: 1.5px solid var(--err);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--err);
+  }
+  .send-error a {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 8px 0;
+    font-weight: 700;
+    color: var(--tec-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .checkbox-row {
-    display: flex; gap: 10px; align-items: flex-start;
+    display: flex; gap: 10px; align-items: center;
+    min-height: 44px;                 /* was 27px — under the 44px minimum */
     font-size: 12.5px; line-height: 1.45;
     color: var(--tec-ink-soft);
     margin-bottom: 6px;
+    padding: 4px 6px;
+    border-radius: 8px;
   }
-  .checkbox-row input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--tec-ink); }
+  .checkbox-row input { width: 22px; height: 22px; flex: none; accent-color: var(--tec-ink); }
+  /* A native checkbox has no border, so border-color alone showed nothing. */
+  .checkbox-row:has(input[aria-invalid="true"]) {
+    outline: 2px solid var(--err);
+    background: #FDF1F0;
+  }
 
   .submit {
     width: 100%;
@@ -455,7 +485,7 @@
     display: inline-block;
     padding: 5px 13px;
     border-radius: 999px;
-    background: #F1EFE7;
+    background: #EDEAE0;
     font-size: 12.5px;
     font-weight: 600;
     color: var(--tec-ink-soft);
@@ -464,8 +494,8 @@
   /* Secondary channel: a quiet text row, never a twin button (Blank Street) */
   .line-row {
     display: block;
-    margin-top: 12px;
-    padding-top: 12px;
+    margin-top: 10px;
+    padding: 13px 0 4px;
     border-top: 1px solid #E7E4DB;
     text-align: center;
     font-size: 13.5px;
@@ -473,7 +503,7 @@
     color: var(--tec-ink-soft);
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-color: rgba(26,26,26,.28);
+    text-decoration-color: rgba(26,26,26,.55);
   }
 
   /* ===== Thanks state ===== */
@@ -554,7 +584,7 @@
   }
   .vfs-close {
     position: absolute; top: calc(10px + env(safe-area-inset-top)); right: 12px;
-    width: 42px; height: 42px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     border: none; cursor: pointer;
     background: rgba(255,255,255,.92); color: #1A1A1A;
     font-size: 19px; line-height: 1;
@@ -584,7 +614,7 @@
   .sticky-bar {
     position: fixed;
     left: 0; right: 0; bottom: 0;
-    z-index: 50;
+    z-index: 99999;        /* must clear the cookie pill, which sets 99999 */
     /* --kb is the height of the on-screen keyboard, written from JS via
        visualViewport. Without it a fixed bar sits *behind* the keyboard,
        which is the one case this bar exists for. */
@@ -601,6 +631,8 @@
   .sticky-bar.kb { padding-bottom: 10px; }
   .sticky-bar.show { transform: translateY(0); }
   .sticky-bar .submit { margin-top: 0; max-width: 492px; margin-inline: auto; display: block; }
+  /* Keep the pill off the sticky button's tap area. */
+  .sticky-bar.show .submit { margin-left: 118px; max-width: calc(100% - 118px); }
   @media (prefers-reduced-motion: reduce) {
     .sticky-bar { transition: none; }
   }
@@ -612,14 +644,14 @@
     .kicker .en { display: none; }
     .headline { margin-bottom: 7px; }
     .headline .h1-en { display: none; }
-    .proof-row .claim { display: none; }
+    .pill { font-size: 11.5px; padding: 4px 11px; }
     .who { font-size: 10px; top: 7px; left: 7px; }
     .play { width: 48px; height: 48px; font-size: 17px; }
     .sheet { padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); margin-top: 9px; }
     .sheet .lede { font-size: 12.5px; margin-bottom: 9px; }
     .field { margin-bottom: 9px; }
     .field label { font-size: 12.5px; margin-bottom: 4px; }
-    .field input[type=text], .field input[type=tel] { padding: 10px 12px; }
+    .field input[type=text] { padding: 10px 12px; }
     .submit { margin-top: 7px; padding: 13px; font-size: 17px; }
     .reassure { margin-top: 7px; }
     .reassure span { font-size: 12px; padding: 4px 11px; }
@@ -651,7 +683,7 @@
     }
     .hero-col { flex: 1 1 46%; min-width: 0; display: flex; flex-direction: column; }
     .form-col { flex: 1 1 54%; min-width: 0; }
-    .wall-card.video { min-height: 380px; max-height: 62vh; }
+    .wall-card.video { min-height: min(380px, 55vh); max-height: 62vh; }
     .sheet {
       margin: 0;
       border-radius: 20px;
@@ -683,8 +715,7 @@
     </div>
 
     <p class="proof-row">
-      <span class="pill">EP 90%</span>
-      <span class="claim"><b>90% ของเด็ก TEC ได้เข้า EP</b> — โดยไม่ต้องเรียนคอร์สติวสอบ</span>
+      <span class="pill"><b>90% ของเด็ก TEC ได้เข้า EP</b> — โดยไม่ต้องเรียนคอร์สติวสอบ</span>
     </p>
 
     <button class="clip-link" id="clip-link" type="button">
@@ -727,14 +758,18 @@
         <div class="field">
           <label for="bk-name">ชื่อผู้ปกครอง</label>
           <input type="text" id="bk-name" name="Name" autocomplete="name" required
-                 aria-describedby="err-name">
+                 enterkeyhint="next" aria-describedby="err-name">
           <p class="err" id="err-name" role="alert"></p>
         </div>
 
         <div class="field">
           <label for="bk-contact">LINE ID หรือเบอร์โทร</label>
-          <input type="tel" id="bk-contact" name="LINE or phone" inputmode="tel" autocomplete="tel" required
-                 aria-describedby="err-contact">
+          <!-- type=text, not tel: the label leads with "LINE ID" and a tel keypad
+               has no letters, so a LINE handle could not be typed at all.
+               autocomplete="tel" still drives phone autofill on a text input. -->
+          <input type="text" id="bk-contact" name="LINE or phone" inputmode="text"
+                 autocomplete="tel" autocapitalize="off" autocorrect="off" spellcheck="false"
+                 enterkeyhint="send" required aria-describedby="err-contact">
           <p class="err" id="err-contact" role="alert"></p>
         </div>
 
@@ -747,6 +782,10 @@
           <p class="err" id="err-consent" role="alert"></p>
         </div>
 
+        <p class="send-error" id="send-error" role="alert" hidden>
+          ส่งไม่สำเร็จค่ะ ขออภัย — ข้อมูลของคุณยังอยู่ ลองกดส่งอีกครั้งได้เลย
+          <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือทักเราทาง LINE → TEC14</a>
+        </p>
         <button type="submit" class="submit">จองเวลาสัมภาษณ์</button>
         <p class="reassure"><span>ฟรี · 30 นาที · ไม่มีค่าใช้จ่าย · ยกเลิกได้</span></p>
       </form>
@@ -823,6 +862,16 @@
     vfsClose.focus();
     vfsVideo.play().catch(function () { /* blocked: controls are there */ });
     capture('hero_video_play', { page: location.pathname });
+    document.addEventListener('keydown', trapFocus, true);
+  }
+
+  // Tab used to walk straight out of the dialog into the form behind it.
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    var focusable = [vfsClose, vfsVideo];
+    var i = focusable.indexOf(document.activeElement);
+    e.preventDefault();
+    focusable[(i + (e.shiftKey ? -1 : 1) + focusable.length) % focusable.length].focus();
   }
 
   function closeClip() {
@@ -833,6 +882,7 @@
     vfs.classList.remove('open');
     vfs.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.removeEventListener('keydown', trapFocus, true);
     if (lastFocus) lastFocus.focus();
   }
 
@@ -924,12 +974,22 @@
       buttons[i].disabled = true;
     }
 
+    var sendError = document.getElementById('send-error');
+    if (sendError) sendError.hidden = true;
+
+    // Without a timeout a stalled request — the normal mobile-data failure,
+    // not a clean error — never settles, so the button stays disabled forever.
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctl && setTimeout(function () { ctl.abort(); }, 12000);
+
     fetch(form.action, {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
+      body: new FormData(form),
+      signal: ctl ? ctl.signal : undefined
     })
     .then(function (res) {
+      if (timer) clearTimeout(timer);
       if (!res.ok) throw new Error('status ' + res.status);
       form.hidden = true;
       if (lineRow) lineRow.hidden = true;
@@ -943,11 +1003,15 @@
       thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
     })
     .catch(function () {
+      if (timer) clearTimeout(timer);
       for (var j = 0; j < buttons.length; j++) {
         buttons[j].removeAttribute('aria-busy');
         buttons[j].disabled = false;
       }
-      alert('ส่งไม่สำเร็จค่ะ ขออภัย — รบกวนทักเราทาง LINE (ID: TEC14) หรืออีเมล tratenglish@gmail.com');
+      if (sendError) {
+        sendError.hidden = false;
+        sendError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
   });
 
