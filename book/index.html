@@ -319,47 +319,27 @@
     background: #000;
     box-shadow: 0 6px 22px rgba(0,0,0,.18);
   }
-  .student-triptych {
+  /* A single approved master preserves Neptune's overlap across the white
+     panel rules. Keeping the play control out of the artwork means it remains
+     a real, centred tap target at every fluid crop. */
+  .student-poster {
     position: absolute;
     inset: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    background: #fff;
-  }
-  .student-panel {
-    min-width: 0;
-    overflow: hidden;
-  }
-  .student-panel--klua { background: #1CB2FF; }
-  .student-panel--neptune { background: var(--tec-yellow); }
-  .student-panel--seua { background: var(--tec-pink); }
-  .student-triptych img {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: 50% 50%;
+    object-position: 50% 35%;
     display: block;
   }
-  /* Klua is framed much closer in the source card. Bring Neptune and Seua
-     forward equally so all three faces read at the same apparent scale. */
-  .student-panel--neptune img,
-  .student-panel--seua img {
-    transform: scale(1.55);
-    transform-origin: 50% 0;
-  }
-  .student-panel--klua img {
-    transform: translateY(4%) scale(.92);
-    transform-origin: 50% 0;
-  }
   .wall-card.video .play {
-    position: absolute; left: 50%; top: 50%;
+    position: absolute; left: 50%; top: 56%;
     transform: translate(-50%, -50%);
-    width: 62px; height: 62px; border-radius: 50%;
-    background: var(--tec-yellow); color: var(--tec-ink);
-    border: 3px solid var(--tec-ink);
+    width: 72px; height: 72px; border-radius: 50%;
+    background: #0B1764; color: #FED501;
+    border: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 21px; padding-left: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.4);
+    font-size: 25px; padding-left: 5px;
+    box-shadow: 0 3px 14px rgba(0,0,0,.34);
     transition: transform 150ms ease;
   }
   .wall-card.video:hover .play { transform: translate(-50%, -50%) scale(1.1); }
@@ -377,30 +357,6 @@
     font-weight: 600;
   }
   .pill b { font-weight: 800; }
-
-  /* Caption chip, top-left inside the frame — clear of the bottom, where the
-     burnt-in captions run. */
-  .who {
-    position: absolute;
-    left: 9px; top: 9px;
-    display: flex; align-items: center; gap: 5px;
-    padding: 3px 8px 3px 4px;
-    border-radius: 999px;
-    background: rgba(0,0,0,.55);
-    backdrop-filter: blur(4px);
-    color: #fff;
-    font-weight: 700; font-size: 11px;
-    pointer-events: none;
-  }
-  .badge {
-    flex: none;
-    width: 16px; height: 16px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 800; font-size: 8px;
-    background: var(--tec-pink); color: #fff;
-  }
-  .who .sub { font-weight: 600; opacity: .8; }
 
   /* ===== Booking sheet ===== */
   .sheet {
@@ -510,6 +466,11 @@
     color: var(--tec-ink-soft);
     opacity: .75;
   }
+  .consent-note a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 
   /* Secondary channel: a quiet text row, never a twin button (Blank Street) */
   .line-row {
@@ -576,8 +537,8 @@
   .clip-link .dot {
     flex: none;
     width: 26px; height: 26px; border-radius: 50%;
-    background: var(--tec-yellow); color: var(--tec-ink);
-    border: 2px solid var(--tec-ink);
+    background: #0B1764; color: #FED501;
+    border: 0;
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 11px; padding-left: 2px;
   }
@@ -674,8 +635,7 @@
     .headline { margin-bottom: 7px; }
     .headline .h1-en { display: none; }
     .pill { font-size: 11.5px; padding: 4px 11px; }
-    .who { font-size: 10px; top: 7px; left: 7px; }
-    .play { width: 48px; height: 48px; font-size: 17px; }
+    .wall-card.video .play { width: 48px; height: 48px; font-size: 17px; }
     .sheet { padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); margin-top: 9px; }
     .sheet .lede { font-size: 12.5px; margin-bottom: 9px; }
     .field { margin-bottom: 9px; }
@@ -713,6 +673,7 @@
     .hero-col { flex: 1 1 46%; min-width: 0; display: flex; flex-direction: column; }
     .form-col { flex: 1 1 54%; min-width: 0; }
     .wall-card.video { min-height: min(380px, 55vh); max-height: 62vh; }
+    .wall-card.video .play { width: 88px; height: 88px; font-size: 30px; }
     .sheet {
       margin: 0;
       border-radius: 20px;
@@ -761,23 +722,16 @@
             tabindex="0" role="button"
             aria-label="เล่นคลิปนักเรียน TEC พูดภาษาอังกฤษ — Play the clip">
       <div class="frame">
-        <div class="student-triptych" aria-hidden="true">
-          <span class="student-panel student-panel--klua"><img src="/assets/video/klua-card.jpg?v=4" alt="" decoding="async"></span>
-          <span class="student-panel student-panel--neptune"><img src="/assets/video/neptune-card.jpg?v=1" alt="" decoding="async"></span>
-          <span class="student-panel student-panel--seua"><img src="/assets/video/seua-card.jpg?v=3" alt="" decoding="async"></span>
-        </div>
+        <img class="student-poster" src="/assets/video/book-student-poster.jpg?v=1"
+             alt="" width="1200" height="960" decoding="async" fetchpriority="high">
         <span class="play" aria-hidden="true">▶</span>
-        <figcaption class="who">
-          <span class="badge" aria-hidden="true">▶</span>
-          <span>นักเรียน TEC</span>
-        </figcaption>
       </div>
     </figure>
   </div>
 
   <div class="form-col">
     <section class="sheet" id="book">
-      <p class="lede">ครูประเมินระดับลูกคุณ แล้วบอกตรง ๆ ว่าควรเริ่มที่ไหน</p>
+      <p class="lede">ครูประเมินระดับลูกคุณ แล้วบอกตรง ๆ ว่าควรเริ่มที่ไหน · ส่งแล้วครูจะ LINE หรือโทรกลับเพื่อนัดเวลา</p>
 
       <form class="form-block" id="book-form"
             action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
@@ -813,9 +767,9 @@
           ส่งไม่สำเร็จค่ะ ขออภัย — ข้อมูลของคุณยังอยู่ ลองกดส่งอีกครั้งได้เลย
           <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือทักเราทาง LINE → TEC14</a>
         </p>
-        <button type="submit" class="submit">จองเวลาสัมภาษณ์</button>
+        <button type="submit" class="submit">ขอเวลาสัมภาษณ์ฟรี</button>
         <p class="reassure"><span>ฟรี · 30 นาที · ไม่มีข้อผูกมัด · ยกเลิกได้</span></p>
-        <p class="consent-note">การกดปุ่มถือว่าคุณยินยอมให้ TEC ติดต่อกลับ — ยกเลิกได้ตลอดเวลา</p>
+        <p class="consent-note">การกดปุ่มถือว่าคุณยินยอมให้ TEC ติดต่อกลับเพื่อเลือกวันเวลา — ยังไม่ใช่การยืนยันนัด · <a href="/privacy/">นโยบายความเป็นส่วนตัว</a></p>
       </form>
 
       <a class="line-row" id="line-backup" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือแชท LINE ก่อนก็ได้ → TEC14</a>
@@ -851,7 +805,7 @@
 </div>
 
 <div class="sticky-bar" id="sticky-bar" hidden>
-  <button type="submit" form="book-form" class="submit">จองเวลาสัมภาษณ์</button>
+  <button type="submit" form="book-form" class="submit">ขอเวลาสัมภาษณ์ฟรี</button>
 </div>
 
 <script>
