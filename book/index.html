@@ -287,10 +287,10 @@
     letter-spacing: .01em;
   }
 
-  /* ===== The one proof moment — Klua =====
-     Card shape lifted from the Wall of Love (.wall-card.video), re-fitted to
-     a 9:16 phone clip and made to flex so the sheet below never gets pushed
-     off screen. */
+  /* ===== The one proof moment — real TEC students =====
+     Card shape lifted from the Wall of Love (.wall-card.video). The exact
+     approved student cards replace an eager video still: the promise is clear
+     before the tap, while the 5.2 MB clip stays unfetched until it is wanted. */
   .wall-card.video {
     flex: 1 1 0;
     min-height: 150px;   /* below this the crop is a slit, not a face */
@@ -300,12 +300,9 @@
     padding: 0;
     cursor: pointer;
   }
-  /* A 9:16 clip sized by leftover height collapses to a ~140px sliver once a
-     two-field form is also above the fold. So the inline frame fills the
-     column width and crops to the upper part of the clip, where the faces
-     are. The cropped-off bottom carries the burnt-in captions — that is fine
-     here, because this still is only the invitation: tapping opens the whole
-     frame full-screen, uncropped, where the captions are readable. */
+  /* The frame is still sized by leftover height so the form remains above the
+     fold. Three portrait cards tolerate that fluid crop better than a single
+     9:16 frame and keep a face visible even at the 150px minimum. */
   .wall-card.video .frame {
     position: relative;
     flex: 1 1 auto;
@@ -317,11 +314,18 @@
     background: #000;
     box-shadow: 0 6px 22px rgba(0,0,0,.18);
   }
-  .wall-card.video .frame > video {
+  .student-triptych {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    background: #fff;
+  }
+  .student-triptych img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: 50% 28%;  /* hold the faces; the caption band is below */
-    background: #000;
+    object-position: 50% 50%;
     display: block;
   }
   .wall-card.video .play {
@@ -486,7 +490,10 @@
 
   /* Secondary channel: a quiet text row, never a twin button (Blank Street) */
   .line-row {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     margin-top: 10px;
     padding: 13px 0 4px;
     border-top: 1px solid #E7E4DB;
@@ -597,7 +604,13 @@
   }
   .info p + p { margin-top: 9px; }
   .info b { color: var(--tec-ink); }
-  .info a { text-decoration: underline; text-underline-offset: 2px; }
+  .info a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 
   /* ===== Sticky CTA — keeps one tap-target reachable once the sheet has
      scrolled away (Instacart). A submit button bound to the form by id, NOT
@@ -698,17 +711,17 @@
 <div class="shell">
 
   <div class="hero-col">
-    <p class="kicker">
-      อยากให้ลูกพูดแบบนี้ได้ไหม?
-      <span class="en" lang="en">Want your child to be able to do this?</span>
-    </p>
-
     <div class="headline">
       <h1>นัดสัมภาษณ์วัดระดับฟรี 30 นาที<span class="h1-en" lang="en">Free 30-min placement</span></h1>
     </div>
 
     <p class="proof-row">
       <span class="pill"><b>90% ของเด็ก TEC ได้เข้า EP</b> — โดยไม่ต้องเรียนคอร์สติวสอบ</span>
+    </p>
+
+    <p class="kicker">
+      อยากให้ลูกพูดแบบนี้ได้ไหม?
+      <span class="en" lang="en">Want your child to be able to do this?</span>
     </p>
 
     <button class="clip-link" id="clip-link" type="button">
@@ -725,8 +738,11 @@
             tabindex="0" role="button"
             aria-label="เล่นคลิปนักเรียน TEC พูดภาษาอังกฤษ — Play the clip">
       <div class="frame">
-        <video preload="metadata" playsinline muted
-               src="/assets/video/book-hero.mp4#t=0.1"></video>
+        <div class="student-triptych" aria-hidden="true">
+          <img src="/assets/video/klua-card.jpg?v=4" alt="" decoding="async">
+          <img src="/assets/video/neptune-card.jpg?v=1" alt="" decoding="async">
+          <img src="/assets/video/seua-card.jpg?v=3" alt="" decoding="async">
+        </div>
         <span class="play" aria-hidden="true">▶</span>
         <figcaption class="who">
           <span class="badge" aria-hidden="true">▶</span>
@@ -807,7 +823,8 @@
 
 <div class="vfs" id="vfs" aria-hidden="true" role="dialog" aria-modal="true" aria-label="คลิปนักเรียน TEC">
   <button class="vfs-close" id="vfs-close" type="button" aria-label="ปิด">✕</button>
-  <video id="vfs-video" controls playsinline preload="none"></video>
+  <video id="vfs-video" controls playsinline preload="none"
+         poster="/assets/video/neptune-card.jpg?v=1"></video>
 </div>
 
 <div class="sticky-bar" id="sticky-bar" hidden>
@@ -833,8 +850,8 @@
   /* ---------- The clip ----------
      Purpose-cut 26s vertical clip that opens on the content, so there is no
      seek to do — the START_AT / #t=207 machinery the old landscape source
-     needed is gone. The inline still is cropped to the faces; playback is
-     full-screen so the burnt-in captions are readable. */
+     needed is gone. The inline triptych is static; the clip is not fetched
+     until a visitor taps, then plays full-screen with captions readable. */
   var SRC = '/assets/video/book-hero.mp4';
   var vfs = document.getElementById('vfs');
   var vfsVideo = document.getElementById('vfs-video');
