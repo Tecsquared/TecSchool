@@ -226,6 +226,11 @@
   [hidden] { display: none !important; }
   :focus-visible { outline: 3px solid var(--tec-ink); outline-offset: 2px; }
 
+  /* Paid-traffic landing page: keep the global cookie preference controls off
+     this one screen without changing tec-track.js or any other TEC page. */
+  #tec-marketing-consent,
+  #tec-privacy-choices { display: none !important; }
+
   /* ===== Shell =====
      One screen on mobile: the player takes whatever height is left once the
      booking sheet has had what it needs, so the two fields and the CTA are
@@ -322,11 +327,29 @@
     gap: 3px;
     background: #fff;
   }
+  .student-panel {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .student-panel--klua { background: #1CB2FF; }
+  .student-panel--neptune { background: var(--tec-yellow); }
+  .student-panel--seua { background: var(--tec-pink); }
   .student-triptych img {
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
     display: block;
+  }
+  /* Klua is framed much closer in the source card. Bring Neptune and Seua
+     forward equally so all three faces read at the same apparent scale. */
+  .student-panel--neptune img,
+  .student-panel--seua img {
+    transform: scale(1.55);
+    transform-origin: 50% 0;
+  }
+  .student-panel--klua img {
+    transform: translateY(4%) scale(.92);
+    transform-origin: 50% 0;
   }
   .wall-card.video .play {
     position: absolute; left: 50%; top: 50%;
@@ -739,9 +762,9 @@
             aria-label="เล่นคลิปนักเรียน TEC พูดภาษาอังกฤษ — Play the clip">
       <div class="frame">
         <div class="student-triptych" aria-hidden="true">
-          <img src="/assets/video/klua-card.jpg?v=4" alt="" decoding="async">
-          <img src="/assets/video/neptune-card.jpg?v=1" alt="" decoding="async">
-          <img src="/assets/video/seua-card.jpg?v=3" alt="" decoding="async">
+          <span class="student-panel student-panel--klua"><img src="/assets/video/klua-card.jpg?v=4" alt="" decoding="async"></span>
+          <span class="student-panel student-panel--neptune"><img src="/assets/video/neptune-card.jpg?v=1" alt="" decoding="async"></span>
+          <span class="student-panel student-panel--seua"><img src="/assets/video/seua-card.jpg?v=3" alt="" decoding="async"></span>
         </div>
         <span class="play" aria-hidden="true">▶</span>
         <figcaption class="who">
