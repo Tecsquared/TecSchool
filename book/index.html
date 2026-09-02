@@ -448,22 +448,6 @@
     text-underline-offset: 3px;
   }
 
-  .checkbox-row {
-    display: flex; gap: 10px; align-items: center;
-    min-height: 44px;                 /* was 27px — under the 44px minimum */
-    font-size: 12.5px; line-height: 1.45;
-    color: var(--tec-ink-soft);
-    margin-bottom: 6px;
-    padding: 4px 6px;
-    border-radius: 8px;
-  }
-  .checkbox-row input { width: 22px; height: 22px; flex: none; accent-color: var(--tec-ink); }
-  /* A native checkbox has no border, so border-color alone showed nothing. */
-  .checkbox-row:has(input[aria-invalid="true"]) {
-    outline: 2px solid var(--err);
-    background: #FDF1F0;
-  }
-
   .submit {
     width: 100%;
     appearance: none; border: none; cursor: pointer;
@@ -489,6 +473,15 @@
     font-size: 12.5px;
     font-weight: 600;
     color: var(--tec-ink-soft);
+  }
+
+  .consent-note {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--tec-ink-soft);
+    opacity: .75;
   }
 
   /* Secondary channel: a quiet text row, never a twin button (Blank Street) */
@@ -754,6 +747,10 @@
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <!-- Consent is given by submitting, and the notice under the button says
+             so in the same words. The field is kept so the enquiry record and
+             the Notion webhook still carry it. -->
+        <input type="hidden" name="Consent" value="Yes — agreed by submitting the form (notice shown at point of submission)">
 
         <div class="field">
           <label for="bk-name">ชื่อผู้ปกครอง</label>
@@ -773,21 +770,13 @@
           <p class="err" id="err-contact" role="alert"></p>
         </div>
 
-        <div class="field">
-          <label class="checkbox-row" for="bk-consent">
-            <input type="checkbox" id="bk-consent" name="Consent" value="Yes — agreed to be contacted" required
-                   aria-describedby="err-consent">
-            <span>ฉันยินยอมให้ TEC ติดต่อกลับ — สามารถยกเลิกได้ตลอดเวลา</span>
-          </label>
-          <p class="err" id="err-consent" role="alert"></p>
-        </div>
-
         <p class="send-error" id="send-error" role="alert" hidden>
           ส่งไม่สำเร็จค่ะ ขออภัย — ข้อมูลของคุณยังอยู่ ลองกดส่งอีกครั้งได้เลย
           <a href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือทักเราทาง LINE → TEC14</a>
         </p>
         <button type="submit" class="submit">จองเวลาสัมภาษณ์</button>
-        <p class="reassure"><span>ฟรี · 30 นาที · ไม่มีค่าใช้จ่าย · ยกเลิกได้</span></p>
+        <p class="reassure"><span>ฟรี · 30 นาที · ไม่มีข้อผูกมัด · ยกเลิกได้</span></p>
+        <p class="consent-note">การกดปุ่มถือว่าคุณยินยอมให้ TEC ติดต่อกลับ — ยกเลิกได้ตลอดเวลา</p>
       </form>
 
       <a class="line-row" id="line-backup" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือแชท LINE ก่อนก็ได้ → TEC14</a>
@@ -911,12 +900,11 @@
 
   var CHECKS = [
     { input: 'bk-name',    err: 'err-name',    msg: 'กรุณากรอกชื่อผู้ปกครอง' },
-    { input: 'bk-contact', err: 'err-contact', msg: 'กรุณากรอก LINE ID หรือเบอร์โทร' },
-    { input: 'bk-consent', err: 'err-consent', msg: 'กรุณายืนยันความยินยอมก่อนส่ง' }
+    { input: 'bk-contact', err: 'err-contact', msg: 'กรุณากรอก LINE ID หรือเบอร์โทร' }
   ];
 
   function valueOf(el) {
-    return el.type === 'checkbox' ? el.checked : el.value.trim() !== '';
+    return el.value.trim() !== '';
   }
 
   function clear(check) {
@@ -959,7 +947,7 @@
     btn.addEventListener('click', gate);
   });
   form.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') gate(e);
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT') gate(e);
   });
 
   /* ---------- Submit ----------
