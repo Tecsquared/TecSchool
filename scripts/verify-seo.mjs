@@ -37,12 +37,17 @@ for (const file of htmlFiles) {
 if (!failures.some((item) => item.includes('JSON-LD'))) pass('all landing-page JSON-LD blocks parse');
 
 const nonCanonicalHref = /href=["']\/(english|thai|chinese)["']/g;
-for (const file of fs.readdirSync(root, { recursive: true }).filter((item) => item.endsWith('.html'))) {
+const allHtmlFiles = fs.readdirSync(root, { recursive: true }).filter((item) => item.endsWith('.html'));
+for (const file of allHtmlFiles) {
   const html = read(file);
   const matches = [...html.matchAll(nonCanonicalHref)];
   if (matches.length) fail(`${file} contains ${matches.length} non-canonical language link(s)`);
+  if (html.includes('rel="canonical"') && !html.includes('<link rel="describedby" href="/llms.txt" type="text/markdown">')) {
+    fail(`${file} does not advertise /llms.txt`);
+  }
 }
 if (!failures.some((item) => item.includes('non-canonical'))) pass('all internal language links use trailing slashes');
+if (!failures.some((item) => item.includes('advertise /llms.txt'))) pass('all canonical pages advertise /llms.txt');
 
 const assetAttributes = /(?:src|poster|href)=["']([^"']+)["']/g;
 for (const file of htmlFiles) {
@@ -85,6 +90,24 @@ for (const file of optimizedAssets) {
   if (!fs.existsSync(path.join(root, file))) fail(`optimized asset is missing: ${file}`);
 }
 if (!failures.some((item) => item.includes('optimized asset'))) pass('optimized hero and founder assets exist');
+
+const avifReferences = allHtmlFiles.flatMap((file) =>
+  [...read(file).matchAll(/(?:srcset|src)=["']([^"']*\.avif[^"']*)["']/g)].flatMap((match) =>
+    match[1]
+      .split(',')
+      .map((candidate) => candidate.trim().split(/\s+/)[0])
+      .filter((asset) => asset.endsWith('.avif'))
+      .map((asset) => ({ file, asset })),
+  ),
+);
+if (!avifReferences.length) fail('no AVIF sources are referenced by HTML');
+for (const { file, asset } of avifReferences) {
+  const target = asset.startsWith('/')
+    ? path.join(root, asset.slice(1))
+    : path.resolve(path.dirname(path.join(root, file)), asset);
+  if (!fs.existsSync(target)) fail(`${file} references missing AVIF asset ${asset}`);
+}
+if (!failures.some((item) => item.includes('AVIF'))) pass('AVIF-first image sources reference existing files');
 
 const courseDir = path.join(root, 'courses');
 const courseDetailFiles = fs.readdirSync(courseDir)
