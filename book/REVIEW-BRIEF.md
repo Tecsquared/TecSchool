@@ -55,14 +55,17 @@ an open keyboard is the risk.
 - The class `form-thanks` is load-bearing; the tracker watches it to fire
   `enquiry_submitted` and the Meta Lead.
 - Field names `Name` and `LINE or phone` must not change — the webhook reads
-  them by name. Neither may the form `action` or the hidden fields.
+  them by name. `Student nickname` and `Student age` were added after Thai
+  parent feedback. Neither may the form `action` or the hidden fields change.
 - Thai-first. English is a small secondary sub-line only.
 
 ## Already verified — please don't re-derive
 
-- CTA, both fields, the reassurance pill and the consent notice above the fold
-  at 320x568, 360x780, 375x667, 390x844, 412x915 and 1280x900. No horizontal
-  scroll at any size.
+- The original two-field layout kept its CTA and consent copy above the fold at
+  320x568, 360x780, 375x667, 390x844, 412x915 and 1280x900. The later student
+  nickname/age row intentionally adds height; preserve the compact two-column
+  row and sticky CTA when reviewing those viewports. No horizontal scroll was
+  present at any size.
 - `enquiry_started` fires exactly once, only on a valid submit; rejected
   attempts POST nothing and beacon nothing.
 - `enquiry_submit` and `enquiry_submitted` both fire on success (deliberate —
