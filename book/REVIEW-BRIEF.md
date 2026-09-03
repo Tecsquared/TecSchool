@@ -7,8 +7,8 @@ repo root first — it carries the traps that cost the last session time.
 ## What the page is
 
 A Thai-first, mobile-first landing page for Facebook ad traffic to a free
-30-minute placement interview. **One job: get the two-field form submitted on
-the first screen.** High-intent paid traffic, Thai parents on phones. It is
+placement interview. **One job: get the four-field form submitted on the first
+screen.** High-intent paid traffic, Thai parents on phones. It is
 deliberately not a brochure — `/english/` is the brochure.
 
 Files in scope: `book/index.html` (self-contained), plus one redirect line in
