@@ -378,6 +378,12 @@
   }
 
   .field { margin-bottom: 12px; }
+  .field-row {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(84px, 1fr);
+    gap: 10px;
+  }
+  .field-row .field { min-width: 0; }
   /* Visible labels, never placeholder-only (Instacart) */
   .field label {
     display: block;
@@ -731,7 +737,7 @@
 
   <div class="form-col">
     <section class="sheet" id="book">
-      <p class="lede">ครูประเมินระดับลูกคุณ แล้วบอกตรง ๆ ว่าควรเริ่มที่ไหน · ส่งแล้วครูจะ LINE หรือโทรกลับเพื่อนัดเวลา</p>
+      <p class="lede">ครูจะประเมินทักษะภาษาอังกฤษของลูก แนะนำคอร์สที่เหมาะสม พร้อมแจ้งค่าเรียนและตารางเรียน หากสนใจนัดสัมภาษณ์วัดระดับหรือทดลองเรียน กรุณากรอกข้อมูลด้านล่างค่ะ</p>
 
       <form class="form-block" id="book-form"
             action="https://formsubmit.co/ajax/tratenglishmgt@gmail.com" method="POST">
@@ -744,6 +750,24 @@
              so in the same words. The field is kept so the enquiry record and
              the Notion webhook still carry it. -->
         <input type="hidden" name="Consent" value="Yes — agreed by submitting the form (notice shown at point of submission)">
+
+        <div class="field-row">
+          <div class="field">
+            <label for="bk-student-name">ชื่อเล่นของนักเรียน</label>
+            <input type="text" id="bk-student-name" name="Student nickname"
+                   autocomplete="off" enterkeyhint="next" required
+                   aria-describedby="err-student-name">
+            <p class="err" id="err-student-name" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="bk-student-age">อายุ (ปี)</label>
+            <input type="text" id="bk-student-age" name="Student age"
+                   inputmode="numeric" autocomplete="off" maxlength="2"
+                   enterkeyhint="next" required aria-describedby="err-student-age">
+            <p class="err" id="err-student-age" role="alert"></p>
+          </div>
+        </div>
 
         <div class="field">
           <label for="bk-name">ชื่อผู้ปกครอง</label>
@@ -893,8 +917,10 @@
   form.noValidate = true;
 
   var CHECKS = [
-    { input: 'bk-name',    err: 'err-name',    msg: 'กรุณากรอกชื่อผู้ปกครอง' },
-    { input: 'bk-contact', err: 'err-contact', msg: 'กรุณากรอก LINE ID หรือเบอร์โทร' }
+    { input: 'bk-student-name', err: 'err-student-name', msg: 'กรุณากรอกชื่อเล่นของนักเรียน' },
+    { input: 'bk-student-age',  err: 'err-student-age',  msg: 'กรุณากรอกอายุของนักเรียน' },
+    { input: 'bk-name',         err: 'err-name',         msg: 'กรุณากรอกชื่อผู้ปกครอง' },
+    { input: 'bk-contact',      err: 'err-contact',      msg: 'กรุณากรอก LINE ID หรือเบอร์โทร' }
   ];
 
   function valueOf(el) {
