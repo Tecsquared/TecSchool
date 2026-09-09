@@ -176,3 +176,18 @@ trap for the weekly-hours figure, which lives in seven.
 Permanent rulings go in `_DECISIONS.md` as `R<n>`, defects as `F<n>`.
 Supersede a stale ruling rather than editing it — other files cite the IDs.
 If a session cost you time re-deriving something, add it here too.
+
+## Copy-edit closeout
+
+Before shipping a personal name or Thai-copy correction:
+
+1. Record the authoritative source used for the correction.
+2. Search the complete repository, including visible text, HTML attributes and
+   image descriptions, metadata, structured data, and `llms*.txt`.
+3. Ship through a PR and Vercel preview.
+4. Verify the affected live visible and non-visible occurrences after merging.
+
+Do not describe a contributor workflow as ready until its contributor-facing
+link, submission, review assignment, notification, and approval path have been
+tested end to end. Report each stage as planned, created, connected, tested, or
+live.
