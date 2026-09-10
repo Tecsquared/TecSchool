@@ -63,6 +63,12 @@ to `main` go straight to production.
 /assets/     tec.css, tec-track.js, fonts/, video/, wall/
 ```
 
+Google Tag Manager container `GTM-KLXKHTDJ` is installed directly in every
+live HTML file: the script block immediately follows `<head>` and the noscript
+iframe immediately follows the opening `<body>` tag. Because there is no shared
+layout or build step, every new HTML page must include both blocks;
+`scripts/verify-seo.mjs` checks this.
+
 A new page is `<name>/index.html` **plus a redirect in `vercel.json`**:
 
 ```json

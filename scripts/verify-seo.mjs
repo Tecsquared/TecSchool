@@ -37,7 +37,21 @@ for (const file of htmlFiles) {
 if (!failures.some((item) => item.includes('JSON-LD'))) pass('all landing-page JSON-LD blocks parse');
 
 const nonCanonicalHref = /href=["']\/(english|thai|chinese)["']/g;
-const allHtmlFiles = fs.readdirSync(root, { recursive: true }).filter((item) => item.endsWith('.html'));
+const allHtmlFiles = fs.readdirSync(root, { recursive: true }).filter(
+  (item) => item.endsWith('.html') && !item.startsWith('_work') && item !== 'index-v1-old.html',
+);
+const liveHtmlFiles = allHtmlFiles.filter((file) => file !== 'google6ff507efc5e8fa62.html');
+const gtmId = 'GTM-KLXKHTDJ';
+for (const file of liveHtmlFiles) {
+  const html = read(file);
+  const idCount = [...html.matchAll(new RegExp(gtmId, 'g'))].length;
+  if (idCount !== 2) fail(`${file} must contain exactly two ${gtmId} references; found ${idCount}`);
+  if (!/<head>\s*<!-- Google Tag Manager -->/.test(html)) fail(`${file} is missing the GTM head snippet`);
+  if (!/<body[^>]*>\s*<!-- Google Tag Manager \(noscript\) -->/.test(html)) {
+    fail(`${file} is missing the GTM noscript snippet after the body tag`);
+  }
+}
+if (!failures.some((item) => item.includes('GTM'))) pass(`all ${liveHtmlFiles.length} live HTML pages include ${gtmId}`);
 for (const file of allHtmlFiles) {
   const html = read(file);
   const matches = [...html.matchAll(nonCanonicalHref)];
