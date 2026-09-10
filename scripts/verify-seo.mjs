@@ -42,6 +42,7 @@ const allHtmlFiles = fs.readdirSync(root, { recursive: true }).filter(
 );
 const liveHtmlFiles = allHtmlFiles.filter((file) => file !== 'google6ff507efc5e8fa62.html');
 const gtmId = 'GTM-KLXKHTDJ';
+const trackerSrc = '/assets/tec-track.js?v=4';
 for (const file of liveHtmlFiles) {
   const html = read(file);
   const idCount = [...html.matchAll(new RegExp(gtmId, 'g'))].length;
@@ -50,8 +51,14 @@ for (const file of liveHtmlFiles) {
   if (!/<body[^>]*>\s*<!-- Google Tag Manager \(noscript\) -->/.test(html)) {
     fail(`${file} is missing the GTM noscript snippet after the body tag`);
   }
+  if (!html.includes(`src="${trackerSrc}"`)) {
+    fail(`${file} is not loading the current tracker asset ${trackerSrc}`);
+  }
 }
 if (!failures.some((item) => item.includes('GTM'))) pass(`all ${liveHtmlFiles.length} live HTML pages include ${gtmId}`);
+if (!failures.some((item) => item.includes('current tracker asset'))) {
+  pass(`all ${liveHtmlFiles.length} live HTML pages load ${trackerSrc}`);
+}
 
 const tracker = read('assets/tec-track.js');
 if (!tracker.includes("trackEvent('booking_completed', completion)")) {
