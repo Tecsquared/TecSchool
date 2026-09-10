@@ -810,7 +810,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="line-row" id="line-backup" href="https://line.me/R/ti/p/~TEC14" target="_blank" rel="noopener">หรือแชท LINE ก่อนก็ได้ → TEC14</a>
 
       <!-- The .form-thanks class is load-bearing: tec-track.js watches it and
-           fires enquiry_submitted + the Meta Lead event when it unhides. -->
+           fires booking_completed, the legacy enquiry_submitted event, and
+           the Meta Lead event when it unhides. -->
       <div class="form-thanks" id="book-thanks" hidden>
         <p class="thanks-title">ขอบคุณค่ะ 🎉</p>
         <p class="thanks-sub">เราได้รับข้อมูลของคุณแล้ว</p>
@@ -1014,8 +1015,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (lineRow) lineRow.hidden = true;
       var lede = document.querySelector('.sheet .lede');
       if (lede) lede.hidden = true;
-      // Unhiding .form-thanks is what makes tec-track.js fire
-      // enquiry_submitted and the Meta Lead event.
+      // Unhiding .form-thanks is what makes tec-track.js fire the canonical
+      // booking_completed event, legacy enquiry_submitted, and Meta Lead.
       thanks.hidden = false;
       capture('enquiry_submit', { page: location.pathname, form: 'book-form' });
       if (sticky) { sticky.classList.remove('show'); sticky.hidden = true; }

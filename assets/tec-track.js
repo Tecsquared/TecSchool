@@ -253,10 +253,23 @@
         var observer = new MutationObserver(function () {
           if (panel.hidden || panel.getAttribute('data-analytics-confirmed') === 'true') return;
           panel.setAttribute('data-analytics-confirmed', 'true');
-          trackEvent('enquiry_submitted', {
+          var completion = {
             page: location.pathname,
             form: panel.id || 'enquiry-form'
-          });
+          };
+          // Keep the legacy event for every enquiry form. The canonical
+          // booking conversion is deliberately limited to the confirmed
+          // /book/ form so callback forms cannot inflate ad results.
+          trackEvent('enquiry_submitted', completion);
+          if (panel.id === 'book-thanks') {
+            trackEvent('booking_completed', completion);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'booking_completed',
+              booking_form: completion.form,
+              page_path: completion.page
+            });
+          }
           trackMeta('Lead', {
             content_name: panel.id || 'enquiry-form',
             content_category: document.documentElement.lang || 'website'

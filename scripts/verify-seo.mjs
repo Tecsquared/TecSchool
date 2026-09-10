@@ -52,6 +52,20 @@ for (const file of liveHtmlFiles) {
   }
 }
 if (!failures.some((item) => item.includes('GTM'))) pass(`all ${liveHtmlFiles.length} live HTML pages include ${gtmId}`);
+
+const tracker = read('assets/tec-track.js');
+if (!tracker.includes("trackEvent('booking_completed', completion)")) {
+  fail('tec-track.js does not send booking_completed to first-party analytics');
+}
+if (!tracker.includes("if (panel.id === 'book-thanks')")) {
+  fail('booking_completed is not limited to the confirmed booking form');
+}
+if (!tracker.includes("event: 'booking_completed'")) {
+  fail('tec-track.js does not push booking_completed to the GTM data layer');
+}
+if (!failures.some((item) => item.includes('booking_completed'))) {
+  pass('successful enquiry confirmation emits booking_completed for PostHog and GTM');
+}
 for (const file of allHtmlFiles) {
   const html = read(file);
   const matches = [...html.matchAll(nonCanonicalHref)];
