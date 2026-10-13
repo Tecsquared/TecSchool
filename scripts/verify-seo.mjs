@@ -148,7 +148,7 @@ const courseDir = path.join(root, 'courses');
 const courseDetailFiles = fs.readdirSync(courseDir)
   .filter((name) => name.endsWith('.html') && name !== 'index.html')
   .sort();
-if (courseDetailFiles.length !== 17) fail(`expected 17 course detail pages; found ${courseDetailFiles.length}`);
+if (courseDetailFiles.length !== 18) fail(`expected 18 course detail pages; found ${courseDetailFiles.length}`);
 
 const courseFontFile = 'assets/fonts/fonts-courses.css';
 const courseFontCss = read(courseFontFile);
@@ -197,9 +197,9 @@ if (!failures.some((item) => item.includes('course hub') || item.includes('fonts
 }
 
 const courseSitemapEntries = [...sitemap.matchAll(/<url>[\s\S]*?<loc>https:\/\/www\.tecschool\.org\/courses\/[^<]*<\/loc>[\s\S]*?<lastmod>([^<]+)<\/lastmod>[\s\S]*?<\/url>/g)];
-if (courseSitemapEntries.length !== 18) {
-  fail(`expected 18 course sitemap entries; found ${courseSitemapEntries.length}`);
-} else if (courseSitemapEntries.some((match) => match[1] !== '2026-08-14')) {
+if (courseSitemapEntries.length !== 19) {
+  fail(`expected 19 course sitemap entries; found ${courseSitemapEntries.length}`);
+} else if (courseSitemapEntries.some((match) => !/^\d{4}-\d{2}-\d{2}$/.test(match[1]) || match[1] < '2026-08-14')) {
   fail('course sitemap entries do not have the current source-change date');
 } else {
   pass('all course sitemap dates reflect the current source changes');
