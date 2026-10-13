@@ -1,17 +1,17 @@
 # TEC — โรงเรียนสอนภาษา ตราด (Thai · English · Chinese School)
 
-> โรงเรียนสอนภาษาในตราด ก่อตั้งปี 2014 — สอนภาษาอังกฤษ ภาษาจีน และภาษาไทย สำหรับเด็กอายุ 2.5–15 ปี ด้วยหลักสูตรแนว Cambridge และการสอนที่เน้นใช้ภาษาได้จริง.
-> A boutique language school in Trat, Thailand since 2014, teaching English, Chinese and Thai to children (ages 2.5–15) — a Cambridge Young Learners English pathway with a use-first approach.
+> โรงเรียนสอนภาษาในตราด ก่อตั้งปี 2014 — สอนภาษาอังกฤษ ภาษาจีน และภาษาไทย สำหรับเด็กอายุ 1.5–15 ปี ด้วยหลักสูตรแนว Cambridge และการสอนที่เน้นใช้ภาษาได้จริง.
+> A boutique language school in Trat, Thailand since 2014, teaching English, Chinese and Thai to children (ages 1.5–15) — a Cambridge Young Learners English pathway with a use-first approach.
 
 ## เกี่ยวกับ TEC · About TEC
 
 TEC (Trat English Community) เป็นโรงเรียนสอนภาษาเอกชนในอำเภอเมืองตราด จังหวัดตราด ก่อตั้งปี 2014
-สอนภาษาอังกฤษ ภาษาจีน (สำหรับเด็ก) และภาษาไทย (สำหรับชาวต่างชาติ) ให้กับเด็กอายุประมาณ 2.5–15 ปี
+สอนภาษาอังกฤษ ภาษาจีน (สำหรับเด็ก) และภาษาไทย (สำหรับชาวต่างชาติ) ให้กับเด็กอายุประมาณ 1.5–15 ปี
 ก่อตั้งโดย คุณสุฑามาศ ไชยศิริ (Mas) และ Damien Herlihy.
 
 TEC (Trat English Community) is a private language school in Mueang Trat, Trat Province, Thailand,
 founded in 2014, teaching English, Chinese (for kids) and Thai (for non-Thais) to children roughly
-aged 2.5–15. Co-founded by Suthamas Chaisiri ("Mas") and Damien Herlihy.
+aged 1.5–15. Co-founded by Suthamas Chaisiri ("Mas") and Damien Herlihy.
 
 จุดเด่นของ TEC · What makes TEC distinctive:
 - เส้นทางการเรียนแนว Cambridge Young Learners English (Starters → Movers → Flyers)
@@ -43,6 +43,7 @@ aged 2.5–15. Co-founded by Suthamas Chaisiri ("Mas") and Damien Herlihy.
 (Prices/hours as published; "/hr" = per teaching hour, "/package" = fixed package price.)
 
 ### Play to Learn (เด็กเล็ก / early years)
+- Toddler TEC — คอร์สใหม่ เรียนพร้อมผู้ปกครอง ผ่านสี เพลง และนิทาน. อายุ 1.5–3 ปี · 2 คลาสต่อสัปดาห์ คลาสละ 45 นาที · 10 สัปดาห์ · ค่าเรียนสอบถามที่โรงเรียน
 - Teeny TEC — คอร์สภาษาอังกฤษสำหรับเด็กเล็ก. อายุ 2.5–4 ปี · ~104 ชม. · ฿360–400/ชม.
 - Tiny TEC — ก้าวต่อจาก Teeny สู่โฟนิกส์. อายุ 4–6 ปี · ~120 ชม. · ฿250–285/ชม.
 - Young Learner 1 — เริ่มผสมคำ เริ่มอ่านได้. อายุ 5–8 ปี · ~75 ชม. · ฿270–300/ชม.
@@ -105,7 +106,7 @@ cannot be guaranteed by any school).
 ตอบ: ภาษาอังกฤษ ภาษาจีน (สำหรับเด็ก) และภาษาไทย (สำหรับชาวต่างชาติ)
 
 ถาม: รับเด็กอายุเท่าไหร่?
-ตอบ: ตั้งแต่ 2.5 ถึง 15 ปี ตั้งแต่ Teeny TEC สำหรับเด็กเล็ก จนถึงคอร์สเตรียมสอบและ SpeakWrite สำหรับวัยรุ่น
+ตอบ: ตั้งแต่ 1.5 ถึง 15 ปี ตั้งแต่ Toddler TEC สำหรับเด็กเล็ก จนถึงคอร์สเตรียมสอบและ SpeakWrite สำหรับวัยรุ่น
 
 ถาม: จะช่วยกับการสอบที่โรงเรียนของลูกไหม?
 ตอบ: ช่วยแน่นอน — การเข้าใจจริงดีกว่าการติว หลักสูตรอิงตาม Cambridge ส่งผลตรงกับผลการเรียนวิชาภาษาอังกฤษที่โรงเรียน
